@@ -1,4 +1,4 @@
-# So sánh câc mẫu thiết kế tìm được với mẫu chuẩn.
+# So sánh các mẫu thiết kế tìm được với mẫu chuẩn.
 `Nguyễn Việt Quân`
 # Builder package:
  1. _Giống nhau_: 
