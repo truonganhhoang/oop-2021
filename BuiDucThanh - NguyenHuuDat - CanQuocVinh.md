@@ -42,4 +42,34 @@ Xét từng lớp cụ thể:
 #### e. So sánh với mẫu chuẩn 
 Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Có một lớp trừu tượng và một các lớp con kế thừa nó để tạo ra đối tuượng mới và có liên quan đến nhau. 
 
+### 18. Memento Pattern
+Đây là một trong nhưng mẫu có hiệu suất sử dụng thấp trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, người lập trình có thể Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối tượng mà vẫn không vi phạm việc bao bọc dữ liệu.
 
+Trong file checkstyle/src/main/java/com/puppycrawl/tools/checkstyle , có lớp trừu tượng Task.java và lớp con kế thừa lớp này là CheckstyleAntTask.java.
+
+Xét từng lớp cụ thể:
+
+#### a. Task.java
+Là một lớp interface task.
+
+#### b. CheckstyleAntTask.java
+Class này đã được ứng dụng Interface Task.java để thực hiện mục đích của mình: Tạo ra các đối tượng dựa trên tên Package và tên Class. Kiểm tra các kiểu  bài tập mong muốn được thực thi.
+
+#### c. So sánh với mẫu chuẩn 
+Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn.
+
+### 19. Observer Pattern
+Đây là một trong nhưng mẫu có hiệu suất sử dụng thấp trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, Định nghĩa sự phụ thuộc một-nhiều giữa các đối tượng sao cho khi một đối tượng thay đổi trạng thái thì tất cả các đối tượng phụ thuộc nó cũng thay đổi theo.
+
+Trong file checkstyle/src/main/java/com/puppycrawl/tools/checkstyle , có lớp trừu tượng AuditEventFormatter.java và lớp con kế thừa lớp này là AuditEventDefaultFormatter.java
+
+Xét từng lớp cụ thể:
+
+#### a. AuditEventFormatter.java
+Là một lớp trừu tượng kiểm tra các định dạng của các sự kiện diễn ra.
+
+#### b. AuditEventDefaultFormatter.java
+Class này đã được ứng dụng Abstract AuditEventFormatter.java để thực hiện mục đích của mình: Kiểm tra các sự kiện có khuôn dạng mặc định.
+
+#### c. So sánh với mẫu chuẩn 
+Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
