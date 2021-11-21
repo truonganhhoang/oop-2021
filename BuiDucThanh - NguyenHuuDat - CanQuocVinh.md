@@ -73,3 +73,67 @@ Class này đã được ứng dụng Abstract AuditEventFormatter.java để th
 
 #### c. So sánh với mẫu chuẩn 
 Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
+
+### 20. State Pattern
+Đây là một trong nhưng mẫu có hiệu suất sử dụng trung bình trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, Cho phép một đối tượng thay đổi hành vi khi trạng thái bên trong của nó thay đổi, ta có cảm giác như class của đối tượng bị thay đổi.
+
+Trong file checkstyle/src/main/java/com/puppycrawl/tools/checkstyle , có lớp trừu tượng AuditEventFormatter.java và lớp con kế thừa lớp này là AuditEventDefaultFormatter.java
+
+Xét từng lớp cụ thể:
+
+#### a. AuditEventFormatter.java
+Là một lớp trừu tượng kiểm tra các định dạng của các sự kiện diễn ra.
+
+#### b. AuditEventDefaultFormatter.java
+Class này đã được ứng dụng Abstract AuditEventFormatter.java để thực hiện mục đích của mình: Kiểm tra các sự kiện có khuôn dạng mặc định.
+
+#### c. So sánh với mẫu chuẩn 
+Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
+
+### 21. Strategy Pattern
+Đây là một trong nhưng mẫu có hiệu suất sử dụng trung bình cao trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, Bao bọc một họ các thuật toán bằng các lớp đối tượng để thuật toán có thể thay đổi độc lập đối với chương trình sử dụng thuật toán.Cung cấp một họ giải thuật cho phép client chọn lựa linh động một giải thuật cụ thể khi sử dụng.
+
+Trong file checkstyle/src/main/java/com/puppycrawl/tools/checkstyle , có lớp trừu tượng Configuration.java và lớp con kế thừa lớp này là DefaultConfiguration.java
+
+Xét từng lớp cụ thể:
+
+#### a. Configuration.java
+Là một lớp trừu tượng định nghĩa các cấu hình của client.
+
+#### b. DefaultConfiguration.java
+Class này đã được ứng dụng Interface DefaultConfiguration.java để thực hiện mục đích của mình: cấu hình mặc định cho client.
+
+#### c. So sánh với mẫu chuẩn 
+Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn.
+
+### 22. Template method Pattern
+Đây là một trong nhưng mẫu có hiệu suất sử dụng trung bình trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, Định nghĩa phần khung của một thuật toán, tức là một thuật toán tổng quát gọi đến một số phương thức chưa được cài đặt trong lớp cơ sở; việc cài đặt các phương thức được ủy nhiệm cho các lớp kế thừa.
+
+Trong file checkstyle/src/main/java/com/puppycrawl/tools/checkstyle , có lớp Interface TreeModel.java và lớp con kế thừa lớp này là  ParseTreeTableModel.java
+
+Xét từng lớp cụ thể:
+
+#### a. TreeModel.java
+Là một lớp trừu tượng định nghĩa các mô hình cây.
+
+#### b.  ParseTreeTableModel.java
+Class này đã được ứng dụng Interface TreeModel.java để phân tích cú pháp mô hình bàn cây.
+
+#### c. So sánh với mẫu chuẩn 
+Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Đánh giá dựa trên thuật toán mô hình cây.
+
+### 23. Visitor Pattern
+Đây là một trong nhưng mẫu có hiệu suất sử dụng thấp trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, Cho phép định nghĩa thêm phép toán mới tác động lên các phần tử của một cấu trúc đối tượng mà không cần thay đổi các lớp định nghĩa cấu trúc đó.
+
+Trong file checkstyle/src/main/java/com/puppycrawl/tools/checkstyle , có lớp trừu tượng JTable.java và lớp con kế thừa lớp này là TreeTable.java
+
+Xét từng lớp cụ thể:
+
+#### a. JTable.java
+Là một lớp trừu tượng định nghĩa trong thư viện của java.
+
+#### b.  TreeTable.java
+Class này đã được ứng dụng Interface TreeModel.java sử dụng các thuật toán để thiết lập một mô hình bảng cây.
+
+#### c. So sánh với mẫu chuẩn 
+Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Đánh giá dựa trên thuật toán mô hình cây.
