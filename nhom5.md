@@ -1,2 +1,3 @@
--Danh sách thành viên: Nguyễn Tuấn Nam, Đỗ Anh Tú, Lương Trung Kiên
--Link repo sử dụng: https://github.com/square/retrofit
+Danh sách thành viên: Nguyễn Tuấn Nam, Đỗ Anh Tú, Lương Trung Kiên
+
+Link repo sử dụng: https://github.com/square/retrofit
