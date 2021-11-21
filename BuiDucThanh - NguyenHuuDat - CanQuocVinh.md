@@ -19,3 +19,27 @@ Class này đã được ứng dụng Interface ModuleFactory.java để thực 
 
 #### c. So sánh với mẫu chuẩn 
 Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Có một Interface và một lớp áp dụng Interface đó để tạo đối tượng mới. 
+
+### 17. Mediator Pattern
+Đây là một trong nhưng mẫu không được sử dụng phổ biến hiện nay trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, một đối tượng để bao bọc việc giao tiếp giữa một số đối tượng với nhau. Sau đây ta xét ví dụ trong dự án trên:
+
+Trong file checkstyle/src/main/java/com/puppycrawl/tools/checkstyle , có AbstractCheck.java là lớp trừu tượng và AnnotationLocationCheck.java, AnnotationOnSameLineCheck.java, AnnotationUseStyleCheck.java là các lớp con kế thứa lớp AbstractCheck.java và thông qua lớp mẹ để giao tiếp với nhau.
+
+Xét từng lớp cụ thể:
+
+#### a. AbstractCheck.java
+Đây là một Abstract sử dụng cho việc check các annotation, có rất nhiều hàm, và có 3 hàm trừu tượng mà lớp con phải override. 
+
+#### b. AnnotationLocationCheck.java
+Đây là class con kiểm tra vị trí chú thích.
+
+#### c. AnnotationOnSameLineCheck.java
+Đây là class con kiểm tra các chú thích trên cùng một dòng.
+
+#### d. AnnotationUseStyleCheck.java
+Đây là class con kiểm tra kiểu chú thích. 
+
+#### e. So sánh với mẫu chuẩn 
+Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Có một lớp trừu tượng và một các lớp con kế thừa nó để tạo ra đối tuượng mới và có liên quan đến nhau. 
+
+
