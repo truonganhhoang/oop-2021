@@ -12,6 +12,7 @@
 + https://github.com/MrEngineer13/SnackBar
 + https://github.com/roughike/BottomBar
 + https://github.com/aritraroy/PatternLockView
++ https://github.com/Anuken/Mindustry
 
 ## Ngôn ngữ: Java 100%
 
@@ -20,11 +21,17 @@
 ## Creational
 
 1. **Singleton**
-2. **Factory Method**
-3. **Abstract Factory**
-4. **Builder**
-5. **Prototype**
-6. **Object Pool**
+
+​			
+
+1. **Factory Method**
+
+​		[Code Factory Method](https://github.com/MrEngineer13/SnackBar/blob/master/snackbar/src/main/java/com/github/mrengineer13/snackbar/SnackBar.java)_<img src="C:\Users\HuynhDucTran\Desktop\oop-2021\images\factory method.png" alt="Factory Method"  />
+
+1. **Abstract Factory**
+2. **Builder**
+3. **Prototype**
+4. **Object Pool**
 
 
 
