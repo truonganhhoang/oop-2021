@@ -1,5 +1,8 @@
 # So sánh câc mẫu thiết kế tìm được với mẫu chuẩn.
 `Nguyễn Việt Quân`
+#Link repository: https://github.com/bethrobson/Head-First-Design-Patterns
+Đây là một repo tổng hợp đầy đủ 23 mẫu thiết kế theo khuôn dạng mẫu thiết kế chuẩn.
+Dưới đây sẽ là sự so sánh về cách triển khai từng mẫu thiết kế.
 # Builder package:
  1. _Giống nhau_: 
    - Builder pattern là một mẫu thiết kế thuộc "Nhóm khởi tạo" (Creational Pattern). Mẫu thiết kế này cho phép lập trình viên tạo ra những đối tượng phức tạp nhưng chỉ cần thông qua các câu lệnh đơn giản để tác động nên các thuộc tính của nó.
@@ -38,4 +41,51 @@
 - Trong đó Aggregate là lớp Menu và Iterator- là một interface định nghĩa cho các phương thức để tạo iterator object. Client là các các class như DinerMenu, MenuItem được quản lý thông qua Iterator.
 2. _Khác nhau_:
 - Có cấu trúc giống với mẫu thiết kế chuẩn.
+#State package
+1. _Giống nhau_:
+- Đều sử dụng mẫu thiết kế State Pattern: Đây là một trong nhưng mẫu có hiệu suất sử dụng trung bình trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, Cho phép một đối tượng thay đổi hành vi khi trạng thái bên trong của nó thay đổi, ta có cảm giác như class của đối tượng bị thay đổi.
+- Nó gồm những thành phần cơ bản như: Context, State, ConcreteState.
+- Cụ thể: State.java là một lớp trừu tượng kiểm tra các sự kiện đang diễn ra. HasQuarterState.java Class này đã được ứng dụng Abstract State.java để thực hiện mục đích của mình: Kiểm tra các sự kiện có khuôn dạng mặc định.
+2. _Khác nhau_:
+- Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
+#Strategy Package:
+1. _Giống nhau_: 
+- Đều sử dụng mẫu thiết kế chuẩn Strategy Pattern: Đây là một trong nhưng mẫu có hiệu suất sử dụng trung bình cao trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, Bao bọc một họ các thuật toán bằng các lớp đối tượng để thuật toán có thể thay đổi độc lập đối với chương trình sử dụng thuật toán.Cung cấp một họ giải thuật cho phép client chọn lựa linh động một giải thuật cụ thể khi sử dụng.
+- Gồm 4 thành phần cơ bản: Strategy, ConcreteStrategy, Context.
+- Cụ thể: QuackBehavior.java là một lớp trừu tượng đại diên cho hành vi của Client. Tiếp đến Quack.java Class này được ứng dụng QuackBehavior.java để thực hiện mục đích của mình: Cấu hình cho client.
+2. _Khác nhau_:
+- Về cơ bản, khuôn dạng cũng giống với mẫu chuẩn.
+#Observer Package
+1. _Giống nhau_:
+- Đều sử dụng mẫu thiết kế chuẩn Observer Pattern: Đây là một trong nhưng mẫu có hiệu suất sử dụng thấp trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, Định nghĩa sự phụ thuộc một-nhiều giữa các đối tượng sao cho khi một đối tượng thay đổi trạng thái thì tất cả các đối tượng phụ thuộc nó cũng thay đổi theo.
+- Gồm những thành phần cơ bản sau: Subject, Observer, ConcreteSubject, ConcreteObserver.
+- Xét những đối tượng cụ thể: Ta có Observer là lớp Observer.java sẽ được subject thông báo đến khi có sự thay đổi trạng thái. Subject là lớp Subject.java là một lớp trừu tượng kiểm tra các định dạng của các sự kiện diễn ra.
+2. _Khác nhau_: 
+- Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
+#Flyweight Package:
+1: _Giống nhau_:
+- Đều sử dụng mẫu thiết kế Flyweight Pattern:  là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Nó cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.
+- Nó gồm 2 trạng thái chính: Intrinsic State (trạng thái nội tại) và Extrinsic State (trạng thái bên ngoài).
+- Xét những đối tượng cụ thể: 
+- - Ta có lớp Tree.java là một interface định nghĩa các các thành phần của một đối tượng. 
+- - ConiferTree.java triển khai các phương thức đã định nghĩa trong Tree. 
+- - TreeFactory.java ớp này có thể là một Factory Pattern được sử dụng để giữ tham chiếu đến đối tượng Flyweight đã được tạo ra.
+
+2: _Khác nhau_:
+- Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
+#Composite Package:
+1. _Giống nhau_:
+- Đều sử dụng mẫu thiết kế Composite Pattern: là một mẫu thiết kế thuộc nhóm cấu trúc (Structural Pattern). Composite Pattern là một sự tổng hợp những thành phần có quan hệ với nhau để tạo ra thành phần lớn hơn. Nó cho phép thực hiện các tương tác với tất cả đối tượng trong mẫu tương tự nhau.
+- Gồm các thành phần cơ bản sau:
+- - Base Component : là một interface hoặc abstract class quy định các method chung cần phải có cho tất cả các thành phần tham gia vào mẫu này.
+- - Leaf : là lớp hiện thực (implements) các phương thức của Component. Nó là các object không có con.
+- - Composite : lưu trữ tập hợp các Leaf và cài đặt các phương thức của Base Component. Composite cài đặt các phương thức được định nghĩa trong interface Component bằng cách ủy nhiệm cho các thành phần con xử lý.
+- - Client: sử dụng Base Component để làm việc với các đối tượng trong Composite.
+- Cụ thể:
+- - Base Component là lớp MenuComponent.java
+- - Leaf là lớp Menu.java.
+- - Composite là lớp MenuItem.java
+- - Client là Waitress.java
+2. _Khác nhau_:
+- Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
 
