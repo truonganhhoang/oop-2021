@@ -91,3 +91,73 @@ Khi quá trình khởi tạo tương đối đơn giản và hàm tạo chỉ y�
  public enum LongPollResponse implements ReturnableData{
  }
 +, Behavioral Pattern:
+link:https://github.com/sherxon/AlgoDS.git
+* Command Pattern trong Interval.java
+Command Pattern được tạo ra để lưu trữ các câu lệnh và trạng thái của object. Nó cho phép tất cả những yêu cầu gửi đến object đó dưới dạng một object Command.
+
+Khi nó tìm được cách giải quyết thích hợp, nó sẽ chuyển đến Command, nơi mà nó sẽ được thực thi.
+
+public class Interval {
+    public int start;
+    public int end;
+
+    public Interval() {
+        start = 0;
+        end = 0;
+    }
+
+    public Interval(int s, int e) {
+        start = s;
+        end = e;
+    }
+
+    @Override
+    public String toString() {
+        return "Interval{" +
+                "start=" + start +
+                ", end=" + end +
+                '}';
+    }
+}
+
+* Observer Pattern trong ValidateCard.
+Observer Pattern được sử dụng để theo dõi trạng thái của một object nhất định. Thường là trong một nhóm hoặc một mối quan hệ một - nhiều.
+
+Trong những trường hợp như vậy, hầu hết thời gian và trạng thái thay đổi của một object sẽ ảnh hưởng đến trạng thái của phần còn lại. Vì vậy, phải có một hệ thống ghi nhận lại những thay đổi, và thông báo cho các object khác.
+
+Mặc dù Java cung cấp cả một class và interface có lưu ý đến pattern này. Nhưng nó không phổ biến vì nó không được thực hiện một cách lý tưởng.
+
+public class ValidateCard {
+
+    static List<Map<String, Object>> validateCards(String[] bannedPrefixes, String[] cardsToValidate) {
+
+        return Arrays.stream(cardsToValidate).
+                map(e -> ToMap(e, bannedPrefixes)).collect(Collectors.toList());
+
+    }
+
+    private static Map<String, Object> ToMap(String e, String[] bannedPrefixes) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("card", e);
+        map.put("isValid", isValid(e));
+        map.put("isAllowed", isAllowed(e, bannedPrefixes));
+        return map;
+    }
+
+    private static boolean isAllowed(String e, String[] bannedPrefixes) {
+        for (String bannedPrefix : bannedPrefixes) {
+            if (e.startsWith(bannedPrefix))
+                return false;
+        }
+        return true;
+    }
+
+    private static boolean isValid(String e) {
+        int sum = 0;
+        for (int i = 0; i < e.length() - 1; i++) {
+            sum += (e.charAt(i) - '0') * 2;
+        }
+
+        return sum % 10 == e.charAt(e.length() - 1) - '0';
+    }
+}
