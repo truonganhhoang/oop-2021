@@ -1,4 +1,4 @@
-3.	Nhóm Behavioral
+3.	Nhóm Behavioral (Lê Phương Uyên)
 
 a.	Observer: Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi một đối tượng thay đổi, tất cả các phụ thuộc của nó sẽ được thông báo và cập nhật tự động. Một số file mà sự án sử dụng Observer:
 -	Subject.java: interface chủ đề.
