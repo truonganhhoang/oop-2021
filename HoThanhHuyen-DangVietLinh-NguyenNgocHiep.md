@@ -3,7 +3,6 @@
 ## 1. Hồ Thanh Huyền - 20020323
 ## 2. Đặng Việt Linh - 20021383
 ## 3. Nguyễn Ngọc Hiệp - 20021349
-### **Cách thức thực hiện bài báo cáo**: Mỗi thành viên làm phần bài báo cáo của mình rồi commit vào reposition của nhóm ([Link reposition của nhóm](https://github.com/Thang12321/BT_OOP_DesignPattern)), bạn Tạ Văn Thắng tổng hợp và sắp xếp phần báo cáo của các thành viên vào file báo cáo của nhóm.
 - **[Link đến reposition được sử dụng trong bài báo cáo](https://github.com/bethrobson/Head-First-Design-Patterns)**
 
 Abstract Factory: Nó có thể được hình dung như một nhà máy lớn, bên trong có các nhà máy nhỏ hơn sản xuất ra những loạt sản phẩm liên quan đến nhau.
