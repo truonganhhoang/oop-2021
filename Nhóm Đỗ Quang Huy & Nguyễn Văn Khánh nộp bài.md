@@ -11,14 +11,18 @@
 <ul>
   <li>Ý tưởng của thư viện này là xây dựng các bộ điều hợp của bạn bằng cách tạo các thành phần có thể tái sử dụng. Ý tưởng là bạn xác định một AdapterDelegate cho mỗi loại chế độ xem. Người đại diện này chịu trách nhiệm tạo ViewHolder và ràng buộc ViewHolder cho một kiểu xem nhất định. Sau đó, bạn có thể soạn RecyclerView Adapter của mình bằng cách đăng ký AdapterDelegates mà bạn thực sự cần.</li>
 </ul>
-<p> - - - </p>
+<b> Mẫu thiết kế:
+<a href="https://github.com/sockeqwe/AdapterDelegates/tree/master/app/src/main/java/com/hannesdorfmann/adapterdelegates4/sample/model"> Factory Pattern </a></b>
+  </br>
+  <ul> 
+  <li> chúng ta tạo đối tượng mà không để lộ logic tạo đối tượng ở phía người dùng và tham chiếu đến đối tượng mới được tạo ra bằng cách sử dụng một interface chung là DiffItem.
+  </li>
+  </ul>
+<p> - - --------------------------- </p>
 <br />
 <a href = "https://github.com/youlookwhat/DesignPattern"><b>Repo 2</b></a><br />
-<b> Mẫu thiết kế: </b> 23 mẫu thiết kế <br />
-<ul>
-  <li>Ý 1:</li>
-  <li>Ý 2:</li>
- </ul>
+<b> Mẫu thiết kế: </b> gồm 23 mẫu thiết kế <br />
+
   
 
 
