@@ -13,7 +13,8 @@ families class: https://github.com/square/retrofit/blob/master/retrofit-adapters
 
 **Giống nhau**:
 - Giống với mẫu chuẩn
-**Khác Nhau**:  
+  
+**Khác nhau**:  
 - có 1 số function không bị ghi đè
 
 
@@ -33,6 +34,10 @@ public final class Java8OptionalConverterFactory extends Converter.Factory {
     return new Java8OptionalConverterFactory();
  }
 ```
+
+**Giống nhau**:
+- Prototype gần như giống hệt so với mẫu chuẩn : cho phép khởi tạo một đối tượng bằng cách sao chép từ một đối tượng khác đã tồn tại thay vì sử dụng toán tử new.
+
 link: https://github.com/square/retrofit/blob/master/retrofit-converters/java8/src/main/java/retrofit/converter/java8/Java8OptionalConverterFactory.java
 
 
@@ -74,7 +79,7 @@ link: https://github.com/square/retrofit/blob/master/retrofit-converters/java8/s
 **Giống nhau**: 
 - Giống với mẫu chuẩn.
 - Build từ Retrofit, NetworkBehavior và ExecutorService
-- Prototype gần như giống hệt so với mẫu chuẩn : cho phép khởi tạo một đối tượng bằng cách sao chép từ một đối tượng khác đã tồn tại thay vì sử dụng toán tử new.
+
 
 **Khác biệt**:
 - Không có.
