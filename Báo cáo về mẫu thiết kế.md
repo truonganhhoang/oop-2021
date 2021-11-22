@@ -6,13 +6,13 @@
 >### Repo: https://github.com/youlookwhat/DesignPattern
 
 ## **1. Nhóm Creational**
-## Singleton:
+### Singleton:
 - Giống nhau: giống nhau hoàn toàn.
     - Implement Singleton Pattern bằng cách **Bill Pugh Singleton Implementation:**
         - Sử dụng 1 static nested class với vai trò 1 helper khi muốn tách biệt chức năng cho 1 class function rõ ràng hơn.
 - Khác nhau: không có sự khác nhau.
 
-## Factory Pattern:
+### Factory Pattern:
 - Giống nhau:
     - 1 Super Class là 1 Abstract Class - *RoujiaMoStore* đại diện cho cửa hàng bán bánh Rou Ji A nói chung.
     - Các Sub Class là các chi nhánh cửa hàng. *(XianKuRoujiMo, XianSuanRoujiMo, XianlaRoujiMo, XianSuanRoujiMo)*
@@ -20,18 +20,18 @@
     - AbstractFactory là
 - Khác nhau: không có sự khác nhau.
 
-## Abstract Factory:
+### Abstract Factory:
 - Giống nhau:
     - **Abstract Factory:** 1 Interface *RouJiaMoYLFactroy* chứa các phương thức tạo đối tượng là nguyên liệu làm ra món Rou Ji A. (Meat, Yuan Liao).
     - **Product** Các đối tượng Meat, Yuan Liao có các class con (đối tượng cụ thể): *XianFreshMeet*, *ChangShaFreshMeet, XianFreshYuanLiao*, *ChangShaFreshMeetYuanLiao,...)* là các ****Concrete Factory.**
     - : **Client**: RoujiaMo.java
 - Khác nhau: Abstract Factory chứa phương thức tạo đối tượng không phải abstract *(Meat, Yuan Liao) →* **Không có Abstract Factory** mà chỉ có class thường.
 
-## Builder:
+### Builder:
 - Giống nhau: có **Builder** *(Builder.java)* là 1 abstract class và được kế thừa bởi 1 **ConcreteBuilder** *(ConcreteBuider.java)*, có **Director** *(Director.java)* để gọi tới Builder.
 - Khác nhau: không có sự khác nhau.
 
-## Prototype:
+### Prototype:
 - Giống nhau:
     - **Prototype:** 1 abstract Shape *(Shape.java) implements* `Cloneable`.
     - **ConcretePrototype:** *ShapeCache.java*
@@ -143,19 +143,19 @@ Lấy hình ảnh từ đĩa làm ví dụ
 
 ### Chain of Responsibility: Khắc phục việc ghép cặp giữa bộ gởi và bộ nhận thông điệp. Các đối tượng nhận thông điệp được kết nối thành một chuỗi và thông điệp được chuyển dọc theo chuỗi nầy đến khi gặp được đối tượng xử lý nó. Tránh việc gắn kết cứng giữa phần tử gởi request với phần tử nhận và xử lý request bằng cách cho phép hơn 1 đối tượng có có cơ hội xử lý request. Liên kết các đối tượng nhận request thành 1 dây chuyền rồi gửi request xuyên qua từng đối tượng xử lý đến khi gặp đối tượng xử lý cụ thể. => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
-## Strategy:
+### Strategy:
 - Giống nhau:
     - Nhân vật trò chơi ban đầu: Role.java
     - Khi có mã trùng lặp, lớp cha được tái cấu trúc.
 - Khác nhau: không có sự khác nhau.
 
-## Template Method:
+### Template Method:
 - Giống nhau:
     - Abstract Class: *Worker.java*
     - Concrete Class: *ITWorker.java*
 - Khác nhau: không có sự khác nhau.
 
-## Visitor:
+### Visitor:
 - Giống nhau:
     - 1 Interface đại diện cho các yếu tố: *ComputerPart.java*
     - Các class implements từ Interface đó: *Computer, Mouse, Monitor, Keyboard*.
