@@ -1,7 +1,7 @@
 # OOP - 2021
 ### 1. Phạm Quốc Bảo - 19020502
 ### 2. Lê Huy Bình - 19020503
-### 3. Nguyễn Hoàng Anh - 19020493 - Nhóm Truỏng
+### 3. Nguyễn Hoàng Anh - 19020493 - Nhóm Trưởng
 
 - **[Link tài liệu.](https://refactoring.guru/design-patterns/catalog)**
 - **[Link repo của nhóm.](https://github.com/Thang12321/BT_OOP_DesignPattern)**
