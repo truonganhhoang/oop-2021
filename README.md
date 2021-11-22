@@ -23,4 +23,24 @@ Các repo đã tìm được và phân tích:
   Có code minh họa theo 2 mẫu thiết kế:
   - Command
   - Iterator
+
++ Repo 3: Link https://github.com/braisdom/ObjectiveSql
   
+  Dựa vào mẫu thiết kế Active record khuyến khích phát triển nhanh chóng và làm sạch, mã có ít nhất và quy ước về cấu hình.
+
++ Repo 4: Link https://github.com/Anuken/Mindustry
+  Sử dụng mẫu thiết kế:
+    Strategy với:
+	  interface: SlotAssignmentStrategy,
+	  các ConcreteStategy: BoundedSlotAssignmentStrategy, DistanceAssignmentStrategy, FreeSlotAssignmentStrategy
+	  BoundedSlotAssignmentStrategy có concrete: SoftRoleSlotAssignmentStrategy
+	Factory Method:
+	  Creator: FormationPattern
+	  Concretecreator: CircleFormation, SquareFormation
+	Abstract Factory:
+	  UnitController->AIController
+	  AIController->BuilderAI, DefenderAI, FlyingAI, FormationAI, GroundAI, HugAI, LogicAI, MinerAI, RepairAI
+	Facade:
+	  facade: ContentList
+	  subsystems: Blocks, Bullets, Items, Liquids, Loadouts, PLanets, SectorPresets, StatusEffects, TechTree, UnitTypes, Weathers
+	-> dễ dang quản lý, điều hướng
