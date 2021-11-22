@@ -67,6 +67,7 @@ link: https://github.com/square/retrofit/blob/master/retrofit-converters/java8/s
 **Giống nhau**: 
 - Giống với mẫu chuẩn.
 - Build từ Retrofit, NetworkBehavior và ExecutorService
+- Prototype gần như giống hệt so với mẫu chuẩn : cho phép khởi tạo một đối tượng bằng cách sao chép từ một đối tượng khác đã tồn tại thay vì sử dụng toán tử new.
 
 **Khác biệt**:
 - Không có.
