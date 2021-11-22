@@ -1,4 +1,5 @@
 3.	Nhóm Behavioral
+
 a.	Observer: Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi một đối tượng thay đổi, tất cả các phụ thuộc của nó sẽ được thông báo và cập nhật tự động. Một số file mà sự án sử dụng Observer:
 -	Subject.java: interface chủ đề.
 -	ObjectFor3D.java: Lớp triển khai của 3D service number.
