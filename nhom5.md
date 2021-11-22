@@ -11,23 +11,30 @@ families class: https://github.com/square/retrofit/blob/master/retrofit-adapters
 + private static final class ResponseCallAdapter<R>
   implements CallAdapter<R, ListenableFuture<Response<R>>>
 
+**Giống nhau**:
+- Giống với mẫu chuẩn
+**Khác Nhau**:  
+- có 1 số function không bị ghi đè
+
+
 
 ## Prototype
-
+```
 public final class HttpException extends retrofit2.HttpException {
 public HttpException(Response<?> response) {
 super(response);
 }
 }
-
+```
 link:https://github.com/square/retrofit/blob/515bfc977fbc567919a595206749256f5a8b4620/retrofit-adapters/java8/src/main/java/retrofit2/adapter/java8/HttpException.java#L22
-
+```
 public final class Java8OptionalConverterFactory extends Converter.Factory {
   public static Java8OptionalConverterFactory create() {
     return new Java8OptionalConverterFactory();
  }
-
+```
 link: https://github.com/square/retrofit/blob/master/retrofit-converters/java8/src/main/java/retrofit/converter/java8/Java8OptionalConverterFactory.java
+
 
 ## Builder 
 
