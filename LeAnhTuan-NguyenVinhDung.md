@@ -21,8 +21,7 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
 
 * Iterator Pattern: Giúp cung cấp tất cả các bộ sưu tập bằng cách sử dụng một giao diện duy nhất.
 
-* Singleton Pattern: 
+* Singleton Pattern: giúp cung cấp một điểm truy cập toàn cầu trong suốt mã.
 
-* Adapter Pattern: 
+* Adapter Pattern: có thể được sử dụng để điều chỉnh cách hiển thị danh sách tài liệu hoặc cuộc họp.
 
-* Proxy: 
