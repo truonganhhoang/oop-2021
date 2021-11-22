@@ -26,5 +26,5 @@ Các repo đã tìm được và phân tích:
 
 + Repo 3: Link https://github.com/braisdom/ObjectiveSql
   
-  Dựa vào mẫu thiết kê Active record khuyến khích phát triển nhanh chóng và làm sạch, mã có ít nhất và quy ước về cấu hình.
+  Dựa vào mẫu thiết kế Active record khuyến khích phát triển nhanh chóng và làm sạch, mã có ít nhất và quy ước về cấu hình.
   
