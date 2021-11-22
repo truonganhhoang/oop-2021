@@ -2,6 +2,9 @@
 `Nguyễn Việt Quân`
 `Trần Ngọc Vinh`
 
+#Git repository link: https://github.com/bethrobson/Head-First-Design-Patterns
+Đây là repo chứa đầy đủ 23 mẫu thiết kế được thiết kế dựa trên các mẫu thiết kế chuẩn. Dưới đây là sự so sánh giữa các mẫu trong repo với các mẫu thiết kế chuẩn tại https://refactoring.guru/design-patterns/java.
+
 # Builder package:
  1. _Giống nhau_: 
    - Builder pattern là một mẫu thiết kế thuộc "Nhóm khởi tạo" (Creational Pattern). Mẫu thiết kế này cho phép lập trình viên tạo ra những đối tượng phức tạp nhưng chỉ cần thông qua các câu lệnh đơn giản để tác động nên các thuộc tính của nó.
