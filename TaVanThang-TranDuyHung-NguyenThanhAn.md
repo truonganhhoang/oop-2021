@@ -3,9 +3,9 @@
 ## 1. Tạ Văn Thắng - 20021440
 ## 2. Trần Duy Hưng - 20021371
 ## 3. Nguyễn Thành An - 20021280
-### **Cách thức thực hiện bài báo cáo**: Mỗi thành viên làm phần bài báo cáo của mình rồi commit vào reposition của nhóm ([Link reposition của nhóm](https://github.com/Thang12321/BT_OOP_DesignPattern)), bạn Tạ Văn Thắng tổng hợp và sắp xếp phần báo cáo của các thành viên vào file báo cáo của nhóm.
+### **Cách thức thực hiện bài báo cáo**: Mỗi thành viên làm phần bài báo cáo của mình rồi commit vào repository của nhóm ([Link repository của nhóm](https://github.com/Thang12321/BT_OOP_DesignPattern)), bạn Tạ Văn Thắng tổng hợp và sắp xếp phần báo cáo của các thành viên vào file báo cáo của nhóm.
 - **[Link đến phần nội dung lý thuyết tham khảo](https://gpcoder.com/4164-gioi-thieu-design-patterns/)**
-- **[Link đến reposition được sử dụng trong bài báo cáo](https://github.com/bethrobson/Head-First-Design-Patterns)**
+- **[Link đến repository được sử dụng trong bài báo cáo](https://github.com/bethrobson/Head-First-Design-Patterns)**
 ## Sau khi tìm hiểu về mẫu thiết kế được sử dụng trong mã nguồn của dự án nêu trên, nhóm đã hoàn thành được bản báo cáo như sau: ##
 
 + Trong folder Factory:
