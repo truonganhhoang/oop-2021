@@ -31,20 +31,20 @@
 - Factory class là simplePizzaFactory, PizzStore có trách nhiệm khởi tạo các sub classes.
 2. _Khác nhau_:
 - Có cấu trúc giống với mẫu thiết kế chuẩn.
-#Singleton package:
+# Singleton package:
 1. _Giống nhau_:
 - Sử dụng Singleton pattern: Đảm bảo class tạo ra duy nhất 1 biến đó (kiểu như là static class vậy). Và tất nhiên là static thì phải có cách truy cập trong phạm vi toàn cầu
 - Mỗi class đều bao gồm 1 class Singleton và 1 class SingletonClient để kiểm tra tính unique của Singleton class
 2. _Khác nhau_:
 - Mỗi class lại chưa 1 cách để implement Singleton pattern khác nhau
 - Ngoài các cách thường thấy còn có, Enum Initialization, Volatitle Initialization
-#Prototype package:
+# Prototype package:
 1. _Giống nhau_:
 - Sử dụng Protype pattern: Tạo 1 đối tượng bằng cách Clone một đối tượng đã tồn tại
 - Có method Copy cho từng class phục vụ cho Clone
 2. _Khác nhau_:
 - Đơn giản chỉ là việc Implement thêm method clone nên không có sự mới mẻ gì    
-#Facade package:
+# Facade package:
 1. _Giống nhau_:
 - Sử dụng Facade pattern: Tức là định nghĩa 1 giao diện cao hơn làm cầu nối giữa các giao diện nhỏ trong 1 nhóm giao diện
 - Ở đây Class Movie đóng vai trò như 1 container giúp các đối tượng khác truy cập đến các class trong hệ thống movie theater như <Projector, Screen...vv>  thông qua class này.
