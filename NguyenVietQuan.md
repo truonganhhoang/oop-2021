@@ -1,5 +1,7 @@
 # So sánh câc mẫu thiết kế tìm được với mẫu chuẩn.
 `Nguyễn Việt Quân`
+`Trần Ngọc Vinh`
+
 # Builder package:
  1. _Giống nhau_: 
    - Builder pattern là một mẫu thiết kế thuộc "Nhóm khởi tạo" (Creational Pattern). Mẫu thiết kế này cho phép lập trình viên tạo ra những đối tượng phức tạp nhưng chỉ cần thông qua các câu lệnh đơn giản để tác động nên các thuộc tính của nó.
