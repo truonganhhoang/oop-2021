@@ -26,7 +26,7 @@
 
 1. **Factory Method**
 
-​		[Code Factory Method](https://github.com/MrEngineer13/SnackBar/blob/master/snackbar/src/main/java/com/github/mrengineer13/snackbar/SnackBar.java)_<img src="C:\Users\HuynhDucTran\Desktop\oop-2021\images\factory method.png" alt="Factory Method"  />
+​		[Code Factory Method](https://github.com/MrEngineer13/SnackBar/blob/master/snackbar/src/main/java/com/github/mrengineer13/snackbar/SnackBar.java)_<img src="C:\Users\HuynhDucTran\Desktop\oop-2021\images\factoryMethod.png" alt="Factory Method"  />
 
 1. **Abstract Factory**
 2. **Builder**
