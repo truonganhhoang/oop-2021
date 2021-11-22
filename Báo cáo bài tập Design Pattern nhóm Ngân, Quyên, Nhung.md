@@ -1,16 +1,26 @@
 # Báo cáo bài tập Design Pattern
 
 ### Các thành viên nhóm: 
-### * Trần Thị Ngân
+### * Trần Thị Ngân 20021399
 ### * Lê Thị Cẩm Nhung - 20021408
 ### * Phạm Thị Quyên
 
 ### **Link đến reposition được sử dụng trong bài báo cáo [signalapp/Signal-Android](http:/https://github.com/signalapp/Signal-Android)**
+### **Link đến reposition thứ 2: https://github.com/landy8530/DesignPatterns/tree/be08a3ff79094c8dff94fdeb555047aa4620bf43**
 
 ### Factory Method
 * Factory method là để đưa toàn bộ logic của việc tạo mới object vào trong factory, che giấu logic của việc khởi tạo.Được định nghĩa interface giúp client tạo object nhưng ủy quyền cho các concreate factory để xác định class nào được trả về cho client
 * Factory Method : https://github.com/signalapp/SignalAndroid/blob/a5e5a735800cbdb3afa01a67390b6efa2fc91be6/app/src/main/java/org/thoughtcrime/securesms/video/exo/SignalMediaSourceFactory.java.
 trong đó factory method khác so với mẫu tiêu chuẩn bởi vì ở mẫu tiêu chuẩn dùng factory method để tạo(sản xuất) ra các đối tượng. Trong khi đó, ở đây đã dùng để override các phương thức.
+
+### Abstract Factory
+* Link : https://github.com/landy8530/DesignPatterns/blob/be08a3ff79094c8dff94fdeb555047aa4620bf43/design-patterns-basic/src/main/java/org/landy/factory/abstr/AbstractFactory.java
+* Với ý tưởng tạo ra một kiểu trừu tượng (abstract type) để dùng vào việc tạo ra một nhóm những products khác
+* Abstract platform : AbstractFactory, SenderFactory
+### Facade pattern
+* Facade Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Pattern này cung cấp một giao diện chung đơn giản thay cho một nhóm các giao diện có trong một hệ thống con (subsystem).
+* Facade Pattern định nghĩa một giao diện ở một cấp độ cao hơn để giúp cho người dùng có thể dễ dàng sử dụng hệ thống con này.
+* https://github.com/landy8530/DesignPatterns/blob/be08a3ff79094c8dff94fdeb555047aa4620bf43/design-patterns-business/src/test/java/business/identify/IdentifyTest.java
 
 ### Builder pattern
 * Builder pattern được tạo ra để xây dựng một đôi tượng phức tạp bằng cách sử dụng các đối tượng đơn giản và sử dụng tiếp cận từng bước, việc xây dựng các đối tượng đôc lập với các đối tượng khác.
