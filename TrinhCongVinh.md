@@ -11,7 +11,7 @@
 **Giống nhau:**
 
 - Có 23 mẫu thiết kế giống vơi mẫu chuẩn sử dụng ngông ngữ PHP
-
+- Mỗi design pattern có đầy đủ các class , cấu trúc , code dễ đọc dễ hiểu
 **Khác nhau:**
 
 - Không có sự khác nhau, đây là một mẫu thiết kế gần như giống hệt so với mẫu chuẩn về mọi mặt.
