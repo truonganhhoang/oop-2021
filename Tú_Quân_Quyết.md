@@ -18,3 +18,14 @@ So sánh Chain of Responsibility:
 Chain of Responsibility (COR) là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern).
 Chain of Responsiblity cho phép một đối tượng gửi một yêu cầu nhưng không biết đối tượng nào sẽ nhận và xử lý nó. Điều này được thực hiện bằng cách kết nối các đối tượng nhận yêu cầu thành một chuỗi (chain) và gửi yêu cầu theo chuỗi đó cho đến khi có một đối tượng xử lý nó.
 Chain of Responsibility Pattern hoạt động như một danh sách liên kết (Linked list) với việc đệ quy duyệt qua các phần tử (recursive traversal).
+
+So sánh Singleton:
+Giới hạn chỉ có duy nhất 1 instance của class đó tồn tại ở bất kỳ thời điểm nào class đó được request
+Cho phép quyền truy cập global
+Những tài nguyên được chia sẻ như DB để truy suất, file vật lý được sử dụng chung. Những tài nguyên này nên chỉ có 1 instance tồn tại để sử dụng và theo dõi trạng thái của nó trong suốt quá trình sử dụng.
+Hoặc những kiểu object không cần thiết phải tạo instance mới mỗi lần sử dụng như logging object, hãy tưởng tượng chuyện gì xảy với mỗi dòng log chúng ta lại tạo mới một logging object.
+
+So sánh Factory Method:
+Factory method là một pattern thuộc nhóm creational patterns. Định nghĩa interface giúp client tạo object nhưng ủy quyền cho các concreate factory để xác định class nào được trả về cho client. Được sử dụng với mục đích
+Đưa toàn bộ logic của việc tạo mới object vào trong factory, che giấu logic của việc khởi tạo
+Giảm sự phụ thuộc nhằm tăng tính mở rộng
