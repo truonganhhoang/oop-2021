@@ -5,10 +5,10 @@
   <summary><strong>Table of Contents</strong></summary>
   <ol>
     <li>
-      <a href="#Thànhviên">Giới thiệu</a>
+      <a href="#Thành-viên">Giới thiệu</a>
     </li>
     <li>
-      <a href="#Nội dung">Nội dung</a>
+      <a href="#Nội-dung">Nội dung</a>
     </li>
   </ol>
 </details>
@@ -30,11 +30,11 @@
 
 # Creational Design Patterns
  * [Simple Factory](#Mẫu-thiết-kế-bình-thường)
- * [Factory Method](#-factory-method)
- * [Abstract Factory](#-abstract-factory)
- * [Builder](#-builder)
- * [Prototype](#-prototype)
- * [Singleton](#-singleton)
+ * [Factory Method](#factory-method)
+ * [Abstract Factory](#abstract-factory)
+ * [Builder](#builder)
+ * [Prototype](#prototype)
+ * [Singleton](#singleton)
 
 ## Mẫu thiết kế bình thường.
 - [Factory (object-oriented programming)](https://en.wikipedia.org/wiki/Factory_(object-oriented_programming))
@@ -464,13 +464,13 @@ var_dump($president1 === $president2); // true
 
 # Structural Design Patterns
 
- * [Adapter](#-adapter)
- * [Bridge](#-bridge)
- * [Composite](#-composite)
- * [Decorator](#-decorator)
- * [Facade](#-facade)
- * [Flyweight](#-flyweight)
- * [Proxy](#-proxy)
+ * [Adapter](#adapter)
+ * [Bridge](#bridge)
+ * [Composite](#composite)
+ * [Decorator](#decorator)
+ * [Facade](#facade)
+ * [Flyweight](#flyweight)
+ * [Proxy](#proxy)
 
 ## Adapter
 - [Adapter](https://en.wikipedia.org/wiki/Adapter_pattern)
