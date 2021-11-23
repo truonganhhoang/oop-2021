@@ -11,6 +11,14 @@ families class: https://github.com/square/retrofit/blob/master/retrofit-adapters
 + private static final class ResponseCallAdapter<R>
   implements CallAdapter<R, ListenableFuture<Response<R>>>
 
+Factory Method Design Pattern hay gọi ngắn gọn là Factory Pattern là một trong những Pattern thuộc nhóm Creational Design Pattern. Nhiệm vụ của Factory Pattern là quản lý và trả về các đối tượng theo yêu cầu, giúp cho việc khởi tạo đổi tượng một cách linh hoạt hơn.
+
+Factory Pattern đúng nghĩa là một nhà máy, và nhà máy này sẽ “sản xuất” các đối tượng theo yêu cầu của chúng ta.
+
+Trong Factory Pattern, chúng ta tạo đối tượng mà không để lộ logic tạo đối tượng ở phía người dùng và tham chiếu đến đối tượng mới được tạo ra bằng cách sử dụng một interface chung.
+
+Factory Pattern được sử dụng khi có một class cha (super-class) với nhiều class con (sub-class), dựa trên đầu vào và phải trả về 1 trong những class con đó.
+  
 **Giống nhau**:
 - Giống với mẫu chuẩn
   
@@ -34,6 +42,9 @@ public final class Java8OptionalConverterFactory extends Converter.Factory {
     return new Java8OptionalConverterFactory();
  }
 ```
+
+Prototype pattern đề cập đến việc tạo Object trùng lặp trong khi vẫn giữ được hiệu suất trong quá trình, là một pattern thuộc nhóm Creational Patterns.
+Kiểu design pattern này được tạo ra theo mô hình Creational Pattern vì Pattern này cung cấp một trong những cách tốt nhất để tạo ra một đối tượng thay vì tạo ra Object, Prototype pattern sử dụng việc cloning (copy nguyên mẫu của Object). Ví dụ, một Object sẽ được tạo ra sau khi một hoạt động cơ sở dữ liệu tốn kém. Chúng ta có thể cache Object, trả về clone của nó theo yêu cầu tiếp theo và cập nhật cơ sở dữ liệu khi nào cần và do đó giảm các cuộc gọi cơ sở dữ liệu.
 
 **Giống nhau**:
 - Prototype gần như giống hệt so với mẫu chuẩn : cho phép khởi tạo một đối tượng bằng cách sao chép từ một đối tượng khác đã tồn tại thay vì sử dụng toán tử new.
