@@ -17,6 +17,10 @@ Trong file checkstyle/src/main/java/com/puppycrawl/tools/checkstyle , có hai fi
 #### b. PackageObjectFactory.java
 Class này đã được ứng dụng Interface ModuleFactory.java để thực hiện mục đích của mình: Tạo ra các đối tượng dựa trên tên Package và tên Class. Đầu tiên, hàm tạo một Object instance có giá trị bằng null. Tiếp đó, tùy vào khuôn dạng của biến đầu vào name mà hàm sẽ lần lượt đi qua các hàm check khác nhau, và tạo các object tương ứng với từng trường hợp. Ví dụ, nếu biến name không có dấu chấm, hàm sẽ thông qua hàm phụ trợ createFromStandardCheckSet để tạo đối tượng. 
 
+### 2. Builder Pattern
+
+#### a. DetectorOptions.java
+
 #### c. So sánh với mẫu chuẩn 
 Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Có một Interface và một lớp áp dụng Interface đó để tạo đối tượng mới. 
 
