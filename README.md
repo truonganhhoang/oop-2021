@@ -60,6 +60,8 @@
 9. **Strategy**
 10. **Temple Method**
 11. **Visitor**
+https://github.com/torokmark/design_patterns_in_typescript/blob/master/visitor/visitor.ts
+
 
 
 
