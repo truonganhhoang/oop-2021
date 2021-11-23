@@ -80,5 +80,52 @@ public class JapaneseAdaptee {
   		}
 	}
 ```
+## Command: 
+-	Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc thành một đối tượng. Các yêu cầu sẽ được lưu trữ và gởi đi như các đối tượng.Đóng gói request vào trong một Object, nhờ đó có thể nthông số hoá chương trình nhận request và thực hiện các thao tác trên request: sắp xếp, log, undo…
+-	Chúng ta có thể xử lí vấn đề theo hướng command - đóng gói ý tưởng, những action cần làm khi button được ấn hoặc menu item được chọn. Tức là gom code để xử lý việc ấn button hoặc chọn menu trong object riêng. Những action này chính là những commands của Command pattern.
+- Example:	https://github.com/joshnh/Git-Commands .
+```
+package com.gpcoder.patterns.behavioral.command.bank;
+ 
+public class Account {
+    private String name;
+ 
+    public Account(String name) {
+        this.name = name;
+    }
+ 
+    public void open() {
+        System.out.println("Account [" + name + "] Opened\n");
+    }
+ 
+    public void close() {
+        System.out.println("Account [" + name + "] Closed\n");
+    }
+}
+```
 
+## Observer: 
+-	Định nghĩa sự phụ thuộc một-nhiều giữa các đối tượng sao cho khi một đối tượng thay đổi trạng thái thì tất cả các đối tượng phụ thuộc nó cũng thay đổi theo.
+-	Trong bài toán đưa ra, ta có thể thấy rằng mối quan hệ 1-n ở đây đó là 1-WeatherData và n-Screen(currentConditionstDisplay,statisticsDisplay, ...). Mỗi khi WeatherData có sự thay đổi về trạng thái (nhiệt độ, độ ẩm, áp suất) thì nó sẽ "thông báo" cho các màn hình đang "quan sát" sát nó để cập nhật lại việc hiển thị thông tin.
+-	Example: https://github.com/design-pattern-list/observer-pattern .
+```
+package refactoring_guru.observer.example.listeners;
+
+import java.io.File;
+
+public interface EventListener {
+	void update(String eventType, File file);
+}
+```
+## Buider:
++ Trong HouseBuilder.java khởi tạo lớp abstract HouseBuilder có chứa các phương thức abstract sử dụng mẫu thiết kế Fluent Interface Pattern trả về chính HouseBuider
+```
+  public abstract HouseBuilder addWalls();
+  
+  public abstract HouseBuilder addRoof();
+  
+  public abstract HouseBuilder addWindows();
+ ``` 
++ Các lớp WoodHouseBuilder, StoneHouseBuilder, GingerbreadHouseBuilder kế thừa các thuộc tính trong lớp abstract HouseBuilder
+=> Tách tiến trình xây dựng 1 đối tượng phức tạp sao cho một tiến trình tạo được các biểu diễn khác nhau => Builder Design Pattern
 
