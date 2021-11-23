@@ -167,3 +167,90 @@ public class ValidateCard {
         return sum % 10 == e.charAt(e.length() - 1) - '0';
     }
 }
++Structural patterns:
+- Filter Pattern trong DefaultMockitoConfiguration.java:
+Filter Pattern được sử dụng khi chúng ta cần lọc một object nào đó với các điều kiện khác nhau. Chúng ta có thể sâu chuỗi các điều kiện cho Filter hoặc có thể được thực hiện theo cách tách rời.
+public class DefaultMockitoConfiguration implements IMockitoConfiguration {
+
+    @Override
+    public Answer<Object> getDefaultAnswer() {
+        return new ReturnsEmptyValues();
+    }
+
+    /* (non-Javadoc)
+     * @see org.mockito.configuration.IMockitoConfiguration#cleansStackTrace()
+     */
+    @Override
+    public boolean cleansStackTrace() {
+        return true;
+    }
+
+    /* (non-Javadoc)
+     * @see org.mockito.configuration.IMockitoConfiguration#enableClassCache()
+     */
+    @Override
+    public boolean enableClassCache() {
+        return true;
+    }
+}
+- Composite trong StubbingLookupNotifier.java:
+Composite Pattern được sử dụng khi chúng ta cần xử lý một nhóm các object tương tự như cách xử lý một object.
+Điều này thường được thực hiện bới class “owns” của object và cung cấp một tập hợp các phương thức để xử lý chúng như thể xử lý một object.
+public final class StubbingLookupNotifier {
+
+    public static void notifyStubbedAnswerLookup(
+            Invocation invocation,
+            Stubbing stubbingFound,
+            Collection<Stubbing> allStubbings,
+            CreationSettings creationSettings) {
+        List<StubbingLookupListener> listeners = creationSettings.getStubbingLookupListeners();
+        if (listeners.isEmpty()) {
+            return;
+        }
+        StubbingLookupEvent event =
+                new Event(invocation, stubbingFound, allStubbings, creationSettings);
+        for (StubbingLookupListener listener : listeners) {
+            listener.onStubbingLookup(event);
+        }
+    }
+
+    static class Event implements StubbingLookupEvent {
+        private final Invocation invocation;
+        private final Stubbing stubbing;
+        private final Collection<Stubbing> allStubbings;
+        private final MockCreationSettings mockSettings;
+
+        public Event(
+                Invocation invocation,
+                Stubbing stubbing,
+                Collection<Stubbing> allStubbings,
+                MockCreationSettings mockSettings) {
+            this.invocation = invocation;
+            this.stubbing = stubbing;
+            this.allStubbings = allStubbings;
+            this.mockSettings = mockSettings;
+        }
+
+        @Override
+        public Invocation getInvocation() {
+            return invocation;
+        }
+
+        @Override
+        public Stubbing getStubbingFound() {
+            return stubbing;
+        }
+
+        @Override
+        public Collection<Stubbing> getAllStubbings() {
+            return allStubbings;
+        }
+
+        @Override
+        public MockCreationSettings getMockSettings() {
+            return mockSettings;
+        }
+    }
+
+    private StubbingLookupNotifier() {}
+}
