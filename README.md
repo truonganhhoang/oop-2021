@@ -35,6 +35,7 @@ Môn học Lập trình hướng đối tượng với Java
 		public Giong chonGiong();
 	}
 ```
+
 ## Adapter:
 -	Do vấn đề tương thích, thay đổi interface của một lớp thành một interface khác phù hợp với yêu cầu người sử dụng lớp.
 -	Trong công nghệ phần mềm, Adapter pattern là một mẫu thiết kế tiếp hợp cho phép chuyển đổi một interface có sẵn thành một interface khác thích hợp cho lớp đang viết.
