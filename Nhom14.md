@@ -56,3 +56,16 @@ Phương thức khởi tạo của RecordValueSinkFactory nên được ẩn kh�
 
 * Giống nhau : giống với mẫu chuẩn
 * Khác nhau : 
+
+#### Builder
+
+- Builder pattern là một trong những Creational pattern. Builder pattern là mẫu thiết kế đối tượng được tạo ra để xây dựng một đôi tượng phức tạp bằng cách sử dụng các đối tượng đơn giản và sử dụng tiếp cận từng bước, việc xây dựng các đối tượng đôc lập với các đối tượng khác.
+- Builder Pattern được xây dựng để khắc phục một số nhược điểm của Factory Pattern và Abstract Factory Pattern khi mà Object có nhiều thuộc tính.
+  - Quá nhiều tham số phải truyền vào từ phía client tới Factory Class.
+  - Một số tham số có thể là tùy chọn nhưng trong Factory Pattern, chúng ta phải gửi tất cả tham số, với tham số tùy chọn nếu không nhập gì thì sẽ truyền là null.
+  - Nếu một Object có quá nhiều thuộc tính thì việc tạo sẽ phức tạp.
+
+- Link: https://github.com/questdb/questdb/blob/master/core/src/main/java/io/questdb/BuildInformationHolder.java
+
+* Giống nhau : giống với mẫu chuẩn
+* Khác nhau : 
