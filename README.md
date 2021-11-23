@@ -430,5 +430,345 @@ bell3.health = 0
 11. **Visitor**
 https://github.com/torokmark/design_patterns_in_typescript/blob/master/visitor/visitor.ts
 
+# Structural
 
+## Adapter
+* Adapter Pattern (Người chuyển đổi) là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Adapter Pattern cho phép các inteface (giao diện) không liên quan tới nhau có thể làm việc cùng nhau. Đối tượng giúp kết nối các interface gọi là Adapter.
+* Adapter Pattern giữ vai trò trung gian giữa hai lớp, chuyển đổi interface của một hay nhiều lớp có sẵn thành một interface khác, thích hợp cho lớp đang viết. Điều này cho phép các lớp có các interface khác nhau có thể dễ dàng giao tiếp tốt với nhau thông qua interface trung gian, không cần thay đổi code của lớp có sẵn cũng như lớp đang viết.
+* Adapter Pattern còn gọi là Wrapper Pattern do cung cấp một interface “bọc ngoài” tương thích cho một hệ thống có sẵn, có dữ liệu và hành vi phù hợp nhưng có interface không tương thích với lớp đang viết.
+
+### Example
+
+```swift
+protocol NewDeathStarSuperLaserAiming {
+    var angleV: Double { get }
+    var angleH: Double { get }
+}
+```
+
+**Adaptee**
+
+```swift
+struct OldDeathStarSuperlaserTarget {
+    let angleHorizontal: Float
+    let angleVertical: Float
+
+    init(angleHorizontal: Float, angleVertical: Float) {
+        self.angleHorizontal = angleHorizontal
+        self.angleVertical = angleVertical
+    }
+}
+```
+
+**Adapter**
+
+```swift
+struct NewDeathStarSuperlaserTarget: NewDeathStarSuperLaserAiming {
+
+    private let target: OldDeathStarSuperlaserTarget
+
+    var angleV: Double {
+        return Double(target.angleVertical)
+    }
+
+    var angleH: Double {
+        return Double(target.angleHorizontal)
+    }
+
+    init(_ target: OldDeathStarSuperlaserTarget) {
+        self.target = target
+    }
+}
+```
+
+### Usage
+
+```swift
+let target = OldDeathStarSuperlaserTarget(angleHorizontal: 14.0, angleVertical: 12.0)
+let newFormat = NewDeathStarSuperlaserTarget(target)
+
+newFormat.angleH
+newFormat.angleV
+```
+
+
+## Bridge
+* Bridge Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Ý tưởng của nó là tách tính trừu tượng (abstraction) ra khỏi tính hiện thực (implementation) của nó. Từ đó có thể dễ dàng chỉnh sửa hoặc thay thế mà không làm ảnh hưởng đến những nơi có sử dụng lớp ban đầu.
+* Bridge Pattern khá giống với mẫu Adapter Pattern ở chỗ là sẽ nhờ vào một lớp khác để thực hiện một số xử lý nào đó. Tuy nhiên, ý nghĩa và mục đích sử dụng của hai mẫu thiết kế này hoàn toàn khác nhau:
+  * Adapter Pattern hay còn gọi là Wrapper pattern được dùng để biến đổi một class/ interface sang một dạng khác có thể sử dụng được. Adapter Pattern giúp các lớp không tương thích hoạt động cùng nhau mà bình thường là không thể.
+  * Bridge Pattern được sử dụng được sử dụng để tách thành phần trừu tượng (abstraction) và thành phần thực thi (implementation) riêng biệt.
+  * Adapter Pattern làm cho mọi thứ có thể hoạt động với nhau sau khi chúng đã được thiết kế (đã tồn tại). Bridge Pattern nên được thiết kế trước khi phát triển hệ thống để Abstraction và Implementation có thể thực hiện một cách độc lập.
+
+### Example
+
+```swift
+protocol Switch {
+    var appliance: Appliance { get set }
+    func turnOn()
+}
+
+protocol Appliance {
+    func run()
+}
+
+final class RemoteControl: Switch {
+    var appliance: Appliance
+
+    func turnOn() {
+        self.appliance.run()
+    }
+    
+    init(appliance: Appliance) {
+        self.appliance = appliance
+    }
+}
+
+final class TV: Appliance {
+    func run() {
+        print("tv turned on");
+    }
+}
+
+final class VacuumCleaner: Appliance {
+    func run() {
+        print("vacuum cleaner turned on")
+    }
+}
+```
+
+### Usage
+
+```swift
+let tvRemoteControl = RemoteControl(appliance: TV())
+tvRemoteControl.turnOn()
+
+let fancyVacuumCleanerRemoteControl = RemoteControl(appliance: VacuumCleaner())
+fancyVacuumCleanerRemoteControl.turnOn()
+```
+
+## Composite
+* Composite là một mẫu thiết kế thuộc nhóm cấu trúc (Structural Pattern). Composite Pattern là một sự tổng hợp những thành phần có quan hệ với nhau để tạo ra thành phần lớn hơn. Nó cho phép thực hiện các tương tác với tất cả đối tượng trong mẫu tương tự nhau.
+* Composite Pattern được sử dụng khi chúng ta cần xử lý một nhóm đối tượng tương tự theo cách xử lý 1 object. Composite pattern sắp xếp các object theo cấu trúc cây để diễn giải 1 phần cũng như toàn bộ hệ thống phân cấp. Pattern này tạo một lớp chứa nhóm đối tượng của riêng nó. Lớp này cung cấp các cách để sửa đổi nhóm của cùng 1 object. Pattern này cho phép Client có thể viết code giống nhau để tương tác với composite object này, bất kể đó là một đối tượng riêng lẻ hay tập hợp các đối tượng.
+
+### Example
+
+Component
+
+```swift
+protocol Shape {
+    func draw(fillColor: String)
+}
+```
+
+Leafs
+
+```swift
+final class Square: Shape {
+    func draw(fillColor: String) {
+        print("Drawing a Square with color \(fillColor)")
+    }
+}
+
+final class Circle: Shape {
+    func draw(fillColor: String) {
+        print("Drawing a circle with color \(fillColor)")
+    }
+}
+
+```
+
+Composite
+
+```swift
+final class Whiteboard: Shape {
+
+    private lazy var shapes = [Shape]()
+
+    init(_ shapes: Shape...) {
+        self.shapes = shapes
+    }
+
+    func draw(fillColor: String) {
+        for shape in self.shapes {
+            shape.draw(fillColor: fillColor)
+        }
+    }
+}
+```
+
+### Usage:
+
+```swift
+var whiteboard = Whiteboard(Circle(), Square())
+whiteboard.draw(fillColor: "Red")
+```
+
+
+## Decorator
+* Decorator pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Nó cho phép người dùng thêm chức năng mới vào đối tượng hiện tại mà không muốn ảnh hưởng đến các đối tượng khác. Kiểu thiết kế này có cấu trúc hoạt động như một lớp bao bọc (wrap) cho lớp hiện có. Mỗi khi cần thêm tính năng mới, đối tượng hiện có được wrap trong một đối tượng mới (decorator class).
+* Decorator pattern sử dụng composition thay vì inheritance (thừa kế) để mở rộng đối tượng. Decorator pattern còn được gọi là Wrapper hay Smart Proxy.
+
+### Example
+
+```swift
+protocol CostHaving {
+    var cost: Double { get }
+}
+
+protocol IngredientsHaving {
+    var ingredients: [String] { get }
+}
+
+typealias BeverageDataHaving = CostHaving & IngredientsHaving
+
+struct SimpleCoffee: BeverageDataHaving {
+    let cost: Double = 1.0
+    let ingredients = ["Water", "Coffee"]
+}
+
+protocol BeverageHaving: BeverageDataHaving {
+    var beverage: BeverageDataHaving { get }
+}
+
+struct Milk: BeverageHaving {
+
+    let beverage: BeverageDataHaving
+
+    var cost: Double {
+        return beverage.cost + 0.5
+    }
+
+    var ingredients: [String] {
+        return beverage.ingredients + ["Milk"]
+    }
+}
+
+struct WhipCoffee: BeverageHaving {
+
+    let beverage: BeverageDataHaving
+
+    var cost: Double {
+        return beverage.cost + 0.5
+    }
+
+    var ingredients: [String] {
+        return beverage.ingredients + ["Whip"]
+    }
+}
+```
+
+### Usage:
+
+```swift
+var someCoffee: BeverageDataHaving = SimpleCoffee()
+print("Cost: \(someCoffee.cost); Ingredients: \(someCoffee.ingredients)")
+someCoffee = Milk(beverage: someCoffee)
+print("Cost: \(someCoffee.cost); Ingredients: \(someCoffee.ingredients)")
+someCoffee = WhipCoffee(beverage: someCoffee)
+print("Cost: \(someCoffee.cost); Ingredients: \(someCoffee.ingredients)")
+```
+
+
+## Facade
+* Facade Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Pattern này cung cấp một giao diện chung đơn giản thay cho một nhóm các giao diện có trong một hệ thống con (subsystem). Facade Pattern định nghĩa một giao diện ở một cấp độ cao hơn để giúp cho người dùng có thể dễ dàng sử dụng hệ thống con này.
+* Facade Pattern cho phép các đối tượng truy cập trực tiếp giao diện chung này để giao tiếp với các giao diện có trong hệ thống con. Mục tiêu là che giấu các hoạt động phức tạp bên trong hệ thống con, làm cho hệ thống con dễ sử dụng hơn.
+* Façade Pattern tương tự với Adapter Pattern. Hai Pattern này làm việc theo cùng một cách, nhưng mục đích sử dụng của chúng khác nhau. Adapter Pattern chuyển đổi mã nguồn để làm việc được với mã nguồn khác. Nhưng Façade Pattern cho phép bao bọc mã nguồn gốc để nó có thể giao tiếp với mã nguồn khác dễ dàng hơn.
+
+### Example
+
+```swift
+final class Defaults {
+
+    private let defaults: UserDefaults
+
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
+    }
+
+    subscript(key: String) -> String? {
+        get {
+            return defaults.string(forKey: key)
+        }
+
+        set {
+            defaults.set(newValue, forKey: key)
+        }
+    }
+}
+```
+
+### Usage
+
+```swift
+let storage = Defaults()
+
+// Store
+storage["Bishop"] = "Disconnect me. I’d rather be nothing"
+
+// Read
+storage["Bishop"]
+```
+
+
+## Flyweight
+* Flyweight Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Nó cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.
+* Flyweight Pattern được sử dụng khi chúng ta cần tạo một số lượng lớn các đối tượng của 1 lớp nào đó. Do mỗi đối tượng đều đòi hỏi chiếm giữ một khoảng không gian bộ nhớ, nên với một số lượng lớn đối tượng được tạo ra có thể gây nên vấn đề nghiêm trọng đặc biệt đối với các thiết bị có dung lượng nhớ thấp. Flyweight Pattern có thể được áp dụng để giảm tải cho bộ nhớ thông qua cách chia sẻ các đối tượng. Vì vậy performance của hệ thống được tối ưu.
+* Flyweight object là immutable, nghĩa là không thể thay đổi khi nó đã được khởi tạo
+
+### Example
+
+```swift
+// Instances of SpecialityCoffee will be the Flyweights
+struct SpecialityCoffee {
+    let origin: String
+}
+
+protocol CoffeeSearching {
+    func search(origin: String) -> SpecialityCoffee?
+}
+
+// Menu acts as a factory and cache for SpecialityCoffee flyweight objects
+final class Menu: CoffeeSearching {
+
+    private var coffeeAvailable: [String: SpecialityCoffee] = [:]
+
+    func search(origin: String) -> SpecialityCoffee? {
+        if coffeeAvailable.index(forKey: origin) == nil {
+            coffeeAvailable[origin] = SpecialityCoffee(origin: origin)
+        }
+
+        return coffeeAvailable[origin]
+    }
+}
+
+final class CoffeeShop {
+    private var orders: [Int: SpecialityCoffee] = [:]
+    private let menu: CoffeeSearching
+
+    init(menu: CoffeeSearching) {
+        self.menu = menu
+    }
+
+    func takeOrder(origin: String, table: Int) {
+        orders[table] = menu.search(origin: origin)
+    }
+
+    func serve() {
+        for (table, origin) in orders {
+            print("Serving \(origin) to table \(table)")
+        }
+    }
+}
+```
+
+### Usage
+
+```swift
+let coffeeShop = CoffeeShop(menu: Menu())
+
+coffeeShop.takeOrder(origin: "Yirgacheffe, Ethiopia", table: 1)
+coffeeShop.takeOrder(origin: "Buziraguhindwa, Burundi", table: 3)
+
+coffeeShop.serve()
+```
 
