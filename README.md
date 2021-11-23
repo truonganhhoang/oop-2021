@@ -92,7 +92,7 @@ Khi quá trình khởi tạo tương đối đơn giản và hàm tạo chỉ y�
  }
 +, Behavioral Pattern:
 link:https://github.com/sherxon/AlgoDS.git
-* Command Pattern trong Interval.java
+* Command Pattern trong Interval.java.
 Command Pattern được tạo ra để lưu trữ các câu lệnh và trạng thái của object. Nó cho phép tất cả những yêu cầu gửi đến object đó dưới dạng một object Command.
 
 Khi nó tìm được cách giải quyết thích hợp, nó sẽ chuyển đến Command, nơi mà nó sẽ được thực thi.
@@ -120,7 +120,7 @@ public class Interval {
     }
 }
 
-* Observer Pattern trong ValidateCard.
+* Observer Pattern trong ValidateCard.java.
 Observer Pattern được sử dụng để theo dõi trạng thái của một object nhất định. Thường là trong một nhóm hoặc một mối quan hệ một - nhiều.
 
 Trong những trường hợp như vậy, hầu hết thời gian và trạng thái thay đổi của một object sẽ ảnh hưởng đến trạng thái của phần còn lại. Vì vậy, phải có một hệ thống ghi nhận lại những thay đổi, và thông báo cho các object khác.
