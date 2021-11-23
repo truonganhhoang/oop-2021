@@ -34,8 +34,25 @@
 
 ```
 
-* Giống nhau : giống với
+* Giống nhau : giống với mẫu chuẩn
+* Khác nhau : 
 
-#### Abstract Factory
+#### Singleton
 
-- 
+- Lớp RecordValueSinkFactory khai báo phương thức tĩnh getInstance trả về cùng một thể hiện của lớp riêng của nó.
+
+Phương thức khởi tạo của RecordValueSinkFactory nên được ẩn khỏi code của client. Gọi phương thức getInstance là cách duy nhất để lấy đối tượng RecordValueSinkFactory.
+
+
+```
+
+      public class RecordValueSinkFactory {
+
+          public static RecordValueSink getInstance(BytecodeAssembler asm, ColumnTypes columnTypes, @Transient ColumnFilter columnFilter) {
+              return asm.newInstance();
+          }
+
+```
+
+* Giống nhau : giống với mẫu chuẩn
+* Khác nhau : 
