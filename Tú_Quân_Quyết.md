@@ -1,3 +1,9 @@
+Thành viên nhóm: 
+1. Nguyễn Tương Quyết 20021423
+2. Nguyễn Lưu Tú 20021461
+3. Đỗ Minh Quân 20021414
+
+
 Báo cáo về Design Patterns
 Link nguồn tham khảo: https://github.com/JakubVojvoda/design-patterns-java
 
