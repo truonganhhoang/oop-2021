@@ -771,4 +771,558 @@ coffeeShop.takeOrder(origin: "Buziraguhindwa, Burundi", table: 3)
 
 coffeeShop.serve()
 ```
+## Proxy
+* Proxy có nghĩa là “ủy quyền” hay “đại diện”. Mục đích xây dựng Proxy pattern cũng chính vì muốn tạo ra một đối tượng sẽ ủy quyền, thay thế cho một đối tượng khác.
+* Proxy Pattern là mẫu thiết kế mà ở đó tất cả các truy cập trực tiếp đến một đối tượng nào đó sẽ được chuyển hướng vào một đối tượng trung gian (Proxy Class). Mẫu Proxy (người đại diện) đại diện cho một đối tượng khác thực thi các phương thức, phương thức đó có thể được định nghĩa lại cho phù hợp với múc đích sử dụng.
 
+### Virtual Proxy
+----------------
+
+The proxy pattern is used to provide a surrogate or placeholder object, which references an underlying object.
+Virtual proxy is used for loading object on demand.
+
+### Example
+
+```swift
+protocol HEVSuitMedicalAid {
+    func administerMorphine() -> String
+}
+
+final class HEVSuit: HEVSuitMedicalAid {
+    func administerMorphine() -> String {
+        return "Morphine administered."
+    }
+}
+
+final class HEVSuitHumanInterface: HEVSuitMedicalAid {
+
+    lazy private var physicalSuit: HEVSuit = HEVSuit()
+
+    func administerMorphine() -> String {
+        return physicalSuit.administerMorphine()
+    }
+}
+```
+
+### Usage
+
+```swift
+let humanInterface = HEVSuitHumanInterface()
+humanInterface.administerMorphine()
+```
+
+### Protection Proxy
+------------------
+
+
+### Example
+
+```swift
+protocol DoorOpening {
+    func open(doors: String) -> String
+}
+
+final class HAL9000: DoorOpening {
+    func open(doors: String) -> String {
+        return ("HAL9000: Affirmative, Dave. I read you. Opened \(doors).")
+    }
+}
+
+final class CurrentComputer: DoorOpening {
+    private var computer: HAL9000!
+
+    func authenticate(password: String) -> Bool {
+
+        guard password == "pass" else {
+            return false
+        }
+
+        computer = HAL9000()
+
+        return true
+    }
+
+    func open(doors: String) -> String {
+
+        guard computer != nil else {
+            return "Access Denied. I'm afraid I can't do that."
+        }
+
+        return computer.open(doors: doors)
+    }
+}
+```
+
+### Usage
+
+```swift
+let computer = CurrentComputer()
+let podBay = "Pod Bay Doors"
+
+computer.open(doors: podBay)
+
+computer.authenticate(password: "pass")
+computer.open(doors: podBay)
+```
+
+
+
+# Behavioral
+
+## Chain of Responsibility
+* Chain of Responsiblity cho phép một đối tượng gửi một yêu cầu nhưng không biết đối tượng nào sẽ nhận và xử lý nó. Điều này được thực hiện bằng cách kết nối các đối tượng nhận yêu cầu thành một chuỗi (chain) và gửi yêu cầu theo chuỗi đó cho đến khi có một đối tượng xử lý nó.
+
+### Example:
+
+```swift
+
+protocol Withdrawing {
+    func withdraw(amount: Int) -> Bool
+}
+
+final class MoneyPile: Withdrawing {
+
+    let value: Int
+    var quantity: Int
+    var next: Withdrawing?
+
+    init(value: Int, quantity: Int, next: Withdrawing?) {
+        self.value = value
+        self.quantity = quantity
+        self.next = next
+    }
+
+    func withdraw(amount: Int) -> Bool {
+
+        var amount = amount
+
+        func canTakeSomeBill(want: Int) -> Bool {
+            return (want / self.value) > 0
+        }
+
+        var quantity = self.quantity
+
+        while canTakeSomeBill(want: amount) {
+
+            if quantity == 0 {
+                break
+            }
+
+            amount -= self.value
+            quantity -= 1
+        }
+
+        guard amount > 0 else {
+            return true
+        }
+
+        if let next = self.next {
+            return next.withdraw(amount: amount)
+        }
+
+        return false
+    }
+}
+
+final class ATM: Withdrawing {
+
+    private var hundred: Withdrawing
+    private var fifty: Withdrawing
+    private var twenty: Withdrawing
+    private var ten: Withdrawing
+
+    private var startPile: Withdrawing {
+        return self.hundred
+    }
+
+    init(hundred: Withdrawing,
+           fifty: Withdrawing,
+          twenty: Withdrawing,
+             ten: Withdrawing) {
+
+        self.hundred = hundred
+        self.fifty = fifty
+        self.twenty = twenty
+        self.ten = ten
+    }
+
+    func withdraw(amount: Int) -> Bool {
+        return startPile.withdraw(amount: amount)
+    }
+}
+```
+
+### Usage
+
+```swift
+// Create piles of money and link them together 10 < 20 < 50 < 100.**
+let ten = MoneyPile(value: 10, quantity: 6, next: nil)
+let twenty = MoneyPile(value: 20, quantity: 2, next: ten)
+let fifty = MoneyPile(value: 50, quantity: 2, next: twenty)
+let hundred = MoneyPile(value: 100, quantity: 1, next: fifty)
+
+// Build ATM.
+var atm = ATM(hundred: hundred, fifty: fifty, twenty: twenty, ten: ten)
+atm.withdraw(amount: 310) // Cannot because ATM has only 300
+atm.withdraw(amount: 100) // Can withdraw - 1x100
+```
+
+
+## Command
+* Command Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép chuyển yêu cầu thành đối tượng độc lập, có thể được sử dụng để tham số hóa các đối tượng với các yêu cầu khác nhau như log, queue (undo/redo), transtraction.
+
+### Example:
+
+```swift
+protocol DoorCommand {
+    func execute() -> String
+}
+
+final class OpenCommand: DoorCommand {
+    let doors:String
+
+    required init(doors: String) {
+        self.doors = doors
+    }
+    
+    func execute() -> String {
+        return "Opened \(doors)"
+    }
+}
+
+final class CloseCommand: DoorCommand {
+    let doors:String
+
+    required init(doors: String) {
+        self.doors = doors
+    }
+    
+    func execute() -> String {
+        return "Closed \(doors)"
+    }
+}
+
+final class HAL9000DoorsOperations {
+    let openCommand: DoorCommand
+    let closeCommand: DoorCommand
+    
+    init(doors: String) {
+        self.openCommand = OpenCommand(doors:doors)
+        self.closeCommand = CloseCommand(doors:doors)
+    }
+    
+    func close() -> String {
+        return closeCommand.execute()
+    }
+    
+    func open() -> String {
+        return openCommand.execute()
+    }
+}
+```
+
+### Usage:
+
+```swift
+let podBayDoors = "Pod Bay Doors"
+let doorModule = HAL9000DoorsOperations(doors:podBayDoors)
+
+doorModule.open()
+doorModule.close()
+```
+
+## Interpreter
+* Interpreter nghĩa là thông dịch, mẫu này nói rằng “để xác định một biểu diễn ngữ pháp của một ngôn ngữ cụ thể, cùng với một thông dịch viên sử dụng biểu diễn này để diễn dịch các câu trong ngôn ngữ”.
+* Nói cho dễ hiểu, Interpreter Pattern giúp người lập trình có thể “xây dựng” những đối tượng “động” bằng cách đọc mô tả về đối tượng rồi sau đó “xây dựng” đối tượng đúng theo mô tả đó.
+
+### Example
+
+```swift
+
+protocol IntegerExpression {
+    func evaluate(_ context: IntegerContext) -> Int
+    func replace(character: Character, integerExpression: IntegerExpression) -> IntegerExpression
+    func copied() -> IntegerExpression
+}
+
+final class IntegerContext {
+    private var data: [Character:Int] = [:]
+
+    func lookup(name: Character) -> Int {
+        return self.data[name]!
+    }
+
+    func assign(expression: IntegerVariableExpression, value: Int) {
+        self.data[expression.name] = value
+    }
+}
+
+final class IntegerVariableExpression: IntegerExpression {
+    let name: Character
+
+    init(name: Character) {
+        self.name = name
+    }
+
+    func evaluate(_ context: IntegerContext) -> Int {
+        return context.lookup(name: self.name)
+    }
+
+    func replace(character name: Character, integerExpression: IntegerExpression) -> IntegerExpression {
+        if name == self.name {
+            return integerExpression.copied()
+        } else {
+            return IntegerVariableExpression(name: self.name)
+        }
+    }
+
+    func copied() -> IntegerExpression {
+        return IntegerVariableExpression(name: self.name)
+    }
+}
+
+final class AddExpression: IntegerExpression {
+    private var operand1: IntegerExpression
+    private var operand2: IntegerExpression
+
+    init(op1: IntegerExpression, op2: IntegerExpression) {
+        self.operand1 = op1
+        self.operand2 = op2
+    }
+
+    func evaluate(_ context: IntegerContext) -> Int {
+        return self.operand1.evaluate(context) + self.operand2.evaluate(context)
+    }
+
+    func replace(character: Character, integerExpression: IntegerExpression) -> IntegerExpression {
+        return AddExpression(op1: operand1.replace(character: character, integerExpression: integerExpression),
+                             op2: operand2.replace(character: character, integerExpression: integerExpression))
+    }
+
+    func copied() -> IntegerExpression {
+        return AddExpression(op1: self.operand1, op2: self.operand2)
+    }
+}
+```
+
+### Usage
+
+```swift
+var context = IntegerContext()
+
+var a = IntegerVariableExpression(name: "A")
+var b = IntegerVariableExpression(name: "B")
+var c = IntegerVariableExpression(name: "C")
+
+var expression = AddExpression(op1: a, op2: AddExpression(op1: b, op2: c)) // a + (b + c)
+
+context.assign(expression: a, value: 2)
+context.assign(expression: b, value: 1)
+context.assign(expression: c, value: 3)
+
+var result = expression.evaluate(context)
+```
+
+
+## Iterator
+* Iterator Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó được sử dụng để “Cung cấp một cách thức truy cập tuần tự tới các phần tử của một đối tượng tổng hợp, mà không cần phải tạo dựng riêng các phương pháp truy cập cho đối tượng tổng hợp này”.
+
+### Example:
+
+```swift
+struct Novella {
+    let name: String
+}
+
+struct Novellas {
+    let novellas: [Novella]
+}
+
+struct NovellasIterator: IteratorProtocol {
+
+    private var current = 0
+    private let novellas: [Novella]
+
+    init(novellas: [Novella]) {
+        self.novellas = novellas
+    }
+
+    mutating func next() -> Novella? {
+        defer { current += 1 }
+        return novellas.count > current ? novellas[current] : nil
+    }
+}
+
+extension Novellas: Sequence {
+    func makeIterator() -> NovellasIterator {
+        return NovellasIterator(novellas: novellas)
+    }
+}
+```
+
+### Usage
+
+```swift
+let greatNovellas = Novellas(novellas: [Novella(name: "The Mist")] )
+
+for novella in greatNovellas {
+    print("I've read: \(novella)")
+}
+```
+
+
+## Mediator
+* Mediator Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Mediator có nghĩa là người trung gian. Pattern này nói rằng “Định nghĩa một đối tượng gói gọn cách một tập hợp các đối tượng tương tác. Mediator thúc đẩy sự khớp nối lỏng lẻo (loose coupling) bằng cách ngăn không cho các đối tượng đề cập đến nhau một cách rõ ràng và nó cho phép bạn thay đổi sự tương tác của họ một cách độc lập”.
+
+### Example
+
+```swift
+protocol Receiver {
+    associatedtype MessageType
+    func receive(message: MessageType)
+}
+
+protocol Sender {
+    associatedtype MessageType
+    associatedtype ReceiverType: Receiver
+    
+    var recipients: [ReceiverType] { get }
+    
+    func send(message: MessageType)
+}
+
+struct Programmer: Receiver {
+    let name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func receive(message: String) {
+        print("\(name) received: \(message)")
+    }
+}
+
+final class MessageMediator: Sender {
+    internal var recipients: [Programmer] = []
+    
+    func add(recipient: Programmer) {
+        recipients.append(recipient)
+    }
+    
+    func send(message: String) {
+        for recipient in recipients {
+            recipient.receive(message: message)
+        }
+    }
+}
+
+```
+
+### Usage
+
+```swift
+func spamMonster(message: String, worker: MessageMediator) {
+    worker.send(message: message)
+}
+
+let messagesMediator = MessageMediator()
+
+let user0 = Programmer(name: "Linus Torvalds")
+let user1 = Programmer(name: "Avadis 'Avie' Tevanian")
+messagesMediator.add(recipient: user0)
+messagesMediator.add(recipient: user1)
+
+spamMonster(message: "I'd Like to Add you to My Professional Network", worker: messagesMediator)
+
+```
+
+
+## Memento
+* Memento là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Memento là mẫu thiết kế có thể lưu lại trạng thái của một đối tượng để khôi phục lại sau này mà không vi phạm nguyên tắc đóng gói.
+
+### Example
+
+```swift
+typealias Memento = [String: String]
+```
+
+Originator
+
+```swift
+protocol MementoConvertible {
+    var memento: Memento { get }
+    init?(memento: Memento)
+}
+
+struct GameState: MementoConvertible {
+
+    private enum Keys {
+        static let chapter = "com.valve.halflife.chapter"
+        static let weapon = "com.valve.halflife.weapon"
+    }
+
+    var chapter: String
+    var weapon: String
+
+    init(chapter: String, weapon: String) {
+        self.chapter = chapter
+        self.weapon = weapon
+    }
+
+    init?(memento: Memento) {
+        guard let mementoChapter = memento[Keys.chapter],
+              let mementoWeapon = memento[Keys.weapon] else {
+            return nil
+        }
+
+        chapter = mementoChapter
+        weapon = mementoWeapon
+    }
+
+    var memento: Memento {
+        return [ Keys.chapter: chapter, Keys.weapon: weapon ]
+    }
+}
+```
+
+Caretaker
+
+```swift
+enum CheckPoint {
+
+    private static let defaults = UserDefaults.standard
+
+    static func save(_ state: MementoConvertible, saveName: String) {
+        defaults.set(state.memento, forKey: saveName)
+        defaults.synchronize()
+    }
+
+    static func restore(saveName: String) -> Any? {
+        return defaults.object(forKey: saveName)
+    }
+}
+```
+
+### Usage
+
+```swift
+var gameState = GameState(chapter: "Black Mesa Inbound", weapon: "Crowbar")
+
+gameState.chapter = "Anomalous Materials"
+gameState.weapon = "Glock 17"
+CheckPoint.save(gameState, saveName: "gameState1")
+
+gameState.chapter = "Unforeseen Consequences"
+gameState.weapon = "MP5"
+CheckPoint.save(gameState, saveName: "gameState2")
+
+gameState.chapter = "Office Complex"
+gameState.weapon = "Crossbow"
+CheckPoint.save(gameState, saveName: "gameState3")
+
+if let memento = CheckPoint.restore(saveName: "gameState1") as? Memento {
+    let finalState = GameState(memento: memento)
+    dump(finalState)
+}
+```
