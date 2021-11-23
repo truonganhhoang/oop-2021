@@ -45,11 +45,11 @@ vd:
 
 •	Prototype:
 o	Qui định loại của các đối tượng cần tạo bằng cách dùng một đối tượng mẫu, tạo mới nhờ vào sao chép đối tượng mẫu này.
-vd: 
+vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/prototype
 
 •	Adapter:
 o	Do vấn đề tương thích, thay đổi interface của một lớp thành một interface khác phù hợp với yêu cầu người sử dụng lớp.
-vd: 
+vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/adapter
 •	Bridge:
 o	Tách rời ngữ nghĩa của một vấn đề khỏi việc cài đặt, mục đích để cả hai bộ phận (ngữ nghĩa và cài đặt) có thể thay đổi độc lập nhau.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/bridge
@@ -60,7 +60,7 @@ vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/composite
 
 •	Decorator:
 o	Gán thêm trách nhiệm cho đối tượng (mở rộng chức năng) vào lúc chạy (dynamically).
-
+vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/decorator
 •	Facade:
 
 o	Cung cấp một interface thuần nhất cho một tập hợp các interface trong một “hệ thống con” (subsystem). Nó định nghĩa 1 interface cao hơn các interface có sẵn để làm cho hệ thống con dễ sử dụng hơn.
@@ -88,7 +88,7 @@ o	Hỗ trợ việc định nghĩa biểu diễn văn phạm và bộ thông d�
 •	Iterator: 
 
 o	Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử.
-
+vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/iterator
 •	Mediator: 
 
 o	Định nghĩa một đối tượng để bao bọc việc giao tiếp giữa một số đối tượng với nhau.
