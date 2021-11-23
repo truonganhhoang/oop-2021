@@ -33,15 +33,11 @@ o	Đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất
  
 •	Abstract Factory:
 o	Cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng.
-vd: 
+vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/factory/abstr
 
 •	Factory Method:
 o	Định nghĩa Interface để sinh ra đối tượng nhưng để cho lớp con quyết định lớp nào được dùng để sinh ra đối tượng Factory method cho phép một lớp chuyển quá trình khởi tạo đối tượng cho lớp con.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/factory
-
-•	Builder:
-o	Tách rời việc xây dựng (construction) một đối tượng phức tạp khỏi biểu diễn của nó sao cho cùng một tiến trình xây dựng có thể tạo được các biểu diễn khác nhau.
-vd: 
 
 •	Prototype:
 o	Qui định loại của các đối tượng cần tạo bằng cách dùng một đối tượng mẫu, tạo mới nhờ vào sao chép đối tượng mẫu này.
@@ -61,37 +57,21 @@ vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/composite
 •	Decorator:
 o	Gán thêm trách nhiệm cho đối tượng (mở rộng chức năng) vào lúc chạy (dynamically).
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/decorator
-•	Facade:
-
-o	Cung cấp một interface thuần nhất cho một tập hợp các interface trong một “hệ thống con” (subsystem). Nó định nghĩa 1 interface cao hơn các interface có sẵn để làm cho hệ thống con dễ sử dụng hơn.
-
-•	Flyweight:
-
-o	Sử dụng việc chia sẻ để thao tác hiệu quả trên một số lượng lớn đối tượng “cở nhỏ” (chẳng hạn paragraph, dòng, cột, ký tự…).
-
-•	Proxy:
-
-o	Cung cấp đối tượng đại diện cho một đối tượng khác để hỗ trợ hoặc kiểm soát quá trình truy xuất đối tượng đó. Đối tượng thay thế gọi là proxy.
-
-•	Chain of Responsibility: 
-
-o	Khắc phục việc ghép cặp giữa bộ gởi và bộ nhận thông điệp. Các đối tượng nhận thông điệp được kết nối thành một chuỗi và thông điệp được chuyển dọc theo chuỗi nầy đến khi gặp được đối tượng xử lý nó. Tránh việc gắn kết cứng giữa phần tử gởi request với phần tử nhận và xử lý request bằng cách cho phép hơn 1 đối tượng có có cơ hội xử lý request. Liên kết các đối tượng nhận request thành 1 dây chuyền rồi gửi request xuyên qua từng đối tượng xử lý đến khi gặp đối tượng xử lý cụ thể.
-
-•	Command: 
-
-o	Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc thành một đối tượng. Các yêu cầu sẽ được lưu trữ và gởi đi như các đối tượng.Đóng gói request vào trong một Object, nhờ đó có thể nthông số hoá chương trình nhận request và thực hiện các thao tác trên request: sắp xếp, log, undo…
-
-•	Interpreter: 
-
-o	Hỗ trợ việc định nghĩa biểu diễn văn phạm và bộ thông dịch cho một ngôn ngữ.
 
 •	Iterator: 
-
 o	Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/iterator
-•	Mediator: 
 
-o	Định nghĩa một đối tượng để bao bọc việc giao tiếp giữa một số đối tượng với nhau.
+•	State: 
+o	Cho phép một đối tượng thay đổi hành vi khi trạng thái bên trong của nó thay đổi, ta có cảm giác như class của đối tượng bị thay đổi.
+vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/state
 
+•	Observer: 
+o	Định nghĩa sự phụ thuộc một-nhiều giữa các đối tượng sao cho khi một đối tượng thay đổi trạng thái thì tất cả các đối tượng phụ thuộc nó cũng thay đổi theo.
+vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/observer
+
+•	Strategy: 
+o	Bao bọc một họ các thuật toán bằng các lớp đối tượng để thuật toán có thể thay đổi độc lập đối với chương trình sử dụng thuật toán.Cung cấp một họ giải thuật cho phép client chọn lựa linh động một giải thuật cụ thể khi sử dụng.
+vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/strategy
 
 
