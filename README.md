@@ -8,34 +8,8 @@ Thành viên trong nhóm:
 + Nông Ngọc Sơn 20021430
 + Nguyễn Đức Dũng 20020181
 
-Repo đã tìm được và phân tích:   https://github.com/ant-design/ant-design-pro?fbclid=IwAR1uP_Da_fKo-nSX_Dk2hKGv6RhALIEQwMuN0YLThX3tz3XEAfNb988svPk
+Repo đã tìm được và phân tích: https://github.com/OmarElgabry/DesignPatterns/tree/master/src?fbclid=IwAR3zcvkF1NME6gIojqlXHsJEQnlaZ-fpN46HoGKMaSQouK-o_uOHSZNU6eU
 
-- Dashboard
-  - Analytic
-  - Monitor
-  - Workspace
-- Form
-  - Basic Form
-  - Step Form
-  - Advanced From
-- List
-  - Standard Table
-  - Standard List
-  - Card List
-  - Search List (Project/Applications/Article)
-- Profile
-  - Simple Profile
-  - Advanced Profile
-- Account
-  - Account Center
-  - Account Settings
-- Result
-  - Success
-  - Failed
-- Exception
-  - 403
-  - 404
-  - 500
 
 Điểm giống nhau:
 
@@ -55,36 +29,34 @@ Không nhiều do là 1 mẫu thiết kế tương tự mẫu thiết kế chu�
 
 •	Singleton:
 o	Đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó.
- vd: https://github.com/dulajra/all-about-singletons
+ vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/singleton
  
 •	Abstract Factory:
 o	Cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng.
-vd: https://github.com/csc301-fall2014/AbstractFactoryExample
+vd: 
 
 •	Factory Method:
 o	Định nghĩa Interface để sinh ra đối tượng nhưng để cho lớp con quyết định lớp nào được dùng để sinh ra đối tượng Factory method cho phép một lớp chuyển quá trình khởi tạo đối tượng cho lớp con.
-vd: https://github.com/mattlogan/Artiste
+vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/factory
 
 •	Builder:
 o	Tách rời việc xây dựng (construction) một đối tượng phức tạp khỏi biểu diễn của nó sao cho cùng một tiến trình xây dựng có thể tạo được các biểu diễn khác nhau.
-vd: https://github.com/CloudSlang/cloud-slang
+vd: 
 
 •	Prototype:
 o	Qui định loại của các đối tượng cần tạo bằng cách dùng một đối tượng mẫu, tạo mới nhờ vào sao chép đối tượng mẫu này.
-vd: https://github.com/Netflix/ReactiveLab
+vd: 
 
 •	Adapter:
 o	Do vấn đề tương thích, thay đổi interface của một lớp thành một interface khác phù hợp với yêu cầu người sử dụng lớp.
-vd: https://github.com/sockeqwe/AdapterDelegates
-
+vd: 
 •	Bridge:
 o	Tách rời ngữ nghĩa của một vấn đề khỏi việc cài đặt, mục đích để cả hai bộ phận (ngữ nghĩa và cài đặt) có thể thay đổi độc lập nhau.
-vd: https://github.com/bytedeco/javacpp
-
+vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/bridge
 •	Composite:
 o	Tổ chức các đối tượng theo cấu trúc phân cấp dạng cây. Tất cả các đối tượng trong cấu trúc được thao tác theo một cách thuần nhất như nhau.
 Tạo quan hệ thứ bậc bao gộp giữa các đối tượng. Client có thể xem đối tượng bao gộp và bị bao gộp như nhau -> khả năng tổng quát hoá trong code của client -> dễ phát triển, nâng cấp, bảo trì.
-vd: https://github.com/boneill42/naughty-or-nice
+vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/composite
 
 •	Decorator:
 o	Gán thêm trách nhiệm cho đối tượng (mở rộng chức năng) vào lúc chạy (dynamically).
