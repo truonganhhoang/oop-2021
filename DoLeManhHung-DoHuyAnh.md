@@ -25,23 +25,27 @@ __ __
 * Adaptee đã được khai báo chính xác
 * Adapter được khai báo chính xác
 * Target được khai báo chính xác
+* https://github.com/JamesZBL/java_design_patterns/tree/master/adapter
 
 ###3. So sánh Bridge
 * Abstraction có một vài phần không theo cấu trúc chuẩn
 * Refined Abstraction được cài đặt chính xác
 * Implementor được khai báo chính xác
 * ConcreteImplementor được khai báo chính xác
+* https://github.com/JamesZBL/java_design_patterns/tree/master/bridge
 
 ###4. So sánh Builder
 * Builder chưa phải là abstract class hay ìnterface
 * ConcreteBuilder chưa kế thừa Builder
 * Director đã được cài đặt chính xác
 * Product  đã được cài đặt chính xác
+* https://github.com/JamesZBL/java_design_patterns/tree/master/builder
 
 ###5. So sánh Composite
 * Base Component đã được khai báo chính xác
 * Leaf đã được cài đặt nhưng chưa implement các phương thức của Component
 * Composite đã được cài đặt chính xác
+* 
 
 ###6. So sánh Decorator
 * Component đã được cài đặt đúng
