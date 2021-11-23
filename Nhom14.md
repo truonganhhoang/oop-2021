@@ -12,7 +12,7 @@
 
   | Creational patterns | Structural patterns | Behavioral patterns |
   | :-----------: | :-----------: | :-----------: |
-  | ![img.png](img.png) | ![img_1.png](img_1.png) | ![img_2.png](img_2.png) |
+  | ![img.png](https://images.viblo.asia/db99da2e-7eee-45b2-90ee-8e599f975a29.png) | ![img_1.png](https://images.viblo.asia/d32eddff-6ff8-4e3c-a2f2-9aa0185312a7.png) | ![img_2.png](https://images.viblo.asia/6653a5ac-b273-4002-9226-8470e4eb6867.png) |
   | Các mẫu này cung cấp các cơ chế tạo đối tượng khác nhau, giúp tăng tính linh hoạt và khả năng tái sử dụng mã hiện có.      | Những mẫu này giải thích cách tập hợp các đối tượng và lớp thành các cấu trúc lớn hơn trong khi vẫn giữ cho các cấu trúc này linh hoạt và hiệu quả.       | Các mẫu này liên quan đến các thuật toán và sự phân công trách nhiệm giữa các đối tượng. |
 
 #### Factory Method
