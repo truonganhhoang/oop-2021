@@ -73,3 +73,6 @@ Composite
 	-Các thành phần giao diện mô tả hoạt động mà là chung cho cả hai đơn giản và các yếu tố phức tạp của cây.
 -Khác nhau:
 	-khó cung cấp một giao diện chung cho các lớp có chức năng khác nhau quá nhiều
+	
+	
+	
