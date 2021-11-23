@@ -16,6 +16,9 @@ __ __
 * ConcreteFactory có được xây dựng nhưng không theo cấu trúc chuẩn
 * AbstractProduct được khai báo chính xác
 * Product đã được cài đặt chính xác
+* https://github.com/JamesZBL/java_design_patterns/tree/master/abstract-factory
+* https://gpcoder.com/4365-huong-dan-java-design-pattern-abstract-factory/
+* 
 
 ###2. So sánh Adapter
 * Adaptee đã được khai báo chính xác
@@ -73,6 +76,9 @@ __ __
 * Mẫu thiết kế theo repo có đủ cấu trúc, đó là interface or abstract class, có implemention, có tiếp nhận request, tiếp nhật concrete và nơi nhận( giống 100%).
 ###13.Facade:
 * Có đầy đủ các cấu trúc giống như định dạng chuẩn.
+* https://gpcoder.com/4604-huong-dan-java-design-pattern-facade/ (Link mẫu chuẩn)
+* https://github.com/JamesZBL/java_design_patterns/tree/master/facade (Link repo) 
+* 
 ###14.Interpreter:
 * Mẫu thiết kế giống 90%, thiếu mất cấu trúc context.
 ###15.Interator:
