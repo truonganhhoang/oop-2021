@@ -1326,3 +1326,291 @@ if let memento = CheckPoint.restore(saveName: "gameState1") as? Memento {
     dump(finalState)
 }
 ```
+
+## Observer
+* Observer Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó định nghĩa mối phụ thuộc một – nhiều giữa các đối tượng để khi mà một đối tượng có sự thay đổi trạng thái, tất các thành phần phụ thuộc của nó sẽ được thông báo và cập nhật một cách tự động.
+
+### Example
+
+```swift
+protocol PropertyObserver : class {
+    func willChange(propertyName: String, newPropertyValue: Any?)
+    func didChange(propertyName: String, oldPropertyValue: Any?)
+}
+
+final class TestChambers {
+
+    weak var observer:PropertyObserver?
+
+    private let testChamberNumberName = "testChamberNumber"
+
+    var testChamberNumber: Int = 0 {
+        willSet(newValue) {
+            observer?.willChange(propertyName: testChamberNumberName, newPropertyValue: newValue)
+        }
+        didSet {
+            observer?.didChange(propertyName: testChamberNumberName, oldPropertyValue: oldValue)
+        }
+    }
+}
+
+final class Observer : PropertyObserver {
+    func willChange(propertyName: String, newPropertyValue: Any?) {
+        if newPropertyValue as? Int == 1 {
+            print("Okay. Look. We both said a lot of things that you're going to regret.")
+        }
+    }
+
+    func didChange(propertyName: String, oldPropertyValue: Any?) {
+        if oldPropertyValue as? Int == 0 {
+            print("Sorry about the mess. I've really let the place go since you killed me.")
+        }
+    }
+}
+```
+
+### Usage
+
+```swift
+var observerInstance = Observer()
+var testChambers = TestChambers()
+testChambers.observer = observerInstance
+testChambers.testChamberNumber += 1
+```
+
+
+## State
+* State Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép một đối tượng thay đổi hành vi của nó khi trạng thái nội bộ của nó thay đổi. Đối tượng sẽ xuất hiện để thay đổi lớp của nó.
+
+### Example
+
+```swift
+final class Context {
+	private var state: State = UnauthorizedState()
+
+    var isAuthorized: Bool {
+        get { return state.isAuthorized(context: self) }
+    }
+
+    var userId: String? {
+        get { return state.userId(context: self) }
+    }
+
+	func changeStateToAuthorized(userId: String) {
+		state = AuthorizedState(userId: userId)
+	}
+
+	func changeStateToUnauthorized() {
+		state = UnauthorizedState()
+	}
+}
+
+protocol State {
+	func isAuthorized(context: Context) -> Bool
+	func userId(context: Context) -> String?
+}
+
+class UnauthorizedState: State {
+	func isAuthorized(context: Context) -> Bool { return false }
+
+	func userId(context: Context) -> String? { return nil }
+}
+
+class AuthorizedState: State {
+	let userId: String
+
+	init(userId: String) { self.userId = userId }
+
+	func isAuthorized(context: Context) -> Bool { return true }
+
+	func userId(context: Context) -> String? { return userId }
+}
+```
+
+### Usage
+
+```swift
+let userContext = Context()
+(userContext.isAuthorized, userContext.userId)
+userContext.changeStateToAuthorized(userId: "admin")
+(userContext.isAuthorized, userContext.userId) // now logged in as "admin"
+userContext.changeStateToUnauthorized()
+(userContext.isAuthorized, userContext.userId)
+```
+
+
+## Strategy
+* Strategy Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép định nghĩa tập hợp các thuật toán, đóng gói từng thuật toán lại, và dễ dàng thay đổi linh hoạt các thuật toán bên trong object. Strategy cho phép thuật toán biến đổi độc lập khi người dùng sử dụng chúng.
+* Ý nghĩa thực sự của Strategy Pattern là giúp tách rời phần xử lý một chức năng cụ thể ra khỏi đối tượng. Sau đó tạo ra một tập hợp các thuật toán để xử lý chức năng đó và lựa chọn thuật toán nào mà chúng ta thấy đúng đắn nhất khi thực thi chương trình. Mẫu thiết kế này thường được sử dụng để thay thế cho sự kế thừa, khi muốn chấm dứt việc theo dõi và chỉnh sửa một chức năng qua nhiều lớp con.
+
+### Example
+
+```swift
+
+struct TestSubject {
+    let pupilDiameter: Double
+    let blushResponse: Double
+    let isOrganic: Bool
+}
+
+protocol RealnessTesting: AnyObject {
+    func testRealness(_ testSubject: TestSubject) -> Bool
+}
+
+final class VoightKampffTest: RealnessTesting {
+    func testRealness(_ testSubject: TestSubject) -> Bool {
+        return testSubject.pupilDiameter < 30.0 || testSubject.blushResponse == 0.0
+    }
+}
+
+final class GeneticTest: RealnessTesting {
+    func testRealness(_ testSubject: TestSubject) -> Bool {
+        return testSubject.isOrganic
+    }
+}
+
+final class BladeRunner {
+    private let strategy: RealnessTesting
+
+    init(test: RealnessTesting) {
+        self.strategy = test
+    }
+
+    func testIfAndroid(_ testSubject: TestSubject) -> Bool {
+        return !strategy.testRealness(testSubject)
+    }
+}
+
+```
+
+ ### Usage
+ 
+```swift
+
+let rachel = TestSubject(pupilDiameter: 30.2,
+                         blushResponse: 0.3,
+                         isOrganic: false)
+
+// Deckard is using a traditional test
+let deckard = BladeRunner(test: VoightKampffTest())
+let isRachelAndroid = deckard.testIfAndroid(rachel)
+
+// Gaff is using a very precise method
+let gaff = BladeRunner(test: GeneticTest())
+let isDeckardAndroid = gaff.testIfAndroid(rachel)
+```
+
+
+## Temple Method
+* Template Method Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Pattern này nói rằng “Định nghĩa một bộ khung của một thuật toán trong một chức năng, chuyển giao việc thực hiện nó cho các lớp con. Mẫu Template Method cho phép lớp con định nghĩa lại cách thực hiện của một thuật toán, mà không phải thay đổi cấu trúc thuật toán“.
+
+### Example
+
+```swift
+protocol Garden {
+    func prepareSoil()
+    func plantSeeds()
+    func waterPlants()
+    func prepareGarden()
+}
+
+extension Garden {
+
+    func prepareGarden() {
+        prepareSoil()
+        plantSeeds()
+        waterPlants()
+    }
+}
+
+final class RoseGarden: Garden {
+
+    func prepare() {
+        prepareGarden()
+    }
+
+    func prepareSoil() {
+        print ("prepare soil for rose garden")
+    }
+
+    func plantSeeds() {
+        print ("plant seeds for rose garden")
+    }
+
+    func waterPlants() {
+       print ("water the rose garden")
+    }
+}
+
+```
+
+### Usage
+
+```swift
+
+let roseGarden = RoseGarden()
+roseGarden.prepare()
+```
+
+
+## Visitor
+* Visitor Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Visitor cho phép định nghĩa các thao tác (operations) trên một tập hợp các đối tượng (objects) không đồng nhất (về kiểu) mà không làm thay đổi định nghĩa về lớp (classes) của các đối tượng đó. Để đạt được điều này, trong mẫu thiết kế visitor ta định nghĩa các thao tác trên các lớp tách biệt gọi các lớp visitors, các lớp này cho phép tách rời các thao tác với các đối tượng mà nó tác động đến. Với mỗi thao tác được thêm vào, một lớp visitor tương ứng được tạo ra.
+
+### Example
+
+```swift
+protocol PlanetVisitor {
+	func visit(planet: PlanetAlderaan)
+	func visit(planet: PlanetCoruscant)
+	func visit(planet: PlanetTatooine)
+    func visit(planet: MoonJedha)
+}
+
+protocol Planet {
+	func accept(visitor: PlanetVisitor)
+}
+
+final class MoonJedha: Planet {
+    func accept(visitor: PlanetVisitor) { visitor.visit(planet: self) }
+}
+
+final class PlanetAlderaan: Planet {
+    func accept(visitor: PlanetVisitor) { visitor.visit(planet: self) }
+}
+
+final class PlanetCoruscant: Planet {
+	func accept(visitor: PlanetVisitor) { visitor.visit(planet: self) }
+}
+
+final class PlanetTatooine: Planet {
+	func accept(visitor: PlanetVisitor) { visitor.visit(planet: self) }
+}
+
+final class NameVisitor: PlanetVisitor {
+	var name = ""
+
+	func visit(planet: PlanetAlderaan)  { name = "Alderaan" }
+	func visit(planet: PlanetCoruscant) { name = "Coruscant" }
+	func visit(planet: PlanetTatooine)  { name = "Tatooine" }
+    func visit(planet: MoonJedha)     	{ name = "Jedha" }
+}
+
+```
+
+### Usage
+
+```swift
+let planets: [Planet] = [PlanetAlderaan(), PlanetCoruscant(), PlanetTatooine(), MoonJedha()]
+
+let names = planets.map { (planet: Planet) -> String in
+	let visitor = NameVisitor()
+    planet.accept(visitor: visitor)
+
+    return visitor.name
+}
+
+names
+```
+
+
+
