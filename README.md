@@ -118,6 +118,7 @@ public interface EventListener {
 	void update(String eventType, File file);
 }
 ```
+
 ## Buider:
 + Trong HouseBuilder.java khởi tạo lớp abstract HouseBuilder có chứa các phương thức abstract sử dụng mẫu thiết kế Fluent Interface Pattern trả về chính HouseBuider
 ```
