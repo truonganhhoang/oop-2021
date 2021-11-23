@@ -76,6 +76,16 @@ link: https://github.com/square/retrofit/blob/master/retrofit-converters/java8/s
     } 
 ```
 
+Builder pattern là một trong những Creational pattern. Builder pattern là mẫu thiết kế đối tượng được tạo ra để xây dựng một đôi tượng phức tạp bằng cách sử dụng các đối tượng đơn giản và sử dụng tiếp cận từng bước, việc xây dựng các đối tượng đôc lập với các đối tượng khác.
+
+Builder Pattern được xây dựng để khắc phục một số nhược điểm của Factory Pattern và Abstract Factory Pattern khi mà Object có nhiều thuộc tính.
+
+Có ba vấn đề chính với  Factory Pattern và Abstract Factory Pattern khi Object có nhiều thuộc tính:
+
+- Quá nhiều tham số phải truyền vào từ phía client tới Factory Class.
+- Một số tham số có thể là tùy chọn nhưng trong Factory Pattern, chúng ta phải gửi tất cả tham số, với tham số tùy chọn nếu không nhập gì thì sẽ truyền là null.
+- Nếu một Object có quá nhiều thuộc tính thì việc tạo sẽ phức tạp.
+
 **Giống nhau**: 
 - Giống với mẫu chuẩn.
 - Build từ Retrofit, NetworkBehavior và ExecutorService
