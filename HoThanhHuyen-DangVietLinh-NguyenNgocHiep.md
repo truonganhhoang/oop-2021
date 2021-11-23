@@ -22,6 +22,21 @@ Builder pattern là một mẫu thiết kế thuộc "Nhóm khởi tạo" (Creat
 Chain_of_responsibility: là một mẫu thiết kế hành vi bao gồm một nguồn các đối tượng lệnh và một loạt các đối tượng xử lý. Mỗi đối tượng xử lý chứa logic xác định các loại đối tượng lệnh mà nó có thể xử lý, phần còn lại được chuyển cho đối tượng xử lý tiếp theo trong chuỗi.
 => https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/ChainOfResponsibility.kt
 
+Mẫu thiết kế Flyweight là mẫu thiết kế được sử dụng việc chia sẻ để trợ giúp một lượng lớn các đối tượng một cách hiệu quả. Các hiệu ứng của FLyweight pattern đòi hỏi nhiều vào việc được sử dụng ở đâu và sử dụng như nào.
+=> https://github.com/RefactoringGuru/design-patterns-java/blob/master/src/refactoring_guru/flyweight/example/Demo.java
+
+Interpreter Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Interpreter Pattern giúp người lập trình có thể “xây dựng” những đối tượng “động” bằng cách đọc mô tả về đối tượng rồi sau đó “xây dựng” đối tượng đúng theo mô tả đó.
+=> https://github.com/RefactoringGuru/design-patterns-java/blob/master/src/refactoring_guru/interpreter/example/Demo.java
+
+Iterator pattern là mẫu thiết kế rât thường được sử dụng trong môi trường lập trình Java và .NET. Mẫu này được sử dụng để truy cập vào các phần tử của collection object một cách tuần tự mà không cần phải hiểu biết về nó.
+=>https://github.com/RefactoringGuru/design-patterns-java/blob/master/src/refactoring_guru/iterator/example/Demo.java
+
+Mediator Pattern là một Design Pattern thuộc loại Behavior, đóng vai trò giảm sự phụ thuộc lẫn nhau của các tượng. Mediator Pattern hạn chế việc tương tác trức tiếp với nhau giữa các đối tượng và bắt chúng phải tương tác với nhau qua một đối tượng chung gian là Mediator.
+=> https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/Mediator.kt
+
+Memento là một Design Pattern thuộc loại Behavior. Nó cho phép chúng ta lưu trữ và khôi phục trạng thái của một đối tượng mà không tiết lộ chi tiết bên trong của nó.
+=> https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/Memento.kt
+
 Command Pattern:
 Command pattern thuộc nhóm các pattern hành vi: Đóng gói tất cả thông tin cần thiết vào 1 đối tượng để thực hiện hành động hay kích hoạt một sự kiện thực hiện sau đó. Các thông tin có thể bao gồm tên phương thức, các biến và giá trị cần thiết...hay đơn giản hơn đó là nó cho phép chuyển yêu cầu thành đối tượng độc lập, có thể được sử dụng để tham số hóa các đối tượng với các yêu cầu khác nhau như log, queue (undo/redo), transtraction.Command pattern thuộc nhóm các pattern hành vi: Đóng gói tất cả thông tin cần thiết vào 1 đối tượng để thực hiện hành động hay kích hoạt một sự kiện thực hiện sau đó. Các thông tin có thể bao gồm tên phương thức, các biến và giá trị cần thiết...hay đơn giản hơn đó là nó cho phép chuyển yêu cầu thành đối tượng độc lập, có thể được sử dụng để tham số hóa các đối tượng với các yêu cầu khác nhau như log, queue (undo/redo), transtraction.
 ==> https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/Command.kt
@@ -43,21 +58,6 @@ Facade Pattern cung cấp một interface đơn giản và cao cấp nhất cho 
 Factory Method Pattern
 Là một design pattern thuộc nhóm khởi tạo (Creational patterns). Pattern này được sinh ra nhằm mục đích khởi tạo một đối tượng mới mà không cần thiết phải chỉ ra một cách chính xác class nào sẽ được khởi tạo. Factory Method Pattern giải quyết vấn đề này bằng cách định nghĩa một factory method cho việc tạo đối tượng, và các lớp con thừa kế có thể override phương thức này để chỉ rõ đối tượng nào sẽ được khởi tạo.
 ==> https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/FactoryMethod.kt
-
-Mẫu thiết kế Flyweight là mẫu thiết kế được sử dụng việc chia sẻ để trợ giúp một lượng lớn các đối tượng một cách hiệu quả. Các hiệu ứng của FLyweight pattern đòi hỏi nhiều vào việc được sử dụng ở đâu và sử dụng như nào.
-=> https://github.com/RefactoringGuru/design-patterns-java/blob/master/src/refactoring_guru/flyweight/example/Demo.java
-
-Interpreter Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Interpreter Pattern giúp người lập trình có thể “xây dựng” những đối tượng “động” bằng cách đọc mô tả về đối tượng rồi sau đó “xây dựng” đối tượng đúng theo mô tả đó.
-=> https://github.com/RefactoringGuru/design-patterns-java/blob/master/src/refactoring_guru/interpreter/example/Demo.java
-
-Iterator pattern là mẫu thiết kế rât thường được sử dụng trong môi trường lập trình Java và .NET. Mẫu này được sử dụng để truy cập vào các phần tử của collection object một cách tuần tự mà không cần phải hiểu biết về nó.
-=>https://github.com/RefactoringGuru/design-patterns-java/blob/master/src/refactoring_guru/iterator/example/Demo.java
-
-Mediator Pattern là một Design Pattern thuộc loại Behavior, đóng vai trò giảm sự phụ thuộc lẫn nhau của các tượng. Mediator Pattern hạn chế việc tương tác trức tiếp với nhau giữa các đối tượng và bắt chúng phải tương tác với nhau qua một đối tượng chung gian là Mediator.
-=> https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/Mediator.kt
-
-Memento là một Design Pattern thuộc loại Behavior. Nó cho phép chúng ta lưu trữ và khôi phục trạng thái của một đối tượng mà không tiết lộ chi tiết bên trong của nó.
-=> https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/Memento.kt
 
 Observer pattern là một mẫu thiết kế phần mềm mà một đối tượng, gọi là subject, duy trì một danh sách các thành phần phụ thuộc nó, gọi là observer, và thông báo tới chúng một cách tự động về bất cứ thay đổi nào, thường thì bằng cách gọi 1 hàm của chúng.
 => https://github.com/RefactoringGuru/design-patterns-java/blob/master/src/refactoring_guru/observer/example/Demo.java
