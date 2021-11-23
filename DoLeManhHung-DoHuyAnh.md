@@ -7,7 +7,8 @@
 
 ##Báo cáo về Design Pattern
 ### Link GitHub tham khảo:
-> https://github.com/JamesZBL/java_design_patterns
+> https://github.com/JamesZBL/java_design_patterns Link github repo
+> https://viblo.asia/p/tong-hop-cac-bai-huong-dan-ve-design-pattern-23-mau-co-ban-cua-gof-3P0lPQPG5ox Link github 
 
 __ __
 
@@ -99,3 +100,5 @@ __ __
 * Có đầy đủ các cấu trúc như strategy, 2 concreteStrategy, context và 1 hàm main.
 ###23.Visitor
 * Có đầy đủ các file trong cấu trúc như visitor, concreteVisitor, element và phương thức của elements, objectStructure và client, và 1 hàm để chạy.
+
+Kết luận: Repo giống tới 90% so với mẫu chuẩn và chỉ có sự khác biệt nhỏ ở các hàm con.
