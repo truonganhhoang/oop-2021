@@ -37,5 +37,48 @@ Môn học Lập trình hướng đối tượng với Java
 		public Giong chonGiong();
 	}
 ```
+## Adapter:
+-	Do vấn đề tương thích, thay đổi interface của một lớp thành một interface khác phù hợp với yêu cầu người sử dụng lớp.
+-	Trong công nghệ phần mềm, Adapter pattern là một mẫu thiết kế tiếp hợp cho phép chuyển đổi một interface có sẵn thành một interface khác thích hợp cho lớp đang viết.
+- Example: https://github.com/Adapter-Hub/Hub .
+```
+package com.gpcoder.patterns.structural.adapter;
+ 
+public class JapaneseAdaptee {
+ 
+    public void receive(String words) {
+        System.out.println("Retrieving words from Adapter ...");
+        System.out.println(words);
+    }
+}
+```
+
+## Bridge:
+-	Tách rời ngữ nghĩa của một vấn đề khỏi việc cài đặt, mục đích để cả hai bộ phận (ngữ nghĩa và cài đặt) có thể thay đổi độc lập nhau.
+-	Dạng thức bắc cầu là một dạng thức thiết kế được dùng trong công nghệ phần mềm. Dạng thức bắc cầu dùng để "tách riêng tính trừu tượng ra khỏi thực thể của nó để cho cả hai có thể thay đổi một cách độc lập".
+-	Example: https://github.com/MoienTajik/Bridge-Pattern-Sample .
+```
+	public interface Weapon {
+  		void wield();
+
+  		void swing();
+
+  		void unwield();
+
+  		Enchantment getEnchantment();
+	}
+	public class Sword implements Weapon {
+  		private final Enchantment enchantment;
+  			
+		public Sword(Enchantment enchantment) {
+    			this.enchantment = enchantment;
+  		}
+		...........
+		@Override
+  		public Enchantment getEnchantment() {
+    			return enchantment;
+  		}
+	}
+```
 
 
