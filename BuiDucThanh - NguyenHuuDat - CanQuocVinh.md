@@ -9,7 +9,7 @@ Trong quá trình viết phần mềm này, nhà phát triển đã ứng dụng
 ### 1. Factory Pattern
 Đây là một trong nhưng mẫu được sử dụng phổ biến nhất hiện nay trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, người lập trình có thể tạo một đối tượng mới mà dựa trên một Interface có sẵn. Sau đây ta xét ví dụ trong dự án trên:
 
-Trong file checkstyle/src/main/java/com/puppycrawl/tools/checkstyle , có hai file Java có áp dụng Factory Pattern là ModuleFactory.java và PackageObjectFactory.java. Ta xét từng file một:
+Trong file checkstyle/src/main/java/com/puppycrawl/tools/checkstyle, có hai file Java có áp dụng Factory Pattern là ModuleFactory.java và PackageObjectFactory.java. Ta xét từng file một:
 
 #### a. ModuleFactory.java
 Đây là một Interface để sử dụng cho PackageObjectFactory.java. Trong class có duy nhất một hàm trừu tượng createModule(String name), với kiểu giá trị trả về là một Object. 
@@ -17,12 +17,30 @@ Trong file checkstyle/src/main/java/com/puppycrawl/tools/checkstyle , có hai fi
 #### b. PackageObjectFactory.java
 Class này đã được ứng dụng Interface ModuleFactory.java để thực hiện mục đích của mình: Tạo ra các đối tượng dựa trên tên Package và tên Class. Đầu tiên, hàm tạo một Object instance có giá trị bằng null. Tiếp đó, tùy vào khuôn dạng của biến đầu vào name mà hàm sẽ lần lượt đi qua các hàm check khác nhau, và tạo các object tương ứng với từng trường hợp. Ví dụ, nếu biến name không có dấu chấm, hàm sẽ thông qua hàm phụ trợ createFromStandardCheckSet để tạo đối tượng. 
 
-### 2. Builder Pattern
-
-#### a. DetectorOptions.java
-
 #### c. So sánh với mẫu chuẩn 
 Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Có một Interface và một lớp áp dụng Interface đó để tạo đối tượng mới. 
+
+### 2. Builder Pattern
+Đây là một kiểu mẫu thiết kế chuyên về việc khởi tạo các đối tượng. Với mẫu thiết kế này, người lập trình có thể dễ dàng tạo ra các đối tượng mà không phải quan tâm đến việc cần những tham số nào cho hàm khởi tạo. Khi áp dụng, ta sẽ xây dựng một đôi tượng phức tạp bằng cách sử dụng các đối tượng đơn giản và tiếp cận từng bước, cho đến kết quả cuối cùng, mà không phải cùng lúc truyền nhiều tham số tới hàm khởi tạo, dễ gây nhầm lẫn và khó bảo trì. Với dự án trên, người ta đã áp dụng vào việc kiểm tra tuân theo các biểu thức chính quy (RegEx). Cụ thể là trong package com.puppycrawl.tools.checkstyle.checks.regexp
+
+#### a. DetectorOptions.java
+Class có ý nghĩa là chứa đựng các tùy chọn trong khi lọc các pattern. Đặc biệt, trong này còn có cả lớp con Builder, chính là hàm để xây dựng lên đối tượng mà mình mong muốn.
+
+#### b. Ứng dụng trong các lớp khác.
+Với file RegexpMultilineCheck.java, đối tượng Builder được sử dụng như sau:
+
+    final DetectorOptions options = DetectorOptions.newBuilder() 
+                .reporter(this)             
+                .compileFlags(getRegexCompileFlags())
+                .format(format)
+                .message(message)
+                .minimum(minimum)
+                .maximum(maximum)
+                .ignoreCase(ignoreCase)
+                .build();
+
+#### c. So sánh với mẫu chuẩn
+Với mẫu chuẩn, ta cần 1 Interface và một class có implements Interface đó. Còn trong trường hợp này, người ta sử dụng Builder như một lớp con final trong một lớp cha final.
 
 ### 17. Mediator Pattern
 Đây là một trong nhưng mẫu không được sử dụng phổ biến hiện nay trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, một đối tượng để bao bọc việc giao tiếp giữa một số đối tượng với nhau. Sau đây ta xét ví dụ trong dự án trên:
