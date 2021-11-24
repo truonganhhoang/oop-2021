@@ -168,4 +168,21 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 
 
+**Flyweight**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cho phép lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.</li>
+	<li>Chứa một phần trạng thái của đối tượng ban đầu có thể được chia sẻ giữa nhiều đối tượng.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Một ứng dụng cần tạo ra một số lượng lớn các đối tượng tương tự.</li>
+	<li>Các đối tượng chứa các trạng thái trùng lặp có thể được trích xuất và chia sẻ giữa nhiều đối tượng</li>
+	<li>Mã trở nên phức tạp hơn nhiều</li>
+</ul>
+</ul>
+
+
 
