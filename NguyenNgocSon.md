@@ -56,3 +56,21 @@ link repo so sánh: https://github.com/google/ExoPlayer
 	<li>Rất nhiều giao diện và lớp mới được giới thiệu cùng với mẫu.</li>
 </ul>
 </ul>
+
+**Builder**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Các đối tượng phức tạp được xây dựng theo từng bước.</li>
+	<li>Concrete Builders cung cấp các cách triển khai khác nhau của các bước xây dựng</li>
+	<li>Director biết các bước xây dựng cần thực hiện để có được một sản phẩm hoạt động.</li>
+	<li>Các builders khác nhau thực hiện cùng một nhiệm vụ theo nhiều cách khác nhau.</li>
+</ul>
+
+<li>Khác nhau :</li>
+<ul>
+	<li>Độ phức tạp tổng thể của mã tăng lên vì mẫu yêu cầu tạo nhiều lớp mới.</li>
+</ul>
+</ul>
+
+
