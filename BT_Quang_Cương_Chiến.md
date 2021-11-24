@@ -47,3 +47,37 @@ _Giống nhau:_
 _Khác nhau:_
 + Về cơ bản, cách tiếp cận của youlookwhat không có khác biệt đối với cách kinh điển của GOF.
 
+// Check is installed
+boolean isInstalled = optionService
+    .getByPropertyOrDefault(PrimaryProperties.IS_INSTALLED, Boolean.class, false);
+
+if (isInstalled) {
+    throw new BadRequestException("该博客已初始化，不能再次安装！");
+}
+
+// Initialize settings
+initSettings(installParam);
+
+// Create default user
+User user = createUser(installParam);
+
+// Create default category
+Category category = createDefaultCategoryIfAbsent();
+
+// Create default post
+PostDetailVO post = createDefaultPostIfAbsent(category);
+
+// Create default sheet
+createDefaultSheet();
+
+// Create default postComment
+createDefaultComment(post);
+
+// Create default menu
+createDefaultMenu();
+
+eventPublisher.publishEvent(
+    new LogEvent(this, user.getId().toString(), LogType.BLOG_INITIALIZED, "博客已成功初始化")
+);
+
+return BaseResponse.ok("安装完成！");
