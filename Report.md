@@ -292,4 +292,73 @@
   - Lớp **Decorator** tên IEuipDecorator quản lý việc "đính" các đá quý lên trang bị (Concrete Component)
   - Lớp **Concrete Decorator** là lớp hiện thực cho Decorator, cụ thể ở đây là các loại đá quý (BlueGemDecorator, RedGemDecorator, GreenGemDecorator)
  - Tổng kết, không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+#### ***5. Facade***
+- Bản chất: Facade Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Pattern này cung cấp một giao diện chung đơn giản thay cho một nhóm các giao diện có trong một hệ thống con (subsystem). Facade Pattern định nghĩa một giao diện ở một cấp độ cao hơn để giúp cho người dùng có thể dễ dàng sử dụng hệ thống con này.
+- Giống nhau:
+  - Repo đã dùng cấu trúc của việc chiếu phim tại nhà (HomeTheater) để làm ví dụ, trong đó: 
+    - Khi xem phim tại nhà, ta cần chuẩn bị rất nhiều thứ như: bật máy tính, tắt đèn, bật máy lòng bỏng ngô, làm bỏng ngô, bật máy chiếu, bật âm thanh.... và sau khi xem xong lại phải lặp lại 1 loạt để thực hiện việc kết thúc. Nếu như không sắp xếp các công việc rõ ràng thì sẽ rất mệt và tốn thời gian!
+    - Vì vậy class HomeTheaterFacade đã sắp xếp các công việc riêng lẻ vào từng hành động chính (xem phim và ngừng xem phim) một cách hợp lí. Các công việc này không cần biết class Facade và ko cần Implement từ nó.
+```java
+      public void watchMovie() {
+        computer.on();
+        light.down();
+        popcornPopper.on();
+        popcornPopper.makePopcorn();
+        projector.on();
+        projector.open();
+        player.on();
+        player.make3DListener();
+    }
 
+    public void stopMovie() {
+        computer.off();
+        light.up();
+        player.off();
+        popcornPopper.off();
+        projector.close();
+        projector.off();
+    }
+```
+- Khác nhau: không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+#### ***6. Flyweight***
+- Bản chất: Flyweight Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Nó cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.
+- Giống nhau:
+  - Repo đã sử dụng việc vẽ 20 hình tròn bằng 5 màu tại các vị trí random (ngẫu nhiên) để làm ví dụ, trong đó:
+  -  Class FlyweightActivity đóng vai trò như FlyweightFactory quản lí việc vẽ hình tròn. Để tránh tình trạng tràn bộ nhớ hoặc quái tải bộ nhớ, Hàm ShapeFactory cố gắng sử dụng lại các đối tượng hiện có cùng loại và nếu không tìm thấy đối tượng phù hợp, một đối tượng mới sẽ được tạo, nếu hình tròn chuẩn bị vẽ cùng màu thì sẽ gọi sẵn những hình đã vẽ.
+```java
+    public static Shape getShape(String color) {
+        Shape shape = circleMap.get(color);
+        if (shape == null) {
+            shape = new Circle(color);
+            circleMap.put(color, shape);
+            Log.e("getShape", "Creating circle of color : " + color);
+        }
+        return shape;
+    }
+```
+- Khác nhau: không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+
+#### ***7. Proxy***
+
+- Bản chất: Proxy Pattern là mẫu thiết kế mà ở đó tất cả các truy cập trực tiếp đến một đối tượng nào đó sẽ được chuyển hướng vào một đối tượng trung gian (Proxy Class). Mẫu Proxy (người đại diện) đại diện cho một đối tượng khác thực thi các phương thức, phương thức đó có thể được định nghĩa lại cho phù hợp với múc đích sử dụng.
+- Giống nhau:
+   - Repo đã lấy việc load ảnh từ disk làm ví dụ:
+   1. Tạo giao diện (Image.java)
+   2. Tạo một RealImage lớp thực thể triển khai giao diện. (Lớp proxy tương ứng: ProxyImage)
+   3. Khi được yêu cầu, hãy sử dụng ProxyImage để lấy các đối tượng của lớp RealImage. 
+```java
+     public RealImage(String fileName) {
+        this.fileName = fileName;
+        loadFromDisk(fileName);
+    }
+
+    private void loadFromDisk(String fileName) {
+        Log.e("RealImage", "loading " + fileName);
+    }
+
+    @Override
+    public void display() {
+        Log.e("RealImage", "Displaying " + fileName);
+    }
+```
+- Khác nhau: không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
