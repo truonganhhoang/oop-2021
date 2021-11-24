@@ -223,6 +223,40 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 </ul>
 
+**Chain of Responsibility**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Chuyển các yêu cầu dọc theo một chuỗi các trình xử lý. Khi nhận được yêu cầu, mỗi trình xử lý sẽ quyết định xử lý yêu cầu hoặc chuyển nó cho trình xử lý tiếp theo trong chuỗi.</li>
+	<li>Những người xử lý được xếp từng hàng một, tạo thành một chuỗi.</li>
+	<li>Một chuỗi có thể được hình thành từ một nhánh của cây đối tượng.
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Một số yêu cầu chưa được giải quyết.</li>
+</ul>
+</ul>
+
+
+**Command**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Biến một yêu cầu thành một đối tượng độc lập chứa tất cả thông tin về yêu cầu</li>
+	<li>Sự chuyển đổi này cho phép bạn chuyển các yêu cầu dưới dạng đối số của phương thức, trì hoãn hoặc xếp hàng đợi việc thực hiện một yêu cầu và hỗ trợ các hoạt động hoàn tác.</li>
+	<li>Các đối tượng GUI có thể truy cập trực tiếp vào các đối tượng logic nghiệp vụ.</li>
+	<li>Truy cập lớp logic nghiệp vụ thông qua một lệnh.</li>
+	<li>Các đối tượng GUI ủy quyền công việc cho các lệnh.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Tham số hóa các đối tượng bằng các phép toán</li>
+	<li>Xếp hàng đợi các hoạt động, lên lịch thực thi hoặc thực thi chúng từ xa.</li>
+	<li>Triển khai các hoạt động có thể đảo ngược</li>
+</ul>
+</ul>
 
 
 
