@@ -22,3 +22,13 @@ Thành viên:   Vũ Hoàng Dương
 - Singleton 
 + Là pattern dành cho việc khởi tạo đối tượng.
 + Một singleton clas là một class chỉ có thể có một instance được tạo ra tại một thời điểm. Sau lần đầu tiên được khởi tạo, ở những lần khởi tạo sau chúng ta vẫn sẽ nhận một tham chiếu đến instance đã khởi tạo ở lần đầu tiên. Vì vậy việc thay đổi các instance của một singleton class sẽ ảnh hưởng đến toàn bộ những nơi sử dụng biến tham chiếu đến instance này.
+- Factory Method:
++ Cung cấp một giao diện để tạo các đối tượng trong lớp cha, nhưng cho phép các lớp con thay đổi loại đối tượng sẽ được tạo.
++ Factory method giải quyết vấn đề này bằng cách định nghĩa một phương thức cho việc tạo đối tượng, và các lớp con thừa kế có thể override để chỉ rõ đối tượng nào sẽ được tạo. 
++ Tất cả các lớp sản phẩm đều triển khai một giao diện chung, bạn có thể chuyển các đối tượng của chúng sang mã máy khách mà không cần phá vỡ nó.
+
+- Builder
++ đối tượng được tạo ra để xây dựng một đôi tượng phức tạp bằng cách sử dụng các đối tượng đơn giản và sử dụng tiếp cận từng bước, việc xây dựng các đối tượng đôc lập với các đối tượng khác.
++ ConcreateBuilder: là thành phần triển khai, cụ thể hóa các lớp trừu tượng cho để tạo ra các thành phần và tập hợp các thành phần đó với nhau. thành phần này sẽ xác định và nắm giữ các thể hiện mà nó tạo ra. Đồng thời nó cũng cung cấp phương thức để trả các các thể hiện mà nó đã tạo ra trước đó.
++ Product: thành phần này trong bài viết sẽ đại diện cho đối tượng phức tạp phải tạo ra
++ Director: thành phần này sẽ khởi tạo đối tượng Builder
