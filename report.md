@@ -90,6 +90,77 @@ Môn học lập trình hướng đối tượng Java
 - Sử dụng thêm mẫu Iterator pattern
 - Ngoài ra không có sự thay đổi đáng kể so với mẫu thiết kế cơ bản
 
+### 2.2 Bridge
+* [Bridge]()https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/structural/bridge.swift)
+
+#### Giống:
+
+- Tách rời ngữ nghĩa của một vấn đề khỏi việc cài đặt, mục đích để cả hai bộ phận (ngữ nghĩa và cài đặt) có thể thay đổi độc lập nhau.
+- Được sử dụng để tách thành phần trừu tượng (Abstraction) và thành phần thực thi (Implementation) riêng biệt.
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+### 2.3 Decorator
+* [Decorator](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/structural/decorator.swift)
+
+#### Giống:
+
+- Gán thêm trách nhiệm cho đối tượng (mở rộng chức năng) vào lúc chạy (dynamically).
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+### 2.4 Composite
+* [Composite](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/structural/composite.swift)
+
+#### Giống:
+
+- Tổ chức các đối tượng theo cấu trúc phân cấp dạng cây. Tất cả các đối tượng trong cấu trúc được thao tác theo một cách thuần nhất như nhau.
+- Tạo quan hệ thứ bậc bao gộp giữa các đối tượng. Client có thể xem đối tượng bao gộp và bị bao gộp như nhau -> khả năng tổng quát hoá trong code của client -> dễ phát triển, nâng cấp, bảo trì.
+
+#### Khác:
+
+- Về cơ bản, khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
+
+### 2.5 Facade
+* [Facade](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/structural/facade.swift)
+
+#### Giống:
+
+- Cung cấp một interface thuần nhất cho một tập hợp các interface trong một “hệ thống con” (subsystem). Nó định nghĩa 1 interface cao hơn các interface có sẵn để làm cho hệ
+  thống con dễ sử dụng hơn
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+### 2.6 Flyweight
+* [Flyweight](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/structural/flyweight.swift)
+
+#### Giống:
+
+- Sử dụng việc chia sẻ để thao tác hiệu quả trên một số lượng lớn đối tượng “cở nhỏ” (chẳng hạn paragraph, dòng, cột, ký tự…).
+- Cố gắng sử dụng lại các đối tượng hiện có cùng loại, nếu không tìm thấy đối tượng phù hợp, một đối tượng mới sẽ được tạo.
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+### 2.7 Proxy
+* [Protection Proxy](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/structural/protection_proxy.swift)
+* [Virtual Proxy](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/structural/virtual_proxy.swift)
+
+#### Giống:
+
+- Cung cấp đối tượng đại diện cho một đối tượng khác để hỗ trợ hoặc kiểm soát quá trình truy xuất đối tượng đó. Đối tượng thay thế gọi là proxy.
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
 
 ## Link tham khảo
 * [23 Design patterns - Tutorialspoint](https://www.tutorialspoint.com/design_pattern/index.htm).
