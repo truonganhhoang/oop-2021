@@ -34,4 +34,7 @@
 * MVC Pattern là một mẫu kiến trúc, mô hình lập trình phổ biến được sử dụng để tạo cấu trúc cho nhiều trang web, ứng dụng tiên tiến.Ứng dụng sẽ được chia thành ba phần phụ thuộc và kết nối với nhau: Model, Views, Controller.
 * MVC Pattern: [web](https://github.com/spring-projects/spring-boot/tree/main/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/web) chúng khá giống với thiết kế mẫu đều có ba thành phần là Model, Views, Controller, được thẻ hiện qua server, selvet, client, sql và các folder trong web.
 
+### Facade Pattern
+* Facade Pattern được dùng để các ứng dụng phía client dễ dàng giao tiếp với hệ thống. Thay vì phải làm việc với nhiều hệ thống/module con, Facade Pattern giúp ứng dụng client chỉ phải giao tiếp với 1 hệ thống duy nhất.
+* Facade Pattern: [client](https://github.com/spring-projects/spring-boot/blob/main/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/web/client/BasicAuthentication.java) về cơ bản khá giống với mẫu thiết kế chuẩn, đều giúp cho phía client có thể dễ dàng giảo tiếp với hệ thống thông qua HttpRequest.
 
