@@ -65,7 +65,7 @@ Phương thức khởi tạo của RecordValueSinkFactory nên được ẩn kh�
   - Một số tham số có thể là tùy chọn nhưng trong Factory Pattern, chúng ta phải gửi tất cả tham số, với tham số tùy chọn nếu không nhập gì thì sẽ truyền là null.
   - Nếu một Object có quá nhiều thuộc tính thì việc tạo sẽ phức tạp.
 
-- Link: https://github.com/questdb/questdb/blob/master/core/src/main/java/io/questdb/BuildInformationHolder.java
+- Link: https://github.com/phbao272/questdb/blob/master/core/src/main/java/io/questdb/DefaultServerConfiguration.java
 
 * Giống nhau : giống với mẫu chuẩn
 * Khác nhau : 
