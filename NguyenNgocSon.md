@@ -321,3 +321,20 @@ link repo so sánh: https://github.com/google/ExoPlayer
 	<li>Một số đối tượng trong ứng dụng của bạn phải quan sát những đối tượng khác, nhưng chỉ trong thời gian giới hạn hoặc trong các trường hợp cụ thể.</li>
 </ul>
 </ul>
+
+
+**State**
+<ul>
+<li>Giống nhau:</li>	
+<ul>
+	<li>Một đối tượng thay đổi hành vi của nó khi trạng thái bên trong của nó thay đổi. Nó xuất hiện như thể đối tượng đã thay đổi lớp của nó.</li>
+	<li>Tài liệu ủy quyền công việc cho một đối tượng trạng thái.</li>
+</ul>
+
+<li>Khác nhau:</li>	
+<ul>
+	<li>Số lượng trạng thái là rất lớn và mã của trạng thái cụ thể thường xuyên thay đổi.</li>
+	<li>State pattern cho phép bạn trích xuất các nhánh của các điều kiện này thành các phương thức của các lớp trạng thái tương ứng</li>
+	<li>State pattern cho phép bạn soạn cấu trúc phân cấp của các lớp trạng thái và giảm sự trùng lặp bằng cách trích xuất mã chung vào các lớp cơ sở trừu tượng.</li>
+</ul>
+</ul>
