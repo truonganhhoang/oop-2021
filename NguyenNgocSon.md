@@ -357,3 +357,17 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 </ul>
 
+**Template Method**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Xác định khung của một thuật toán trong lớp cha nhưng cho phép các lớp con ghi đè các bước cụ thể của thuật toán mà không thay đổi cấu trúc của nó.</li>
+	<li>Chia nhỏ thuật toán thành các bước, cho phép các lớp con ghi đè các bước này nhưng không phải là phương thức thực.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Khách hàng chỉ mở rộng các bước cụ thể của một thuật toán, nhưng không mở rộng toàn bộ thuật toán hoặc cấu trúc của nó.</li>
+	<li>Mã khác nhau giữa các lớp con có thể vẫn còn trong các lớp con.</li>
+</ul>
+</ul>
