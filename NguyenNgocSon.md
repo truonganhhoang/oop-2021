@@ -371,3 +371,22 @@ link repo so sánh: https://github.com/google/ExoPlayer
 	<li>Mã khác nhau giữa các lớp con có thể vẫn còn trong các lớp con.</li>
 </ul>
 </ul>
+
+**Visitor**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Tách các thuật toán khỏi các đối tượng mà chúng hoạt động trên đó.</li>
+	<li>Mỗi phương thức có thể nhận các đối số thuộc các kiểu khác nhau</li>
+	<li>Cung cấp cho phương thức của khách truy cập quyền truy cập vào tất cả dữ liệu cần thiết có trong đối tượng.</li>
+	<li>Double Dispatch , giúp thực thi phương thức thích hợp trên một đối tượng mà không cần các điều kiện rườm rà.</li>
+</ul>
+
+<li>Khác nhau:</li>	
+<ul>
+	<li>Một đối tượng khách triển khai một số biến thể của cùng một thao tác, tương ứng với tất cả các lớp mục tiêu.</li>
+	<li>Trích xuất tất cả các hành vi khác vào một tập hợp các lớp khách truy cập.</li>
+	<li>Chấp nhận các đối tượng của các lớp có liên quan, để trống phần còn lại.</li>
+</ul>
+</ul>
+
