@@ -81,8 +81,8 @@ Phương thức khởi tạo của RecordValueSinkFactory nên được ẩn kh�
 #### Chain of Responsibility
 
 - Chain of Responsiblity cho phép một đối tượng gửi một yêu cầu nhưng không biết đối tượng nào sẽ nhận và xử lý nó.Điều này được thực hiện bằng cách kết nối các đối tượng nhận yêu cầu thành một chuỗi (chain) và gửi yêu cầu theo chuỗi đó cho đến khi có một đối tượng xử lý nó.
-- Các thành phần tham gia mẫu Chain of Responsibility:
 
+- Các thành phần tham gia mẫu Chain of Responsibility:
   - Handler : định nghĩa 1 interface để xử lý các yêu cầu. Gán giá trị cho đối tượng successor (không bắt buộc).
   - ConcreteHandler : xử lý yêu cầu. Có thể truy cập đối tượng successor (thuộc class Handler). Nếu đối tượng ConcreateHandler không thể xử lý được yêu cầu, nó sẽ gởi lời yêu cầu cho successor của nó.
   - Client : tạo ra các yêu cầu và yêu cầu đó sẽ được gửi đến các đối tượng tiếp nhận.
@@ -90,4 +90,11 @@ Phương thức khởi tạo của RecordValueSinkFactory nên được ẩn kh�
   - Logger: là một class Handler, cho phép thực hiện một chain logger dựa vào giá trị LogLevel ứng với từng Handler.
   - LogConsoleWriter, LogFileWriter, EmailLogger: đây là các ConcreteHandler, nó xác định LogLevel mà nó có thể xử lý.
   - LogLevel : là một class dùng để xác định các mức độ ghi log.
+- Ưu điểm của Chain of Responsibility:
+  - Giảm kết nối: Thay vì một đối tượng có khả năng xử lý yêu cầu chứa tham chiếu đến tất cả các đối tượng khác, nó chỉ cần một tham chiếu đến đối tượng tiếp theo.
+  - Tăng tính linh hoạt : đảm bảo Open/Closed Principle.
+  - Phân chia trách nhiệm cho các đối tượng: đảm bảo Single Responsibility Principle.
+  - Có khả năng thay đổi dây chuyền (chain) trong thời gian chạy.
+  - Không đảm bảo có đối tượng xử lý yêu cầu
 - Link: https://github.com/questdb/questdb/tree/ce5977cb08dc8d60e42896d3dcaf867907fb6d5c/core/src/main/java/io/questdb/log
+- Giống nhau : Về cơ bản là tương đồng so với mẫu chuẩn.
