@@ -161,7 +161,134 @@ Môn học lập trình hướng đối tượng Java
 
 - Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
 
+## 3. Behavioral
+- Mẫu thiết kế này trình bày phương pháp thiết kế liên quan đến hành vi của các đối tượng.
+
+### 3.1 Chain of Responsibility: 
+* [Chain of Responsibility](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/behavioral/chain_of_responsibility.swift)
+
+#### Giống:
+
+- Khắc phục việc ghép cặp giữa bộ gởi và bộ nhận thông điệp. 
+- Các đối tượng nhận thông điệp được kết nối thành một chuỗi và thông điệp được chuyển dọc theo chuỗi nầy đến khi gặp được đối tượng xử lý nó. Tránh việc gắn kết cứng giữa phần tử gởi request với phần tử nhận và xử lý request bằng cách cho phép hơn 1 đối tượng có có cơ hội xử lý request. 
+- Liên kết các đối tượng nhận request thành 1 dây chuyền rồi gửi request xuyên qua từng đối tượng xử lý đến khi gặp đối tượng xử lý cụ thể.
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+### 3.2 Command
+* [Command](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/behavioral/command.swift)
+
+#### Giống:
+
+- Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc thành một đối tượng. Các yêu cầu sẽ được lưu trữ và gởi đi như các đối tượng.Đóng gói request vào trong một Object, nhờ đó có thể nthông số hoá chương trình nhận request và thực hiện các thao tác trên request: sắp xếp, log, undo…
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+### 3.3 Interpreter
+* [Interpreter](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/behavioral/interpreter.swift)
+
+#### Giống: 
+
+- Hỗ trợ việc định nghĩa biểu diễn văn phạm và bộ thông dịch cho một ngôn ngữ.
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+### 3.4 Iterator
+* [Iterator](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/behavioral/iterator.swift)
+
+#### Giống:
+
+- Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+### 3.5 Mediator
+* [Mediator](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/behavioral/mediator.swift)
+
+#### Giống:
+
+- Định nghĩa một đối tượng để bao bọc việc giao tiếp giữa một số đối tượng với nhau.
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+### 3.6 Memento
+* [Memento](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/behavioral/memento.swift)
+
+#### Giống:
+
+- Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối tượng mà vẫn không vi phạm việc bao bọc dữ liệu.
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+### 3.7 Observer
+* [Observer](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/behavioral/observer.swift)
+
+#### Giống:
+
+- Định nghĩa sự phụ thuộc một-nhiều giữa các đối tượng sao cho khi một đối tượng thay đổi trạng thái thì tất cả các đối tượng phụ thuộc nó cũng thay đổi theo.
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+### 3.8 State
+* [State](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/behavioral/state.swift)
+
+#### Giống:
+
+- Cho phép một đối tượng thay đổi hành vi khi trạng thái bên trong của nó thay đổi, ta có cảm giác như class của đối tượng bị thay đổi.
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+
+### 3.9 Strategy
+* [Strategy](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/behavioral/strategy.swift)
+
+#### Giống:
+
+- Bao bọc một họ các thuật toán bằng các lớp đối tượng để thuật toán có thể thay đổi độc lập đối với chương trình sử dụng thuật toán.Cung cấp một họ giải thuật cho phép client chọn lựa linh động một giải thuật cụ thể khi sử dụng.
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+### 3.10 Template method
+* [Template method](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/behavioral/template_method.swift)
+
+#### Giống:
+
+- Định nghĩa phần khung của một thuật toán, tức là một thuật toán tổng quát gọi đến một số phương thức chưa được cài đặt trong lớp cơ sở; việc cài đặt các phương thức được ủy nhiệm cho các lớp kế thừa.
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
+### 3.11 Visitor
+* [Visitor](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/behavioral/visitor.swift)
+
+#### Giống:
+
+- Cho phép định nghĩa thêm phép toán mới tác động lên các phần tử của một cấu trúc đối tượng mà không cần thay đổi các lớp định nghĩa cấu trúc đó.
+
+#### Khác:
+
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
 
 ## Link tham khảo
-* [23 Design patterns - Tutorialspoint](https://www.tutorialspoint.com/design_pattern/index.htm).
+* [23 Design patterns](https://refactoring.guru/design-patterns/java).
 ![](https://cdn.discordapp.com/attachments/888331184986284033/910731491087097856/unknown.png)
+* [23 mẫu thiết kế cơ bản - laptrinh.vn](https://laptrinh.vn/books/java/page/java-design-pattern-overview-mau-thiet-ke-trong-java)
