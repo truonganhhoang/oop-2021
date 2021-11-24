@@ -137,4 +137,74 @@ public abstract class RoujiaMo {
     + Không có sự khác nhau.
 
 ### Builder:
-- 
+- Sử dụng mẫu thiết kế Builder: là một mẫu thiết kế thuộc "Nhóm khởi tạo" cho phép bạn xây dựng các đối tượng phức tạp theo từng bước. Mẫu cho phép bạn tạo ra các kiểu và biểu diễn khác nhau của một đối tượng bằng cách sử dụng cùng một hàm khởi tạo (construction).
+- Builder được sử dụng khi làm việc với một lớp mà có chứa rất nhiều các thuộc tính và cần phải tạo ra nhiều hàm khởi tạo với số lượng các thuộc tính tăng dần.
+- **Giống nhau:**
+    + Bao gồm 4 thành phần chính: 
+    + Builder.java: là thành phần định nghĩa một lớp trừu tượng (abstract class) để tạo ra một hoặc nhiều phần của đối tượng Product
+````
+public abstract class Builder {
+
+    public abstract void setPart(String name, String type);
+
+    public abstract Product getProduct();
+}
+````
+    + ConcreteBuilder.java: là thành phần triển khai, cụ thể hóa các lớp trừu tượng cho để tạo ra các thành phần và tập hợp các thành phần đó với nhau. thành phần này sẽ xác định và nắm giữ các thể hiện mà nó tạo ra. Đồng thời nó cũng cung cấp phương thức để trả các các thể hiện mà nó đã tạo ra trước đó.
+````
+public class ConcreteBuilder extends Builder {
+
+    private Product product = new Product();
+
+    @Override
+    public void setPart(String name, String type) {
+        product.setName(name);
+        product.setType(type);
+    }
+
+    @Override
+    public Product getProduct() {
+        return product;
+    }
+}
+````
+    + Director.java: thành phần này sẽ khởi tạo đối tượng Builder.
+````
+public class Director {
+
+    private Builder builder = new ConcreteBuilder();
+
+    public Product getAProduct() {
+        builder . setPart( " Audi cars " , " Q5 " );
+        return builder.getProduct();
+    }
+
+    public Product getBProduct() {
+        builder . setPart( " BMW Car " , " X7 " );
+        return builder.getProduct();
+    }
+}
+````
+    + Product.java: thành phần này sẽ đại diện cho đối tượng phức tạp phải tạo ra.
+````
+public class Product {
+
+    private String name;
+    private String type;
+
+    public void showProduct() {
+        Log.e("---", "Name：" + name);
+        Log.e("---", "Type：" + type);
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+}
+````
+- **Khác nhau:**
+    + Không có sự khác nhau vì sử dụng các thành phần cơ bản của mẫu thiết kế Builder.
