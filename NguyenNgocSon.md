@@ -87,4 +87,20 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 </ul>
 
+**Adapter**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cho phép các đối tượng có giao diện không tương thích cộng tác.</li>
+	<li>Có thể gọi các phương thức của adapter một cách an toàn.</li>
+	<li>Một lớp chứa logic nghiệp vụ hiện có của chương trình.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Khi muốn sử dụng lại một số lớp con hiện có thiếu một số chức năng phổ biến không thể thêm vào lớp cha.</li>
+	<li>Độ phức tạp tổng thể của mã tăng lên.</li>
+</ul>
+</ul>
+
 
