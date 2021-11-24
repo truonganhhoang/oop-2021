@@ -29,3 +29,10 @@ Người tạo có toàn quyền truy cập vào memento, trong khi người ch�
 _Khác nhau:_
 Có thể khôi phục trạng thái trước đó của đối tượng.
 Không đối tượng nào khác có thể đọc ảnh chụp nhanh, làm cho dữ liệu trạng thái của đối tượng ban đầu được an toàn và bảo mật.
+
+**Builder**
+_Giống nhau:_
++ Mẫu thiết kế Builder: Là một mẫu thiết kế thuộc "nhóm khởi tạo" (Creational Pattern). Mẫu thiết kế này cho phép lập trình viên tạo ra những đối tượng phức tạp nhưng chỉ cần thông qua các câu lệnh đơn giản để tác động nên các thuộc tính của nó. 
++ Tách construction một đối tượng phức tạp khỏi biểu diễn của nó để các construction giống nhau có thể tạo ra các biểu diễn khác nhau
+_Khác nhau:_
++ Về cơ bản, cách tiếp cận của youlookwhat không có khác biệt đối với cách kinh điển của GOF.
