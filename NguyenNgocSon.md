@@ -32,6 +32,7 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 
 <li>Khác nhau:</li>
+	
 <ul>
 	<li>Các lớp giao diện người dùng cụ thể.</li>
 	<li>Sự phụ thuộc của các đối tượng mà mã của bạn sẽ hoạt động.</li>
@@ -183,6 +184,27 @@ link repo so sánh: https://github.com/google/ExoPlayer
 	<li>Mã trở nên phức tạp hơn nhiều</li>
 </ul>
 </ul>
+
+**Proxy**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Một proxy kiểm soát quyền truy cập vào đối tượng ban đầu, cho phép bạn thực hiện điều gì đó trước hoặc sau khi yêu cầu được chuyển đến đối tượng ban đầu.</li>
+	<li>Các giao diện Service tuyên bố giao diện của Dịch Vụ. Proxy phải tuân theo giao diện này để có thể tự ngụy trang thành một đối tượng dịch vụ.</li>
+	<li>Proxy quản lý toàn bộ vòng đời của các đối tượng dịch vụ </li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Có thể trì hoãn việc khởi tạo đối tượng đến thời điểm thực sự cần thiết.</li>
+	<li>Proxy có thể chuyển yêu cầu đến đối tượng dịch vụ chỉ khi thông tin xác thực của khách hàng phù hợp với một số tiêu chí.</li>
+	<li>Proxy có thể sử dụng các tham số của yêu cầu làm khóa bộ nhớ cache</li>
+</ul>
+</ul>
+
+
+
+
 
 
 
