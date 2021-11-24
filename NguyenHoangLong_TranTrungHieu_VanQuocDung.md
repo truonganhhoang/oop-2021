@@ -141,8 +141,8 @@ public abstract class RoujiaMo {
 - Builder được sử dụng khi làm việc với một lớp mà có chứa rất nhiều các thuộc tính và cần phải tạo ra nhiều hàm khởi tạo với số lượng các thuộc tính tăng dần.
 - **Giống nhau:**
     + Bao gồm 4 thành phần chính: 
-    + Builder.java: là thành phần định nghĩa một lớp trừu tượng (abstract class) để tạo ra một hoặc nhiều phần của đối tượng Product
 ````
++ Builder.java: là thành phần định nghĩa một lớp trừu tượng (abstract class) để tạo ra một hoặc nhiều phần của đối tượng Product
 public abstract class Builder {
 
     public abstract void setPart(String name, String type);
@@ -150,10 +150,8 @@ public abstract class Builder {
     public abstract Product getProduct();
 }
 ````
-
-    + ConcreteBuilder.java: là thành phần triển khai, cụ thể hóa các lớp trừu tượng cho để tạo ra các thành phần và tập hợp các thành phần đó với nhau. thành phần này sẽ xác định và nắm giữ các thể hiện mà nó tạo ra. Đồng thời nó cũng cung cấp phương thức để trả các các thể hiện mà nó đã tạo ra trước đó.
-    
 ````
++ ConcreteBuilder.java: là thành phần triển khai, cụ thể hóa các lớp trừu tượng cho để tạo ra các thành phần và tập hợp các thành phần đó với nhau. thành phần này sẽ xác định và nắm giữ các thể hiện mà nó tạo ra. Đồng thời nó cũng cung cấp phương thức để trả các các thể hiện mà nó đã tạo ra trước đó.
 public class ConcreteBuilder extends Builder {
 
     private Product product = new Product();
@@ -170,8 +168,8 @@ public class ConcreteBuilder extends Builder {
     }
 }
 ````
-    + Director.java: thành phần này sẽ khởi tạo đối tượng Builder.
 ````
++ Director.java: thành phần này sẽ khởi tạo đối tượng Builder.
 public class Director {
 
     private Builder builder = new ConcreteBuilder();
@@ -187,8 +185,8 @@ public class Director {
     }
 }
 ````
-    + Product.java: thành phần này sẽ đại diện cho đối tượng phức tạp phải tạo ra.
 ````
++ Product.java: thành phần này sẽ đại diện cho đối tượng phức tạp phải tạo ra.
 public class Product {
 
     private String name;
