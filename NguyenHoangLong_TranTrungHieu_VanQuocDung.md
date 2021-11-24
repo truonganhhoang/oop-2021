@@ -17,7 +17,6 @@
 **Giống nhau:** 
     - Kế thừa lại AppCompatActivity thông qua lớp SingletonActivity
     - Implement Singleton Pattern bằng cách Bill Pugh Singleto
-    - Sử dụng 1 static nested class với vai trò 1 helper 
 **Khác nhau:** 
     - không có sự khác nhau.
 
