@@ -124,7 +124,7 @@ public abstract class RoujiaMo {
 ### Factory pattern:
 - Sử dụng mẫu thiết kế Factory Method/Factory Pattern: xác định một interface hoặc lớp trừu tượng (abstract) để tạo một đối tượng nhưng để cho các lớp con quyết định lớp nào sẽ khởi tạo. Nói cách khác, các lớp con chịu trách nhiệm tạo ra thể hiện của lớp.
 - Client chỉ tương tác với Interface hoặc lớp abstract, nó sẽ làm việc với lớp implements interface đó hoặc extends từ lớp abstract.
-- Giống nhau:
+**Giống nhau:**
     + Một interface để tạo đối tượng: public abstract RouJiaMo sellRoujiaMo(String type);
     + Lớp được khởi tạo sẽ được xác định bởi các lớp con, như ta có thể thấy đối tượng bánh roujiamo được tạo từ các lớp con trong code sau:
 ````
@@ -139,7 +139,7 @@ public abstract class RoujiaMo {
             return roujiaMo;
         }
 ````
-- Khác nhau:
+**Giống nhau:**
     + Không có sự khác nhau.
 
 ### Builder:
