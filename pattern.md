@@ -1,36 +1,3 @@
-private final UserService userService;
-
-private final CategoryService categoryService;
-
-private final PostService postService;
-
-private final SheetService sheetService;
-
-private final PostCommentService postCommentService;
-
-private final OptionService optionService;
-
-private final MenuService menuService;
-
-private final ApplicationEventPublisher eventPublisher;
-
-public InstallController(UserService userService,
-    CategoryService categoryService,
-    PostService postService,
-    SheetService sheetService,
-    PostCommentService postCommentService,
-    OptionService optionService,
-    MenuService menuService,
-    ApplicationEventPublisher eventPublisher) {
-    this.userService = userService;
-    this.categoryService = categoryService;
-    this.postService = postService;
-    this.sheetService = sheetService;
-    this.postCommentService = postCommentService;
-    this.optionService = optionService;
-    this.menuService = menuService;
-    this.eventPublisher = eventPublisher;
-}
 
 @PostMapping
 @ResponseBody
