@@ -275,5 +275,19 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 
 
+**Mediator**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Giảm bớt sự phụ thuộc hỗn loạn giữa các đối tượng. Mẫu hạn chế giao tiếp trực tiếp giữa các đối tượng và buộc chúng chỉ cộng tác thông qua một đối tượng trung gian.</li>
+	<li>Các phần tử giao diện người dùng giao tiếp gián tiếp, thông qua đối tượng trung gian</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Khó thay đổi một số lớp</li>
+	<li>Không thể sử dụng lại một thành phần trong một chương trình khác vì nó quá phụ thuộc vào các thành phần khác.</li>
+</ul>
+</ul>
 
 
