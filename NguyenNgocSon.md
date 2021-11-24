@@ -338,3 +338,22 @@ link repo so sánh: https://github.com/google/ExoPlayer
 	<li>State pattern cho phép bạn soạn cấu trúc phân cấp của các lớp trạng thái và giảm sự trùng lặp bằng cách trích xuất mã chung vào các lớp cơ sở trừu tượng.</li>
 </ul>
 </ul>
+
+
+**Strategy**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li> Xác định một nhóm thuật toán, đặt mỗi thuật toán vào một lớp riêng biệt và làm cho các đối tượng của chúng có thể hoán đổi cho nhau.</li>
+	<li>Mỗi thuật toán định tuyến có thể được trích xuất thành lớp riêng của nó bằng một buildRoute phương pháp duy nhất </li>
+</ul>
+
+<li>Khác nhau:</li>	
+<ul>
+	<li>Gián tiếp thay đổi hành vi của đối tượng trong thời gian chạy bằng cách liên kết nó với các đối tượng con khác nhau có thể thực hiện các nhiệm vụ con cụ thể theo những cách khác nhau.</li>
+	<li>Trích xuất các hành vi khác nhau thành một hệ thống phân cấp lớp riêng biệt và kết hợp các lớp ban đầu thành một, do đó giảm mã trùng lặp</li>
+	<li>Tách biệt mã, dữ liệu nội bộ và các phần phụ thuộc của các thuật toán khác nhau khỏi phần còn lại của mã</li>
+	<li>Loại bỏ điều kiện như vậy bằng cách trích xuất tất cả các thuật toán thành các lớp riêng biệt, tất cả đều triển khai cùng một giao diện</li>
+</ul>
+</ul>
+
