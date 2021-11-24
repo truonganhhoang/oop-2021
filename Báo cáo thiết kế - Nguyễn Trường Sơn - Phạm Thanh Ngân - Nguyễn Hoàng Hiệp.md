@@ -372,3 +372,62 @@
     - Class AbstractLogger đóng vai trò như một **Handler** là 1 class interface để xử lý các yêu cầu. Gán giá trị cho đối tượng successor
     - Các **ConcreteHandler** (ConsoleLogger, ErrorLogger, FileLogger) xử lý yêu cầu. Có thể truy cập đối tượng successor (thuộc class Handler). Nếu đối tượng ConcreateHandler không thể xử lý được yêu cầu, nó sẽ gởi lời yêu cầu cho successor của nó.
 - Khác nhau: không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+
+#### ***2. Command***
+- Bản chất: Command Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép chuyển yêu cầu thành đối tượng độc lập, có thể được sử dụng để tham số hóa các đối tượng với các yêu cầu khác nhau như log, queue (undo/redo), transtraction.
+
+- Giống nhau: 
+  - Repo bao gồm:
+    - Class **Command** là một interface hoặc abstract class, chứa một phương thức trừu tượng thực thi (execute) một hành động (operation)
+    - Class ControlPanel giúp điều khiển qua input và QuickCommand giúp thực hiện một lệnh có thể thực hiện nhiều hành động (multiple execute)
+    - Các Object như Computer, Light, Door và các option thực hiện cho nó (On, Off)
+```java
+      public class QuickCommand implements Command {
+
+      private Command[] commands;
+
+      public QuickCommand(Command[] commands) {
+          this.commands = commands;
+      }
+
+      @Override
+      public void execute() {
+          for (Command command : commands) {
+              command.execute();
+          }
+      }
+}
+```
+- Khác nhau: không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+
+#### ***3. Interpreter***
+- Bản chất: Interpreter Pattern giúp người lập trình có thể “xây dựng” những đối tượng “động” bằng cách đọc mô tả về đối tượng rồi sau đó “xây dựng” đối tượng đúng theo mô tả đó.
+- Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+#### ***4. Iterator***
+- Bản chất: Iterator Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó được sử dụng để “Cung cấp một cách thức truy cập tuần tự tới các phần tử của một đối tượng tổng hợp, mà không cần phải tạo dựng riêng các phương pháp truy cập cho đối tượng tổng hợp này”.
+- Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+#### ***5. Mediator***
+- Bản chất: Mediator Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Mediator có nghĩa là người trung gian. Pattern này nói rằng “Định nghĩa một đối tượng gói gọn cách một tập hợp các đối tượng tương tác. Mediator thúc đẩy sự khớp nối lỏng lẻo (loose coupling) bằng cách ngăn không cho các đối tượng đề cập đến nhau một cách rõ ràng và nó cho phép bạn thay đổi sự tương tác của họ một cách độc lập”.
+- Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+#### ***6. Memento***
+- Bản chất: Memento là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Memento là mẫu thiết kế có thể lưu lại trạng thái của một đối tượng để khôi phục lại sau này mà không vi phạm nguyên tắc đóng gói.
+- Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+#### ***7. Observer***
+- Bản chất: Observer Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó định nghĩa mối phụ thuộc một – nhiều giữa các đối tượng để khi mà một đối tượng có sự thay đổi trạng thái, tất các thành phần phụ thuộc của nó sẽ được thông báo và cập nhật một cách tự động.
+- Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+#### ***8. State***
+- Bản chất: State Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép một đối tượng thay đổi hành vi của nó khi trạng thái nội bộ của nó thay đổi. Đối tượng sẽ xuất hiện để thay đổi lớp của nó.
+- Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+#### ***9. Strategy***
+- Bản chất: Strategy Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép định nghĩa tập hợp các thuật toán, đóng gói từng thuật toán lại, và dễ dàng thay đổi linh hoạt các thuật toán bên trong object. Strategy cho phép thuật toán biến đổi độc lập khi người dùng sử dụng chúng.
+- Giống nhau:
+   - Repo bao gồm:
+      - Class **Strategy** tên Role định nghĩa các hành vi có thể có của một Strategy 
+      - Các **ConcreteStrategy ** class (IAttackBehavior, IDefendBehavior IRunBehavior) cài đặt các hành vi cụ thể của Strategy. 
+- Khác nhau: Không tồn tại class **Context** đóng vai trò nhận các yêu cầu từ Client, các yêu cầu này sau đó được ủy quyền cho Strategy thực hiện.
+#### ***10. Template Method***
+- Bản chất: Template Method Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Pattern này nói rằng “Định nghĩa một bộ khung của một thuật toán trong một chức năng, chuyển giao việc thực hiện nó cho các lớp con. Mẫu Template Method cho phép lớp con định nghĩa lại cách thực hiện của một thuật toán, mà không phải thay đổi cấu trúc thuật toán“.
+- Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+#### ***11. Visitor***
+- Bản chất: Visitor Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Visitor cho phép định nghĩa các thao tác (operations) trên một tập hợp các đối tượng (objects) không đồng nhất (về kiểu) mà không làm thay đổi định nghĩa về lớp (classes) của các đối tượng đó. Để đạt được điều này, trong mẫu thiết kế visitor ta định nghĩa các thao tác trên các lớp tách biệt gọi các lớp visitors, các lớp này cho phép tách rời các thao tác với các đối tượng mà nó tác động đến. Với mỗi thao tác được thêm vào, một lớp visitor tương ứng được tạo ra.
+- Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
