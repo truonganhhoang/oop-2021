@@ -135,5 +135,3 @@ Các loại mẫu thiết kế:
     + Cho phép định nghĩa thêm phép toán mới tác động lên các phần tử của một cấu trúc đối tượng mà không cần thay đổi các lớp định nghĩa cấu trúc đó.
     + Tần suất sử dụng: thấp.
     + https://github.com/RefactoringGuru/design-patterns-java/tree/master/src/refactoring_guru/visitor/example
- 
-
