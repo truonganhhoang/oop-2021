@@ -307,3 +307,10 @@ public class LivingRoomVisitor : IUnitVisitor
     }
 ```
 - So sánh: khá giống nhau về cách sử dụng, vì các phương thức được thêm vào trong class không làm thay đổi hành vi của các đoạn code trước đó 
+
+
+
+
+
+
+# Kết Luận chung: **Tất cả các mẫu thiết kế trên đều giống, không có nhiều thay đổi so với 23 mẫu thiết kế chuẩn.**
