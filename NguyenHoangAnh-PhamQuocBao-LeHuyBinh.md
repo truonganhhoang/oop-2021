@@ -116,6 +116,43 @@ Phương thức khởi tạo của RecordValueSinkFactory nên được ẩn kh�
 => Các lớp này đều phát triển dựa trên giao diện IndexFrameCursor và có các method với hành vi khác nhau.
 * Giống nhau : giống với mẫu chuẩn.
 * Khác nhau : 
+
+#### Decorator
+
+- Decorator pattern là một Structural pattern. Decorator pattern là mẫu thiết kế đối tượng được tạo ra để xây dựng các lớp cho phép bạn tự động thay đổi hành vi của một đối tượng tại thời điểm chạy bằng cách gói chúng trong một đối tượng của lớp Decorator.
+- Ví dụ giao diện RowCursor:
+```
+public interface RowCursor {
+    /**
+     * @return true if cursor has more rows, otherwise false.
+     */
+    boolean hasNext();
+
+    /**
+     * @return numeric index of the next row
+     */
+    long next();
+}
+```
+- Lớp NullCursor được implements dựa trên Rowcursor và sẽ thay đổi giá trị value nếu ta tạo 1 lớp NullCursor lúc chạy chương trình.
+```
+private static class NullCursor implements RowCursor {
+        private long value;
+
+        @Override
+        public boolean hasNext() {
+            return value > -1;
+        }
+
+        @Override
+        public long next() {
+            return value--;
+        }
+    }
+```
+
+* Giống nhau : giống với mẫu chuẩn.
+* Khác nhau : 
 ## III, Behavioral
 
 #### Chain of Responsibility
