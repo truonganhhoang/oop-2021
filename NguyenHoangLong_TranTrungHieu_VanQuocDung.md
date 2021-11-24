@@ -8,7 +8,7 @@
 
 # BÁO CÁO SO SÁNH MẪU THIẾT KẾ
 
-## **I. Nhóm Creational**
+## I. Nhóm Creational
 
 ### Singleton:
 - Sử dụng Singleton pattern: là mẫu thiết kế sáng tạo cho phép đảm bảo chỉ duy nhất một thể hiện (instance) được tạo ra và nó sẽ cung cấp một method để có  thể truy xuất được thể hiện duy nhất đó mọi lúc mọi nơi trong chương trình.
@@ -42,13 +42,10 @@ public class SingletonActivity extends AppCompatActivity implements View.OnClick
         }
     }
 }
-
 ````
 
-## Abstract Factory
-
+### Abstract Factory:
 - Sử dụng mẫu thiết kế Abstract Factory: là một trong những Pattern thuộc nhóm Creational Design Pattern. Abstract Factory cho phép một lớp trả về một nhà máy của các lớp, được sử dụng khi hệ thống cần phải độc lập với cách đối tượng của nó được tạo ra hoặc khi hệ thống cần được cấu hình với một trong nhiều họ đối tượng.
-
 - Gồm các thành phần cơ bản: Sub classes, Factory class, Abstract Factory class...
 - **Giống nhau:** 
     + Factory class là AnimalFactory và InsectFactory có trách nhiệm khởi tạo các sub classes.
