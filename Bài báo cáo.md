@@ -109,7 +109,7 @@ class Rectangle : IFigure
  
  # 2. Behavioral Patterns
  ## 2.1 Chain of Responsibility
- - cho phép chuyển các yêu cầu dọc theo một chuỗi các trình xử lý. Khi nhận được yêu cầu, mỗi trình xử lý sẽ quyết định xử lý yêu cầu hoặc chuyển nó cho trình xử lý tiếp theo trong chuỗi.
+ - Cho phép chuyển các yêu cầu dọc theo một chuỗi các trình xử lý. Khi nhận được yêu cầu, mỗi trình xử lý sẽ quyết định xử lý yêu cầu hoặc chuyển nó cho trình xử lý tiếp theo trong chuỗi.
  - Code: [Chain of Responsibility](https://github.com/abishekaditya/DesignPatterns/tree/master/ChainOfResponsibilityPattern)
  ```
  // Giao diện trình xử lý khai báo một phương pháp để xây dựng một chuỗi trình xử lý. Nó cũng khai báo phương thức để thực hiện một yêu cầu.
@@ -137,7 +137,7 @@ public class MultiplicationHandler : BaseHandler {
 
 ## 2.2 Command
 - Command biến một yêu cầu thành một đối tượng độc lập chứa tất cả thông tin về yêu cầu. Sự chuyển đổi này cho phép bạn chuyển các yêu cầu dưới dạng đối số của phương thức, trì hoãn hoặc xếp hàng đợi việc thực hiện một yêu cầu và hỗ trợ các hoạt động hoàn tác.
-- Code: 
+- Code: [Command](https://github.com/abishekaditya/DesignPatterns/tree/master/CommandPattern)
 - The base command class xác định giao diện chung cho các concrete commands.
 ```
 internal interface ICommand
