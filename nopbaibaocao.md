@@ -13,15 +13,15 @@ Thành viên:
 
 **Giống nhau:**
 	
-     - Sử dụng mẫu thiết kế Factory pattern: là một trong những Pattern thuộc nhóm Creational Design Pattern. Factory Method cho phép các lớp con chọn kiểu đối tượng cần tạo, giúp cho việc khởi tạo đối tượng một cách linh hoạt hơn.
+- Sử dụng mẫu thiết kế Factory pattern: là một trong những Pattern thuộc nhóm Creational Design Pattern. Factory Method cho phép các lớp con chọn kiểu đối tượng cần tạo, giúp cho việc khởi tạo đối tượng một cách linh hoạt hơn.
 	
-     - Gồm các thành phần cơ bản: Sub classes, Factory class,...
+- Gồm các thành phần cơ bản: Sub classes, Factory class,...
 	
-     - Factory class là AnimalFactory có trách nhiệm khởi tạo các sub classes.
+- Factory class là AnimalFactory có trách nhiệm khởi tạo các sub classes.
 
 **Khác nhau:**
 	
-     - Không có thành phần Super class.
+- Không có thành phần Super class.
 
 **Src code**
 ````
@@ -51,17 +51,17 @@ class AnimalFactory(Factory):  # A factory class for creating animals.
 
 **Giống nhau:**
 
-     - Sử dụng mẫu thiết kế Abstract Factory: là một trong những Pattern thuộc nhóm Creational Design Pattern. Abstract Factory cho phép một lớp trả về một nhà máy của các lớp, được sử dụng khi hệ thống cần phải độc lập với cách đối tượng của nó được tạo ra hoặc khi hệ thống cần được cấu hình với một trong nhiều họ đối tượng.
+- Sử dụng mẫu thiết kế Abstract Factory: là một trong những Pattern thuộc nhóm Creational Design Pattern. Abstract Factory cho phép một lớp trả về một nhà máy của các lớp, được sử dụng khi hệ thống cần phải độc lập với cách đối tượng của nó được tạo ra hoặc khi hệ thống cần được cấu hình với một trong nhiều họ đối tượng.
 	
-     - Gồm các thành phần cơ bản: Sub classes, Factory class, Abstract Factory class...
+- Gồm các thành phần cơ bản: Sub classes, Factory class, Abstract Factory class...
 	
-     - Factory class là AnimalFactory và InsectFactory có trách nhiệm khởi tạo các sub classes.
+- Factory class là AnimalFactory và InsectFactory có trách nhiệm khởi tạo các sub classes.
 
-     - Abstract Factory class là CreatureFactory.
+- Abstract Factory class là CreatureFactory.
 
 **Khác nhau:**
 
-     - Không có Super class để các Sub class kế thừa (ví dụ khai báo 1 class có tên Creatures trong đó có method Activity()).
+- Không có Super class để các Sub class kế thừa (ví dụ khai báo 1 class có tên Creatures trong đó có method Activity()).
 
 **Src code**
 ````
@@ -131,15 +131,15 @@ class CreatureFactory(AbstractFactory):  # A Factory class for creating creature
 
 **Giống nhau:**
 
-     - Sử dụng mẫu thiết kế Builder: là một mẫu thiết kế sáng tạo cho phép bạn xây dựng các đối tượng phức tạp theo từng bước. Mẫu cho phép bạn tạo ra các kiểu và hình ảnh đại diện khác nhau của một đối tượng bằng cách sử dụng cùng một mã xây dựng.
+- Sử dụng mẫu thiết kế Builder: là một mẫu thiết kế sáng tạo cho phép bạn xây dựng các đối tượng phức tạp theo từng bước. Mẫu cho phép bạn tạo ra các kiểu và hình ảnh đại diện khác nhau của một đối tượng bằng cách sử dụng cùng một mã xây dựng.
 
-     - Được sử dụng khi tạo một đối tượng phức tạp và có quá nhiều Constructor.
+- Được sử dụng khi tạo một đối tượng phức tạp và có quá nhiều Constructor.
 
-     - Gồm các thành phần: Product(class Building), Builder(class HomeBuilder), Director(class HomeDirector), ConcreteBuilder(class FlatBuilder). 
+- Gồm các thành phần: Product(class Building), Builder(class HomeBuilder), Director(class HomeDirector), ConcreteBuilder(class FlatBuilder). 
 	
 **Khác nhau:**
 
-     - Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
 
 **Src code**
 ````
@@ -196,13 +196,13 @@ class HomeDirector(Director):  # A Director class for managing home construction
 
 **Giống nhau:**
 
-     - Sử dụng mẫu thiết kế Prototype pattern: là một trong những Creational pattern, có nhiệm vụ khởi tạo một đối tượng bằng cách clone một đối tượng đã tồn tại thay vì khởi tạo với từ khoá new. 
+- Sử dụng mẫu thiết kế Prototype pattern: là một trong những Creational pattern, có nhiệm vụ khởi tạo một đối tượng bằng cách clone một đối tượng đã tồn tại thay vì khởi tạo với từ khoá new. 
 
-     - Prototype Pattern được dùng khi việc tạo một object tốn nhiều chi phí và thời gian trong khi bạn đã có một object tương tự tồn tại 
+- Prototype Pattern được dùng khi việc tạo một object tốn nhiều chi phí và thời gian trong khi bạn đã có một object tương tự tồn tại 
 
 **Khác nhau:**
 
-     - Không có sự khác biệt vì mẫu thiết kế này chỉ tạo các lớp implement và method clone().
+- Không có sự khác biệt vì mẫu thiết kế này chỉ tạo các lớp implement và method clone().
 
 **Src code**
 ````
@@ -236,13 +236,13 @@ def distance_to(this, other):
 
 **Giống nhau:**
 
-     - Sử dụng Singleton pattern: là mẫu thiết kế sáng tạo cho phép đảm bảo chỉ duy nhất một thể hiện (instance) được tạo ra và nó sẽ cung cấp một method để có thể truy xuất được thể hiện duy nhất đó mọi lúc mọi nơi trong chương trình.
+- Sử dụng Singleton pattern: là mẫu thiết kế sáng tạo cho phép đảm bảo chỉ duy nhất một thể hiện (instance) được tạo ra và nó sẽ cung cấp một method để có thể truy xuất được thể hiện duy nhất đó mọi lúc mọi nơi trong chương trình.
 
-     - Mỗi class bao gồm 1 class Singleton và 1 class SingletonClient để kiểm tra tính unique của Singleton class
+- Mỗi class bao gồm 1 class Singleton và 1 class SingletonClient để kiểm tra tính unique của Singleton class
 
 **Khác nhau:**
 
-     - Có nhiều cách để implement Singleton class, như trong ví dụ dưới đây là 1 cách, còn lại có thể implement theo Static block initialization hay Lazy Initialization...v.v..
+- Có nhiều cách để implement Singleton class, như trong ví dụ dưới đây là 1 cách, còn lại có thể implement theo Static block initialization hay Lazy Initialization...v.v..
 
 **Src code**
 ````
