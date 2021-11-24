@@ -16,52 +16,64 @@ Các loại mẫu thiết kế:
  
  - Abstract Factory: 
    + Cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng. 
+   + Tần suất sử dụng: cao.
    + https://github.com/RefactoringGuru/design-patterns-java/tree/master/src/refactoring_guru/abstract_factory/example
    
  - Factory Method:
    + Định nghĩa Interface để sinh ra đối tượng nhưng để cho lớp con quyết định lớp nào được dùng để sinh ra đối tượng Factory method cho phép một lớp chuyển quá trình khởi tạo đối tượng cho lớp con.
+   + Tần suất sử dụng: cao.
    + https://github.com/RefactoringGuru/design-patterns-java/tree/master/src/refactoring_guru/factory_method/example
 
  - Builder:
    + Tách rời việc xây dựng (construction) một đối tượng phức tạp khỏi biểu diễn của nó sao cho cùng một tiến trình xây dựng có thể tạo được các biểu diễn khác nhau.
+   + Tần suất sử dụng: trung bình thấp.
    + https://github.com/RefactoringGuru/design-patterns-java/tree/master/src/refactoring_guru/builder/example
  
  - Prototype:
    + Qui định loại của các đối tượng cần tạo bằng cách dùng một đối tượng mẫu, tạo mới nhờ vào sao chép đối tượng mẫu này.
+   + Tần suất sử dụng: trung bình.
    + https://github.com/RefactoringGuru/design-patterns-java/tree/master/src/refactoring_guru/prototype
 
  - Singleton:
    + Đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó.
+   + Tần suất sử dụng: cao trung bình.
    + https://github.com/RefactoringGuru/design-patterns-java/tree/master/src/refactoring_guru/singleton/example
 
 # Structural Pattern (nhóm cấu trúc): Những Design pattern loại này liên quan tới class và các thành phần của object. Nó dùng để thiết lập, định nghĩa quan hệ giữa các đối       tượng.
 
  - Adapter:
    + Do vấn đề tương thích, thay đổi interface của một lớp thành một interface khác phù hợp với yêu cầu người sử dụng lớp.
+   + Tần suất sử dụng: cao trung bình.
    + https://github.com/RefactoringGuru/design-patterns-java/tree/master/src/refactoring_guru/adapter/example
  
  - Bridge:
    + Tách rời ngữ nghĩa của một vấn đề khỏi việc cài đặt, mục đích để cả hai bộ phận (ngữ nghĩa và cài đặt) có thể thay đổi độc lập nhau.
+   + Tần suất sử dụng: trung bình.
    + https://github.com/RefactoringGuru/design-patterns-java/tree/master/src/refactoring_guru/bridge/example
   
  - Composite:
    + Tổ chức các đối tượng theo cấu trúc phân cấp dạng cây. Tất cả các đối tượng trong cấu trúc được thao tác theo một cách thuần nhất như nhau. Tạo quan hệ thứ bậc bao gộp giữa các đối tượng. Client có thể xem đối tượng bao gộp và bị bao gộp như nhau -> khả năng tổng quát hoá trong code của client -> dễ phát triển, nâng cấp, bảo trì. 
+   + Tần suất sử dụng: cao trung bình.
    + https://github.com/RefactoringGuru/design-patterns-java/tree/master/src/refactoring_guru/composite/example
  
  - Decorator:
    + Gán thêm trách nhiệm cho đối tượng (mở rộng chức năng) vào lúc chạy (dynamically).
+   + Tần suất sử dụng: trung bình.
    + https://github.com/RefactoringGuru/design-patterns-java/tree/master/src/refactoring_guru/decorator/example
    
  - Facade:
    + Cung cấp một interface thuần nhất cho một tập hợp các interface trong một “hệ thống con” (subsystem). Nó định nghĩa 1 interface cao hơn các interface có sẵn để làm cho hệ thống con dễ sử dụng hơn.
+   + Tần suất sử dụng: cao.
    + https://github.com/RefactoringGuru/design-patterns-java/tree/master/src/refactoring_guru/facade/example
 
  - Flyweight:
    + Sử dụng việc chia sẻ để thao tác hiệu quả trên một số lượng lớn đối tượng “cở nhỏ” (chẳng hạn paragraph, dòng, cột, ký tự…).
+   + Tần suất sử dụng: thấp.
    + https://github.com/RefactoringGuru/design-patterns-java/tree/master/src/refactoring_guru/flyweight/example
    
  - Proxy:
    + Cung cấp đối tượng đại diện cho một đối tượng khác để hỗ trợ hoặc kiểm soát quá trình truy xuất đối tượng đó. Đối tượng thay thế gọi là proxy.
+   + Tần suất sử dụng: cao trung bình.
    + https://github.com/RefactoringGuru/design-patterns-java/tree/master/src/refactoring_guru/proxy/example
 
 # Behavioral Pattern (nhóm hành vi/ tương tác): Những Design pattern loại này liên quan tới class và các thành phần của object. Nó dùng để thiết lập, định nghĩa quan hệ giữa các đối tượng.
