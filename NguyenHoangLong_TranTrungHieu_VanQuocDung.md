@@ -56,8 +56,7 @@ public class SingletonActivity extends AppCompatActivity implements View.OnClick
 - Khác nhau:
     + Không có sự khác nhau.
 - Code:
-
-'''
+````
      public abstract class Shape implements Cloneable {
         @Override
         public Object clone() {
@@ -70,9 +69,9 @@ public class SingletonActivity extends AppCompatActivity implements View.OnClick
             return object;
         }
     }
-'''
+````
 
-'''
+````
     public class PrototypeActivity extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -96,4 +95,4 @@ public class SingletonActivity extends AppCompatActivity implements View.OnClick
             });
         }
       }
-'''
+````
