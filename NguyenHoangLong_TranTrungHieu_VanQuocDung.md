@@ -22,7 +22,7 @@
     + Không có sự khác nhau.
 - Code:
 
-,,,
+'''
      public abstract class Shape implements Cloneable {
         @Override
         public Object clone() {
@@ -35,9 +35,9 @@
             return object;
         }
     }
-,,,
+'''
 
-,,,
+'''
     public class PrototypeActivity extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -61,4 +61,4 @@
             });
         }
       }
-,,,
+'''
