@@ -362,3 +362,13 @@
     }
 ```
 - Khác nhau: không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+
+### **C. Behavioral Pattern**
+#### ***1. Chain of Responsibility***
+- Bản chất: Chain of Responsiblity cho phép một đối tượng gửi một yêu cầu nhưng không biết đối tượng nào sẽ nhận và xử lý nó. Điều này được thực hiện bằng cách kết nối các đối tượng nhận yêu cầu thành một chuỗi (chain) và gửi yêu cầu theo chuỗi đó cho đến khi có một đối tượng xử lý nó.
+
+- Giống nhau: 
+  - Trong cấu trúc của repo:
+    - Class AbstractLogger đóng vai trò như một **Handler** là 1 class interface để xử lý các yêu cầu. Gán giá trị cho đối tượng successor
+    - Các **ConcreteHandler** (ConsoleLogger, ErrorLogger, FileLogger) xử lý yêu cầu. Có thể truy cập đối tượng successor (thuộc class Handler). Nếu đối tượng ConcreateHandler không thể xử lý được yêu cầu, nó sẽ gởi lời yêu cầu cho successor của nó.
+- Khác nhau: không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
