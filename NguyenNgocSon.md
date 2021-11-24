@@ -259,6 +259,20 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 
 
+**Iterator**
+<ul>
+<li>Giống nhau:</li>
+	<li>Duyệt qua các phần tử của một bộ sưu tập mà không để lộ biểu diễn cơ bản của nó (danh sách, ngăn xếp, cây, v.v.).</li>
+	<li>Trình lặp thực hiện các thuật toán duyệt khác nhau. Một số đối tượng trình lặp có thể duyệt cùng một bộ sưu tập cùng một lúc.
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Trình lặp đóng gói các chi tiết làm việc với cấu trúc dữ liệu phức tạp</li>
+	<li>Mã của các thuật toán lặp không tầm thường có xu hướng rất cồng kềnh</li>
+	<li>Mẫu cung cấp một vài giao diện chung cho cả bộ sưu tập và trình vòng lặp</li>
+</ul>
+</ul>
 
 
 
