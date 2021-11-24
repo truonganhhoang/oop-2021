@@ -5,7 +5,7 @@
 #### Danh sách thành viên:
 * Nguyễn Trường Sơn - MSV: 19020609
 * Nguyễn Hoàng Hiệp - MSV: 19020609
-* Phạm Thanh Ngân - MSV: 19020609
+* Phạm Thanh Ngân - MSV: 19020584
 
 #### **Về việc làm bài báo cáo**: 
 - Mỗi thành viên sẽ làm phần việc mình được giao và sẽ commit vào repo chung của nhóm khi đã hoàn tất (**[link repo của nhóm](https://github.com/sonishere/oop-2021)**)
