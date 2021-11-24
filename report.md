@@ -4,10 +4,10 @@ Môn học lập trình hướng đối tượng Java
 ## Thành viên
 * Đinh Ngọc Sơn - 19020607 - K64K1
 * Nguyễn Tiến Nghĩa - 19020586 - K64K1
-*
+* Hoàng Hải Nam - 19020582 - K64K2
 
 ## Báo cáo
-## Báo cáo
+
 ### Repo mẫu thiết kế: [](https://github.com/ochococo/Design-Patterns-In-Swift)
 
 - Đây là repo chứa đầy đủ 23 mẫu thiết kế được thiết kế dựa trên các mẫu thiết kế chuẩn. Dưới đây là sự so sánh giữa các mẫu trong repo với các mẫu thiết kế chuẩn tại https://refactoring.guru/design-patterns/java.
@@ -76,7 +76,7 @@ Môn học lập trình hướng đối tượng Java
 ## 2. Structural
 - Nhóm này liên quan đến sự kết hợp giữa các đối tượng với nhau.
 - 7 mẫu: Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy.
-- 
+
 ### 2.1 Adapter
 * [Adapter](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/structural/adapter.swift)
 
