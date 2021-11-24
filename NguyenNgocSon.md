@@ -291,3 +291,17 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 
 
+**Memento**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cho phép lưu và khôi phục trạng thái trước đó của một đối tượng mà không tiết lộ chi tiết về quá trình triển khai của nó.</li>
+	<li>Người tạo có toàn quyền truy cập vào memento, trong khi người chăm sóc chỉ có thể truy cập siêu dữ liệu.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Có thể khôi phục trạng thái trước đó của đối tượng.</li>
+	<li>Không đối tượng nào khác có thể đọc ảnh chụp nhanh, làm cho dữ liệu trạng thái của đối tượng ban đầu được an toàn và bảo mật.</li>
+</ul>
+</ul>
