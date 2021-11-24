@@ -431,3 +431,6 @@
 #### ***11. Visitor***
 - Bản chất: Visitor Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Visitor cho phép định nghĩa các thao tác (operations) trên một tập hợp các đối tượng (objects) không đồng nhất (về kiểu) mà không làm thay đổi định nghĩa về lớp (classes) của các đối tượng đó. Để đạt được điều này, trong mẫu thiết kế visitor ta định nghĩa các thao tác trên các lớp tách biệt gọi các lớp visitors, các lớp này cho phép tách rời các thao tác với các đối tượng mà nó tác động đến. Với mỗi thao tác được thêm vào, một lớp visitor tương ứng được tạo ra.
 - Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+
+
+## Tổng Kết: Mặc dù có sự khác biệt ở một số Patterns, các mẫu thiết kế được sử dụng và phát triển đều khá giống và tương đồng với 23 mẫu có sẵn của Gang Of Four!
