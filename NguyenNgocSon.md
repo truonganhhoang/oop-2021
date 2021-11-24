@@ -73,4 +73,18 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 </ul>
 
+**Prototype**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cho phép sao chép các đối tượng hiện có mà không làm cho mã của ban đầu phụ thuộc vào các lớp của chúng.</li>
+	<li>Prototypes được tạo sẵn có thể là một giải pháp thay thế cho subclassing.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Mẫu Prototype cung cấp cho mã máy khách một giao diện chung để làm việc với tất cả các đối tượng hỗ trợ nhân bản. Giao diện này làm cho mã máy khách độc lập với các lớp cụ thể của các đối tượng mà nó sao chép.</li>
+</ul>
+</ul>
+
 
