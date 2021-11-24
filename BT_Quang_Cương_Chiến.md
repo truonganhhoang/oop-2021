@@ -1,11 +1,11 @@
 # OOP-2021
 Môn học Lập trình hướng đối tượng với Java 
-Thành viên Nhóm: Dương Bình Cương_
-                 Vũ Minh Chiến_ 
-                 Nghiêm Văn Quang_
+Thành viên Nhóm: Dương Bình Cương<br />
+                 Vũ Minh Chiến<br /> 
+                 Nghiêm Văn Quang<br />
 
-Link github sử dụng : https://github.com/halo-dev/halo.git_
-Link tài liệu: https://refactoring.guru/design-patterns/catalog_
+Link github sử dụng : https://github.com/halo-dev/halo.git<br />
+Link tài liệu: https://refactoring.guru/design-patterns/catalog<br />
 ***Iterator**
 _- Giống nhau:_
 Duyệt qua các phần tử của một bộ sưu tập mà không để lộ biểu diễn cơ bản của nó (danh sách, ngăn xếp, cây, v.v.).
