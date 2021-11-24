@@ -18,7 +18,7 @@
     + Implement Singleton Pattern bằng cách Bill Pugh Singleto
 - **Khác nhau:** 
     + không có sự khác nhau.
-- **Code:**
+- **Code:** 
 ````
 public class SingletonActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -55,7 +55,7 @@ public class SingletonActivity extends AppCompatActivity implements View.OnClick
     + Abstract Factory class là CreatureFactory.
 - **Khác nhau:** 
     + Không có Super class để các Sub class kế thừa (ví dụ khai báo 1 class có tên Creatures trong đó có method Activity()).
-- **Code:**
+- **Code:** 
 ````
 public abstract class RoujiaMo {
 
@@ -70,13 +70,13 @@ public abstract class RoujiaMo {
 ### Prototype:
 - Sử dụng mẫu thiết kế Prototype pattern: là một trong những Creational pattern, có nhiệm vụ khởi tạo một đối tượng bằng cách clone một đối tượng đã tồn tại thay vì khởi tạo với từ khoá new.
 - Prototype Pattern được dùng khi việc tạo một object tốn nhiều chi phí và thời gian trong khi bạn đã có một object tương tự tồn tại.
-- **Giống nhau:**  
+- **Giống nhau:** 
     + Abstract class Shape implement Cloneable.
     + Một class kế thừa lại lớp có sẵn là AppCompatActivity.
     + 3 lớp Circle, Rectangle, Square kế thừa lại lớp Shape.
 - **Khác nhau:** 
     + Không có sự khác nhau.
-- **Code:**
+- **Code:** 
 ````
      public abstract class Shape implements Cloneable {
         @Override
