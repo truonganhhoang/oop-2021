@@ -4,7 +4,7 @@
 
 #### Danh sách thành viên:
 * Nguyễn Trường Sơn - MSV: 19020609
-* Nguyễn Hoàng Hiệp - MSV: 19020609
+* Nguyễn Hoàng Hiệp - MSV: 19020541
 * Phạm Thanh Ngân - MSV: 19020584
 
 #### **Về việc làm bài báo cáo**: 
