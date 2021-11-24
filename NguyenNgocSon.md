@@ -305,3 +305,19 @@ link repo so sánh: https://github.com/google/ExoPlayer
 	<li>Không đối tượng nào khác có thể đọc ảnh chụp nhanh, làm cho dữ liệu trạng thái của đối tượng ban đầu được an toàn và bảo mật.</li>
 </ul>
 </ul>
+
+
+**Observer**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cho phépxác định cơ chế đăng ký để thông báo cho nhiều đối tượng về bất kỳ sự kiện nào xảy ra với đối tượng mà họ đang quan sát.</li>
+	<li>Cơ chế đăng ký cho phép các đối tượng riêng lẻ đăng ký nhận thông báo sự kiện</li>
+	<li>Nhà xuất bản thông báo cho người đăng ký bằng cách gọi phương thức thông báo cụ thể trên các đối tượng của họ.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Một số đối tượng trong ứng dụng của bạn phải quan sát những đối tượng khác, nhưng chỉ trong thời gian giới hạn hoặc trong các trường hợp cụ thể.</li>
+</ul>
+</ul>
