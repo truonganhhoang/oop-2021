@@ -10,6 +10,41 @@
 
 ## **I. Nhóm Creational**
 
+### Singleton:
+- Sử dụng Singleton pattern: là mẫu thiết kế sáng tạo cho phép đảm bảo chỉ duy nhất một thể hiện (instance) được tạo ra và nó sẽ cung cấp một method để có  thể truy xuất được thể hiện duy nhất đó mọi lúc mọi nơi trong chương trình.
+- Mỗi class bao gồm 1 class Singleton và 1 class SingletonClient để kiểm tra tính unique của Singleton class.
+- Giống nhau: 
+    - Kế thừa lại AppCompatActivity thông qua lớp SingletonActivity
+    - Implement Singleton Pattern bằng cách Bill Pugh Singleto
+    - Sử dụng 1 static nested class với vai trò 1 helper 
+- Khác nhau: không có sự khác nhau.
+
+````
+public class SingletonActivity extends AppCompatActivity implements View.OnClickListener {
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.bt_ehan:
+                SingletonEHan instance = SingletonEHan.getInstance();
+                break;
+            case R.id.bt_lanhan:
+                SingletonLanHan singletonLanHanFour = SingletonLanHan.getSingletonLanHanFour();
+                break;
+            case R.id.bt_inclass:
+                SingletonIn singletonIn = SingletonIn.getSingletonIn();
+                break;
+            case R.id.bt_enum:
+                SingletonEnum.instance.whateverMethod();
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+````
+
 ### Prototype:
 - Sử dụng mẫu thiết kế Prototype pattern: là một trong những Creational pattern, có nhiệm vụ khởi tạo một đối tượng bằng cách clone một đối tượng đã tồn tại thay vì khởi tạo với từ khoá new.
 - Prototype Pattern được dùng khi việc tạo một object tốn nhiều chi phí và thời gian trong khi bạn đã có một object tương tự tồn tại.
