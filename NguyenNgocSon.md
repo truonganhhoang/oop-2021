@@ -1,3 +1,8 @@
+** thành viên nhóm:
+	Nguyễn Ngọc Sơn
+	Lầu Văn Quang
+	Phùng Văn An
+
 # So sánh với mẫu chuẩn
 
 Singleton 
