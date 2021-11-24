@@ -103,4 +103,20 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 </ul>
 
+**Bridge**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li> Chia một lớp lớn hoặc một tập hợp các lớp có liên quan chặt chẽ thành hai phân cấp riêng biệt — trừu tượng và thực thi — có thể được phát triển độc lập với nhau.</li>
+	<li>Thực hiện thay đổi đối với các mô-đun nhỏ hơn, được xác định rõ ràng dễ dàng hơn nhiều.</li>
+	<li>Triển khai Concrete chứa mã dành riêng cho nền tảng</li>
+	<li>Cung cấp các biến thể của logic điều khiển</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Mất nhiều thời gian để thực hiện thay đổi</li>
+</ul>
+</ul>
+
 
