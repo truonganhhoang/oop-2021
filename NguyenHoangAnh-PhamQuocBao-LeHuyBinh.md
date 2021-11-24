@@ -76,6 +76,46 @@ Phương thức khởi tạo của RecordValueSinkFactory nên được ẩn kh�
 
 ## II, Structural 
 
+#### Adapter
+
+- Adapter pattern là một Structural pattern. Adapter pattern là mẫu thiết kế đối tượng được tạo ra để xây dựng xây dựng và xử lí các dao diện khác nhau nhưng lại có hành vi giống nhau( Các lớp có hành vi tương tự nhưng phương thức khác nhau ).
+- Ví dụ giao diện IndexFrameCursor:
+```
+    public interface IndexFrameCursor {
+        IndexFrame getNext();
+    }
+```
+- Lớp NullIndexFrameCursor 
+```
+    public class NullIndexFrameCursor implements IndexFrameCursor {
+        public static final NullIndexFrameCursor INSTANCE = new NullIndexFrameCursor();
+
+        @Override
+        public IndexFrame getNext() {
+            return IndexFrame.NULL_INSTANCE;
+        }
+    }
+```
+- Lớp Cursor
+```
+    private class Cursor implements RowCursor, IndexFrameCursor {
+        protected long valueCount;
+        protected long minValue;
+        protected long next;
+        private long valueBlockOffset;
+        private final BitmapIndexUtils.ValueBlockSeeker SEEKER = this::seekValue;
+
+        @Override
+        public IndexFrame getNext() {
+            // See BitmapIndexFwdReader if it needs implementing
+            throw new UnsupportedOperationException();
+        }
+        ...
+      }
+```
+=> Các lớp này đều phát triển dựa trên giao diện IndexFrameCursor và có các method với hành vi khác nhau.
+* Giống nhau : giống với mẫu chuẩn.
+* Khác nhau : 
 ## III, Behavioral
 
 #### Chain of Responsibility
