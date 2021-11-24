@@ -1,6 +1,4 @@
 
-@PostMapping
-@ResponseBody
 @CacheLock
 @ApiOperation("Initializes the blog")
 public BaseResponse<String> installBlog(@RequestBody InstallParam installParam) {
