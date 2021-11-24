@@ -13,11 +13,13 @@
 ### Singleton:
 - Sử dụng Singleton pattern: là mẫu thiết kế sáng tạo cho phép đảm bảo chỉ duy nhất một thể hiện (instance) được tạo ra và nó sẽ cung cấp một method để có  thể truy xuất được thể hiện duy nhất đó mọi lúc mọi nơi trong chương trình.
 - Mỗi class bao gồm 1 class Singleton và 1 class SingletonClient để kiểm tra tính unique của Singleton class.
-** Giống nhau: ** 
+
+**Giống nhau:** 
     - Kế thừa lại AppCompatActivity thông qua lớp SingletonActivity
     - Implement Singleton Pattern bằng cách Bill Pugh Singleto
     - Sử dụng 1 static nested class với vai trò 1 helper 
-** Khác nhau: ** không có sự khác nhau.
+**Khác nhau:** 
+    - không có sự khác nhau.
 
 ````
 public class SingletonActivity extends AppCompatActivity implements View.OnClickListener {
@@ -51,14 +53,11 @@ public class SingletonActivity extends AppCompatActivity implements View.OnClick
 - Gồm các thành phần cơ bản: Sub classes, Factory class, Abstract Factory class...
 
 **Giống nhau:**
-
-- Factory class là AnimalFactory và InsectFactory có trách nhiệm khởi tạo các sub classes.
-
-- Abstract Factory class là CreatureFactory.
+    - Factory class là AnimalFactory và InsectFactory có trách nhiệm khởi tạo các sub classes.
+    - Abstract Factory class là CreatureFactory.
 
 **Khác nhau:**
-
-- Không có Super class để các Sub class kế thừa (ví dụ khai báo 1 class có tên Creatures trong đó có method Activity()).
+    - Không có Super class để các Sub class kế thừa (ví dụ khai báo 1 class có tên Creatures trong đó có method Activity()).
 ````
 public abstract class RoujiaMo {
 
@@ -74,12 +73,12 @@ public abstract class RoujiaMo {
 ### Prototype:
 - Sử dụng mẫu thiết kế Prototype pattern: là một trong những Creational pattern, có nhiệm vụ khởi tạo một đối tượng bằng cách clone một đối tượng đã tồn tại thay vì khởi tạo với từ khoá new.
 - Prototype Pattern được dùng khi việc tạo một object tốn nhiều chi phí và thời gian trong khi bạn đã có một object tương tự tồn tại.
-- Giống nhau: 
+**Giống nhau:** 
     + Abstract class Shape implement Cloneable.
     + Một class kế thừa lại lớp có sẵn là AppCompatActivity.
     + 3 lớp Circle, Rectangle, Square kế thừa lại lớp Shape.
 
-- Khác nhau:
+**Khác nhau:**
     + Không có sự khác nhau.
 - Code:
 ````
