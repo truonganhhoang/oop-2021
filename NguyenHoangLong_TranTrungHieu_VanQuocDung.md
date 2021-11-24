@@ -150,7 +150,9 @@ public abstract class Builder {
     public abstract Product getProduct();
 }
 ````
+
     + ConcreteBuilder.java: là thành phần triển khai, cụ thể hóa các lớp trừu tượng cho để tạo ra các thành phần và tập hợp các thành phần đó với nhau. thành phần này sẽ xác định và nắm giữ các thể hiện mà nó tạo ra. Đồng thời nó cũng cung cấp phương thức để trả các các thể hiện mà nó đã tạo ra trước đó.
+    
 ````
 public class ConcreteBuilder extends Builder {
 
