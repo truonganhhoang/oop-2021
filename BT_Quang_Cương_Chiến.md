@@ -43,9 +43,97 @@ _Giống nhau:_
 + Tách construction một đối tượng phức tạp khỏi biểu diễn của nó để các construction giống nhau có thể tạo ra các biểu diễn khác nhau
 + Gồm các thành phần: Product(class Building), Builder(class HomeBuilder), Director(class HomeDirector), ConcreteBuilder(class FlatBuilder)
 + Nếu một Object có quá nhiều thuộc tính thì việc tạo sẽ phức tạp.
-+ 
+
 _Khác nhau:_
 + Về cơ bản, cách tiếp cận của youlookwhat không có khác biệt đối với cách kinh điển của GOF.
+
+code : 
+// Product 
+public class Student {
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String dayOfBirth;
+    private String currentClass;
+    private String phone;
+
+    public Student(String id, String firstName, String lastName, String dayOfBirth, String currentClass, String phone) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dayOfBirth = dayOfBirth;
+        this.currentClass = currentClass;
+        this.phone = phone;
+    }
+}
+// Builder 
+public interface StudentBuilder {
+
+    StudentBuilder setId(String id);
+
+    StudentBuilder setFirstName(String firstName);
+
+    StudentBuilder setLastName(String lastName);
+
+    StudentBuilder setDayOfBirth(String dayOfBirth);
+
+    StudentBuilder setCurrentClass(String currentClass);
+
+    StudentBuilder setPhone(String phone);
+
+    Student build();
+}
+// ConcreteBuilder
+public class StudentConcreteBuilder implements StudentBuilder {
+
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String dayOfBirth;
+    private String currentClass;
+    private String phone;
+
+    @Override
+    public StudentBuilder setId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    @Override
+    public StudentBuilder setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    @Override
+    public StudentBuilder setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    @Override
+    public StudentBuilder setDayOfBirth(String dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
+        return this;
+    }
+
+    @Override
+    public StudentBuilder setCurrentClass(String currentClass) {
+        this.currentClass = currentClass;
+        return this;
+    }
+
+    @Override
+    public StudentBuilder setPhone(String phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    @Override
+    public Student build() {
+        return new Student(id, firstName, lastName, dayOfBirth, currentClass, phone);
+    }
+}
 
 // Check is installed
 boolean isInstalled = optionService
