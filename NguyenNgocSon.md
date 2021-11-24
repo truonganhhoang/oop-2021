@@ -119,4 +119,35 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 </ul>
 
+**Composite**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cho phép sắp xếp các đối tượng thành cấu trúc cây và sau đó làm việc với các cấu trúc này như thể chúng là các đối tượng riêng lẻ.</li>
+	<li>Mẫu tổng hợp cho phép chạy một cách đệ quy một hành vi trên tất cả các thành phần của cây đối tượng.</li>
+	<li>Các thành phần giao diện mô tả hoạt động mà là chung cho cả hai đơn giản và các yếu tố phức tạp của cây.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Khó cung cấp một giao diện chung cho các lớp có chức năng khác nhau quá nhiều</li>
+</ul>
+</ul>
+
+
+**Decorator**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cho phép đính kèm các hành vi mới vào các đối tượng bằng cách đặt các đối tượng này bên trong các đối tượng trình bao bọc đặc biệt có chứa các hành vi.</li>
+	<li>Các ứng dụng có thể định cấu hình các ngăn xếp phức tạp của trình trang trí thông báo</li>.
+	<li>Các phương pháp thông báo khác nhau trở thành người trang trí.</li>
+</ul>
+
+<li>-Khác nhau:</li>
+<ul>
+	<li>Khó mở rộng thêm một lớp</li>
+	<li>Cấu trúc lôgic nghiệp vụ</li>
+</ul>
+</ul>
 
