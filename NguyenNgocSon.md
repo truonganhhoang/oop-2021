@@ -151,3 +151,21 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 </ul>
 
+
+**Facade**
+<ul>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cung cấp một giao diện đơn giản hóa cho một thư viện, một khuôn khổ hoặc bất kỳ tập hợp lớp phức tạp nào khác.</li>
+	<li>Các Facade cung cấp truy cập thuận tiện đối với một phần cụ thể của chức năng của hệ thống phụ.</li>
+	<li>Các lớp hệ thống con không nhận thức được sự tồn tại của mặt tiền. Chúng hoạt động trong hệ thống và làm việc trực tiếp với nhau.</li>
+</ul>
+
+<li>-Khác nhau:</li>
+<ul>
+	<li>Các hệ thống con trở nên phức tạp hơn theo thời gian.</li>
+</ul>
+</ul>
+
+
+
