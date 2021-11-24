@@ -1,8 +1,11 @@
 # OOP-2021
-Môn học Lập trình hướng đối tượng với Java Nhóm Dương Bình Cương, Vũ Minh Chiến, Nghiêm Văn Quang
+Môn học Lập trình hướng đối tượng với Java 
+Thành viên Nhóm: Dương Bình Cương_
+                 Vũ Minh Chiến_ 
+                 Nghiêm Văn Quang_
 
-Link github sử dụng : https://github.com/halo-dev/halo.git
-
+Link github sử dụng : https://github.com/halo-dev/halo.git_
+Link tài liệu: https://refactoring.guru/design-patterns/catalog_
 ***Iterator**
 _- Giống nhau:_
 Duyệt qua các phần tử của một bộ sưu tập mà không để lộ biểu diễn cơ bản của nó (danh sách, ngăn xếp, cây, v.v.).
@@ -32,8 +35,14 @@ Có thể khôi phục trạng thái trước đó của đối tượng.
 Không đối tượng nào khác có thể đọc ảnh chụp nhanh, làm cho dữ liệu trạng thái của đối tượng ban đầu được an toàn và bảo mật.
 
 **Builder**
+
 _Giống nhau:_
 + Mẫu thiết kế Builder: Là một mẫu thiết kế thuộc "nhóm khởi tạo" (Creational Pattern). Mẫu thiết kế này cho phép lập trình viên tạo ra những đối tượng phức tạp nhưng chỉ cần thông qua các câu lệnh đơn giản để tác động nên các thuộc tính của nó. 
++ Một số tham số có thể là tùy chọn nhưng trong Factory Pattern, chúng ta phải gửi tất cả tham số, với tham số tùy chọn nếu không nhập gì thì sẽ truyền là null
 + Tách construction một đối tượng phức tạp khỏi biểu diễn của nó để các construction giống nhau có thể tạo ra các biểu diễn khác nhau
++ Gồm các thành phần: Product(class Building), Builder(class HomeBuilder), Director(class HomeDirector), ConcreteBuilder(class FlatBuilder)
++ Nếu một Object có quá nhiều thuộc tính thì việc tạo sẽ phức tạp.
++ 
 _Khác nhau:_
 + Về cơ bản, cách tiếp cận của youlookwhat không có khác biệt đối với cách kinh điển của GOF.
+
