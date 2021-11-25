@@ -7,9 +7,8 @@
 - **[Link đến phần nội dung lý thuyết tham khảo](https://gpcoder.com/4164-gioi-thieu-design-patterns/)**
 - **[Link đến repository được sử dụng trong bài báo cáo](https://github.com/bethrobson/Head-First-Design-Patterns)**
 ## Sau khi tìm hiểu về mẫu thiết kế được sử dụng trong mã nguồn của dự án nêu trên, nhóm đã hoàn thành được bản báo cáo như sau: ##
-```diff
+- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`
 + Trong folder Factory:
-```
 - file CoinFactory.java chứa lớp CoinFactory thực chất là một lớp Factory hỗ trợ việc việc khởi tạo các các đối tượng thuộc các lớp Coin khác nhau nhằm che giấu việc phương thức khởi tạo và thống nhất việc khởi tạo các đối tượng cụ thể thuộc các lớp như CopperCoin, GoldCoin đều implements 1 interface là Coin
 ```
 	public class CoinFactory{
