@@ -1,4 +1,8 @@
-So sánh với mẫu chuẩn:
+##Báo cáo về Design Pattern
+
+link github: https://github.com/iluwatar/java-design-patterns/tree/master/singleton
+
+**So sánh**
 
 ** Giống nhau **:
 
