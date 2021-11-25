@@ -282,6 +282,7 @@ assert id(dummy_class_one_instance_two) != id(dummy_class_two_instance_two)
 - Không có sự khác biệt vì mẫu thiết kế này đều xây dựng hàm release() và aquires().
 
 **Src code**
+````
 from abc import ABCMeta
 from copy import deepcopy
 from pypattyrn.behavioral.memento import Originator
@@ -352,8 +353,9 @@ class Pool(object):
     def _expand(self, size):
         for i in range(0, size):
             self.reusables.append(self.reusable_class(*self.args, **self.kwargs))
+````
 
-#7. Adaper Pattern
+# 7. Adaper Pattern
 
 **Giống nhau**
 
@@ -368,7 +370,7 @@ class Pool(object):
 - Trong cách tiếp cận Class Adapter, nếu một Adaptee là một class và không phải là một interface thì Adapter sẽ là một lớp con của Adaptee. Do đó, nó sẽ không phục vụ tất cả các lớp con khác theo cùng một cách vì Adapter là một lớp phụ cụ thể của Adaptee.
  
 **Src Code**
-
+````
 class Adapter(object):
     """
     Adapter class as part of the Adapter design pattern.
@@ -399,8 +401,9 @@ class Adapter(object):
         Get the adaptee's  __dict__
         """
         return self.__adaptee.__dict__
+````
 
-#8. Composite Pattern
+# 8. Composite Pattern
 
 **Giống nhau**
 
@@ -413,7 +416,7 @@ class Adapter(object):
 - Không có sự khác nhau vì đều có cấu trúc Component -> Composite/Leaf
 
 **Src Code**
-
+````
 class Composite(object):
     """
     Composite class as part of the Composite pattern.
@@ -481,8 +484,9 @@ class Composite(object):
         @return: A function that when called will call all child functions with the given function name.
         """
         return lambda: self._delegate(item)
+````
 
-#9. Decorator Pattern
+# 9. Decorator Pattern
 
 **Giống nhau**
 
@@ -497,6 +501,7 @@ class Composite(object):
 - Có xu hướng hoạt động trên một đối tượng.
 
 **Src Code**
+````
 from functools import partial
 from abc import ABCMeta, abstractmethod
 
@@ -575,8 +580,10 @@ class CallWrapper(DecoratorSimple):
             return self.func(instance, func, *args, **kwargs)
 
         return wrapped
+````
 
-#10. Flyweight Pattern
+# 10. Flyweight Pattern
+
 
 **Giống nhau**
 
