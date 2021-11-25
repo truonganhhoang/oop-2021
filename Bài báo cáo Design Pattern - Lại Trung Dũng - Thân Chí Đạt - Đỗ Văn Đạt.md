@@ -36,8 +36,8 @@
  - Về cơ bản các mẫu thiết kế này không có sự khác biệt so với mẫu thiết kế gốc.
 
 **Thông tin nhóm:**
-***1. Lại Trung Dũng - 18020376***
-***2. Thân Chí Đạt - 17020678***
-***3. Đỗ Văn Đạt - 19020244***
+1. ***Lại Trung Dũng - 18020376***
+2. ***Thân Chí Đạt - 17020678***
+3. ***Đỗ Văn Đạt - 19020244***
 
 **Link repository:** [spring-boot](https://github.com/spring-projects/spring-boot)
