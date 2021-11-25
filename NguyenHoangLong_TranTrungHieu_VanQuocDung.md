@@ -213,3 +213,20 @@ public class Product {
 ````
 - **Khác nhau:**
     + Không có sự khác nhau vì sử dụng các thành phần cơ bản của mẫu thiết kế Builder.
+## II . Nhóm Behavioral
+### Observer :
+
+**Code:
+```
+package refactoring_guru.observer.example.listeners;
+import java.io.File;
+public interface EventListener {
+	void update(String eventType, File file);
+}
+```
+- Định nghĩa sự phụ thuộc một-nhiều giữa các đối tượng sao cho khi một đối tượng thay đổi trạng thái thì tất cả các đối tượng phụ thuộc nó cũng thay đổi theo.
+- Một đối tượng có thể thông báo đến một số lượng không giới hạn các đối tượng khác, một trong nhưng mẫu có hiệu suất sử dụng thấp trong lập trình hướng đối tượng.
+**Giống Nhau:**
+Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
+**Khác Nhau:**
+- Không có sự khác nhau vì sử dụng các thành phần cơ bản của mẫu thiết kế Observer.
