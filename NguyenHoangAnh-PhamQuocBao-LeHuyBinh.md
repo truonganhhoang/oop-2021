@@ -1,5 +1,5 @@
 # OOP - 2021
-### 1. Nguyễn Hoàng Anh - 19020493 - Nhóm Trưởng
+### 1. Nguyễn Hoàng Anh - 19020493
 ### 2. Phạm Quốc Bảo - 19020502
 ### 3. Lê Huy Bình - 19020503
 
