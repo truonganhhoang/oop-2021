@@ -68,3 +68,25 @@ link: https://github.com/JakubVojvoda/design-patterns-java/tree/master/interpret
 + để hỗ trợ nhiều đường truyền của các đối tượng tổng hợp
 
 link: https://github.com/JakubVojvoda/design-patterns-java/tree/master/iterator
+
+- Mediator:
++ Mẫu xác định một đối tượng đóng gói cách một tập hợp các đối tượng tương tác. Nó thúc đẩy kết hợp lỏng lẻo bằng cách giữ cho các đối tượng không tham chiếu đến nhau một cách rõ ràng và nó cho phép bạn thay đổi tương tác của chúng một cách độc lập.
++ một hành vi được phân phối giữa một số lớp nên có thể tùy chỉnh mà không cần nhiều lớp con.Việc sử dụng lại một đối tượng rất khó vì nó đề cập và giao tiếp với nhiều đối tượng khác
+
+link: https://github.com/JakubVojvoda/design-patterns-java/tree/master/mediator
+
+- Memento;
++ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối tượng mà vẫn không vi phạm việc bao bọc dữ liệu.
++ không vi phạm tính đóng gói, nắm bắt và ngoại hóa trạng thái bên trong của đối tượng để đối tượng có thể được khôi phục về trạng thái này sau đó. Mẫu có mục đích hành vi và áp dụng cho các đối tượng.
+
+link: https://github.com/JakubVojvoda/design-patterns-java/tree/master/memento
+
+- Proxy:
++ cung cấp trình thay thế hoặc trình giữ chỗ cho một đối tượng khác để kiểm soát quyền truy cập vào nó. Mẫu có mục đích cấu trúc và áp dụng cho các đối tượng.
+
+link: https://github.com/JakubVojvoda/design-patterns-java/tree/master/proxy
+
+- Flyweight:
++ Sử dụng việc chia sẻ để thao tác hiệu quả trên một số lượng lớn đối tượng “cở nhỏ” (chẳng hạn paragraph, dòng, cột, ký tự…).
+
+link: https://github.com/JakubVojvoda/design-patterns-java/tree/master/flyweight
