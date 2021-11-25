@@ -1,10 +1,11 @@
 ﻿#Lớp thứ 5
 
 ##Thành viên trong nhóm:
-###- La Trịnh Hoàng Việt - 20020501
+
+### La Trịnh Hoàng Việt - 20020501
 
 ##Báo cáo về Design Pattern
-### Link GitHub tham khảo:
+
 -----
 ###1. Abstract Factory
 
