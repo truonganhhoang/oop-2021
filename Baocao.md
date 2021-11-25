@@ -1,6 +1,6 @@
-Thành viên:   Vũ Hoàng Dương
-              Nguyễn Tiến Đạt
-              Vũ Đức Hải
+Thành viên:   Vũ Hoàng Dương-19020533
+              Nguyễn Tiến Đạt-19020521
+              Vũ Đức Hải-19020538
 - Singleton:
 + Là pattern dành cho việc khởi tạo đối tượng.Đảm bảo một lớp chỉ có một cá thể và cung cấp một điểm truy cập toàn cầu cho nó. Mẫu có mục đích sáng tạo và xử lý các mối quan hệ đối tượng, các mối quan hệ này năng động hơn. Singleton thường được sử dụng như một phần của các mẫu thiết kế khác
 + Một singleton clas là một class chỉ có thể có một instance được tạo ra tại một thời điểm. Sau lần đầu tiên được khởi tạo, ở những lần khởi tạo sau chúng ta vẫn sẽ nhận một tham chiếu đến 
