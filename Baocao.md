@@ -39,3 +39,32 @@ link: https://github.com/JakubVojvoda/design-patterns-java/tree/master/builder
 + để tránh xây dựng một hệ thống phân cấp các nhà máy song song với hệ thống phân cấp các sản phẩm
 
 link: https://github.com/JakubVojvoda/design-patterns-java/tree/master/prototype
+
+- Adapter:
++ Chuyển đổi giao diện của một lớp thành một giao diện khác mà khách hàng mong đợi. Bộ điều hợp cho phép các lớp hoạt động cùng nhau mà không thể vì các giao diện không tương thích, tức là. cho phép sử dụng máy khách có giao diện không tương thích bởi Bộ điều hợp thực hiện chuyển đổi. Bộ điều hợp có mục đích cấu trúc và có thể được áp dụng trên các lớp và cả trên đối tượng. Bộ điều hợp lớp sử dụng đa kế thừa để điều chỉnh một giao diện này sang một giao diện khác và bộ điều hợp đối tượng sử dụng thành phần đối tượng để kết hợp các lớp với các giao diện khác nhau.
++ bạn muốn sử dụng một lớp hiện có và giao diện của nó không khớp với một lớp bạn cần
++ bạn muốn tạo một lớp có thể sử dụng lại hợp tác với các lớp không nhất thiết phải có giao diện tương thích
+
+link: https://github.com/JakubVojvoda/design-patterns-java/tree/master/adapter
+
+- Command:
++ Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc thành một đối tượng. Các yêu cầu sẽ được lưu trữ và gởi đi như các đối tượng.Đóng gói request vào trong một Object, nhờ đó có thể nthông số hoá chương trình nhận request và thực hiện các thao tác trên request: sắp xếp, log, undo…
++ muốn tham số hóa các đối tượng bằng một hành động để thực hiện
++ muốn chỉ định, xếp hàng và thực hiện các yêu cầu tại các thời điểm khác nhau
++ cấu trúc một hệ thống xung quanh các hoạt động cấp cao được xây dựng trên các hoạt động ban đầu
+
+link: https://github.com/JakubVojvoda/design-patterns-java/tree/master/command
+
+- Interpreter:
++ Hỗ trợ việc định nghĩa biểu diễn văn phạm và bộ thông dịch cho một ngôn ngữ.
++ Đối với một ngôn ngữ, mẫu xác định sự lưu ý cho ngữ pháp của nó cùng với trình thông dịch sử dụng biểu diễn để diễn giải các câu trong ngôn ngữ đó. Mẫu thông dịch viên có mục đích hành vi và áp dụng cho các lớp.
+
+link: https://github.com/JakubVojvoda/design-patterns-java/tree/master/interpreter
+
+- Iterator:
++ Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử.
++ để truy cập nội dung của một đối tượng tổng hợp mà không để lộ phần đại diện bên trong của nó
++ để cung cấp một giao diện thống nhất để duyệt qua các cấu trúc tổng hợp khác nhau (để hỗ trợ lặp lại đa hình)
++ để hỗ trợ nhiều đường truyền của các đối tượng tổng hợp
+
+link: https://github.com/JakubVojvoda/design-patterns-java/tree/master/iterator
