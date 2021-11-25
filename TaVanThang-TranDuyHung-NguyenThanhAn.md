@@ -9,7 +9,7 @@
 ## Sau khi tìm hiểu về mẫu thiết kế được sử dụng trong mã nguồn của dự án nêu trên, nhóm đã hoàn thành được bản báo cáo như sau: ##
 + Trong folder Factory:
 - file CoinFactory.java chứa lớp CoinFactory thực chất là một lớp Factory hỗ trợ việc việc khởi tạo các các đối tượng thuộc các lớp Coin khác nhau nhằm che giấu việc phương thức khởi tạo và thống nhất việc khởi tạo các đối tượng cụ thể thuộc các lớp như CopperCoin, GoldCoin đều implements 1 interface là Coin
-```
+```ruby
 	public class CoinFactory{
 		public static Coin getCoin(CoinType type)
 
