@@ -1,9 +1,13 @@
-# So sánh các mẫu thiết kế tìm được với mẫu chuẩn.
-`Nguyễn Việt Quân`
-`Trần Ngọc Vinh`
+# Bài báo cáo tìm hiểu về các mẫu thiết kế
+## Môn lập trình hướng đối tượng
+### Lớp INT_2204_3
 
-#Git repository link: https://github.com/bethrobson/Head-First-Design-Patterns
-Đây là repo chứa đầy đủ 23 mẫu thiết kế được thiết kế dựa trên các mẫu thiết kế chuẩn. Dưới đây là sự so sánh giữa các mẫu trong repo với các mẫu thiết kế chuẩn tại https://refactoring.guru/design-patterns/java.
+# Danh sách thành viên:
+* Nguyễn Việt Quân - 19020596
+* Trần Ngọc Vinh - 19020659
+
+#### Git repository link: https://github.com/bethrobson/Head-First-Design-Patterns.
+#### Đây là repo chứa đầy đủ 23 mẫu thiết kế được thiết kế dựa trên các mẫu thiết kế chuẩn. Dưới đây là sự so sánh giữa các mẫu trong repo với các mẫu thiết kế chuẩn tại https://refactoring.guru/design-patterns/java.
 
 # Builder package:
  1. _Giống nhau_: 
