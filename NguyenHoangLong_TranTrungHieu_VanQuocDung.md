@@ -216,7 +216,7 @@ public class Product {
 ## II . Nhóm Behavioral
 ### Observer :
 
-**Code:
+- **Code:
 ```
 package refactoring_guru.observer.example.listeners;
 import java.io.File;
@@ -227,6 +227,42 @@ public interface EventListener {
 - Định nghĩa sự phụ thuộc một-nhiều giữa các đối tượng sao cho khi một đối tượng thay đổi trạng thái thì tất cả các đối tượng phụ thuộc nó cũng thay đổi theo.
 - Một đối tượng có thể thông báo đến một số lượng không giới hạn các đối tượng khác, một trong nhưng mẫu có hiệu suất sử dụng thấp trong lập trình hướng đối tượng.
 - **Giống Nhau:**
-Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
++ Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
 - **Khác Nhau:**
-- Không có sự khác nhau vì sử dụng các thành phần cơ bản của mẫu thiết kế Observer.
++ Không có sự khác nhau vì sử dụng các thành phần cơ bản của mẫu thiết kế Observer.
+### State
+- **Code** :
+```
+package com.example.jingbin.designpattern.state.old;
+
+import android.util.Log;
+
+public class VendingMachine {
+
+
+    private final static int HAS_MONEY = 0;
+
+    private final static int NO_MONEY = 1;
+
+    private final static int SOLD = 2;
+
+    private final static int SOLD_OUT = 3;
+
+    private int currentStatus = NO_MONEY;
+
+    private int count = 0;
+
+    public VendingMachine(int count) {
+        this.count = count;
+        if (count > 0) {
+            currentStatus = NO_MONEY;
+        }
+    }
+```
+- Một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép một đối tượng thay đổi hành vi của nó khi trạng thái nội bộ của nó thay đổi. Đối tượng sẽ xuất hiện để thay đổi lớp của nó.
++  VendingMachine.java: Nhận diện ban đầu về máy bán hàng tự động cần được cải tiến.
++ State.java: status interface.
++ WinnerState.java: winner status.
++ ...
+- **Giống nhau** : từ trên ta có thể thấy khuôn dạng khá giống các mẫu tiêu chuẩn, khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
+- **Khác nhau** : Không có sự khác nhau
