@@ -325,3 +325,241 @@ Ví dụ:
   ```
 
 => Mẫu thiết kế Singleton được sử dụng với tần suất cao do việc tạo instance cho mỗi đối tượng là cần thiết
+
+
+###11. Flyweight:
++ Lớp interface Tree chia sẻ thông tin cho 2 lớp con của nó là ConiferTree và DeciduousTree giúp giảm dung lượng bộ nhớ thông qua chia sẻ các đối tượng
+Ví dụ: Phương thức isWithinRange và display ở trong Tree.java được chia sẻ cho 2 lớp con:
+Trong Tree:
+
+	public default boolean isWithinRange(LocalDate aDate) {
+		Month month = aDate.getMonth();
+		return (month.getValue() > 2) && (month.getValue() < 11);
+	} 
+
+ConiferTree:
+
+	public void display(int x, int y) {
+		System.out.println("Conifer tree is located at " + x + ", " + y);
+	}
+
+DeciduousTree:
+
+	public void display(int x, int y) {
+		System.out.println("Deciduous tree is located at " + x + ", " + y);
+		if (!this.isWithinRange(LocalDate.now())) {
+			System.out.println("The tree currently has no leaves");
+		}
+	}
+ 
+ 
+ 
+###12. Proxy:
++ Trong javaproxy có chứa lớp Person, lớp này được lớp PersonImpl implements làm đại diện hỗ trợ kiểm soát quá trình truy xuất các đối tượng trong đó, đối tượng thay thế 	PersonImpl là Proxy
+Lớp Person:
+public interface Person {
+	String getName();
+	String getGender();
+	String getInterests();
+	int getGeekRating();
+    	void setName(String name);
+    	void setGender(String gender);
+    	void setInterests(String interests);
+    	void setGeekRating(int rating); 
+}
+Lớp PersonImpl
+public class PersonImpl implements Person {
+	String name;
+	String gender;
+	String interests;
+	int rating;
+	int ratingCount = 0;
+	public String getName() {
+		return name;	
+	} 
+	public String getGender() {
+		return gender;
+	}
+	public String getInterests() {
+		return interests;
+	}
+	public int getGeekRating() {
+		if (ratingCount == 0) return 0;
+		return (rating/ratingCount);
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	} 
+	public void setInterests(String interests) {
+		this.interests = interests;
+	}
+	public void setGeekRating(int rating) {
+		this.rating += rating;	
+		ratingCount++;
+	}
+}
+=> Sử dụng mẫu thiết kế Proxy
+
+
+###13. Observer:
++ Xét trong folder simple, lớp trừu tượng Observer có duy nhất 1 thuộc tính update, thuộc tính này được lớp SimpleObserver implements, điều này định nghĩa sự phụ thuộc giữa các đối tượng, khi một đối tượng thay đổi trạng thái thì các đối tượng khác sẽ thay đổi theo
+File Observer.java:
+public interface Observer {
+	public void update(int value);
+}
+File SimpleObserver.java:
+public class SimpleObserver implements Observer {
+	private int value;
+	private Subject simpleSubject;
+	public SimpleObserver(Subject simpleSubject) {
+		this.simpleSubject = simpleSubject;
+		simpleSubject.registerObserver(this);
+	}
+	public void update(int value) {
+		this.value = value;
+		display();
+	}
+	public void display() {
+		System.out.println("Value: " + value);
+	}
+}
+=> Sử dụng mẫu thiết kế Observer giúp cho việc thay đổi trạng thái của một đối tượng kéo theo sự thay đổi trạng thái của những đối tượng khác, đây là điều rất cần thiết với những chương trình kích thước lớn nên có tần suất sử dụng cao.
+
+
+###14. Decorator:
+* Trong folder Decorator, có các folder là pizza, starbuzz, có các file java như là ToppingDecorator.java, CondimentDecorator.java là các các lớp decorator(hay wrapper).
+public abstract class ToppingDecorator extends Pizza {
+	Pizza pizza;
+	public abstract String getDescription();
+}
+* Như trong folder Pizza, người dùng muốn order 1 chiếc pizza nhưng sau đó muốn thêm nhiều loại topping khác vào chính chiếc pizza đó, cũng như việc số tiền tổng chi cho chiếc pizza đó phải tăng theo số topping dc thêm vào, file ToppingDecorator.java hay là decorator pattern giúp chúng ta thực hiện việc này, thêm chức năng mới vào đối tượng pizza hiện tại mà ko làm ảnh hưởng đến nó.
+  => Kiểu thiết kế này có cấu trúc hoạt động như một lớp bao bọc (wrap) cho lớp hiện có. Mỗi khi cần thêm tính năng mới, đối tượng hiện có được wrap trong một đối tượng mới (decorator class).
+public class Cheese extends ToppingDecorator {
+	
+ 
+	public Cheese(Pizza pizza) {
+		this.pizza = pizza;
+	}
+ 
+	public String getDescription() {
+		return pizza.getDescription() + ", Cheese";
+	}
+ 
+	public double cost() {
+		return pizza.cost(); // cheese is free
+	}
+}
+
+###15. Composite:
+* Trong folder composite có file Menu.java dùng để lưu trữ tập hợp các menu components hay các đối tượng tương tự nhau, để xử lí các đối tượng này hoạt động như 1 đối tượng duy nhất (theo cùng 1 cách). Menu.java cài đặt các phương thức được định nghĩa trong interface menuComponent bằng cách ủy nhiệm cho các thành phần con xử lý
+  => Composite patterns.
+import java.util.Iterator;
+import java.util.ArrayList;
+public class Menu extends MenuComponent {
+	ArrayList<MenuComponent> menuComponents = new ArrayList<MenuComponent>();
+	String name;
+	String description;
+  
+	public Menu(String name, String description) {
+		this.name = name;
+		this.description = description;
+	}
+ 
+	public void add(MenuComponent menuComponent) {
+		menuComponents.add(menuComponent);
+	}
+ 
+	public void remove(MenuComponent menuComponent) {
+		menuComponents.remove(menuComponent);
+	}
+ 
+	public MenuComponent getChild(int i) {
+		return (MenuComponent)menuComponents.get(i);
+	}
+ 
+	public String getName() {
+		return name;
+	}
+ 
+	public String getDescription() {
+		return description;
+	}
+ 
+	public void print() {
+		System.out.print("\n" + getName());
+		System.out.println(", " + getDescription());
+		System.out.println("---------------------");
+  
+		Iterator<MenuComponent> iterator = menuComponents.iterator();
+		while (iterator.hasNext()) {
+			MenuComponent menuComponent = 
+				(MenuComponent)iterator.next();
+			menuComponent.print();
+		}
+	}
+}
+
+
+###16. Strategy:
+* Folder challenge trong Strategy có file ShareStrategy.java chứa các hành vi có thể có của 1 strategy, mà ở trong folder này là share các photo đã chụp dc bằng các hành vi như post lên social media, texting photo va email photo.
+@FunctionalInterface
+public interface ShareStrategy {
+	public void share();
+}
+* Đây là 1 strategy pattern, đóng gói từng thuật toán, method lại, và dễ dàng thay đổi linh hoạt nó bên trong object, ý nghĩa của việc chia ra các hành vi có thể có của 1 đối tượng như vậy là để tạo ra một tập hợp các thuật toán để xử lý chức năng đó và lựa chọn thuật toán nào mà chúng ta thấy đúng đắn nhất khi thực thi chương trình. Ví dụ như trong trường hợp này, ta có thể chọn các hành vi share khác nhau của 1 object là photo :
+public class Txt implements ShareStrategy {
+	public void share() {
+		System.out.println("I'm txting the photo");
+	}
+}
+public class Social implements ShareStrategy {
+	public void share() {
+		System.out.println("I'm posting the photo on social media");
+	}
+}
+public class Email implements ShareStrategy {
+	public void share() {
+		System.out.println("I'm emailing the photo");
+	}
+}
+
+
+###17. Iterator:
+* Trong folder iterator/dinermerger có file Iterator.java, đây là 1 lớp iterator, lớp này có tác dụng để truy cập tuần tự tới các phần tử của một đối tượng.
+public interface Iterator {
+	boolean hasNext();
+	MenuItem next();
+}
+* Lớp trên cung cấp một interface duy nhất để duyệt qua các phần tử của một tập hợp. Như trong trường hợp này thì lớp iterator dc dùng để duyệt qua các items của 1 menu.
+import java.util.ArrayList;
+public class ArrayListIterator implements Iterator {
+	ArrayList<MenuItem> items;
+	int position = 0;
+ 
+	public ArrayListIterator(ArrayList<MenuItem> items) {
+		this.items = items;
+	}
+ 
+	public MenuItem next() {
+		MenuItem item = items.get(position);
+		position = position + 1;
+		return item;
+	}
+ 
+	public boolean hasNext() {
+		if (position >= items.size()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+}
+
+
+###18-23: Các disign pattents còn lại giống với các mẫu design pattents cơ bản.
+
+
+# Kết luận: Trong dự án trên do nội dung là về design pattern nên mẫu thiết kế được sử dụng khá tương đồng với 23 mẫu thiết kế chuẩn.
