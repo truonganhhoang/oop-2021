@@ -55,7 +55,7 @@ Môn học lập trình hướng đối tượng Java
 #### Giống:
 
 - Qui định loại của các object cần tạo bằng cách dùng một object mẫu, tạo mới nhờ vào sao chép object mẫu này.
-- Có method Clone cho từng class phục vụ cho Moonwalke
+- Có method Clone cho từng class phục vụ cho Moonwalker.
 
 #### Khác
 
@@ -87,11 +87,11 @@ Môn học lập trình hướng đối tượng Java
 
 #### Khác:
 
-- Sử dụng thêm mẫu Iterator pattern
-- Ngoài ra không có sự thay đổi đáng kể so với mẫu thiết kế cơ bản
+- Sử dụng thêm mẫu Iterator pattern.
+- Ngoài ra không có sự thay đổi đáng kể so với mẫu thiết kế cơ bản.
 
 ### 2.2 Bridge
-* [Bridge]()https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/structural/bridge.swift)
+* [Bridge](https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/source/structural/bridge.swift)
 
 #### Giống:
 
@@ -130,8 +130,7 @@ Môn học lập trình hướng đối tượng Java
 
 #### Giống:
 
-- Cung cấp một interface thuần nhất cho một tập hợp các interface trong một “hệ thống con” (subsystem). Nó định nghĩa 1 interface cao hơn các interface có sẵn để làm cho hệ
-  thống con dễ sử dụng hơn
+- Cung cấp một interface thuần nhất cho một tập hợp các interface trong một “hệ thống con” (subsystem). Nó định nghĩa 1 interface cao hơn các interface có sẵn để làm cho hệ thống con dễ sử dụng hơn.
 
 #### Khác:
 
@@ -204,7 +203,7 @@ Môn học lập trình hướng đối tượng Java
 
 #### Giống:
 
-- Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử
+- Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử.
 
 #### Khác:
 
