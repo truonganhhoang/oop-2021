@@ -1,24 +1,24 @@
 # So sánh với mẫu chuẩn
 
 **Các mẫu được sử dụng**
-- Singleton Pattern
-- MVC (Model View Controller)
-- Template Pattern
-- Factory Method Pattern
+* Singleton Pattern
+* MVC (Model View Controller)
+* Template Pattern
+* Factory Method Pattern
 
 **1. Autowired Singletons**
- - Đối tượng ID trong OwnerRepository và OwnerController là như nhau.
+ * Đối tượng ID trong OwnerRepository và OwnerController là như nhau.
  
 **2. MVC (Model View Controller)**
- - Model và controller nằm trong java/org/springframework/samples/petclinic.
- - View nằm trong resources.
+ * Model và controller nằm trong java/org/springframework/samples/petclinic.
+ * View nằm trong resources.
  
 **3. Template Pattern**
- - Các repository trong đều sử dụng Repository template của spring boot cung cấp.
+ * Các repository trong đều sử dụng Repository template của spring boot cung cấp.
 
 **4. Factory Method Pattern**
- - Spring coi một ***bean container*** là một ***factory*** tạo ra ***bean***.
- - Spring định nghĩa ***BeanFactory interface*** như một trừu tượng của ***bean container***.
+ * Spring coi một ***bean container*** là một ***factory*** tạo ra ***bean***.
+ * Spring định nghĩa ***BeanFactory interface*** như một trừu tượng của ***bean container***.
  ```Java
  public interface BeanFactory {
 
@@ -29,11 +29,11 @@
     // ...
 ]
  ```
- - Mỗi phương thức *getBean* được coi là một *factory method* trả về một ***bean*** với các tiêu chí được cung cấp cho phương thức, ví dụ là tên, kiểu của ***bean***.
+ * Mỗi phương thức *getBean* được coi là một *factory method* trả về một ***bean*** với các tiêu chí được cung cấp cho phương thức, ví dụ là tên, kiểu của ***bean***.
 
 
 **Khác nhau**
- - Về cơ bản các mẫu thiết kế này không có sự khác biệt so với mẫu thiết kế gốc.
+ * Về cơ bản các mẫu thiết kế này không có sự khác biệt so với mẫu thiết kế gốc.
 
 **Thông tin nhóm:**
 1. ***Lại Trung Dũng - 18020376***
