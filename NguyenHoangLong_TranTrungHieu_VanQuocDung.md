@@ -266,3 +266,57 @@ public class VendingMachine {
 + ...
 - **Giống nhau** : từ trên ta có thể thấy khuôn dạng khá giống các mẫu tiêu chuẩn, khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
 - **Khác nhau** : Không có sự khác nhau
+### Mediator :
+**Code**:
+```
+package com.example.jingbin.designpattern.mediator;
+
+
+public class User {
+    private String name;
+
+    public User(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void sendMessage(String message) {
+        CharRoom.showMessage(this, message);
+    }
+}
+```
+```
+package com.example.jingbin.designpattern.mediator;
+
+public class User {
+    private String name;
+
+    public User(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void sendMessage(String message) {
+        CharRoom.showMessage(this, message);
+    }
+}
+```
+- Định nghĩa một đối tượng gói gọn cách một tập hợp các đối tượng tương tác, thúc đẩy sự khớp nối lỏng lẻo (loose coupling) bằng cách ngăn không cho các đối tượng đề cập đến nhau một cách rõ ràng và nó cho phép bạn thay đổi sự tương tác của họ một cách độc lập
+- **Giống nhau** :
++ Khuôn dạng cũng khá giống với mẫu tiêu chuẩn
++ Có một lớp trừu tượng và một các lớp con kế thừa nó để tạo ra đối tuượng mới và có liên quan đến nhau
+- **Khác Nhau** : Không có sự khác nhau
