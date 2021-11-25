@@ -15,3 +15,7 @@ Lợi ích:
     - Đảm bảo nguyên tắc Open/Closed Principle (OCP) : chúng ta có thể implement các loại collection mới và iterator mới, sau đó chuyển chúng vào code hiện có mà không vi phạm bất cứ nguyên tắc gì.
     - Chúng ta có thể truy cập song song trên cùng một tập hợp vì mỗi đối tượng iterator có chứa trạng thái riêng của nó.
   13. Mẫu thiết kế đầy đủ cấu trúc originator, caretaker và memento .
+
+
+
+abc
