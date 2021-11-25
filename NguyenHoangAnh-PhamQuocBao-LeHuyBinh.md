@@ -5,7 +5,7 @@
 
 
 - **[Link tài liệu.](https://refactoring.guru/design-patterns/catalog)**
-- **[Link repo của nhóm.](https://github.com/Thang12321/BT_OOP_DesignPattern)**
+- **[Link repo của nhóm.](https://github.com/relaxday123/oop-2021)**
 - **[Link đến repo sử dụng trong bài báo cáo.](https://github.com/bethrobson/Head-First-Design-Patterns)**
   <br />
   <br />
