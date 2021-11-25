@@ -320,3 +320,56 @@ public class User {
 + Khuôn dạng cũng khá giống với mẫu tiêu chuẩn
 + Có một lớp trừu tượng và một các lớp con kế thừa nó để tạo ra đối tuượng mới và có liên quan đến nhau
 - **Khác Nhau** : Không có sự khác nhau
+### Chain of Responsibility
+**Code** :
+```
+package com.example.jingbin.designpattern.chainofresponsibility;
+public abstract class AbstractLogger {
+    public static int INFO = 1;
+    public static int DEBUG = 2;
+    public static int ERROR = 3;
+    protected int level;
+    protected AbstractLogger nextLogger;
+    public void setNextLogger(AbstractLogger nextLogger) {
+        this.nextLogger = nextLogger;
+    }
+    public void logMessage(int level, String message) {
+        if (this.level <= level) {
+            write(message);
+        }
+        if (nextLogger != null) {
+            nextLogger.logMessage(level, message);
+        }
+    }
+    protected abstract void write(String message);
+}
+```
+```
+package com.example.jingbin.designpattern.chainofresponsibility;
+public abstract class AbstractLogger {
+    public static int INFO = 1;
+    public static int DEBUG = 2;
+    public static int ERROR = 3;
+    protected int level;
+    protected AbstractLogger nextLogger;
+
+    public void setNextLogger(AbstractLogger nextLogger) {
+        this.nextLogger = nextLogger;
+    }
+    public void logMessage(int level, String message) {
+        if (this.level <= level) {
+            write(message);
+        }
+        if (nextLogger != null) {
+            nextLogger.logMessage(level, message);
+        }
+    }
+    protected abstract void write(String message);
+}
+```
+-  Cho phép một đối tượng gửi một yêu cầu nhưng không biết đối tượng nào sẽ nhận và xử lý nó, được thực hiện bằng cách kết nối các đối tượng nhận yêu cầu thành một chuỗi (chain) và gửi yêu cầu theo chuỗi đó cho đến khi có một đối tượng xử lý nó.
+-  Lợi ích : tăng tính linh hoạt, giảm kết nối, phân chia trách nhiệm đối tượng, không đảm có đối tượng xử lý yêu cầu.
+- **Giống nhau** :
++ Từ những điều trên nên khuôn mẫu khá giống mẫu tiêu chuẩn .
+- **Khác Nhau** :
++ Không có sự khác nhau .
