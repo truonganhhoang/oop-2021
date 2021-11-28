@@ -14,8 +14,10 @@ Tham khảo: https://gpcoder.com/4164-gioi-thieu-design-patterns
   <li>Behavioral</li>
 </ol>  
 
+- - - -
 ## 1. Creational  
 Những Design pattern loại này cung cấp một giải pháp để tạo ra các object và che giấu được logic của việc tạo ra nó, thay vì tạo ra object một cách trực tiếp bằng cách sử dụng method new. Điều này giúp cho chương trình trở nên mềm dẻo hơn trong việc quyết định object nào cần được tạo ra trong những tình huống được đưa ra.  
+
 ### 1.1. Singleton  
 - Mỗi class chỉ khởi tạo **duy nhất MỘT** instance.
 - Instance có thể được truy xuất một cách toàn cục bằng hàm public `getInstance()`.
@@ -397,3 +399,243 @@ public class Pig implements Animal {
 - Giảm chi phí để tạo ra đối tượng mới.
 - Giảm độ phức tạp cho việc khởi tạo.
 - Giảm việc phân lớp, tránh việc tạo nhiều lớp con cho việc khởi tạo đối tượng như của **Abstract Factory**.
+
+- - - -
+## 2. Structural  
+Những Design pattern loại này liên quan tới class và các thành phần của object. Nó dùng để thiết lập, định nghĩa quan hệ giữa các đối tượng.  
+### 2.1. Adapter  
+- Cho phép các `interface` không liên quan tới nhau có thể làm việc cùng nhau bởi một đối tượng gọi là *adapter*.
+- **Adapter** giữ vai trò trung gian giữa hai lớp, chuyển đổi `interface` của một hay nhiều lớp có sẵn thành một `interface` khác, thích hợp cho lớp đang viết.
+- Điều này cho phép các lớp có các `interface` khác nhau có thể dễ dàng giao tiếp tốt với nhau thông qua `interface` trung gian, không cần thay đổi code của lớp có sẵn cũng như lớp đang viết.
+
+**Sơ đồ thiết kế:**  
+
+![adapter-pattern](adapter-pattern.png)  
+Trong đó:
+- **Target**: Lớp chứa các chức năng được sử dụng bởi **Client**.
+- **Adaptee**: Lớp chưa tương thích, cần **Adapter** để tích hợp vào lớp **Target**.
+- **Adapter**: Lớp trung gian, tích hợp các **Adaptee**.
+
+**Ví dụ:**  
+
+![adapter-pattern-eg](adapter-pattern-example.png)  
+1. assume the panda can eat, sit and hello
+```java
+public interface Panda {
+
+    public String eat();
+
+    public String sit();
+
+    public String hello();
+}
+```
+
+2. class represent to real Panda
+```java
+public class PandaImpl implements Panda {
+    // override methods...
+}
+```
+
+3. class represent to part time worker
+```java
+public class PartTimeWorker {
+
+    public String action(String action) {
+        return "part time work, " + action;
+    }
+
+}
+```
+
+4. class convert part time worker to Panda, need to implement the Panda methods
+```java
+public class PandaAdapter implements Panda {
+
+    private PartTimeWorker partTimeWorker;
+
+    public PandaAdapter(PartTimeWorker partTimeWorker) {
+        this.partTimeWorker = partTimeWorker;
+    }
+
+    @Override
+    public String eat() {
+        return partTimeWorker.action("fake eating");
+    }
+
+    @Override
+    public String hello() {
+        return partTimeWorker.action("wave the hands");
+    }
+
+    @Override
+    public String sit() {
+        return partTimeWorker.action("sit like a king");
+    }
+
+}
+```
+**Nhận xét:**
+- Cho phép nhiều đối tượng có `interface` khác nhau có thể giao tiếp với nhau.
+- Đôi khi có quá nhiều Adapter được thiết kế trong một chuỗi Adapter (chain) trước khi đến được yêu cầu thực sự.
+
+### 2.2. Bridge  
+- Ý tưởng của **Bridge** là tách tính trừu tượng (abstraction) ra khỏi tính hiện thực (implementation) của nó. Từ đó có thể dễ dàng chỉnh sửa hoặc thay thế mà không làm ảnh hưởng đến những nơi có sử dụng lớp ban đầu.
+
+**Sơ đồ thiết kế:**  
+
+![bridge-pattern](bridge-pattern.png)  
+
+**Ví dụ:**  
+
+![bridge-pattern-eg](bridge-pattern-example.png) 
+ControllerFunction, represent to implementation
+```java
+public interface ControllerFunction {
+    public void joystickMove(String direction);
+    public void pressHome();
+}
+```
+
+PS4Function, represent to concrete implementation, class that implement PS4 functions
+```java
+public class PS4Function implements ControllerFunction {
+    @Override
+    public void joystickMove(String direction) {
+        System.out.println("move " + direction);
+    }
+    @Override
+    public void pressHome() {
+        System.out.println("show PS4 home menu");
+    }
+}
+```
+
+SteamFunction, represent to concrete implementation, class that implement Steam function
+```java
+public class SteamFunction implements ControllerFunction {
+    @Override
+    public void joystickMove(String direction) {
+        System.out.println("pressed " + direction);
+    }
+    @Override
+    public void pressHome() {
+        System.out.println("unsupported button");
+    }
+}
+```
+
+Controller, represent of abstraction
+```java
+public interface Controller {
+    public void joystickMove(String direction);
+    public void pressHome();
+}
+```
+
+PS4Controller, represent of ConcreteAbstraction, when create PS4Controller, it need to take a ControllerFunction.
+And when button pressed, it will call the ControllerFunction.
+```java
+public class PS4Controller implements Controller {
+    private ControllerFunction controllerFunction;
+    public PS4Controller(ControllerFunction controllerFunction) {
+        this.controllerFunction = controllerFunction;
+    }
+    @Override
+    public void joystickMove(String direction) {
+        controllerFunction.joystickMove(direction);
+    }
+    @Override
+    public void pressHome() {
+        controllerFunction.pressHome();
+    }
+}
+```
+**Nhận xét:**
+- Giảm sự phục thuộc giữa abstraction và implementation.
+- Giảm số lượng những lớp con không cần thiết.
+- Code sẽ gọn gàn hơn và kích thước ứng dụng sẽ nhỏ hơn.
+- Dễ bảo trì hơn.
+- Dễ dàng mở rộng về sau.
+- Cho phép ẩn các chi tiết implement từ client.
+
+### 2.3. Composite  
+- Tổng hợp những thành phần có quan hệ với nhau để tạo ra thành phần lớn hơn.
+- **Composite** được sử dụng khi chúng ta cần xử lý một nhóm đối tượng tương tự theo cách xử lý 1 object.
+
+**Sơ đồ thiết kế:**  
+
+![composite-pattern](composite-pattern.png)  
+
+**Ví dụ:**  
+
+![composite-pattern-eg](composite-pattern-example.png) 
+Game
+```java
+public abstract class Game {
+
+    public abstract void displayInfo();
+
+}
+```
+
+GameItem
+```java
+public class GameItem extends Game {
+    
+    // other methods...
+
+	@Override
+	public void displayInfo() {
+		System.out.println("name: " + name + " | realase year: " + releaseYear + " | console: " + console);
+	}
+
+}
+```
+
+GameType
+```java
+public class GameType extends Game {
+
+    private List<Game> games;
+ 
+    // other methods...
+
+    @Override
+    public void displayInfo() {
+        System.out.println("----");
+        System.out.println("name: " + name);
+        System.out.println("desc:" + desc);
+        for (Game game : games)
+            game.displayInfo();
+    }
+
+}
+```
+PS4Controller, represent of ConcreteAbstraction, when create PS4Controller, it need to take a ControllerFunction.
+And when button pressed, it will call the ControllerFunction.
+```java
+public class PS4Controller implements Controller {
+    private ControllerFunction controllerFunction;
+    public PS4Controller(ControllerFunction controllerFunction) {
+        this.controllerFunction = controllerFunction;
+    }
+    @Override
+    public void joystickMove(String direction) {
+        controllerFunction.joystickMove(direction);
+    }
+    @Override
+    public void pressHome() {
+        controllerFunction.pressHome();
+    }
+}
+```  
+Trong đó:
+- **Game** là **Component** tức là một `interface` hoặc `abstract class` quy định các method chung cần phải có cho tất cả các thành phần tham gia vào mẫu này.
+- **GameItem** là **Leaf** là lớp hiện thực (implements) các phương thức của Component. Nó là các object không có con.
+- **GameType** là **Composite** là tập hợp các **Leaf** và cài đăt các phương thức của **Component**.
+
+**Nhận xét:**
+- Cung cấp cùng một cách sử dụng đối với từng đối tượng riêng lẻ hoặc nhóm các đối tượng với nhau.
+
