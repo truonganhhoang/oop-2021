@@ -6,7 +6,7 @@
 
 - **[Link tài liệu.](https://refactoring.guru/design-patterns/catalog)**
 - **[Link repo của nhóm.](https://github.com/relaxday123/oop-2021)**
-- **[Link đến repo sử dụng trong bài báo cáo.](https://github.com/bethrobson/Head-First-Design-Patterns)**
+- **[Link đến repo sử dụng trong bài báo cáo.](https://github.com/questdb/questdb?fbclid=IwAR0bQVTOcpqL1NQS5uNAkb0NxlnfUlX6SVCKkpEX0B8kl4rYx1S7JI47EEk)**
   <br />
   <br />
 
