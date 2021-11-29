@@ -156,8 +156,6 @@ package refactoring_guru.builder.example;
 	        // Director is not aware and not dependent on concrete builders and
 	        // products.
 	        //
-	        // RU: Готовый продукт возвращает строитель, так как Директор чаще всего
-	        // не знает и не зависит от конкретных классов строителей и продуктов.
 	        Car car = builder.getResult();
 	        System.out.println("Car built:\n" + car.getCarType());
 	        CarManualBuilder manualBuilder = new CarManualBuilder();
