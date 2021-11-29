@@ -1,6 +1,6 @@
 # **Báo cáo tìm hiểu về mẫu thiết kế**
 ## **Thành viên:**
-- Lương Duy Đạt
+- Lương Duy Đạt.
 - Lê Văn Minh
 - Nguyễn Tấn Huy
 ## **Cách thức thực hiện bài báo cáo:** 
