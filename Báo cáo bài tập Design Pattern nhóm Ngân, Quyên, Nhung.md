@@ -3,7 +3,7 @@
 ## 1. Các thành viên nhóm: 
 ### - Trần Thị Ngân - 20021399
 ### - Lê Thị Cẩm Nhung - 20021408
-### - Phạm Thị Quyên - 20021421
+### - Phạm Thị Quyên
 
 ## 2. Link đến reposition được sử dụng trong bài báo cáo: 
 ### - [signalapp/Signal-Android](https://github.com/signalapp/Signal-Android)
@@ -13,8 +13,7 @@
 ## 3. So sánh
 ### Factory Method
 * Factory method là để đưa toàn bộ logic của việc tạo mới object vào trong factory, che giấu logic của việc khởi tạo.Được định nghĩa interface giúp client tạo object nhưng ủy quyền cho các concreate factory để xác định class nào được trả về cho client.
-* Factory Method: [SignalMediaSourceFactory](https://github.com/signalapp/SignalAndroid/blob/a5e5a735800cbdb3afa01a67390b6efa2fc91be6/app/src/main/java/org/thoughtcrime/securesms/video/exo/SignalMediaSourceFactory.java)
-trong đó factory method khác so với mẫu tiêu chuẩn bởi vì ở mẫu tiêu chuẩn dùng factory method để tạo(sản xuất) ra các đối tượng. Trong khi đó, ở đây đã dùng để override các phương thức.
+* Factory Method: [SignalMediaSourceFactory] https://github.com/landy8530/DesignPatterns/blob/be08a3ff79094c8dff94fdeb555047aa4620bf43/design-patterns-basic/src/main/java/org/landy/factory/method/BluetoothSenderFactory.java trong đó Factory pattern đã dùng để khởi tạo một product mới.
 
 ### Abstract Factory
 * Link [AbstractFactory](https://github.com/landy8530/DesignPatterns/blob/be08a3ff79094c8dff94fdeb555047aa4620bf43/design-patterns-basic/src/main/java/org/landy/factory/abstr/AbstractFactory.java)
@@ -25,9 +24,28 @@ trong đó factory method khác so với mẫu tiêu chuẩn bởi vì ở mẫu
 * Facade Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Pattern này cung cấp một giao diện chung đơn giản thay cho một nhóm các giao diện có trong một hệ thống con (subsystem).
 * Facade Pattern định nghĩa một giao diện ở một cấp độ cao hơn để giúp cho người dùng có thể dễ dàng sử dụng hệ thống con này: [IdentifyTest](https://github.com/landy8530/DesignPatterns/blob/be08a3ff79094c8dff94fdeb555047aa4620bf43/design-patterns-business/src/test/java/business/identify/IdentifyTest.java)
 
+### Flyweight pattern
+* Flyweight Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Nó cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.
+* Không có sự khác nhau giữa mẫu thiết kế chuẩn và mẫu thiết kế trong project. Đó là: ([Flyweight](https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/flyweight)).Flyweight giúp giảm số lượng đối tượng được tạo ra bằng cách chia sẻ đối tượng. Vì vậy, tiết kiệm bộ nhớ và các thiết bị lưu trữ cần thiết. 
+* Cải thiện khả năng cache dữ liệu vì thời gian đáp ứng nhanh.
+
+### Observer pattern
+* Observer pattern được định nghĩa mối phụ thuộc một – nhiều giữa các đối tượng để khi mà một đối tượng có sự thay đổi trạng thái, tất các thành phần phụ thuộc của nó sẽ được thông báo và cập nhật một cách tự động.
+* Observer có thể đăng ký với hệ thống. Khi hệ thống có sự thay đổi, hệ thống sẽ thông báo cho Observer biết. Khi không cần nữa, mẫu Observer sẽ được gỡ khỏi hệ thống.
+* Trong project, ([Observer pattern] (https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/observer)) không có sự khác biệt so với trong mẫu thiết kế chuẩn.
+### Template method pattern
+* Template method được định nghĩa một bộ khung của một thuật toán trong một chức năng, chuyển giao việc thực hiện nó cho các lớp con. Mẫu Template Method cho phép lớp con định nghĩa lại cách thực hiện của một thuật toán, mà không phải thay đổi cấu trúc thuật toán.
+* ([Template method](https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/templatemethod)).Template method sẽ gọi đến các method khác bên trong Abstract class để tạo dựng nên bộ khung. Nhưng có thể các method đó sẽ không được thực thi bên trong Abstract class, mà sẽ được override và thực thi lại bên trong các Concrete class.
+### Command pattern
+* Nó cho phép chuyển yêu cầu thành đối tượng độc lập, có thể được sử dụng để tham số hóa các đối tượng với các yêu cầu khác nhau.
+* ([Command pattern] (https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/command)) trong project gồm interface hoặc abstract class, chứa một phương thức trừu tượng thực thi (execute) một hành động (operation). Request sẽ được đóng gói dưới dạng Command.
+### Interpreter pattern
+* Interpreter Pattern giúp người lập trình có thể “xây dựng” những đối tượng “động” bằng cách đọc mô tả về đối tượng rồi sau đó “xây dựng” đối tượng đúng theo mô tả đó.
+* Trong ([Interpreter pattern] (https://github.com/ZoranPandovski/design-patterns/tree/master/Behavioral/Interpreter/java)) có chức năng để chuyển số nguyên thành số nhị phân,..
+* Chức năng của Interpreter pattern giống với trong mẫu thiết kế và đều để xác định một biểu diễn ngữ pháp của một ngôn ngữ cụ thể, cùng với một thông dịch viên sử dụng biểu diễn này để diễn dịch các câu trong ngôn ngữ.
 ### Builder pattern
 * Builder pattern được tạo ra để xây dựng một đôi tượng phức tạp bằng cách sử dụng các đối tượng đơn giản và sử dụng tiếp cận từng bước, việc xây dựng các đối tượng đôc lập với các đối tượng khác.
-* Kó đầy đủ 4 thành phần: Director, Product ([Block](https://github.com/prestodb/presto/blob/2ad67dcf000be86ebc5ff7732bbb9994c8e324a8/presto-common/src/main/java/com/facebook/presto/common/block/Block.java)), ConcreteBuilder ([SingleArrayBlockWriter](https://github.com/prestodb/presto/blob/2ad67dcf000be86ebc5ff7732bbb9994c8e324a8/presto-common/src/main/java/com/facebook/presto/common/block/SingleArrayBlockWriter.java)), Builder ([BlockBuilder](https://github.com/prestodb/presto/blob/2ad67dcf000be86ebc5ff7732bbb9994c8e324a8/presto-common/src/main/java/com/facebook/presto/common/block/BlockBuilder.java#L19))
+* Có đầy đủ 4 thành phần: Director, Product ([Block](https://github.com/prestodb/presto/blob/2ad67dcf000be86ebc5ff7732bbb9994c8e324a8/presto-common/src/main/java/com/facebook/presto/common/block/Block.java)), ConcreteBuilder ([SingleArrayBlockWriter](https://github.com/prestodb/presto/blob/2ad67dcf000be86ebc5ff7732bbb9994c8e324a8/presto-common/src/main/java/com/facebook/presto/common/block/SingleArrayBlockWriter.java)), Builder ([BlockBuilder](https://github.com/prestodb/presto/blob/2ad67dcf000be86ebc5ff7732bbb9994c8e324a8/presto-common/src/main/java/com/facebook/presto/common/block/BlockBuilder.java#L19))
 * Không có sự khác nhau lắm giữa mẫu thiết kế Builder chuẩn.
 * Abstract class Builder ([BlockBuilder](https://github.com/prestodb/presto/blob/2ad67dcf000be86ebc5ff7732bbb9994c8e324a8/presto-common/src/main/java/com/facebook/presto/common/block/BlockBuilder.java#L19)) khai báo các method cần được triển khai bên trong các class kế thừa. Còn method này sẽ trả về chính class BlockBuilder đễ quá trình khởi tạo tiếp tục được diễn ra. Bên trong class kế thừa có một hàm gọi là build() tương ứng với việc trả về kết quả cuối cùng của quá trình khởi tạo
 
@@ -68,81 +86,5 @@ trong đó factory method khác so với mẫu tiêu chuẩn bởi vì ở mẫu
 * Có sự khác biệt nhỏ so với mẫu thiết kế tiêu chuẩn:
 * Không tạo Mediator Interface mà sử dụng TabLayoutMediator (import com.google.android.material.tabs.TabLayoutMediator)
 * Thành phần Colleague CustomChatColorCreatorFragment giữ tham chiếu đến [TabLayoutMediator](https://github.com/signalapp/Signal-Android/blob/811bef8c35291219b13a0995dfb8a50ef6d6b3d7/app/src/main/java/org/thoughtcrime/securesms/conversation/colors/ui/custom/CustomChatColorCreatorFragment.kt#21)
-
-### Bridge Pattern:
-*là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Ý tưởng của nó là tách tính trừu tượng (abstraction) ra khỏi tính hiện thực (implementation) của nó. Từ đó có thể dễ dàng chỉnh sửa hoặc thay thế mà không làm ảnh hưởng đến những nơi có sử dụng lớp ban đầu.
-* ![Bridge Pattern](https://github.com/baomidou/dynamic-datasource-spring-boot-starter/tree/master/src/main/java/com/baomidou/dynamic/datasource/creator)
-* INTERFACE: ![Ví dụ](https://github.com/baomidou/dynamic-datasource-spring-boot-	starter/blob/master/src/main/java/com/baomidou/dynamic/datasource/creator/DataSourceCreator.java)
-* Abstraction : định ra một abstract interface quản lý việc tham chiếu đến đối tượng hiện thực cụ thể (Implementor).
-![]()
-
-### Adapter pattern:
-* là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Adapter Pattern cho phép các inteface (giao diện) không liên quan tới nhau có thể làm việc cùng nhau. Đối tượng giúp kết nối các interface gọi là Adapter.
-* ![Adapter pattern](https://github.com/Islam031218/library/blob/79f25a45f2e0c920c494e06e9f2a2ca818908e1d/S%D1%81hoolProject/Main.java) 
-	->BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-	->InputStreamReader : đây là một Adapter ở giữa hai interface không tương thích: System.in và BufferedReader giúp cho chúng có thể hoạt động được với nhau.
-* Cho phép nhiều đối tượng có interface giao tiếp khác nhau có thể tương tác và giao tiếp với nhau.
-* Tăng khả năng sử dụng lại thư viện với interface không thay đổi do không có mã nguồn.
-
-### Singleton pattern:
-* ![Singleton pattern](https://github.com/signalapp/Signal-Android/blob/018782e63dd9ab345db87a2e57bf11720ede45b6/app/src/main/java/org/thoughtcrime/securesms/dependencies/ApplicationDependencies.java)
-Giống nhau
-* Đảm bảo rằng một class chỉ có duy nhất một instance.
-* Và cung cấp một cách toàn cầu để truy cấp tới instance đó.
-
-### Prototype pattern:
-* ![Prototype pattern](https://github.com/Dempsy/dempsy/blob/642c357f1be5e9cd5a864965bbf694d24e08a5fc/dempsy-framework.api/src/test/java/net/dempsy/lifecycle/annotations/TestMps.java)
-* Giảm việc phân lớp, tránh việc tạo nhiều lớp con cho việc khởi tạo đối tượng 
-* Giảm độ phức tạp cho việc khởi tạo đối tượng
-	`public static class TestMp implements Cloneable {
-        public boolean activated = false;
-        public boolean passivateCalled = false;
-
-        @MessageHandler
-        public void handleMsg(final Message val) {}
-
-        @Activation
-        public void activate(final String key, final byte[] data) {
-            this.activated = true;
-        }
-
-        @Passivation
-        public byte[] passivate() {
-            passivateCalled = true;
-            return "passivate".getBytes();
-        }
-
-        @Override
-        public Object clone() throws CloneNotSupportedException {
-            return super.clone();
-        }
-    }`
-
-### Visitor Pattern:
-* ![Visistor pattern 1](https://github.com/mirsfang/ExamplesOfDesignPatterns/blob/master/src/action/visitor/visitorAbs/IVisitor.java)
-* ![Visistor pattern 2](https://github.com/mirsfang/ExamplesOfDesignPatterns/blob/master/src/action/visitor/visitorIml/Visitor.java)
-* Cho phép một hoặc nhiều hành vi được áp dụng cho một tập hợp các đối tượng tại thời điểm run-time, tách rời các hành vi khỏi cấu trúc đối tượng.
-* Đảm bảo nguyên tắc Open/ Close: đối tượng gốc không bị thay đổi, dễ dàng thêm hành vi mới cho đối tượng thông qua visitor
-
-### Composite pattern:
-* ![Composite](https://github.com/landy8530/DesignPatterns/blob/master/design-patterns-business/src/main/java/org/landy/business/domain/file/CustomerRequestFile.java)
-	->abtract RequestFile<CustomerRequestDetail>;
-* Cung cấp cùng một cách sử dụng đối với từng đối tượng riêng lẻ hoặc nhóm các đối tượng với nhau
-
-
-### State pattern:
-* Cho phép một đối tượng thay đổi hành vi của nó khi trạng thái nội bộ của nó thay đổi. Đối tượng sẽ xuất hiện để thay đổi lớp của nó.
-* ![State pattern 1](https://github.com/landy8530/DesignPatterns/blob/master/design-patterns-business/src/main/java/org/landy/business/identify/component/annotation/KeyIdentificationStrategy.java)
-* ![Stata pattern 2](https://github.com/landy8530/DesignPatterns/tree/master/design-patterns-business/src/main/java/org/landy/business/identify/component/primary)
-* Giữ hành vi cụ thể tương ứng với trạng thái.
-* Giúp chuyển trạng thái một cách rõ ràng.
-* Thêm một State mới mà không ảnh hưởng đến State khác hay Context hiện có.
-
-  ### Strategy pattern:
-* Cho phép định nghĩa tập hợp các thuật toán, đóng gói từng thuật toán lại, và dễ dàng thay đổi linh hoạt các thuật toán bên trong object. Strategy cho phép thuật toán biến đổi độc lập khi người dùng sử dụng chúng.
-* ![Strategy pattern](https://github.com/gywgiehub/demo/blob/8087d5b917352c69ead34c913e7b5952c46ef64f/eurake-client/src/main/java/com/demo/gyw/strategy/StrategyModel.java)
-* Cung cấp một sự thay thế cho kế thừa.
-* Dễ dàng mở rộng và kết hợp hành vi mới mà không thay đổi ứng dụng.
-
 
 
