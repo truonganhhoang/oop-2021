@@ -143,10 +143,6 @@ package refactoring_guru.builder.example;
 	        // EN: Director gets the concrete builder object from the client
 	        // (application code). That's because application knows better which
 	        // builder to use to get a specific product.
-	        //
-	        // RU: Директор получает объект конкретного строителя от клиента
-	        // (приложения). Приложение само знает какой строитель использовать,
-	        // чтобы получить нужный продукт.
 	        CarBuilder builder = new CarBuilder();
 	        director.constructSportsCar(builder);
 	
