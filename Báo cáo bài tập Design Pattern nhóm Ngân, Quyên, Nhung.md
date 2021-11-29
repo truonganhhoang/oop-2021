@@ -26,22 +26,22 @@
 
 ### Flyweight pattern
 * Flyweight Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Nó cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.
-* Không có sự khác nhau giữa mẫu thiết kế chuẩn và mẫu thiết kế trong project. Đó là: ([Flyweight](https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/flyweight)).Flyweight giúp giảm số lượng đối tượng được tạo ra bằng cách chia sẻ đối tượng. Vì vậy, tiết kiệm bộ nhớ và các thiết bị lưu trữ cần thiết. 
+* Không có sự khác nhau giữa mẫu thiết kế chuẩn và mẫu thiết kế trong project. Đó là: [Flyweight](https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/flyweight).Flyweight giúp giảm số lượng đối tượng được tạo ra bằng cách chia sẻ đối tượng. Vì vậy, tiết kiệm bộ nhớ và các thiết bị lưu trữ cần thiết. 
 * Cải thiện khả năng cache dữ liệu vì thời gian đáp ứng nhanh.
 
 ### Observer pattern
 * Observer pattern được định nghĩa mối phụ thuộc một – nhiều giữa các đối tượng để khi mà một đối tượng có sự thay đổi trạng thái, tất các thành phần phụ thuộc của nó sẽ được thông báo và cập nhật một cách tự động.
 * Observer có thể đăng ký với hệ thống. Khi hệ thống có sự thay đổi, hệ thống sẽ thông báo cho Observer biết. Khi không cần nữa, mẫu Observer sẽ được gỡ khỏi hệ thống.
-* Trong project, ([Observer pattern](https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/observer)) không có sự khác biệt so với trong mẫu thiết kế chuẩn.
+* Trong project, [Observer pattern](https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/observer) không có sự khác biệt so với trong mẫu thiết kế chuẩn.
 ### Template method pattern
 * Template method được định nghĩa một bộ khung của một thuật toán trong một chức năng, chuyển giao việc thực hiện nó cho các lớp con. Mẫu Template Method cho phép lớp con định nghĩa lại cách thực hiện của một thuật toán, mà không phải thay đổi cấu trúc thuật toán.
-* ([Template method](https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/templatemethod)).Template method sẽ gọi đến các method khác bên trong Abstract class để tạo dựng nên bộ khung. Nhưng có thể các method đó sẽ không được thực thi bên trong Abstract class, mà sẽ được override và thực thi lại bên trong các Concrete class.
+* [Template method](https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/templatemethod).Template method sẽ gọi đến các method khác bên trong Abstract class để tạo dựng nên bộ khung. Nhưng có thể các method đó sẽ không được thực thi bên trong Abstract class, mà sẽ được override và thực thi lại bên trong các Concrete class.
 ### Command pattern
 * Nó cho phép chuyển yêu cầu thành đối tượng độc lập, có thể được sử dụng để tham số hóa các đối tượng với các yêu cầu khác nhau.
-* ([Command pattern](https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/command)) trong project gồm interface hoặc abstract class, chứa một phương thức trừu tượng thực thi (execute) một hành động (operation). Request sẽ được đóng gói dưới dạng Command.
+* [Command pattern](https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/command) trong project gồm interface hoặc abstract class, chứa một phương thức trừu tượng thực thi (execute) một hành động (operation). Request sẽ được đóng gói dưới dạng Command.
 ### Interpreter pattern
 * Interpreter Pattern giúp người lập trình có thể “xây dựng” những đối tượng “động” bằng cách đọc mô tả về đối tượng rồi sau đó “xây dựng” đối tượng đúng theo mô tả đó.
-* Trong ([Interpreter pattern](https://github.com/ZoranPandovski/design-patterns/tree/master/Behavioral/Interpreter/java)) có chức năng để chuyển số nguyên thành số nhị phân,..
+* Trong [Interpreter pattern](https://github.com/ZoranPandovski/design-patterns/tree/master/Behavioral/Interpreter/java) có chức năng để chuyển số nguyên thành số nhị phân,..
 * Chức năng của Interpreter pattern giống với trong mẫu thiết kế và đều để xác định một biểu diễn ngữ pháp của một ngôn ngữ cụ thể, cùng với một thông dịch viên sử dụng biểu diễn này để diễn dịch các câu trong ngôn ngữ.
 ### Builder pattern
 * Builder pattern được tạo ra để xây dựng một đôi tượng phức tạp bằng cách sử dụng các đối tượng đơn giản và sử dụng tiếp cận từng bước, việc xây dựng các đối tượng đôc lập với các đối tượng khác.
