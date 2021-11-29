@@ -16,7 +16,7 @@ Bằng cách sử dụng design pattern, chúng ta sẽ tạo ra những đoạn
 ## **1. Abstract Factory ( nhà máy trừu tượng)**:
 - Là một mẫu thiết kế sáng tạo cho phép bạn tạo ra các họ các đối tượng liên quan mà không cần chỉ định các lớp cụ thể của chúng. Pattern Factory giống như một nhà máy sản sinh các đối tượng tương tự nhau này cho bạn.Pattern Factory  tạo các đối tượng đặc biệt từ các lớp cha và dễ dàng tạo extends system từ system cũ.
 - Minh hoạ: 
-
+```swift
 	import refactoring_guru.abstract_factory.example.app.Application;
 	import refactoring_guru.abstract_factory.example.factories.GUIFactory;
 	import refactoring_guru.abstract_factory.example.factories.MacOSFactory;
