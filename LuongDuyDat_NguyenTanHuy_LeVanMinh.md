@@ -1079,6 +1079,7 @@ Tóm lại, 23 mẫu thiết kế có thể chia thành 3 loại:
 1.	Creational Patterns
 2.	Structural Patterns
 3.	Behavioral Patterns
+
 Sau khi tìm hiểu các mẫu thiết kế, nhóm chúng em đã có những kiến thức hiểu cơ bản song trên thực tiễn khi áp dụng có thể sẽ mất nhiều thời gian để ngấm sâu về nó.
 
 
