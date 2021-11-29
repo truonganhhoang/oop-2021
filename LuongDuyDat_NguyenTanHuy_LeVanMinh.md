@@ -67,9 +67,6 @@ package refactoring_guru.adapter.example;
 	 */
 	public class Demo {
 	    public static void main(String[] args) {
-	        // EN: Round fits round, no surprise.
-	        //
-	        // RU: Круглое к круглому — всё работает.
 	        RoundHole hole = new RoundHole(5);
 	        RoundPeg rpeg = new RoundPeg(5);
 	        if (hole.fits(rpeg)) {
@@ -79,14 +76,6 @@ package refactoring_guru.adapter.example;
 
 	        SquarePeg smallSqPeg = new SquarePeg(2);
 	        SquarePeg largeSqPeg = new SquarePeg(20);
-	        // EN: hole.fits(smallSqPeg); // Won't compile.
-	        //
-	        // RU: hole.fits(smallSqPeg); // Не скомпилируется.
-	
-
-	        // EN: Adapter solves the problem.
-	        //
-	        // RU: Адаптер решит проблему.
 	        SquarePegAdapter smallSqPegAdapter = new SquarePegAdapter(smallSqPeg);
 	        SquarePegAdapter largeSqPegAdapter = new SquarePegAdapter(largeSqPeg);
 	        if (hole.fits(smallSqPegAdapter)) {
@@ -151,26 +140,12 @@ package refactoring_guru.builder.example;
 	import refactoring_guru.builder.example.cars.Manual;
 	import refactoring_guru.builder.example.director.Director;
 	
-
-	/**
-	 * EN: Demo class. Everything comes together here.
-	 *
-	 * RU: Демо-класс. Здесь всё сводится воедино.
-	 */
 	public class Demo {
 	
 
 	    public static void main(String[] args) {
 	        Director director = new Director();
 	
-
-	        // EN: Director gets the concrete builder object from the client
-	        // (application code). That's because application knows better which
-	        // builder to use to get a specific product.
-	        //
-	        // RU: Директор получает объект конкретного строителя от клиента
-	        // (приложения). Приложение само знает какой строитель использовать,
-	        // чтобы получить нужный продукт.
 	        CarBuilder builder = new CarBuilder();
 	        director.constructSportsCar(builder);
 	
@@ -178,9 +153,6 @@ package refactoring_guru.builder.example;
 	        // EN: The final product is often retrieved from a builder object, since
 	        // Director is not aware and not dependent on concrete builders and
 	        // products.
-	        //
-	        // RU: Готовый продукт возвращает строитель, так как Директор чаще всего
-	        // не знает и не зависит от конкретных классов строителей и продуктов.
 	        Car car = builder.getResult();
 	        System.out.println("Car built:\n" + car.getCarType());
 	
@@ -191,8 +163,6 @@ package refactoring_guru.builder.example;
 	
 
 	        // EN: Director may know several building recipes.
-	        //
-	        // RU: Директор может знать больше одного рецепта строительства.
 	        director.constructSportsCar(manualBuilder);
 	        Manual carManual = manualBuilder.getResult();
 	        System.out.println("\nCar manual built:\n" + carManual.print());
@@ -234,8 +204,6 @@ package refactoring_guru.factory_method.example;
 	     * EN: The concrete factory is usually chosen depending on configuration or
 	     * environment options.
 	     *
-	     * RU: Приложение создаёт определённую фабрику в зависимости от конфигурации
-	     * или окружения.
 	     */
 	    static void configure() {
 	        if (System.getProperty("os.name").equals("Windows 10")) {
@@ -391,8 +359,6 @@ package refactoring_guru.chain_of_responsibility.example;
 	        // EN: All checks are linked. Client can build various chains using the
 	        // same components.
 	        //
-	        // RU: Проверки связаны в одну цепь. Клиент может строить различные
-	        // цепи, используя одни и те же компоненты.
 	        Middleware middleware = new ThrottlingMiddleware(2);
 	        middleware.linkWith(new UserExistsMiddleware(server))
 	                .linkWith(new RoleCheckMiddleware());
