@@ -239,6 +239,8 @@ Sử dụng mẫu thiết kế:
 Strategy với:
 
 Interface: SlotAssignmentStrategy
+
+```java
 public interface SlotAssignmentStrategy{
 
     /** Updates the assignment of members to slots */
@@ -252,6 +254,8 @@ public interface SlotAssignmentStrategy{
 
 }
 Các ConcreteStategy: BoundedSlotAssignmentStrategy, DistanceAssignmentStrategy, FreeSlotAssignmentStrategy
+
+```java
 public abstract class BoundedSlotAssignmentStrategy implements SlotAssignmentStrategy{
 
     @Override
@@ -299,6 +303,8 @@ public class FreeSlotAssignmentStrategy implements SlotAssignmentStrategy{
 }
 
 BoundedSlotAssignmentStrategy có concrete: SoftRoleSlotAssignmentStrategy
+
+```java
 public class SoftRoleSlotAssignmentStrategy extends BoundedSlotAssignmentStrategy{
     //code
 }
@@ -313,6 +319,8 @@ Abstract Factory:
 
 UnitController->AIController
 Mindustry/core/src/mindustry/entities/units/UnitController.java
+
+```java
 public interface UnitController{
 }
 Mindustry/core/src/mindustry/ai/types
@@ -322,6 +330,8 @@ Facade:
 
 facade: ContentList
 Mindustry/core/src/mindustry/ctype/ContentList.jav
+
+```java
 public interface ContentList{
     /** This method should create all the content. */
     void load();
@@ -329,6 +339,8 @@ public interface ContentList{
 
 subsystems: Blocks, Bullets, Items, Liquids, Loadouts, PLanets, SectorPresets, StatusEffects, TechTree, UnitTypes, Weathers
 Mindustry/core/src/mindustry/content
+
+```java
 public class Blocks implements ContentList{
     public static Block...
 }
