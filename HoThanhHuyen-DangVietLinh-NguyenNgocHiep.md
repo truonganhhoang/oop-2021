@@ -103,29 +103,50 @@ Giúp tách rời phần xử lý một chức năng cụ thể ra khỏi đối
 
 - Template Method Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Pattern này nói rằng “Định nghĩa một bộ khung của một thuật toán trong một chức năng, chuyển giao việc thực hiện nó cho các lớp con. Mẫu Template Method cho phép lớp con định nghĩa lại cách thực hiện của một thuật toán, mà không phải thay đổi cấu trúc thuật toán“.
 => https://github.com/RefactoringGuru/design-patterns-java/blob/master/src/refactoring_guru/template_method/example/Demo.java
-
-- Visitor là mẩu thiết kế(Design Patterns) cho phép định nghĩa các thao tác(operations) trên một tập hợp các đối tượng (objects) không đồng nhất (về kiểu) mà không làm thay đổi định nghĩa về lớp(classes) của các đối tượng đó.
+- Visitor pattern
+Visitor là mẩu thiết kế(Design Patterns) cho phép định nghĩa các thao tác(operations) trên một tập hợp các đối tượng (objects) không đồng nhất (về kiểu) mà không làm thay đổi định nghĩa về lớp(classes) của các đối tượng đó.
+Visitor cho phép thay đổi, mở rộng các thao tác cho đối tượng mà không thay đổi cấu trúc, nội dung bên trong đối tượng
+Khi nào nên dùng Visitor Pattern?
+ Khi có một cấu trúc đối tượng phức tạp với nhiều class và interface. Người dùng cần thực hiện một số hành vi cụ thể của riêng đối tượng, tùy thuộc vào concrete class của chúng
+ Chúng ta muốn di chuyển logic hành vi từ các đối tượng sang một lớp khác để xử lí để giảm phức tạp
+ Khi cấu trúc dữ liệu của đối tượng ít khi thay đổi nhưng hành vi của chúng được thay đổi thường xuyên
+ Khi muốn tránh sử dụng toán tử instanceof
 => https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/Visitor.kt
 - Command Pattern:
 Command pattern thuộc nhóm các pattern hành vi: Đóng gói tất cả thông tin cần thiết vào 1 đối tượng để thực hiện hành động hay kích hoạt một sự kiện thực hiện sau đó. Các thông tin có thể bao gồm tên phương thức, các biến và giá trị cần thiết...hay đơn giản hơn đó là nó cho phép chuyển yêu cầu thành đối tượng độc lập, có thể được sử dụng để tham số hóa các đối tượng với các yêu cầu khác nhau như log, queue (undo/redo), transtraction.Command pattern thuộc nhóm các pattern hành vi: Đóng gói tất cả thông tin cần thiết vào 1 đối tượng để thực hiện hành động hay kích hoạt một sự kiện thực hiện sau đó. Các thông tin có thể bao gồm tên phương thức, các biến và giá trị cần thiết...hay đơn giản hơn đó là nó cho phép chuyển yêu cầu thành đối tượng độc lập, có thể được sử dụng để tham số hóa các đối tượng với các yêu cầu khác nhau như log, queue (undo/redo), transtraction.
+Command pattern khá hữu dụng nhưng ta nên sử dụng những khi:
+ Khi cần tham số hóa các đối tượng theo một hành động thực hiện.
+ Khi cần tạo và thực thi các yêu cầu vào các thời điểm khác nhau.
+ Khi cần hỗ trợ tính năng undo, log , callback hoặc transaction.
 ==> https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/Command.kt
 
 - Composite Pattern
 Composite là một mẫu thiết kế thuộc nhóm Structural Pattern. Composite Pattern là một sự tổng hợp những thành phần có quan hệ với nhau để tạo ra thành phần lớn hơn. Nó cho phép thực hiện các tương tác với tất cả đối tượng trong mẫu tương tự nhau.
+Composite Pattern được sử dụng khi chúng ta cần xử lý một nhóm đối tượng tương tự theo cách xử lý 1 object. Composite pattern sắp xếp các object theo cấu trúc cây để diễn giải 1 phần cũng như toàn bộ hệ thống phân cấp. Pattern này tạo một lớp chứa nhóm đối tượng của riêng nó. Lớp này cung cấp các cách để sửa đổi nhóm của cùng 1 object. Pattern này cho phép Client có thể viết code giống nhau để tương tác với composite object này, bất kể đó là một đối tượng riêng lẻ hay tập hợp các đối tượng.
+Tuy nhiên chúng ta sẽ sử dụng Composite Pattern khi nào?
+Composite Pattern chỉ nên được áp dụng khi nhóm đối tượng phải hoạt động như một đối tượng duy nhất (theo cùng một cách).
+Composite Pattern có thể được sử dụng để tạo ra một cấu trúc giống như cấu trúc cây.
 ==> https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/Composite.kt
 
 - Decorator Pattern
 Decorator là một trong 23 mẫu thiết kế Gang of Four mô tả làm thế nào để giải quyết vấn đề thiết kế các phần mềm mang tính hướng đối tượng một các linh hoạt và có tính tái sử dụng.
 Decorator cho phép người dùng thêm các tính năng mới vào một đối tượng đã có mà không làm thay đổi cấu trúc lớp của nó.
 Decorator này nằm trong nhóm mẫu thiết kế mang tính cấu trúc (Structural pattern) bởi vì nó thể hiện như là đóng gói của một lớp đã tồn tại.
+Khi bạn để bạn hiểu về Decorator Pattern -> Bạn muốn mua 1 món quà tặng cho bán gái thì sẽ thực hiện theo trình tự : Mua quà thô -> đóng hộp -> gói quà. Trình tự chia thành 3 phần : món quà, chiếc hộp và giấy gói. "Decor" là để món quà bắt măt hơn.
 ==> https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/Decorator.kt
 
 - Facade Pattern
 Facade Pattern cung cấp một interface đơn giản và cao cấp nhất cho phía client (máy khách) và cho phép nó truy cập vào hệ thống mà không cần biết bên trong có logic hệ thống nào hay nó hoạt động như thế nào.
+Sử dụng mẫu Facade khi :
+Bạn muốn cung cấp một giao diện đơn giản cho một hệ thống con phức tạp. Các hệ thống con thường trở nên phức tạp hơn khi chúng phát triển. Hầu hết các mô hình khi được áp dụng, kết quả trong các lớp nhiều hơn và nhỏ hơn. Điều này làm cho hệ thống con trở nên dễ sử dụng hơn và dễ tùy chỉnh hơn nhưng cũng trở nên khó sử dụng hơn cho khách hàng mà không cần thiết phải tùy chỉnh nó. Facade có thể cung cấp một chế độ xem mặc định đơn giản của hệ thống phụ đủ tốt cho hầu hết các khách hàng. Chỉ những khách hàng cần nhiều tính tùy chỉnh mới cần vượt qua facade.
+Có nhiều phụ thuộc giữa khách hàng và các lớp thực hiện của một lớp trừu tượng. Giới thiệu một Facade để tách riêng hệ thống con từ khách hàng và các hệ thống con khác, do đó thúc đẩy sự độc lập của hệ thống con và tính di động.
+Bạn muốn bao bọc, che giấu tính phức tạp trong các hệ thống con của bạn. Sử dụng Facade để xác định điểm vào cho mỗi cấp độ hệ thống con. Nếu các hệ thống con phụ thuộc, sau đó bạn có thể đơn giản hóa các mối quan hệ phụ thuộc giữa chúng bằng cách làm cho chúng giao tiếp với nhau thông qua mặt tiền của chúng.
 ==> https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/Facade.kt
 
 - Factory Method Pattern
 Là một design pattern thuộc nhóm khởi tạo (Creational patterns). Pattern này được sinh ra nhằm mục đích khởi tạo một đối tượng mới mà không cần thiết phải chỉ ra một cách chính xác class nào sẽ được khởi tạo. Factory Method Pattern giải quyết vấn đề này bằng cách định nghĩa một factory method cho việc tạo đối tượng, và các lớp con thừa kế có thể override phương thức này để chỉ rõ đối tượng nào sẽ được khởi tạo.
+Factory Method là một design pattern cung cấp một giao diện (interface) để tạo đối tượng trong class cha nhưng cho phép class con của nó ghi đè để tạo đối tượng theo những kiểu khác nhau của bài toán.
+Hoặc nói một cách dê hiểu hơn: Factory method là một design pattern của lập trình hướng đối tượng trong thiết kế phần mềm, nhằm giải quyết vấn đề tạo một đối tượng mà không cần thiết chỉ ra class nào sẽ được tạo. Factory Method giải quyết vấn đề này bằng cách định nghĩa một phương thức cho việc tạo đối tượng, và các class con thừa kế có thể ghi đè để chỉ rõ đối tượng nào sẽ được tạo.
 ==> https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/FactoryMethod.kt
 
 #Kết luận: Trong dự án trên do nội dung là về design pattern nên mẫu thiết kế được sử dụng khá tương đồng với 23 mẫu thiết kế chuẩn.
