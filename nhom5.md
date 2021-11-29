@@ -520,3 +520,154 @@ Giờ việc thu thập thông tin của khách hàng trở nên dễ dàng hơn
     // Alfonso
 
 ```
+## [Abstract Factory](https://github.com/iluwatar/java-design-patterns/tree/master/abstract-factory)
+
+
+Abstract Factory pattern là một trong những Creational pattern. Nó là phương pháp tạo ra một Super-factory dùng để tạo ra các Factory khác. Hay còn được gọi là Factory của các Factory. Abstract Factory Pattern là một Pattern cấp cao hơn so với Factory Method Pattern.
+
+>Ví dụ: Có rất nhiều kiểu vương quốc thì việc dùng Abstract Factory là hợp lý khi ta có thể lựa chọn các loại vương quốc khác nhau.
+
+```
+// tao trước thành phần của kiểu vương quốc Elf
+public interface Castle {
+  String getDescription();
+}
+
+public interface King {
+  String getDescription();
+}
+
+public interface Army {
+  String getDescription();
+}
+
+// Elven implementations ->
+public class ElfCastle implements Castle {
+  static final String DESCRIPTION = "This is the elven castle!";
+  @Override
+  public String getDescription() {
+    return DESCRIPTION;
+  }
+}
+public class ElfKing implements King {
+  static final String DESCRIPTION = "This is the elven king!";
+  @Override
+  public String getDescription() {
+    return DESCRIPTION;
+  }
+}
+public class ElfArmy implements Army {
+  static final String DESCRIPTION = "This is the elven Army!";
+  @Override
+  public String getDescription() {
+    return DESCRIPTION;
+  }
+}
+
+// sau đó tạo interface kingdom rồi dùng ElfKingdomFactory implements KingdomFactory
+public interface KingdomFactory {
+  Castle createCastle();
+  King createKing();
+  Army createArmy();
+}
+
+public class ElfKingdomFactory implements KingdomFactory {
+
+  @Override
+  public Castle createCastle() {
+    return new ElfCastle();
+  }
+
+  @Override
+  public King createKing() {
+    return new ElfKing();
+  }
+
+  @Override
+  public Army createArmy() {
+    return new ElfArmy();
+  }
+}
+```
+**Nhận xét**
+- Giống với mẫu chuẩn.
+- Tạo 1 vài interface Castle, King, Army rồi chia nhỏ ra từng lớp ứng với từng loại ví dụ với ElfKingdom thì có ElfCastle, ElfKing, ElfArmy thì ta được 1 loại của Object Kingdom
+
+
+
+## [Flyweight](https://github.com/iluwatar/java-design-patterns/tree/master/flyweight)
+
+Flyweight Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Nó cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.
+
+>Ví dụ: Một cửa hàng phép thuật bán rất nhiều thuốc, trong đó thay vì chúng ta tạo hàng loạt các Object mới cho từng loại thuốc thì ta có thể dùng 1 Object đại diện và dùng được cho tất cả các loại thuốc từ đó có thể giảm thiểu được dung lượng.
+
+Đầu tiên ta tạo rất nhiều loại thuốc
+```
+public interface Potion {
+  void drink();
+}
+
+@Slf4j
+public class HealingPotion implements Potion {
+  @Override
+  public void drink() {
+    LOGGER.info("You feel healed. (Potion={})", System.identityHashCode(this));
+  }
+}
+
+@Slf4j
+public class HolyWaterPotion implements Potion {
+  @Override
+  public void drink() {
+    LOGGER.info("You feel blessed. (Potion={})", System.identityHashCode(this));
+  }
+}
+
+@Slf4j
+public class InvisibilityPotion implements Potion {
+  @Override
+  public void drink() {
+    LOGGER.info("You become invisible. (Potion={})", System.identityHashCode(this));
+  }
+}
+```
+Thay vì phải tạo từng loại thuốc thì với class PotionFactory thì ta đã có thể rút ngắn được việc tạo 1 Object mới
+```
+public class PotionFactory {
+
+  private final Map<PotionType, Potion> potions;
+
+  public PotionFactory() {
+    potions = new EnumMap<>(PotionType.class);
+  }
+
+  Potion createPotion(PotionType type) {
+    var potion = potions.get(type);
+    if (potion == null) {
+      switch (type) {
+        case HEALING:
+          potion = new HealingPotion();
+          potions.put(type, potion);
+          break;
+        case HOLY_WATER:
+          potion = new HolyWaterPotion();
+          potions.put(type, potion);
+          break;
+        case INVISIBILITY:
+          potion = new InvisibilityPotion();
+          potions.put(type, potion);
+          break;
+        default:
+          break;
+      }
+    }
+    return potion;
+  }
+}
+
+```
+**Lợi ích**
+- Giảm số lượng đối tượng được tạo ra bằng cách chia sẻ đối tượng. Vì vậy, tiết kiệm bộ nhớ và các thiết bị lưu trữ cần thiết.
+- Cãi thiện khả năng cache dữ liệu vì thời gian đáp ứng nhanh.
+- Tăng performance.
+
