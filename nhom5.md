@@ -671,3 +671,91 @@ public class PotionFactory {
 - Cãi thiện khả năng cache dữ liệu vì thời gian đáp ứng nhanh.
 - Tăng performance.
 
+## [Iterator](https://github.com/iluwatar/java-design-patterns/tree/master/iterator)
+
+Iterator Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó được sử dụng để “Cung cấp một cách thức truy cập tuần tự tới các phần tử của một đối tượng tổng hợp, mà không cần phải tạo dựng riêng các phương pháp truy cập cho đối tượng tổng hợp này”.
+
+>Ví dụ: Rương kho báu có rất nhiều vật phẩm như nhẫn(rings), thuốc(potions) và vũ khí(weapons), ta có thể truy cập tuần tự bằng cách sử dụng Iterator pattern
+
+Đầu tiên ta tạo 1 rương có nhiều vật phẩm
+```
+public class TreasureChest {
+
+  private final List<Item> items;
+
+  public TreasureChest() {
+    items = List.of(
+        new Item(ItemType.POTION, "Potion of courage"),
+        new Item(ItemType.RING, "Ring of shadows"),
+        new Item(ItemType.POTION, "Potion of wisdom"),
+        new Item(ItemType.POTION, "Potion of blood"),
+        new Item(ItemType.WEAPON, "Sword of silver +1"),
+        new Item(ItemType.POTION, "Potion of rust"),
+        new Item(ItemType.POTION, "Potion of healing"),
+        new Item(ItemType.RING, "Ring of armor"),
+        new Item(ItemType.WEAPON, "Steel halberd"),
+        new Item(ItemType.WEAPON, "Dagger of poison"));
+  }
+
+  public Iterator<Item> iterator(ItemType itemType) {
+    return new TreasureChestItemIterator(this, itemType);
+  }
+
+  public List<Item> getItems() {
+    return new ArrayList<>(items);
+  }
+}
+
+```
+Sau đó ta định nghĩa lại Item 
+```
+public class Item {
+
+  private ItemType type;
+  private final String name;
+
+  public Item(ItemType type, String name) {
+    this.setType(type);
+    this.name = name;
+  }
+
+  @Override
+  public String toString() {
+    return name;
+  }
+
+  public ItemType getType() {
+    return type;
+  }
+
+  public final void setType(ItemType type) {
+    this.type = type;
+  }
+}
+
+public enum ItemType {
+
+  ANY, WEAPON, RING, POTION
+
+}
+```
+Sau đó ta chỉ việc tuần tự tìm vật phẩm trong rương.
+```
+public interface Iterator<T> {
+
+  boolean hasNext();
+
+  T next();
+}
+
+var itemIterator = TREASURE_CHEST.iterator(ItemType.RING);
+while (itemIterator.hasNext()) {
+  LOGGER.info(itemIterator.next().toString());
+}
+
+```
+
+**Một số lợi ích khi sử dụng Iterator Pattern:**
+- Đảm bảo nguyên tắc Single responsibility principle (SRP) : chúng ta có thể tách phần cài đặt các phương thức của tập hợp và phần duyệt qua các phần tử (iterator) theo từng class riêng lẻ.
+- Chúng ta có thể truy cập song song trên cùng một tập hợp vì mỗi đối tượng iterator có chứa trạng thái riêng của nó.
+
