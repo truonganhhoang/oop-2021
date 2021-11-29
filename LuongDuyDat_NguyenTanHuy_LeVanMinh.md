@@ -317,12 +317,6 @@ package refactoring_guru.chain_of_responsibility.example;
 	import java.io.IOException;
 	import java.io.InputStreamReader;
 	
-
-	/**
-	 * EN: Demo class. Everything comes together here.
-	 *
-	 * RU: Демо-класс. Здесь всё сводится воедино.
-	 */
 	public class Demo {
 	    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	    private static Server server;
