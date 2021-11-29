@@ -180,7 +180,7 @@ Class này định nghĩa một loạt các các phương thức truy cập ch�
 + ConcreteElement (ConcreteVisitable): cài đặt phương thức đã được khai báo trong Element dựa vào đối số visitor được cung cấp.
 + ObjectStructure : là một lớp chứa tất cả các đối tượng Element, cung cấp một cơ chế để duyệt qua tất cả các phần tử. Cấu trúc đối tượng này có thể là một tập hợp (collection) hoặc một cấu trúc phức tạp giống như một đối tượng tổng hợp (composite).
 + Client : không biết về ConcreteElement và chỉ gọi phương thức accept() của Element. <br />
-    => Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Visitor Pattern chuẩn</b>
+    => Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Visitor Pattern chuẩn. </b>
                 
 
   
