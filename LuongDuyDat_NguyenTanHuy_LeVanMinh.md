@@ -168,7 +168,7 @@ package refactoring_guru.builder.example;
 	
 
 	}
-```swift
+```
 - So sánh:
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
