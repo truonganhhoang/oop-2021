@@ -9,9 +9,9 @@ Các thành viên làm phần bài báo cáo của mình vào một cái google 
 **[Link đến reposition được sử dụng trong bài báo cáo](https://github.com/bethrobson/Head-First-Design-Patterns)**
 
 ## **I. Giới thiệu về mẫu thiết kế:**
-- Giả sử bạn muốn tạo một lớp và sử dụng lớp này để tạo một đối tượng mà đối tượng này được sử dụng bởi tất cả các lớp khác. Giải pháp tốt nhất trong trường hợp này là sử dụng Singleton design pattern.
-- Như vậy design pattern là độc lập với ngôn ngữ lập trình để giải quyết các vấn đề phổ biến trong thiết kế hướng đối tượng. Nghĩa là một design pattern là một ý tưởng, không phải là một cài đặt cụ thể.
-- Bằng cách sử dụng design pattern, chúng ta sẽ tạo ra những đoạn code linh hoạt hơn, có khả năng tái sử dụng hơn và dễ bảo trì nâng cấp hơn.
+Giả sử bạn muốn tạo một lớp và sử dụng lớp này để tạo một đối tượng mà đối tượng này được sử dụng bởi tất cả các lớp khác. Giải pháp tốt nhất trong trường hợp này là sử dụng Singleton design pattern.
+Như vậy design pattern là độc lập với ngôn ngữ lập trình để giải quyết các vấn đề phổ biến trong thiết kế hướng đối tượng. Nghĩa là một design pattern là một ý tưởng, không phải là một cài đặt cụ thể.
+Bằng cách sử dụng design pattern, chúng ta sẽ tạo ra những đoạn code linh hoạt hơn, có khả năng tái sử dụng hơn và dễ bảo trì nâng cấp hơn.
 ## **II. Các mẫu thiết kế được sử dụng trong reposition:**
 ## **1. Abstract Factory ( nhà máy trừu tượng)**:
 - Là một mẫu thiết kế sáng tạo cho phép bạn tạo ra các họ các đối tượng liên quan mà không cần chỉ định các lớp cụ thể của chúng. Pattern Factory giống như một nhà máy sản sinh các đối tượng tương tự nhau này cho bạn.Pattern Factory  tạo các đối tượng đặc biệt từ các lớp cha và dễ dàng tạo extends system từ system cũ.
@@ -60,8 +60,6 @@ Các thành viên làm phần bài báo cáo của mình vào một cái google 
 	public class Demo {
 	    public static void main(String[] args) {
 	        // EN: Round fits round, no surprise.
-	        //
-	        // RU: Круглое к круглому — всё работает.
 	        RoundHole hole = new RoundHole(5);
 	        RoundPeg rpeg = new RoundPeg(5);
 	        if (hole.fits(rpeg)) {
@@ -72,7 +70,7 @@ Các thành viên làm phần bài báo cáo của mình vào một cái google 
 	        SquarePeg smallSqPeg = new SquarePeg(2);
 	        SquarePeg largeSqPeg = new SquarePeg(20);
 	        // EN: hole.fits(smallSqPeg); // Won't compile.
-	        //
+	      
 	        SquarePegAdapter smallSqPegAdapter = new SquarePegAdapter(smallSqPeg);
 	        SquarePegAdapter largeSqPegAdapter = new SquarePegAdapter(largeSqPeg);
 	        if (hole.fits(smallSqPegAdapter)) {
@@ -88,8 +86,8 @@ Các thành viên làm phần bài báo cáo của mình vào một cái google 
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 3. Bridge Pattern:
-- Là một mẫu thiết kế cấu trúc cho phép bạn chia một lớp lớn hoặc một tập hợp các lớp có liên quan chặt chẽ thành hai phân cấp riêng biệt — trừu tượng và thực thi — có thể được phát triển độc lập với nhau. Bridge pattern được sử dụng khi chúng ta muốn tách một abtraction từ implementation của nó để cả hai có thể thay đổi một cách độc lập với nhau. Bridge Pattern là một mẫu cấu trúc (Structural Pattern)
-- Minh hoạ:
+Là một mẫu thiết kế cấu trúc cho phép bạn chia một lớp lớn hoặc một tập hợp các lớp có liên quan chặt chẽ thành hai phân cấp riêng biệt — trừu tượng và thực thi — có thể được phát triển độc lập với nhau. Bridge pattern được sử dụng khi chúng ta muốn tách một abtraction từ implementation của nó để cả hai có thể thay đổi một cách độc lập với nhau. Bridge Pattern là một mẫu cấu trúc (Structural Pattern)
+Minh hoạ:
 ```swift
 package refactoring_guru.bridge.example;
 	
@@ -128,7 +126,7 @@ package refactoring_guru.bridge.example;
 + Khác nhau: Không có sự khác nhau.
 ## 4. Builder pattern:
 - Là một mẫu thiết kế sáng tạo cho phép bạn xây dựng các đối tượng phức tạp theo từng bước. Mẫu cho phép bạn tạo ra các kiểu và hình ảnh đại diện khác nhau của một đối tượng bằng cách sử dụng cùng một mã xây dựng.
-- Minh hoạ:
+Minh hoạ:
 ```swift
 package refactoring_guru.builder.example;
 	
@@ -207,8 +205,8 @@ package refactoring_guru.factory_method.example;
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 6. Facade Pattern:
-- Là một mẫu thiết kế sáng tạo cung cấp một giao diện để tạo các đối tượng trong lớp cha, nhưng cho phép các lớp con thay đổi loại đối tượng sẽ được tạo. Facade Pattern cung cấp một interface đơn giản và cao cấp nhất cho phía client (máy khách) và cho phép nó truy cập vào hệ thống mà không cần biết bên trong có logic hệ thống nào hay nó hoạt động như thế nào.
-- Minh hoạ: 
+-Là một mẫu thiết kế sáng tạo cung cấp một giao diện để tạo các đối tượng trong lớp cha, nhưng cho phép các lớp con thay đổi loại đối tượng sẽ được tạo. Facade Pattern cung cấp một interface đơn giản và cao cấp nhất cho phía client (máy khách) và cho phép nó truy cập vào hệ thống mà không cần biết bên trong có logic hệ thống nào hay nó hoạt động như thế nào.
+-Minh hoạ: 
 ```swift
 package refactoring_guru.facade.example;
 	
@@ -300,8 +298,8 @@ package refactoring_guru.prototype.example;
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 8. Chain_of_responsibility:
-- Là một mẫu thiết kế hành vi bao gồm một nguồn các đối tượng lệnh và một loạt các đối tượng xử lý. Mỗi đối tượng xử lý chứa logic xác định các loại đối tượng lệnh mà nó có thể xử lý, phần còn lại được chuyển cho đối tượng xử lý tiếp theo trong chuỗi.
-- Minh hoạ:
+-Là một mẫu thiết kế hành vi bao gồm một nguồn các đối tượng lệnh và một loạt các đối tượng xử lý. Mỗi đối tượng xử lý chứa logic xác định các loại đối tượng lệnh mà nó có thể xử lý, phần còn lại được chuyển cho đối tượng xử lý tiếp theo trong chuỗi.
+-Minh hoạ:
 ```swift
 package refactoring_guru.chain_of_responsibility.example;
 	
@@ -316,7 +314,8 @@ package refactoring_guru.chain_of_responsibility.example;
 	import java.io.BufferedReader;
 	import java.io.IOException;
 	import java.io.InputStreamReader;
-	
+
+	// EN: Demo class. Everything comes together here.
 	public class Demo {
 	    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	    private static Server server;
@@ -330,9 +329,6 @@ package refactoring_guru.chain_of_responsibility.example;
 
 	        // EN: All checks are linked. Client can build various chains using the
 	        // same components.
-	        //
-	        // RU: Проверки связаны в одну цепь. Клиент может строить различные
-	        // цепи, используя одни и те же компоненты.
 	        Middleware middleware = new ThrottlingMiddleware(2);
 	        middleware.linkWith(new UserExistsMiddleware(server))
 	                .linkWith(new RoleCheckMiddleware());
@@ -364,9 +360,9 @@ package refactoring_guru.chain_of_responsibility.example;
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 9. Command Pattern:
-- Là một mẫu thiết kế hành vi biến một yêu cầu thành một đối tượng độc lập chứa tất cả thông tin về yêu cầu. Sự chuyển đổi này cho phép bạn chuyển các yêu cầu dưới dạng đối số của phương thức, trì hoãn hoặc xếp hàng đợi việc thực hiện một yêu cầu và hỗ trợ các hoạt động hoàn tác.
+-Là một mẫu thiết kế hành vi biến một yêu cầu thành một đối tượng độc lập chứa tất cả thông tin về yêu cầu. Sự chuyển đổi này cho phép bạn chuyển các yêu cầu dưới dạng đối số của phương thức, trì hoãn hoặc xếp hàng đợi việc thực hiện một yêu cầu và hỗ trợ các hoạt động hoàn tác.
 - Minh hoạ:
- ```swift
+- ```swift
 package refactoring_guru.command.example;
 	
 
@@ -426,9 +422,9 @@ package refactoring_guru.composite.example;
 	    }
 	}
 ```
-- So sánh:
-+ Giống nhau: Giống với mẫu chuẩn.
-+ Khác nhau: Không có sự khác nhau.
+-So sánh:
+Giống nhau: Giống với mẫu chuẩn.
+Khác nhau: Không có sự khác nhau.
 ## 11. Decorator Pattern:
 - Là một mẫu thiết kế cấu trúc cho phép bạn đính kèm các hành vi mới vào các đối tượng bằng cách đặt các đối tượng này bên trong các đối tượng trình bao bọc đặc biệt có chứa các hành vi.
 - Minh hoạ:
@@ -462,7 +458,7 @@ package refactoring_guru.decorator.example;
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 12. Flyweight Pattern:
-- Là một mẫu thiết kế cấu trúc cho phép bạn lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.
+-Là một mẫu thiết kế cấu trúc cho phép bạn lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.
 - Minh hoạ:
 ```swift
 package refactoring_guru.flyweight.example;
@@ -513,6 +509,8 @@ package refactoring_guru.flyweight.example;
 ## 13. Interpreter Pattern: 
 - là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Interpreter Pattern giúp người lập trình có thể “xây dựng” những đối tượng “động” bằng cách đọc mô tả về đối tượng rồi sau đó “xây dựng” đối tượng đúng theo mô tả đó.
 - Minh họa: 
+
+```swift
 package refactoring_guru.interpreter.example;
 	
 
@@ -521,13 +519,8 @@ import refactoring_guru.interpreter.example.expressions.Context;
 import refactoring_guru.interpreter.example.expressions.OrExpression;
 import refactoring_guru.interpreter.example.expressions.VariableExpression;
 
-
-/**
- * EN: Interpreter Design Pattern
- * 
- * Defines a representation for a grammar as well as a mechanism to understand and act upon the grammar.
- */
- 
+ // EN: Interpreter Design Pattern.
+ // Defines a representation for a grammar as well as a mechanism to understand and act upon the grammar.
 public class Demo {
     private static void example1() throws Exception {
         var context = new Context();
@@ -595,13 +588,15 @@ public class Demo {
         example2();
     }
 }
-
+```
 - So sánh: 
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 14. Iterator pattern: 
 - Iterator là một mẫu thiết kế hành vi cho phép bạn duyệt qua các phần tử của một bộ sưu tập mà không để lộ biểu diễn cơ bản của nó (danh sách, ngăn xếp, cây, v.v.).
 - Minh họa:
+
+```swift
 Package refactoring_guru.iterator.example;
 	
 
@@ -616,10 +611,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+ // EN: Demo class. Everything comes together here.
 
-/**
- * EN: Demo class. Everything comes together here.
- */
  
 public class Demo {
     public static Scanner scanner = new Scanner(System.in);
@@ -660,13 +653,15 @@ public class Demo {
         return data;
     }
 }
-
+```
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 15. Mediator Pattern 
 - là một mẫu thiết kế hành vi cho phép bạn giảm bớt sự phụ thuộc hỗn loạn giữa các đối tượng. Mẫu hạn chế giao tiếp trực tiếp giữa các đối tượng và buộc chúng chỉ cộng tác thông qua một đối tượng trung gian.
 - Minh họa:
+
+```swift
 package refactoring_guru.mediator.example;
 	
 
@@ -677,10 +672,7 @@ import refactoring_guru.mediator.example.mediator.Mediator;
 
 import javax.swing.*;
 
-
-/**
- * EN: Demo class. Everything comes together here.
- */
+ // EN: Demo class. Everything comes together here.
  
 public class Demo {
     public static void main(String[] args) {
@@ -699,13 +691,15 @@ public class Demo {
         mediator.createGUI();
     }
 }
-
+```
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 16.Memento
 - là một mẫu thiết kế hành vi cho phép bạn lưu và khôi phục trạng thái trước đó của một đối tượng mà không tiết lộ chi tiết về quá trình triển khai của nó.
 - Minh họa:
+
+```swift
 package refactoring_guru.memento.example;
 	
 
@@ -742,13 +736,15 @@ public class Demo {
         );
     }
 }
-
+```
 - So sánh: 
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 17. Observer pattern 
 - là một mẫu thiết kế hành vi cho phép bạn xác định cơ chế đăng ký để thông báo cho nhiều đối tượng về bất kỳ sự kiện nào xảy ra với đối tượng mà họ đang quan sát.
 - Minh họa:
+
+```swift
 package refactoring_guru.observer.example;
 
 
@@ -772,13 +768,15 @@ public class Demo {
         }
     }
 }
-
+```
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 18. Proxy Pattern 
 - là mẫu thiết kế mà ở đó tất cả các truy cập trực tiếp đến một đối tượng nào đó sẽ được chuyển hướng vào một đối tượng trung gian (Proxy Class). Mẫu Proxy (người đại diện) đại diện cho một đối tượng khác thực thi các phương thức, phương thức đó có thể được định nghĩa lại cho phù hợp với múc đích sử dụng.
 - Minh họa:
+
+```swift
 package refactoring_guru.proxy.example;
 	
 
@@ -822,13 +820,15 @@ public class Demo {
         return estimatedTime;
     }
 }
-
+```
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 19. Single Pattern 
 -là một design pattern mà đảm bảo rằng một class chỉ có duy nhất một instance (khởi tạo - mình xin phép để nguyên không dịch từ này) và cung cấp một cáchs toàn cầu để truy cấp tới instance đó.
 - Minh họa:
+
+```swift
 package refactoring_guru.singleton.example.non_thread_safe;
 	
 
@@ -855,23 +855,23 @@ public final class Singleton {
         return instance;
     }
 }
-
+```
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 20. State Pattern 
 - là một trong những mẫu thiết kế thuộc nhóm behavioral cho phép một object có thể biến đổi hành vi của nó khi có những sự thay đổi trạng thái nội bộ.
 - Minh họa: 
+
+```swift
 package refactoring_guru.state.example;
 	
 
 import refactoring_guru.state.example.ui.Player;
 import refactoring_guru.state.example.ui.UI;
 
+ // EN: Demo class. Everything comes together here.
 
-/**
- * EN: Demo class. Everything comes together here.
- */
  
 public class Demo {
     public static void main(String[] args) {
@@ -880,13 +880,15 @@ public class Demo {
         ui.init();
     }
 }
-
+```
 - So sánh: 
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 21. Strategy pattern (mẫu chiến lược) 
 - là một mẫu thiết kế hành vi cho phép bạn xác định một nhóm thuật toán, đặt mỗi thuật toán vào một lớp riêng biệt và làm cho các đối tượng của chúng có thể hoán đổi cho nhau.
 - Minh họa:
+
+```swift
 package refactoring_guru.strategy.example;
 	
 
@@ -903,10 +905,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-/**
- * EN: World first console e-commerce application.
- */
- 
+
+ // EN: World first console e-commerce application.
+
 public class Demo {
     private static Map<Integer, Integer> priceOnProducts = new HashMap<>();
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -982,13 +983,15 @@ public class Demo {
         }
     }
 }
-
+```
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 22. Template Method Pattern 
 - là một mẫu thiết kế hành vi xác định khung của một thuật toán trong lớp cha nhưng cho phép các lớp con ghi đè các bước cụ thể của thuật toán mà không thay đổi cấu trúc của nó.
 - Minh họa:
+
+```swift
 package refactoring_guru.template_method.example;
 	
 
@@ -1002,9 +1005,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 
-/**
- * EN: Demo class. Everything comes together here.
- */
+ // EN: Demo class. Everything comes together here.
  
 public class Demo {
     public static void main(String[] args) throws IOException {
@@ -1036,13 +1037,15 @@ public class Demo {
         network.post(message);
     }
 }
-
+```
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 23. Visitor 
 - là mẩu thiết kế (Design Patterns là một mẫu thiết kế hành vi cho phép bạn tách các thuật toán khỏi các đối tượng mà chúng hoạt động trên đó.
 - Minh họa:
+
+```swift
 package refactoring_guru.visitor.example;
 	
 
@@ -1077,7 +1080,7 @@ public class Demo {
         System.out.println(exportVisitor.export(shapes));
     }
 }
-
+```
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
