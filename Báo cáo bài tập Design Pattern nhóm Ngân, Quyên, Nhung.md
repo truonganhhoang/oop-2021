@@ -3,7 +3,7 @@
 ## 1. Các thành viên nhóm: 
 ### - Trần Thị Ngân - 20021399
 ### - Lê Thị Cẩm Nhung - 20021408
-### - Phạm Thị Quyên
+### - Phạm Thị Quyên - 20021421
 
 ## 2. Link đến reposition được sử dụng trong bài báo cáo: 
 ### - [signalapp/Signal-Android](https://github.com/signalapp/Signal-Android)
@@ -69,4 +69,71 @@ trong đó factory method khác so với mẫu tiêu chuẩn bởi vì ở mẫu
 * Không tạo Mediator Interface mà sử dụng TabLayoutMediator (import com.google.android.material.tabs.TabLayoutMediator)
 * Thành phần Colleague CustomChatColorCreatorFragment giữ tham chiếu đến [TabLayoutMediator](https://github.com/signalapp/Signal-Android/blob/811bef8c35291219b13a0995dfb8a50ef6d6b3d7/app/src/main/java/org/thoughtcrime/securesms/conversation/colors/ui/custom/CustomChatColorCreatorFragment.kt#21)
 
+### Bridge Pattern:
+* https://github.com/baomidou/dynamic-datasource-spring-boot-starter/tree/master/src/main/java/com/baomidou/dynamic/datasource/creator
+* INTERFACE: https://github.com/baomidou/dynamic-datasource-spring-boot-	starter/blob/master/src/main/java/com/baomidou/dynamic/datasource/creator/DataSourceCreator.java
+* Abstraction : định ra một abstract interface quản lý việc tham chiếu đến đối tượng hiện thực cụ thể (Implementor).
+
+### adapter pattern:
+* https://github.com/Islam031218/library/blob/79f25a45f2e0c920c494e06e9f2a2ca818908e1d/S%D1%81hoolProject/Main.java
+	->BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+	->InputStreamReader : đây là một Adapter ở giữa hai interface không tương thích: System.in và BufferedReader giúp cho chúng có thể hoạt động được với nhau.
+* Cho phép nhiều đối tượng có interface giao tiếp khác nhau có thể tương tác và giao tiếp với nhau.
+* Tăng khả năng sử dụng lại thư viện với interface không thay đổi do không có mã nguồn.
+
+### Singleton pattern:
+https://github.com/signalapp/Signal-Android/blob/018782e63dd9ab345db87a2e57bf11720ede45b6/app/src/main/java/org/thoughtcrime/securesms/dependencies/ApplicationDependencies.java
+Giống nhau
+* Đảm bảo rằng một class chỉ có duy nhất một instance.
+* Và cung cấp một cách toàn cầu để truy cấp tới instance đó.
+
+### Prototype pattern:
+* https://github.com/Dempsy/dempsy/blob/642c357f1be5e9cd5a864965bbf694d24e08a5fc/dempsy-framework.api/src/test/java/net/dempsy/lifecycle/annotations/TestMps.java
+* Giảm việc phân lớp, tránh việc tạo nhiều lớp con cho việc khởi tạo đối tượng 
+* Giảm độ phức tạp cho việc khởi tạo đối tượng
+	public static class TestMp implements Cloneable {
+        public boolean activated = false;
+        public boolean passivateCalled = false;
+
+        @MessageHandler
+        public void handleMsg(final Message val) {}
+
+        @Activation
+        public void activate(final String key, final byte[] data) {
+            this.activated = true;
+        }
+
+        @Passivation
+        public byte[] passivate() {
+            passivateCalled = true;
+            return "passivate".getBytes();
+        }
+
+        @Override
+        public Object clone() throws CloneNotSupportedException {
+            return super.clone();
+        }
+    }
+
+### Visitor Pattern:
+* https://github.com/mirsfang/ExamplesOfDesignPatterns/blob/master/src/action/visitor/visitorAbs/IVisitor.java
+* https://github.com/mirsfang/ExamplesOfDesignPatterns/blob/master/src/action/visitor/visitorIml/Visitor.java
+* Cho phép một hoặc nhiều hành vi được áp dụng cho một tập hợp các đối tượng tại thời điểm run-time, tách rời các hành vi khỏi cấu trúc đối tượng.
+* Đảm bảo nguyên tắc Open/ Close: đối tượng gốc không bị thay đổi, dễ dàng thêm hành vi mới cho đối tượng thông qua visitor
+
+### Composite pattern:
+* https://github.com/landy8530/DesignPatterns/blob/master/design-patterns-business/src/main/java/org/landy/business/domain/file/CustomerRequestFile.java
+	->abtract RequestFile<CustomerRequestDetail>;
+* Cung cấp cùng một cách sử dụng đối với từng đối tượng riêng lẻ hoặc nhóm các đối tượng với nhau
+
+
+### State pattern:
+* https://github.com/landy8530/DesignPatterns/blob/master/design-patterns-business/src/main/java/org/landy/business/identify/component/annotation/KeyIdentificationStrategy.java
+* https://github.com/landy8530/DesignPatterns/tree/master/design-patterns-business/src/main/java/org/landy/business/identify/component/primary
+* Giữ hành vi cụ thể tương ứng với trạng thái.
+* Giúp chuyển trạng thái một cách rõ ràng.
+
+  ### Strategy pattern:
+* https://github.com/gywgiehub/demo/blob/8087d5b917352c69ead34c913e7b5952c46ef64f/eurake-client/src/main/java/com/demo/gyw/strategy/StrategyModel.java
+* Cung cấp một sự thay thế cho kế thừa.
 
