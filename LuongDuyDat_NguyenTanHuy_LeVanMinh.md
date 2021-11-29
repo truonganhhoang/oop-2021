@@ -14,10 +14,8 @@ Như vậy design pattern là độc lập với ngôn ngữ lập trình để 
 Bằng cách sử dụng design pattern, chúng ta sẽ tạo ra những đoạn code linh hoạt hơn, có khả năng tái sử dụng hơn và dễ bảo trì nâng cấp hơn.
 ## **II. Các mẫu thiết kế được sử dụng trong reposition:**
 ## **1. Abstract Factory ( nhà máy trừu tượng)**:
--Là một mẫu thiết kế sáng tạo cho phép bạn tạo ra các họ các đối tượng liên quan mà không cần chỉ định các lớp cụ thể của chúng. Pattern Factory giống như một nhà máy sản sinh các đối tượng tương tự nhau này cho bạn.Pattern Factory  tạo các đối tượng đặc biệt từ các lớp cha và dễ dàng tạo extends system từ system cũ.
--Minh hoạ: 
-package refactoring_guru.abstract_factory.example;
-	
+- Là một mẫu thiết kế sáng tạo cho phép bạn tạo ra các họ các đối tượng liên quan mà không cần chỉ định các lớp cụ thể của chúng. Pattern Factory giống như một nhà máy sản sinh các đối tượng tương tự nhau này cho bạn.Pattern Factory  tạo các đối tượng đặc biệt từ các lớp cha và dễ dàng tạo extends system từ system cũ.
+- Minh hoạ: 
 
 	import refactoring_guru.abstract_factory.example.app.Application;
 	import refactoring_guru.abstract_factory.example.factories.GUIFactory;
@@ -25,11 +23,6 @@ package refactoring_guru.abstract_factory.example;
 	import refactoring_guru.abstract_factory.example.factories.WindowsFactory;
 	
 
-	/**
-	 * EN: Demo class. Everything comes together here.
-	 *
-	 * RU: Демо-класс. Здесь всё сводится воедино.
-	 */
 	public class Demo {
 	
 
@@ -65,10 +58,9 @@ package refactoring_guru.abstract_factory.example;
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 2. Adapter Pattern (Người chuyển đổi) 
--Adapter Pattern là pattern giữ vai trò trung gian giữa hai lớp, chuyển đổi giao diện của một hay nhiều lớp có sẵn thành một giao diện khác, thích hợp cho lớp đang viết. Điều này cho phép các lớp có các giao diện khác nhau có thể dễ dàng giao tiếp tốt với nhau thông qua giao diện trung gian, không cần thay đổi code của lớp có sẵn cũng như lớp đang viết. Adapter Pattern còn gọi là Wrapper Pattern do cung cấp một giao diện “bọc ngoài” tương thích cho một hệ thống có sẵn, có dữ liệu và hành vi phù hợp nhưng có giao diện không tương thích với lớp đang viết.
--Minh hoạ:
-package refactoring_guru.adapter.example;
-	
+- Adapter Pattern là pattern giữ vai trò trung gian giữa hai lớp, chuyển đổi giao diện của một hay nhiều lớp có sẵn thành một giao diện khác, thích hợp cho lớp đang viết. Điều này cho phép các lớp có các giao diện khác nhau có thể dễ dàng giao tiếp tốt với nhau thông qua giao diện trung gian, không cần thay đổi code của lớp có sẵn cũng như lớp đang viết. Adapter Pattern còn gọi là Wrapper Pattern do cung cấp một giao diện “bọc ngoài” tương thích cho một hệ thống có sẵn, có dữ liệu và hành vi phù hợp nhưng có giao diện không tương thích với lớp đang viết.
+- Minh hoạ:
+
 
 	import refactoring_guru.adapter.example.adapters.SquarePegAdapter;
 	import refactoring_guru.adapter.example.round.RoundHole;
