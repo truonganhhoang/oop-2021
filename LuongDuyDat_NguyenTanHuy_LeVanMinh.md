@@ -426,9 +426,9 @@ package refactoring_guru.composite.example;
 	    }
 	}
 ```
--So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
+- So sánh:
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 ## 11. Decorator Pattern:
 - Là một mẫu thiết kế cấu trúc cho phép bạn đính kèm các hành vi mới vào các đối tượng bằng cách đặt các đối tượng này bên trong các đối tượng trình bao bọc đặc biệt có chứa các hành vi.
 - Minh hoạ:
