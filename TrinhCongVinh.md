@@ -10,9 +10,9 @@
 - repo này đã chỉ ra một cách rõ ràng về những hiểu lầm mà những người mới bát đầu tìm hiểu thường bị mắc phải, được trích nguyên văn sau đây:
 ** 
 > Design patterns are not a silver bullet to all your problems.
-> Do not try to force them; bad things are supposed to happen, if done so.
-> Keep in mind that design patterns are solutions to problems, not solutions finding problems; so don't overthink.
-> If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
+ Do not try to force them; bad things are supposed to happen, if done so.
+ Keep in mind that design patterns are solutions to problems, not solutions finding problems; so don't overthink.
+ If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
 **
 - 23 mẫu thiết kế được chia thành 3 nhóm chính là:
 - Creational
@@ -26,6 +26,7 @@
 
 ## Tác giả đã giải thích được sự khác nhau giữa factory method và factory abstract.
 ### factory method: được dùng để tạo ra một object nhưng mà lớp con sẽ quyết định coi lớp cha nào sẽ được khởi tạo
+```
 interface Interviewer
 {
     public function askQuestions();
@@ -46,12 +47,11 @@ class CommunityExecutive implements Interviewer
         echo 'Asking about community building';
     }
 }
-
+```
 tạo thêm một abstract class HiringManager
-
+```
 abstract class HiringManager
 {
-
     // Factory method
     abstract protected function makeInterviewer(): Interviewer;
 
@@ -61,7 +61,9 @@ abstract class HiringManager
         $interviewer->askQuestions();
     }
 }
+```
 thêm một class con
+```
 class DevelopmentManager extends HiringManager
 {
     protected function makeInterviewer(): Interviewer
@@ -77,18 +79,21 @@ class MarketingManager extends HiringManager
         return new CommunityExecutive();
     }
 }
+```
 trong hàm main:
+```
 $devManager = new DevelopmentManager();
 $devManager->takeInterview(); // Output: Asking about design patterns
 
 $marketingManager = new MarketingManager();
 $marketingManager->takeInterview(); // Output: Asking about community building.
-
+```
 Có thể thấy dựa trên lớp con mà lớp cha sẽ hỏi câu hỏi khác nhau.
 
 ### factory abstract: định nghĩa một interface hoặc lớp trừu tượng (abstract) để tạo ra các họ hàng của các đối tượng liên quan (hoặc phụ thuộc) mà không cần chỉ rõ các lớp con cụ thể của chúng.
 - Nói một cách dễ hiểu trong repo này tác giả đã lấy ví dụ về cửa gỗ và thợ làm cửa gỗ, hay cửa nhôm thì sẽ đi với thợ sửa cửa nhôm.
 - Hai class Door và DoorFittingExpert sau khi được khởi tạo thì sẽ được gọi thông qua các con interface class DoorFactory và được sử dụng trong hàm main cụ thể như sau.
+```
 $woodenFactory = new WoodenDoorFactory();
 
 $door = $woodenFactory->makeDoor();
@@ -105,7 +110,7 @@ $expert = $ironFactory->makeFittingExpert();
 
 $door->getDescription();  // Output: I am an iron door
 $expert->getDescription(); // Output: I can only fit iron doors
-
+```
 Có thể thấy với mỗi loại cửa khác nhau sẽ gọi đến những gì liên quan đến nó.
 
 
