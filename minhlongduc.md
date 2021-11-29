@@ -116,3 +116,6 @@ class ResourceUtils
 + Visitor là mẩu thiết kế thuộc Behavioral pattern, cho phép bạn tách các thuật toán khỏi các đối tượng mà chúng hoạt động trên đó.
 
 => https://github.com/liu-jianhao/Cpp-Design-Patterns/tree/master/Visitor
+
+## Kết luận:
+	Các mẫu thiết kế trên đều tương đồng với mẫu thiết kế chuẩn.
