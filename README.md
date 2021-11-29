@@ -253,6 +253,7 @@ public interface SlotAssignmentStrategy{
     void removeSlotAssignment(Seq<SlotAssignment> assignments, int index);
 
 }
+```
 Các ConcreteStategy: BoundedSlotAssignmentStrategy, DistanceAssignmentStrategy, FreeSlotAssignmentStrategy
 
 ```java
@@ -301,14 +302,14 @@ public class FreeSlotAssignmentStrategy implements SlotAssignmentStrategy{
     }
 
 }
-
+```
 BoundedSlotAssignmentStrategy có concrete: SoftRoleSlotAssignmentStrategy
 
 ```java
 public class SoftRoleSlotAssignmentStrategy extends BoundedSlotAssignmentStrategy{
     //code
 }
-
+```
 Factory Method:
 
 Creator: FormationPattern
@@ -323,6 +324,7 @@ Mindustry/core/src/mindustry/entities/units/UnitController.java
 ```java
 public interface UnitController{
 }
+```
 Mindustry/core/src/mindustry/ai/types
 AIController->BuilderAI, DefenderAI, FlyingAI, FormationAI, GroundAI, HugAI, LogicAI, MinerAI, RepairAI
 
@@ -336,7 +338,7 @@ public interface ContentList{
     /** This method should create all the content. */
     void load();
 }
-
+```
 subsystems: Blocks, Bullets, Items, Liquids, Loadouts, PLanets, SectorPresets, StatusEffects, TechTree, UnitTypes, Weathers
 Mindustry/core/src/mindustry/content
 
@@ -390,5 +392,5 @@ public class Weathers implements ContentList{
         suspendParticles = ...
     }
 }
-    
+```   
 -> dễ dàng quản lý, điều hướng
