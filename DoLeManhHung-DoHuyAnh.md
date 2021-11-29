@@ -15,6 +15,23 @@ __ __
 ###1. So sánh Abstract Factory
 * AbstractFactory được khai báo chính xác
 * ConcreteFactory có được xây dựng nhưng không theo cấu trúc chuẩn
+```
+public class YoungTeamFactory implements TeamFactory {
+
+  public Ship createShip() {
+    return new NewShip();
+  }
+
+  public Captain createCaptain() {
+    return new YoungCaptain();
+  }
+
+  public Sailor createSailor() {
+    return new YoungSailor();
+  }
+}
+
+```
 * AbstractProduct được khai báo chính xác
 * Product đã được cài đặt chính xác
 * https://github.com/JamesZBL/java_design_patterns/tree/master/abstract-factory (Link repo)
@@ -30,6 +47,14 @@ __ __
 
 ###3. So sánh Bridge
 * Abstraction có một vài phần không theo cấu trúc chuẩn
+```
+public interface War {
+  Enemy getEnemy();
+  void startWar();
+  void combatting();
+  void stopWar();
+}
+```
 * Refined Abstraction được cài đặt chính xác
 * Implementor được khai báo chính xác
 * ConcreteImplementor được khai báo chính xác
@@ -37,7 +62,39 @@ __ __
 * https://gpcoder.com/4520-huong-dan-java-design-pattern-bridge/ (Link mẫu chuẩn)
 
 ###4. So sánh Builder
-* Builder chưa phải là abstract class hay ìnterface
+* Builder chưa phải là abstract class hay interface
+```
+public class Person {
+  private final String name;
+  private final Integer age;
+  private final Nationality nationality;
+
+  public String getName() {
+    return name;
+  }
+
+  public Integer getAge() {
+    return age;
+  }
+
+  public Nationality getNationality() {
+    return nationality;
+  }
+
+  public SkinColor getSkinColor() {
+    return skinColor;
+  }
+
+  private final SkinColor skinColor;
+
+  public Person(Builder builder) {
+    this.name = builder.name;
+    this.age = builder.age;
+    this.skinColor = builder.skinColor;
+    this.nationality = builder.nationality;
+  }
+}
+```
 * ConcreteBuilder chưa kế thừa Builder
 * Director đã được cài đặt chính xác
 * Product  đã được cài đặt chính xác
@@ -46,7 +103,7 @@ __ __
  
 ###5. So sánh Composite
 * Base Component đã được khai báo chính xác
-* Leaf đã được cài đặt nhưng chưa implement các phương thức của Component
+* Leaf đã được cài đặt chính xác
 * Composite đã được cài đặt chính xác
 * https://github.com/JamesZBL/java_design_patterns/tree/master/composite (Link repo)
 * https://gpcoder.com/4554-huong-dan-java-design-pattern-composite/ (Link mẫu chuẩn)
@@ -85,6 +142,22 @@ __ __
 ###10. So sánh Singleton
 * Private Contructor đã được cài đặt
 * Chưa cài đặt biến ở dưới dạng ***private static final***
+```
+public class Singleton {
+    private static Singleton instance;
+    private Singleton() {}
+    public static Singleton getInstance() {
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+} 
+```
 * Đã có một method public static được cài đặt
 * https://github.com/JamesZBL/java_design_patterns/tree/master/singleton (Link repo)
 * https://gpcoder.com/4190-huong-dan-java-design-pattern-singleton/ (Link mẫu chuẩn)
