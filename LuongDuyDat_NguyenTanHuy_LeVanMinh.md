@@ -98,8 +98,8 @@ package refactoring_guru.adapter.example;
 	    }
 	}
 - So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 
 ## 3. Bridge Pattern:
 Là một mẫu thiết kế cấu trúc cho phép bạn chia một lớp lớn hoặc một tập hợp các lớp có liên quan chặt chẽ thành hai phân cấp riêng biệt — trừu tượng và thực thi — có thể được phát triển độc lập với nhau. Bridge pattern được sử dụng khi chúng ta muốn tách một abtraction từ implementation của nó để cả hai có thể thay đổi một cách độc lập với nhau. Bridge Pattern là một mẫu cấu trúc (Structural Pattern)
@@ -135,9 +135,9 @@ package refactoring_guru.bridge.example;
 	        device.printStatus();
 	    }
 	}
-So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
+- So sánh:
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 
 ## 4. Builder pattern:
 - Là một mẫu thiết kế sáng tạo cho phép bạn xây dựng các đối tượng phức tạp theo từng bước. Mẫu cho phép bạn tạo ra các kiểu và hình ảnh đại diện khác nhau của một đối tượng bằng cách sử dụng cùng một mã xây dựng.
@@ -201,8 +201,8 @@ package refactoring_guru.builder.example;
 
 	}
 -So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 
 ## 5. Factory Method Pattern
  - Là một mẫu thiết kế sáng tạo cung cấp mục đích khởi tạo một đối tượng mới mà không cần thiết phải chỉ ra một cách chính xác class nào sẽ được khởi tạo. Factory Method Pattern giải quyết vấn đề này bằng cách định nghĩa một factory method cho việc tạo đối tượng, và các lớp con thừa kế có thể override phương thức này để chỉ rõ đối tượng nào sẽ được khởi tạo.
@@ -259,9 +259,9 @@ package refactoring_guru.factory_method.example;
 	        dialog.renderWindow();
 	    }
 	}
-So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
+- So sánh:
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 
 ## 6. Facade Pattern:
 -Là một mẫu thiết kế sáng tạo cung cấp một giao diện để tạo các đối tượng trong lớp cha, nhưng cho phép các lớp con thay đổi loại đối tượng sẽ được tạo. Facade Pattern cung cấp một interface đơn giản và cao cấp nhất cho phía client (máy khách) và cho phép nó truy cập vào hệ thống mà không cần biết bên trong có logic hệ thống nào hay nó hoạt động như thế nào.
@@ -282,9 +282,9 @@ package refactoring_guru.facade.example;
 	        // ...
 	    }
 	}
--So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
+- So sánh:
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 
 ## 7. Prototype pattern:
 -Là một Design Pattern được sử dụng chủ yếu để giảm chi phí khi tạo object. Thường là khi các ứng dụng quy mô lớn tạo, cập nhật hoặc truy xuất các đối tượng tốn nhiều tài nguyên. Điều này được thực hiện bằng cách sao chép object, nó được tạo và sử dụng lại bản sao của object trong các yêu cầu ở phía sau khi có, để tránh thực hiện một hoạt động tốn tài nguyên khác.
@@ -350,9 +350,9 @@ package refactoring_guru.prototype.example;
 	        }
 	    }
 	}
--So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
+- So sánh:
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 
 ## 8. Chain_of_responsibility:
 -Là một mẫu thiết kế hành vi bao gồm một nguồn các đối tượng lệnh và một loạt các đối tượng xử lý. Mỗi đối tượng xử lý chứa logic xác định các loại đối tượng lệnh mà nó có thể xử lý, phần còn lại được chuyển cho đối tượng xử lý tiếp theo trong chuỗi.
@@ -419,9 +419,9 @@ package refactoring_guru.chain_of_responsibility.example;
 	        } while (!success);
 	    }
 	}
--So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
+- So sánh:
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 
 ## 9. Command Pattern:
 -Là một mẫu thiết kế hành vi biến một yêu cầu thành một đối tượng độc lập chứa tất cả thông tin về yêu cầu. Sự chuyển đổi này cho phép bạn chuyển các yêu cầu dưới dạng đối số của phương thức, trì hoãn hoặc xếp hàng đợi việc thực hiện một yêu cầu và hỗ trợ các hoạt động hoàn tác.
@@ -438,9 +438,9 @@ package refactoring_guru.command.example;
 	        editor.init();
 	    }
 	}
--So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
+- So sánh:
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 
 ## 10. Composite:
 -Là một mẫu thiết kế thuộc nhóm Structural Pattern. Composite Pattern là một sự tổng hợp những thành phần có quan hệ với nhau để tạo ra thành phần lớn hơn. Nó cho phép thực hiện các tương tác với tất cả đối tượng trong mẫu tương tự nhau.
@@ -483,9 +483,9 @@ package refactoring_guru.composite.example;
 	        );
 	    }
 	}
--So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
+- So sánh:
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 
 ## 11. Decorator Pattern:
 -Là một mẫu thiết kế cấu trúc cho phép bạn đính kèm các hành vi mới vào các đối tượng bằng cách đặt các đối tượng này bên trong các đối tượng trình bao bọc đặc biệt có chứa các hành vi.
@@ -514,9 +514,9 @@ package refactoring_guru.decorator.example;
 	        System.out.println(encoded.readData());
 	    }
 	}
--So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
+- So sánh:
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 
 ## 12. Flyweight Pattern:
 -Là một mẫu thiết kế cấu trúc cho phép bạn lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.
@@ -564,9 +564,9 @@ package refactoring_guru.flyweight.example;
 	    }
 	}
 
--So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
+- So sánh:
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 
 
 
