@@ -12,7 +12,7 @@
 >  - **Do not try to force them; bad things are supposed to happen, if done so.**
 >  - **Keep in mind that design patterns are solutions to problems, not solutions finding problems; so don't overthink.**
 >  - **If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.**
-**
+
 - 23 mẫu thiết kế được chia thành 3 nhóm chính là:
 - Creational
 - Structural
@@ -24,7 +24,7 @@
 - Đưa ra được khi nào nên sử dụng trong thực tế.
 
 ## Tác giả đã giải thích được sự khác nhau giữa factory method và factory abstract.
-### factory method: được dùng để tạo ra một object nhưng mà lớp con sẽ quyết định coi lớp cha nào sẽ được khởi tạo
+### - factory method: được dùng để tạo ra một object nhưng mà lớp con sẽ quyết định coi lớp cha nào sẽ được khởi tạo
 ```
 interface Interviewer
 {
@@ -89,7 +89,7 @@ $marketingManager->takeInterview(); // Output: Asking about community building.
 ```
 Có thể thấy dựa trên lớp con mà lớp cha sẽ khác và lớp cha sẽ đưa ra output là gì dựa vào lớp con cụ thể nếu là tuyển một developer hay là **DevelopmentManager()** dựa trên đoạn code trên thì lớp cha lấy một interviewer là Developer chứ không phải là **CommunityExecutive**.
 
-### factory abstract: định nghĩa một interface hoặc lớp trừu tượng (abstract) để tạo ra các họ hàng của các đối tượng liên quan (hoặc phụ thuộc) mà không cần chỉ rõ các lớp con cụ thể của chúng.
+### - factory abstract: định nghĩa một interface hoặc lớp trừu tượng (abstract) để tạo ra các họ hàng của các đối tượng liên quan (hoặc phụ thuộc) mà không cần chỉ rõ các lớp con cụ thể của chúng.
 - Nói một cách dễ hiểu trong repo này tác giả đã lấy ví dụ về cửa gỗ và thợ làm cửa gỗ, hay cửa nhôm thì sẽ đi với thợ sửa cửa nhôm.
 - Hai class Door và DoorFittingExpert sau khi được khởi tạo thì sẽ được gọi thông qua các con của interface class DoorFactory và được sử dụng trong hàm main cụ thể như sau.
 ```
