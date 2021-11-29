@@ -589,10 +589,6 @@ import refactoring_guru.interpreter.example.expressions.VariableExpression;
  * EN: Interpreter Design Pattern
  * 
  * Defines a representation for a grammar as well as a mechanism to understand and act upon the grammar.
- * 
- * RU: Паттерн Интерпретатор
- * 
- * Определяет грамматику простого языка, представляет предложения на этом языке и интерпретирует их.
  */
 public class Demo {
     private static void example1() throws Exception {
@@ -684,8 +680,6 @@ import java.util.Scanner;
 
 /**
  * EN: Demo class. Everything comes together here.
- *
- * RU: Демо-класс. Здесь всё сводится воедино.
  */
 public class Demo {
     public static Scanner scanner = new Scanner(System.in);
@@ -745,8 +739,6 @@ import javax.swing.*;
 
 /**
  * EN: Demo class. Everything comes together here.
- *
- * RU: Демо-класс. Здесь всё сводится воедино.
  */
 public class Demo {
     public static void main(String[] args) {
@@ -901,8 +893,6 @@ public final class Singleton {
 
     private Singleton(String value) {
         // EN: The following code emulates slow initialization.
-        //
-        // RU: Этот код эмулирует медленную инициализацию.
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
@@ -934,8 +924,6 @@ import refactoring_guru.state.example.ui.UI;
 
 /**
  * EN: Demo class. Everything comes together here.
- *
- * RU: Демо-класс. Здесь всё сводится воедино.
  */
 public class Demo {
     public static void main(String[] args) {
@@ -968,8 +956,6 @@ import java.util.Map;
 
 /**
  * EN: World first console e-commerce application.
- *
- * RU: Первый в мире консольный интерет магазин.
  */
 public class Demo {
     private static Map<Integer, Integer> priceOnProducts = new HashMap<>();
@@ -1017,9 +1003,6 @@ public class Demo {
 
                 // EN: Client creates different strategies based on input from
                 // user, application configuration, etc.
-                //
-                // RU: Клиент создаёт различные стратегии на основании
-                // пользовательских данных, конфигурации и прочих параметров.
                 if (paymentMethod.equals("1")) {
                     strategy = new PayByPayPal();
                 } else {
@@ -1031,10 +1014,6 @@ public class Demo {
             // EN: Order object delegates gathering payment data to strategy
             // object, since only strategies know what data they need to
             // process a payment.
-            //
-            // RU: Объект заказа делегирует сбор платёжных данны стратегии,
-            // т.к. только стратегии знают какие данные им нужны для приёма
-            // оплаты.
             order.processOrder(strategy);
 
 
@@ -1042,8 +1021,6 @@ public class Demo {
             String proceed = reader.readLine();
             if (proceed.equalsIgnoreCase("P")) {
                 // EN: Finally, strategy handles the payment.
-                //
-                // RU: И наконец, стратегия запускает приём платежа.
                 if (strategy.pay(order.getTotalCost())) {
                     System.out.println("Payment has been successful.");
                 } else {
@@ -1075,8 +1052,6 @@ import java.io.InputStreamReader;
 
 /**
  * EN: Demo class. Everything comes together here.
- *
- * RU: Демо-класс. Здесь всё сводится воедино.
  */
 public class Demo {
     public static void main(String[] args) throws IOException {
@@ -1089,8 +1064,6 @@ public class Demo {
 
 
         // EN: Enter the message.
-        //
-        // RU: Вводим сообщение.
         System.out.print("Input message: ");
         String message = reader.readLine();
 
@@ -1102,8 +1075,6 @@ public class Demo {
 
 
         // EN: Create proper network object and send the message.
-        //
-        // RU: Создаем сетевые объекты и публикуем пост.
         if (choice == 1) {
             network = new Facebook(userName, password);
         } else if (choice == 2) {
