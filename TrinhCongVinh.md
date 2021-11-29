@@ -114,9 +114,9 @@ Có thể thấy với mỗi loại cửa khác nhau sẽ gọi đến những g
 # Summary
 **Giống nhau:**
 
-- Có 23 mẫu thiết kế giống vơi mẫu chuẩn sử dụng ngông ngữ PHP
+- Các mẫu thiết kế giống vơi mẫu chuẩn sử dụng ngôn ngữ PHP
 
-- Mỗi design pattern có đầy đủ các class , cấu trúc , code dễ đọc dễ hiểu
+- Mỗi design pattern có đầy đủ các class, cấu trúc, code dễ đọc dễ hiểu.
 
 - Giải thích rõ ràng dễ hiểu, Code tường minh dễ hiểu.
 
