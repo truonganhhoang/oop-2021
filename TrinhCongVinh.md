@@ -24,7 +24,7 @@
 - Đưa ra được khi nào nên sử dụng trong thực tế.
 - **Tác giả đã giải thích được sự khác nhau giữa factory method và factory abstract.**
 ### 1. factory method: được dùng để tạo ra một object nhưng mà lớp con sẽ quyết định coi lớp cha nào sẽ được khởi tạo
-```
+```php
 interface Interviewer
 {
     public function askQuestions();
@@ -47,7 +47,7 @@ class CommunityExecutive implements Interviewer
 }
 ```
 tạo thêm một abstract class HiringManager
-```
+```php
 abstract class HiringManager
 {
     // Factory method
@@ -61,7 +61,7 @@ abstract class HiringManager
 }
 ```
 thêm một class con
-```
+```php
 class DevelopmentManager extends HiringManager
 {
     protected function makeInterviewer(): Interviewer
@@ -79,7 +79,7 @@ class MarketingManager extends HiringManager
 }
 ```
 trong hàm main:
-```
+```php
 $devManager = new DevelopmentManager();
 $devManager->takeInterview(); // Output: Asking about design patterns
 
@@ -91,7 +91,7 @@ Có thể thấy dựa trên lớp con mà lớp cha sẽ khác và lớp cha s�
 ### 2. factory abstract: định nghĩa một interface hoặc lớp trừu tượng (abstract) để tạo ra các họ hàng của các đối tượng liên quan (hoặc phụ thuộc) mà không cần chỉ rõ các lớp con cụ thể của chúng.
 - Nói một cách dễ hiểu trong repo này tác giả đã lấy ví dụ về cửa gỗ và thợ làm cửa gỗ, hay cửa nhôm thì sẽ đi với thợ sửa cửa nhôm.
 - Hai class Door và DoorFittingExpert sau khi được khởi tạo thì sẽ được gọi thông qua các con của interface class DoorFactory và được sử dụng trong hàm main cụ thể như sau.
-```
+```php
 $woodenFactory = new WoodenDoorFactory();
 
 $door = $woodenFactory->makeDoor();
