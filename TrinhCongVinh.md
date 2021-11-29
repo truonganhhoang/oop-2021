@@ -19,12 +19,11 @@
 - Behavioral
 
 # Nhóm thứ nhất Creational
-## Simple factory, factory method, factory abstract
+## Trong nhóm thứ nhất này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là factory method và abstract factory.
 - Giải thích được định nghĩa, lấy ví dụ thực tế, rõ ràng dễ hiểu.
 - Đưa ra được khi nào nên sử dụng trong thực tế.
-
-## Tác giả đã giải thích được sự khác nhau giữa factory method và factory abstract.
-### - factory method: được dùng để tạo ra một object nhưng mà lớp con sẽ quyết định coi lớp cha nào sẽ được khởi tạo
+- **Tác giả đã giải thích được sự khác nhau giữa factory method và factory abstract.**
+### 1. factory method: được dùng để tạo ra một object nhưng mà lớp con sẽ quyết định coi lớp cha nào sẽ được khởi tạo
 ```
 interface Interviewer
 {
@@ -89,7 +88,7 @@ $marketingManager->takeInterview(); // Output: Asking about community building.
 ```
 Có thể thấy dựa trên lớp con mà lớp cha sẽ khác và lớp cha sẽ đưa ra output là gì dựa vào lớp con cụ thể nếu là tuyển một developer hay là **DevelopmentManager()** dựa trên đoạn code trên thì lớp cha lấy một interviewer là Developer chứ không phải là **CommunityExecutive**.
 
-### - factory abstract: định nghĩa một interface hoặc lớp trừu tượng (abstract) để tạo ra các họ hàng của các đối tượng liên quan (hoặc phụ thuộc) mà không cần chỉ rõ các lớp con cụ thể của chúng.
+### 2. factory abstract: định nghĩa một interface hoặc lớp trừu tượng (abstract) để tạo ra các họ hàng của các đối tượng liên quan (hoặc phụ thuộc) mà không cần chỉ rõ các lớp con cụ thể của chúng.
 - Nói một cách dễ hiểu trong repo này tác giả đã lấy ví dụ về cửa gỗ và thợ làm cửa gỗ, hay cửa nhôm thì sẽ đi với thợ sửa cửa nhôm.
 - Hai class Door và DoorFittingExpert sau khi được khởi tạo thì sẽ được gọi thông qua các con của interface class DoorFactory và được sử dụng trong hàm main cụ thể như sau.
 ```
