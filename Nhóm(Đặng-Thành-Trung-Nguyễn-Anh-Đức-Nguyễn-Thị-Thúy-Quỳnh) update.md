@@ -232,6 +232,195 @@ private class ArrayListIterator implements Iterator<E> {
 
 Dựa vào mẫu thiết kế Active record khuyến khích phát triển nhanh chóng và làm sạch, mã có ít nhất và quy ước về cấu hình.
 
+Interface ORMFramework trong package benchmark.
+```java
+public interface ORMFramework {
+
+    void initialize() throws Exception;
+
+    void update() throws Exception;
+
+    User query() throws Exception;
+
+    void teardown();
+
+    class Factory {
+
+        public static ORMFramework createORMFramework(String frameworkName, HikariDataSource dataSource) {
+            switch (frameworkName) {
+                case MyBatis.FRAMEWORK_NAME:
+                    return new MyBatis(dataSource);
+                case Jdbc.FRAMEWORK_NAME:
+                    return new Jdbc(dataSource);
+                case ObjectiveSQL.FRAMEWORK_NAME:
+                    return new ObjectiveSQL(dataSource);
+                case Hibernate.FRAMEWORK_NAME:
+                    return new Hibernate(dataSource);
+                default:
+                    throw new IllegalArgumentException("Cannot find ORM framework: " + frameworkName);
+            }
+        }
+    }
+}
+```
+
+Lớp User trong package benchmark.
+```java
+public class User implements Serializable {
+
+    @Id
+    @PrimaryKey
+    private Integer id;
+    private String name;
+    private int age;
+
+    @Transient
+    @javax.persistence.Transient
+    private Map<String, Object> rawAttributes = new HashMap<>();
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Map<String, Object> getRawAttributes() {
+        return rawAttributes;
+    }
+}
+```
+Lớp ObjectiveSQL trong package benchmark.
+```java
+public class ObjectiveSQL implements ORMFramework, ConnectionFactory, Logger, LoggerFactory {
+
+    public static final String FRAMEWORK_NAME = "objsql";
+
+    private final HikariDataSource dataSource;
+
+    public ObjectiveSQL(HikariDataSource dataSource) {
+        this.dataSource = dataSource;
+
+        Databases.installConnectionFactory(this);
+        Databases.installLoggerFactory(this);
+    }
+
+    @Override
+    public void initialize() throws Exception {
+        Databases.execute("insert into user(id, name, age) values(1, 'ash', 25)");
+    }
+
+    @Override
+    public void update() throws Exception {
+        User.update("age = 12", "id = ?", 1);
+    }
+
+    @Override
+    public User query() throws Exception {
+        return User.queryByPrimaryKey(1);
+    }
+
+    @Override
+    public void teardown() {
+        dataSource.close();
+    }
+
+    @Override
+    public Connection getConnection(String dataSourceName) throws SQLException {
+        return dataSource.getConnection();
+    }
+
+    @Override
+    public void debug(long elapsedTime, String sql, Object[] params) {
+        // Do nothing
+    }
+
+    @Override
+    public void info(long elapsedTime, String sql, Object[] params) {
+        // Do nothing
+    }
+
+    @Override
+    public void error(String message, Throwable throwable) {
+        // Do nothing
+    }
+
+    @Override
+    public Logger create(Class<?> clazz) {
+        return new ObjectiveSQL(dataSource);
+    }
+}
+```
+
+Lớp Hibernate trong package benchmark.
+```java
+public class Hibernate implements ORMFramework {
+
+    public static final String FRAMEWORK_NAME = "hibernate";
+
+    private final HikariDataSource dataSource;
+    private final SessionFactory sessionFactory;
+
+    public Hibernate(HikariDataSource dataSource) {
+        this.dataSource = dataSource;
+        sessionFactory = new Configuration()
+                .configure()
+                .buildSessionFactory();
+    }
+
+    @Override
+    public void initialize() throws Exception {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        User user = new User();
+        user.setId(1);
+        user.setName("ash");
+        user.setAge(25);
+        session.save( user );
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    @Override
+    public void update() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        User user = new User();
+        user.setId(1);
+        user.setName("ash");
+        user.setAge(15);
+        session.update(user);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    @Override
+    public User query() throws Exception {
+        Session session = sessionFactory.openSession();
+        Query<User> query = session.createQuery("from com.github.braisdom.objsql.benchmark.User " +
+                "user where user.id = 1");
+        User user = query.getSingleResult();
+        session.close();
+        return user;
+    }
+
+    @Override
+    public void teardown() {
+        dataSource.close();
+        sessionFactory.close();
+    }
+}
+```
+
 ### Repo 4: Link https://github.com/Anuken/Mindustry
 
 Sử dụng mẫu thiết kế:
