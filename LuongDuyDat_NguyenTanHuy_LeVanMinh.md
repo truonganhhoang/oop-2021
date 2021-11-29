@@ -225,7 +225,7 @@ package refactoring_guru.facade.example;
 	    }
 	}
 ```
--So sánh:
+- So sánh:
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 7. Prototype pattern:
