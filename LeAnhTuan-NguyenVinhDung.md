@@ -5,21 +5,27 @@
 
 # Link project trên github: https://github.com/QianMo/Unity-Design-Pattern
 
-Các loại Design Pattern cơ bản
+# Các loại Design Pattern cơ bản
 
-* Creational Patterns: Nhóm này cung cấp phương pháp tạo ra các đối tượng một cách linh hoạt hơn, quyết định đối tượng nào được tạo ra tuỳ thuộc vào trường hợp sử dụng nhất định.
+* Creational Patterns: 
 
-* Structural Pattern: Nhóm này liên quan đến sự kết hợp giữa các đối tượng với nhau
+        Nhóm này cung cấp phương pháp tạo ra các đối tượng một cách linh hoạt hơn, quyết định đối tượng nào được tạo ra tuỳ thuộc vào trường hợp sử dụng nhất định.
 
-* Behavioral Patterns: Mẫu thiết kế này trình bày phương pháp thiết kế liên quan đến hành vi của các đối tượng.
+* Structural Pattern: 
 
-CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
+        Nhóm này liên quan đến sự kết hợp giữa các đối tượng với nhau
+
+* Behavioral Patterns: 
+
+        Mẫu thiết kế này trình bày phương pháp thiết kế liên quan đến hành vi của các đối tượng.
+
+# CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
  
 * Command Pattern: Đóng gói một yêu cầu dưới dạng một đối tượng, do đó cho phép bạn tham số hóa các máy khách với các yêu cầu khác nhau, yêu cầu hàng đợi hoặc nhật ký và hỗ trợ các hoạt động hoàn tác. 
 
     - Các lớp và đối tượng minh hoạ: 
 
-    Command (khai báo một giao diện để thực hiện một hoạt động)
+            Command (khai báo một giao diện để thực hiện một hoạt động)
 
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Behavioral%20Patterns/Command%20Pattern
 
@@ -29,11 +35,11 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
 
         Context (Account): 
         
-            xác định giao diện mà khách hàng quan tâm, duy trì một thể hiện của lớp con ConcreteState xác định trạng thái hiện tại.
+            Xác định giao diện mà khách hàng quan tâm, duy trì một thể hiện của lớp con ConcreteState xác định trạng thái hiện tại.
 
         Concrete State (RedState, SilverState, GoldState): 
         
-            mỗi lớp con thực hiện một hành vi được liên kết với một trạng thái của Context
+            Mỗi lớp con thực hiện một hành vi được liên kết với một trạng thái của Context
 
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Behavioral%20Patterns/State%20Pattern
 
@@ -42,11 +48,11 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
         
         Subject (Stock): 
         
-            biết những người quan sát nó. Bất kỳ số lượng đối tượng Người quan sát nào cũng có thể observe a subject, cung cấp một giao diện để gắn và tách các đối tượng Observer.
+            Biết những người quan sát nó. Bất kỳ số lượng đối tượng Người quan sát nào cũng có thể observe a subject, cung cấp một giao diện để gắn và tách các đối tượng Observer.
 
         ConcreteSubject (IBM): 
         
-            gửi thông báo cho những người quan sát khi trạng thái của nó thay đổi
+            Gửi thông báo cho những người quan sát khi trạng thái của nó thay đổi
 
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Behavioral%20Patterns/Observer%20Pattern
 
@@ -56,11 +62,11 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
 
         Mediator (IChatroom): 
         
-            xác định một giao diện để giao tiếp với Colleague objects
+            Xác định một giao diện để giao tiếp với Colleague objects
 
         ConcreteMediator (Chatroom): 
         
-            thực hiện hành vi hợp tác bằng cách phối hợp Colleague objects, biết và duy trì các đồng nghiệp của mình
+            Thực hiện hành vi hợp tác bằng cách phối hợp Colleague objects, biết và duy trì các đồng nghiệp của mình
 
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Behavioral%20Patterns/Mediator%20Pattern
 
@@ -70,11 +76,11 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
 
         AbstractExpression (Expression): 
         
-            khai báo một giao diện để thực hiện một hoạt động
+            Khai báo một giao diện để thực hiện một hoạt động
 
         TerminalExpression ( ThousandExpression, HundredExpression, TenExpression, OneExpression ): 
         
-            triển khai hoạt động Diễn giải được liên kết với các ký hiệu đầu cuối trong ngữ pháp, một trường hợp được yêu cầu cho mọi ký hiệu đầu cuối trong câu.
+            Triển khai hoạt động Diễn giải được liên kết với các ký hiệu đầu cuối trong ngữ pháp, một trường hợp được yêu cầu cho mọi ký hiệu đầu cuối trong câu.
 
         Client (InterpreterApp):
 
@@ -87,15 +93,15 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
 
         Iterator (AbstractIterator): 
         
-            định nghĩa một giao diện để truy cập và duyệt qua các phần tử.
+            Định nghĩa một giao diện để truy cập và duyệt qua các phần tử.
 
         ConcreteIterator (Iterator): 
         
-            triển khai giao diện Iterator, theo dõi vị trí hiện tại trong đường truyền của tổng thể.
+            Triển khai giao diện Iterator, theo dõi vị trí hiện tại trong đường truyền của tổng thể.
 
         Aggregate (AbstractCollection): 
         
-            định nghĩa một giao diện để tạo một đối tượng Iterator
+            Định nghĩa một giao diện để tạo một đối tượng Iterator
 
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Behavioral%20Patterns/Iterator%20Pattern
 
@@ -105,11 +111,11 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
 
         Strategy (SortStrategy): 
         
-            khai báo một giao diện chung cho tất cả các thuật toán được hỗ trợ. Ngữ cảnh sử dụng giao diện này để gọi thuật toán được xác định bởi ConcreteStrategy.
+            Khai báo một giao diện chung cho tất cả các thuật toán được hỗ trợ. Ngữ cảnh sử dụng giao diện này để gọi thuật toán được xác định bởi ConcreteStrategy.
 
         ConcreteStrategy (QuickSort, ShellSort, MergeSort): 
         
-            triển khai thuật toán bằng giao diện Strategy/
+            Triển khai thuật toán bằng giao diện Strategy/
 
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Behavioral%20Patterns/Strategy%20Pattern
 
@@ -119,15 +125,15 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
 
         ConcreteVisitor (IncomeVisitor, VacationVisitor): 
         
-            thực hiện từng thao tác do Khách truy cập khai báo. Mỗi hoạt động thực hiện một phân đoạn của thuật toán được xác định cho lớp hoặc đối tượng tương ứng trong cấu trúc. ConcreteVisitor cung cấp ngữ cảnh cho thuật toán và lưu trữ trạng thái cục bộ của nó. Trạng thái này thường tích lũy các kết quả trong quá trình di chuyển cấu trúc.
+            Thực hiện từng thao tác do Khách truy cập khai báo. Mỗi hoạt động thực hiện một phân đoạn của thuật toán được xác định cho lớp hoặc đối tượng tương ứng trong cấu trúc. ConcreteVisitor cung cấp ngữ cảnh cho thuật toán và lưu trữ trạng thái cục bộ của nó. Trạng thái này thường tích lũy các kết quả trong quá trình di chuyển cấu trúc.
 
         ConcreteElement (Employee): 
         
-            triển khai hoạt động Chấp nhận lấy khách truy cập làm đối số
+            Triển khai hoạt động Chấp nhận lấy khách truy cập làm đối số
 
         ObjectStructure (Employees): 
         
-            có thể liệt kê các yếu tố của nó, cung cấp giao diện cấp cao để cho phép khách truy cập vào các phần tử của nó, tổng hợp (mẫu) hoặc một tập hợp chẳng hạn như danh sách hoặc tập hợp
+            Có thể liệt kê các yếu tố của nó, cung cấp giao diện cấp cao để cho phép khách truy cập vào các phần tử của nó, tổng hợp (mẫu) hoặc một tập hợp chẳng hạn như danh sách hoặc tập hợp
 
     - Các lớp và đối tượng minh hoạ:  https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Behavioral%20Patterns/Visitor%20Pattern
 
@@ -138,15 +144,15 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
 
         Target (ChemicalCompound): 
         
-            xác định giao diện miền cụ thể mà Khách hàng sử dụng.
+            Xác định giao diện miền cụ thể mà Khách hàng sử dụng.
 
         Adapter (Compound): 
         
-            điều chỉnh giao diện Adaptee với giao diện Target.
+            Điều chỉnh giao diện Adaptee với giao diện Target.
 
         Adaptee (ChemicalDatabank): 
         
-            xác định một giao diện hiện có cần thích ứng.
+            Xác định một giao diện hiện có cần thích ứng.
         
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Structural%20Patterns/Adapter%20Pattern
 
@@ -156,15 +162,15 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
 
         Abstraction (BusinessObject): 
         
-            xác định giao diện của phần trừu tượng, duy trì một tham chiếu đến một đối tượng kiểu Implementor.
+            Xác định giao diện của phần trừu tượng, duy trì một tham chiếu đến một đối tượng kiểu Implementor.
 
         RefinedAbstraction (CustomersBusinessObject): 
         
-            mở rộng giao diện được xác định bởi Trừu tượng.
+            Mở rộng giao diện được xác định bởi Trừu tượng.
 
         Implementor (DataObject): 
         
-            định nghĩa giao diện cho các lớp thực thi. Giao diện này không nhất thiết phải tương ứng chính xác với giao diện của Abstraction; trong thực tế, hai giao diện có thể hoàn toàn khác nhau. Thông thường, giao diện Triển khai chỉ cung cấp các hoạt động nguyên thủy và Trừu tượng xác định các hoạt động cấp cao hơn dựa trên các nguyên thủy này.
+            Định nghĩa giao diện cho các lớp thực thi. Giao diện này không nhất thiết phải tương ứng chính xác với giao diện của Abstraction; trong thực tế, hai giao diện có thể hoàn toàn khác nhau. Thông thường, giao diện Triển khai chỉ cung cấp các hoạt động nguyên thủy và Trừu tượng xác định các hoạt động cấp cao hơn dựa trên các nguyên thủy này.
         
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Structural%20Patterns/Bridge%20Pattern
 
@@ -174,18 +180,17 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
 
         Component (DrawingElement): 
 
-            thành phần.
             Thực hiện hành vi mặc định cho giao diện chung cho tất cả các lớp, nếu thích hợp.
             Khai báo một giao diện để truy cập và quản lý các thành phần con của nó.
             (tùy chọn) Định nghĩa một giao diện để truy cập cha của một thành phần trong cấu trúc đệ quy và triển khai nó nếu điều đó phù hợp.
 
         Leaf (PrimitiveElement): 
         
-            đại diện cho các đối tượng leaf trong bố cục. A leaf không có con, xác định hành vi cho các đối tượng nguyên thủy trong thành phần.
+            Đại diện cho các đối tượng leaf trong bố cục. A leaf không có con, xác định hành vi cho các đối tượng nguyên thủy trong thành phần.
 
         Composite (CompositeElement): 
         
-            xác định hành vi cho các thành phần có con, lưu trữ các thành phần con, triển khai các hoạt động liên quan đến con trong Component interface.
+            Xác định hành vi cho các thành phần có con, lưu trữ các thành phần con, triển khai các hoạt động liên quan đến con trong Component interface.
         
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Structural%20Patterns/Composite%20Pattern
 
@@ -206,8 +211,6 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
             Duy trì một tham chiếu đến một đối tượng Thành phần và xác định một giao diện phù hợp với giao diện của Thành phần.
         
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Structural%20Patterns/Decorator%20Pattern
-
-
 
 
 * Proxy Pattern: Cung cấp người thay thế hoặc trình giữ chỗ cho một đối tượng khác để kiểm soát quyền truy cập vào nó.
@@ -343,10 +346,6 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
             Ghi đè phương thức factory để trả về một phiên bản của ConcreteProduct.
 
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Creational%20Patterns/Factory%20Method%20Pattern
-        
 
 
-
-
-
-
+    
