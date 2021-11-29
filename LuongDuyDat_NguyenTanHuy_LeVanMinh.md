@@ -453,7 +453,7 @@ package refactoring_guru.decorator.example;
 ## 12. Flyweight Pattern:
 -Là một mẫu thiết kế cấu trúc cho phép bạn lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.
 - Minh hoạ:
-
+```swift
 package refactoring_guru.flyweight.example;
 	
 	import refactoring_guru.flyweight.example.forest.Forest;
@@ -495,7 +495,7 @@ package refactoring_guru.flyweight.example;
 	        return min + (int) (Math.random() * ((max - min) + 1));
 	    }
 	}
-
+```
 - So sánh:
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
