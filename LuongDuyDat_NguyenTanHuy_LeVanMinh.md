@@ -590,6 +590,7 @@ import refactoring_guru.interpreter.example.expressions.VariableExpression;
  * 
  * Defines a representation for a grammar as well as a mechanism to understand and act upon the grammar.
  */
+ 
 public class Demo {
     private static void example1() throws Exception {
         var context = new Context();
@@ -657,6 +658,7 @@ public class Demo {
         example2();
     }
 }
+
 - So sánh: 
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
@@ -681,6 +683,7 @@ import java.util.Scanner;
 /**
  * EN: Demo class. Everything comes together here.
  */
+ 
 public class Demo {
     public static Scanner scanner = new Scanner(System.in);
 
@@ -720,6 +723,7 @@ public class Demo {
         return data;
     }
 }
+
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
@@ -740,6 +744,7 @@ import javax.swing.*;
 /**
  * EN: Demo class. Everything comes together here.
  */
+ 
 public class Demo {
     public static void main(String[] args) {
         Mediator mediator = new Editor();
@@ -757,6 +762,7 @@ public class Demo {
         mediator.createGUI();
     }
 }
+
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
@@ -799,6 +805,7 @@ public class Demo {
         );
     }
 }
+
 - So sánh: 
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
@@ -828,6 +835,7 @@ public class Demo {
         }
     }
 }
+
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
@@ -877,6 +885,7 @@ public class Demo {
         return estimatedTime;
     }
 }
+
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
@@ -909,6 +918,7 @@ public final class Singleton {
         return instance;
     }
 }
+
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
@@ -925,6 +935,7 @@ import refactoring_guru.state.example.ui.UI;
 /**
  * EN: Demo class. Everything comes together here.
  */
+ 
 public class Demo {
     public static void main(String[] args) {
         Player player = new Player();
@@ -932,6 +943,7 @@ public class Demo {
         ui.init();
     }
 }
+
 - So sánh: 
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
@@ -957,6 +969,7 @@ import java.util.Map;
 /**
  * EN: World first console e-commerce application.
  */
+ 
 public class Demo {
     private static Map<Integer, Integer> priceOnProducts = new HashMap<>();
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -1014,6 +1027,7 @@ public class Demo {
             // EN: Order object delegates gathering payment data to strategy
             // object, since only strategies know what data they need to
             // process a payment.
+	    
             order.processOrder(strategy);
 
 
@@ -1031,6 +1045,7 @@ public class Demo {
         }
     }
 }
+
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
@@ -1053,6 +1068,7 @@ import java.io.InputStreamReader;
 /**
  * EN: Demo class. Everything comes together here.
  */
+ 
 public class Demo {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -1083,6 +1099,7 @@ public class Demo {
         network.post(message);
     }
 }
+
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
@@ -1123,6 +1140,7 @@ public class Demo {
         System.out.println(exportVisitor.export(shapes));
     }
 }
+
 - So sánh:
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
