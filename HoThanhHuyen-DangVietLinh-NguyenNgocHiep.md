@@ -77,19 +77,28 @@ Cần mở rộng dự án với ít sự thay đổi nhất.
 Giúp clone object một cách nhanh chóng, không bị duplicate code.
 => https://github.com/RefactoringGuru/design-patterns-java/blob/master/src/refactoring_guru/prototype/example/Demo.java
 
-Proxy Pattern là mẫu thiết kế mà ở đó tất cả các truy cập trực tiếp đến một đối tượng nào đó sẽ được chuyển hướng vào một đối tượng trung gian (Proxy Class). Mẫu Proxy (người đại diện) đại diện cho một đối tượng khác thực thi các phương thức, phương thức đó có thể được định nghĩa lại cho phù hợp với múc đích sử dụng.
+- Proxy Pattern là mẫu thiết kế mà ở đó tất cả các truy cập trực tiếp đến một đối tượng nào đó sẽ được chuyển hướng vào một đối tượng trung gian (Proxy Class). Mẫu Proxy (người đại diện) đại diện cho một đối tượng khác thực thi các phương thức, phương thức đó có thể được định nghĩa lại cho phù hợp với múc đích sử dụng.
+Kiểm soát quyền truy xuất các phương thức của đối tượng.
+Bổ sung thêm chức năng trước khi thực thi phương thức.
+Tạo ra đối tượng mới có chức năng nâng cao hơn đối tượng ban đầu.
+Giảm chi phí khi có nhiều truy cập vào đối tượng có chi phí khởi tạo ban đầu lớn.
 => https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/ProtectionProxy.kt
 
-Single Pattern là một design pattern mà
-    Đảm bảo rằng một class chỉ có duy nhất một instance
-    Và cung cấp một cáchs toàn cầu để truy cấp tới instance đó.
-
+- Single Pattern là một design pattern mà
+Đảm bảo rằng 1 class chỉ có 1 instance duy nhất và class này luôn sẵn sàng để sử dụng ở bất kỳ thời điểm hoặc vị trí nào trong phần mềm ứng dụng của chúng ta.
+Việc quản lý việc truy cập tốt hơn vì chỉ có một thể hiện duy nhất.
+Có thể quản lý số lượng thể hiện của một lớp trong giớn hạn chỉ định.
 => https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/Singleton.kt
 
-State Pattern là một trong những mẫu thiết kế thuộc nhóm behavioral cho phép một object có thể biến đổi hành vi của nó khi có những sự thay đổi trạng thái nội bộ.
+- State Pattern là một trong những mẫu thiết kế thuộc nhóm behavioral cho phép một object có thể biến đổi hành vi của nó khi có những sự thay đổi trạng thái nội bộ.
+Hành vi của một đội tượng phụ thuộc vào trạng thái của nó. Tại thời điểm runtime, khi đối tượng thực hiện hành vi, trạng thái của nó sẽ thay đổi theo.
+Đối tượng có nhiều trường hợp sử dụng với các hành vi của nó, nhiều hành vi phụ thuộc vào trạng thái của đối tượng. Hay nói cách khác, đối tượng có nhiều trạng thái, mỗi trạng thái có những hành vi khác nhau.
 => https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/State.kt
 
-Strategy pattern (mẫu chiến lược): hiểu một cách đơn giản thì đây là mẫu thiết kế giúp bạn trừu tượng hóa những hành vi (behavior, method, function) của một đối tượng bằng cách đưa ra những cài đặt vào những lớp khác nhau.
+- Strategy pattern (mẫu chiến lược): hiểu một cách đơn giản thì đây là mẫu thiết kế giúp bạn trừu tượng hóa những hành vi (behavior, method, function) của một đối tượng bằng cách đưa ra những cài đặt vào những lớp khác nhau.
+Giúp tách rời phần xử lý một chức năng cụ thể ra khỏi đối tượng. Sau đó tạo ra một tập hợp các thuật toán để xử lý chức năng đó và lựa chọn thuật toán nào mà chúng ta thấy đúng đắn nhất khi thực thi chương trình.
+Áp dụng tốt cho mục đích hướng chức năng.
+Đặc biệt quan trọng khi bạn muốn thực hiện công việc nâng cấp, bảo trì cho các đoạn mã dễ thay đổi một cách riêng biệt với toàn bộ mã của chương trình, hoặc khi muốn thay đổi thuật toán sử dụng khi chương trình được thực thi.
 => https://github.com/dbacinski/Design-Patterns-In-Kotlin/blob/master/patterns/src/test/kotlin/Strategy.kt
 
 Template Method Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Pattern này nói rằng “Định nghĩa một bộ khung của một thuật toán trong một chức năng, chuyển giao việc thực hiện nó cho các lớp con. Mẫu Template Method cho phép lớp con định nghĩa lại cách thực hiện của một thuật toán, mà không phải thay đổi cấu trúc thuật toán“.
