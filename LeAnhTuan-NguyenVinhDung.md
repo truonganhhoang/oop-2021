@@ -208,7 +208,141 @@ CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Structural%20Patterns/Decorator%20Pattern
 
 
-* Proxy Pattern: 
+
+
+* Proxy Pattern: Cung cấp người thay thế hoặc trình giữ chỗ cho một đối tượng khác để kiểm soát quyền truy cập vào nó.
+
+    - Các lớp và đối tượng minh hoạ:
+
+        Proxy (MathProxy): 
+
+            Duy trì một tham chiếu cho phép proxy truy cập vào chủ thể thực. Proxy có thể tham chiếu đến Chủ thể nếu giao Diện RealSubject và Subject giống nhau.
+
+            Cung cấp một giao diện giống hệt với Chủ đề để có thể thay thế một proxy cho chủ thể thực.
+
+            Kiểm soát quyền truy cập vào chủ thể thực và có thể chịu trách nhiệm tạo và xóa nó.
+
+        Subject (IMath):
+
+            Xác định giao diện chung cho RealSubject và Proxy để một Proxy có thể được sử dụng ở bất cứ đâu mà RealSubject được mong đợi.
+
+    - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Structural%20Patterns/Proxy%20Pattern    
+
+
+* Prototype Pattern: 
+
+    - Các lớp và đối tượng minh hoạ:
+
+        Prototype (ColorPrototype):
+
+            Khai báo một giao diện để nhân bản chính nó
+
+        ConcretePrototype (Color):
+
+            Thực hiện một hoạt động để nhân bản chính nó
+
+        Client (ColorManager):
+
+            Tạo một đối tượng mới bằng cách yêu cầu một nguyên mẫu để nhân bản chính nó
+
+    - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Creational%20Patterns/Prototype%20Pattern
+
+
+* Singleton Pattern: Đảm bảo một lớp chỉ có một phiên bản và cung cấp một điểm truy cập toàn cục cho nó.
+
+    - Các lớp và đối tượng minh hoạ:
+
+        Singleton (LoadBalancer): 
+        
+            Định nghĩa một hoạt động Phiên bản cho phép khách hàng truy cập phiên bản duy nhất của nó. Phiên bản là một hoạt động của lớp.
+
+            Chịu trách nhiệm tạo và duy trì phiên bản duy nhất của riêng nó.
+
+    - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Creational%20Patterns/Singleton%20Pattern
+
+* Abstract Factory Pattern: Cung cấp giao diện để tạo họ các đối tượng liên quan hoặc phụ thuộc mà không chỉ định các lớp cụ thể của chúng.
+
+    - Các lớp và đối tượng minh hoạ:
+
+        AbstractFactory (ContinentFactory):
+
+            Khai báo một giao diện cho các hoạt động tạo ra các sản phẩm trừu tượng
+
+        ConcreteFactory (AfricaFactory, AmericaFactory):
+
+            Thực hiện các hoạt động để tạo ra các đối tượng sản phẩm cụ thể
+
+        AbstractProduct (Herbivore, Carnivore):
+
+            Khai báo một giao diện cho một loại đối tượng sản phẩm
+
+        Product (Wildebeest, Lion, Bison, Wolf): 
+
+            Xác định một đối tượng sản phẩm sẽ được tạo ra bởi nhà máy bê tông tương ứng
+
+            Triển khai giao diện AbstractProduct
+
+        Client (AnimalWorld): 
+        
+            Sử dụng các giao diện được khai báo bởi các lớp AbstractFactory và AbstractProduct
+
+
+    - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Creational%20Patterns/Abstract%20Factory%20Pattern
+
+
+
+* Builder Pattern: Tách cấu trúc của một đối tượng phức tạp khỏi biểu diễn của nó để quá trình xây dựng giống nhau có thể tạo ra các biểu diễn khác nhau.
+
+    - Các lớp và đối tượng minh hoạ:
+
+        Builder (VehicleBuilder):
+
+            Chỉ định một giao diện trừu tượng để tạo các phần của đối tượng Product
+
+        ConcreteBuilder (MotorCycleBuilder, CarBuilder, ScooterBuilder):
+
+            Xây dựng và lắp ráp các bộ phận của sản phẩm bằng cách triển khai giao diện Builder
+
+            Xác định và theo dõi biểu diễn mà nó tạo ra
+
+            Cung cấp một giao diện để lấy sản phẩm
+
+        Director (Shop): 
+        
+            Tạo một đối tượng bằng giao diện Builder
+
+        Product (Vehicle): 
+        
+            Đại diện cho đối tượng phức tạp đang được xây dựng. ConcreteBuilder xây dựng đại diện bên trong của sản phẩm và xác định quy trình mà nó được lắp ráp
+
+            Bao gồm các lớp xác định các bộ phận cấu thành, bao gồm các giao diện để lắp ráp các bộ phận thành kết quả cuối cùng
+
+    - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Creational%20Patterns/Builder%20Pattern#builder-pattern-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F
+
+
+* Factory Method Pattern: Xác định giao diện để tạo một đối tượng, nhưng hãy để các lớp con quyết định lớp nào sẽ khởi tạo. Factory Method cho phép một lớp trì hoãn quá trình khởi tạo lớp con.
+
+    - Các lớp và đối tượng minh hoạ:
+
+        Product (Page): 
+
+            Xác định giao diện của các đối tượng mà phương thức factory tạo ra
+
+            ConcreteProduct (SkillsPage, EducationPage, ExperiencePage)
+
+            Triển khai giao diện Sản phẩm
+
+        Creator (Document): 
+
+            Khai báo phương thức factory, phương thức này trả về một đối tượng kiểu Sản phẩm. Người tạo cũng có thể xác định một triển khai mặc định của phương thức gốc trả về một đối tượng ConcreteProduct mặc định.
+
+            Có thể gọi phương thức factory để tạo một đối tượng Sản phẩm.
+
+        ConcreteCreator (Report, Resume): 
+
+            Ghi đè phương thức factory để trả về một phiên bản của ConcreteProduct.
+
+    - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Creational%20Patterns/Factory%20Method%20Pattern
         
 
 
