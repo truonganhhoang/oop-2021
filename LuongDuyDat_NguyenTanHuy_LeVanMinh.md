@@ -526,10 +526,10 @@ Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 12. Flyweight Pattern:
 -Là một mẫu thiết kế cấu trúc cho phép bạn lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.
--Minh hoạ:
+- Minh hoạ:
+
 package refactoring_guru.flyweight.example;
 	
-
 	import refactoring_guru.flyweight.example.forest.Forest;
 	
 
