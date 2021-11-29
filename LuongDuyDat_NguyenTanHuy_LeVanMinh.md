@@ -21,19 +21,8 @@ Bằng cách sử dụng design pattern, chúng ta sẽ tạo ra những đoạn
 	import refactoring_guru.abstract_factory.example.factories.GUIFactory;
 	import refactoring_guru.abstract_factory.example.factories.MacOSFactory;
 	import refactoring_guru.abstract_factory.example.factories.WindowsFactory;
-	
 
 	public class Demo {
-	
-
-	    /**
-	     * EN: Application picks the factory type and creates it in run time
-	     * (usually at initialization stage), depending on the configuration or
-	     * environment variables.
-	     *
-	     * RU: Приложение выбирает тип и создаёт конкретные фабрики динамически
-	     * исходя из конфигурации или окружения.
-	     */
 	    private static Application configureApplication() {
 	        Application app;
 	        GUIFactory factory;
@@ -67,12 +56,6 @@ Bằng cách sử dụng design pattern, chúng ta sẽ tạo ra những đoạn
 	import refactoring_guru.adapter.example.round.RoundPeg;
 	import refactoring_guru.adapter.example.square.SquarePeg;
 	
-
-	/**
-	 * EN: Somewhere in client code...
-	 *
-	 * RU: Где-то в клиентском коде...
-	 */
 	public class Demo {
 	    public static void main(String[] args) {
 	        // EN: Round fits round, no surprise.
@@ -89,12 +72,6 @@ Bằng cách sử dụng design pattern, chúng ta sẽ tạo ra những đoạn
 	        SquarePeg largeSqPeg = new SquarePeg(20);
 	        // EN: hole.fits(smallSqPeg); // Won't compile.
 	        //
-	        // RU: hole.fits(smallSqPeg); // Не скомпилируется.
-	
-
-	        // EN: Adapter solves the problem.
-	        //
-	        // RU: Адаптер решит проблему.
 	        SquarePegAdapter smallSqPegAdapter = new SquarePegAdapter(smallSqPeg);
 	        SquarePegAdapter largeSqPegAdapter = new SquarePegAdapter(largeSqPeg);
 	        if (hole.fits(smallSqPegAdapter)) {
@@ -156,13 +133,6 @@ package refactoring_guru.builder.example;
 	import refactoring_guru.builder.example.cars.Car;
 	import refactoring_guru.builder.example.cars.Manual;
 	import refactoring_guru.builder.example.director.Director;
-	
-
-	/**
-	 * EN: Demo class. Everything comes together here.
-	 *
-	 * RU: Демо-класс. Здесь всё сводится воедино.
-	 */
 	public class Demo {
 	
 
@@ -189,16 +159,7 @@ package refactoring_guru.builder.example;
 	        // не знает и не зависит от конкретных классов строителей и продуктов.
 	        Car car = builder.getResult();
 	        System.out.println("Car built:\n" + car.getCarType());
-	
-
-	
-
 	        CarManualBuilder manualBuilder = new CarManualBuilder();
-	
-
-	        // EN: Director may know several building recipes.
-	        //
-	        // RU: Директор может знать больше одного рецепта строительства.
 	        director.constructSportsCar(manualBuilder);
 	        Manual carManual = manualBuilder.getResult();
 	        System.out.println("\nCar manual built:\n" + carManual.print());
@@ -219,12 +180,6 @@ package refactoring_guru.factory_method.example;
 	import refactoring_guru.factory_method.example.factory.HtmlDialog;
 	import refactoring_guru.factory_method.example.factory.WindowsDialog;
 	
-
-	/**
-	 * EN: Demo class. Everything comes together here.
-	 *
-	 * RU: Демо-класс. Здесь всё сводится воедино.
-	 */
 	public class Demo {
 	    private static Dialog dialog;
 	
@@ -234,14 +189,6 @@ package refactoring_guru.factory_method.example;
 	        runBusinessLogic();
 	    }
 	
-
-	    /**
-	     * EN: The concrete factory is usually chosen depending on configuration or
-	     * environment options.
-	     *
-	     * RU: Приложение создаёт определённую фабрику в зависимости от конфигурации
-	     * или окружения.
-	     */
 	    static void configure() {
 	        if (System.getProperty("os.name").equals("Windows 10")) {
 	            dialog = new WindowsDialog();
@@ -250,16 +197,6 @@ package refactoring_guru.factory_method.example;
 	        }
 	    }
 	
-
-	    /**
-	     * EN: All of the client code should work with factories and products
-	     * through abstract interfaces. This way it does not care which factory it
-	     * works with and what kind of product it returns.
-	     *
-	     * RU: Весь остальной клиентский код работает с фабрикой и продуктами только
-	     * через общий интерфейс, поэтому для него неважно какая фабрика была
-	     * создана.
-	     */
 	    static void runBusinessLogic() {
 	        dialog.renderWindow();
 	    }
