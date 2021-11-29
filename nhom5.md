@@ -26,32 +26,6 @@ Factory Pattern được sử dụng khi có một class cha (super-class) với
 - có 1 số function không bị ghi đè
 
 
-
-## Prototype
-```
-public final class HttpException extends retrofit2.HttpException {
-public HttpException(Response<?> response) {
-super(response);
-}
-}
-```
-[link](https://github.com/square/retrofit/blob/515bfc977fbc567919a595206749256f5a8b4620/retrofit-adapters/java8/src/main/java/retrofit2/adapter/java8/HttpException.java#L22)
-```
-public final class Java8OptionalConverterFactory extends Converter.Factory {
-  public static Java8OptionalConverterFactory create() {
-    return new Java8OptionalConverterFactory();
- }
-```
-
-Prototype pattern đề cập đến việc tạo Object trùng lặp trong khi vẫn giữ được hiệu suất trong quá trình, là một pattern thuộc nhóm Creational Patterns.
-Kiểu design pattern này được tạo ra theo mô hình Creational Pattern vì Pattern này cung cấp một trong những cách tốt nhất để tạo ra một đối tượng thay vì tạo ra Object, Prototype pattern sử dụng việc cloning (copy nguyên mẫu của Object). Ví dụ, một Object sẽ được tạo ra sau khi một hoạt động cơ sở dữ liệu tốn kém. Chúng ta có thể cache Object, trả về clone của nó theo yêu cầu tiếp theo và cập nhật cơ sở dữ liệu khi nào cần và do đó giảm các cuộc gọi cơ sở dữ liệu.
-
-**Giống nhau**:
-- Prototype gần như giống hệt so với mẫu chuẩn : cho phép khởi tạo một đối tượng bằng cách sao chép từ một đối tượng khác đã tồn tại thay vì sử dụng toán tử new.
-
-link: https://github.com/square/retrofit/blob/master/retrofit-converters/java8/src/main/java/retrofit/converter/java8/Java8OptionalConverterFactory.java
-
-
 ## [Builder](https://github.com/square/retrofit/blob/master/retrofit-mock/src/main/java/retrofit2/mock/MockRetrofit.java) 
 
 ```
@@ -279,6 +253,195 @@ public class HeroFactoryImpl implements HeroFactory {
 ```
 
 
+## [Memento](https://github.com/iluwatar/java-design-patterns/tree/master/memento)
 
+Memento là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Memento là mẫu thiết kế có thể lưu lại trạng thái của một đối tượng để khôi phục lại sau này mà không vi phạm nguyên tắc đóng gói.
 
+Dữ liệu trạng thái đã lưu trong đối tượng memento không thể truy cập bên ngoài đối tượng được lưu và khôi phục. Điều này bảo vệ tính toàn vẹn của dữ liệu trạng thái đã lưu.
 
+Hoàn tác (Undo) hoặc ctrl + z là một trong những thao tác được sử dụng nhiều nhất trong trình soạn thảo văn bản (editor). Mẫu thiết kế Memento được sử dụng để thực hiện thao tác Undo. Điều này được thực hiện bằng cách lưu trạng thái hiện tại của đối tượng mỗi khi nó thay đổi trạng thái, từ đó chúng ta có thể khôi phục nó trong mọi trường hợp có lỗi.
+
+>Ví dụ thực tế: Ta cần phải tạo ra một ứng dụng thiên văn học để phân tích thuộc tính của các ngôi sao theo thời gian. Chúng ta sẽ sử dụng Memento pattern để tạo ra những trạng thái nhớ của các ngôi sao.
+
+Ban đầu ta định nghĩa các loại ngôi sao cần xử lý.
+
+```
+public enum StarType {
+  SUN("sun"),
+  RED_GIANT("red giant"),
+  WHITE_DWARF("white dwarf"),
+  SUPERNOVA("supernova"),
+  DEAD("dead star");
+  ...
+}
+
+```
+
+Tiếp theo ta có lớp Star để giải quyết với những trạng thái (các memento) mà chúng ta cần làm việc cùng.
+
+```
+public interface StarMemento {
+}
+
+public class Star {
+
+  private StarType type;
+  private int ageYears;
+  private int massTons;
+
+  public Star(StarType startType, int startAge, int startMass) {
+    this.type = startType;
+    this.ageYears = startAge;
+    this.massTons = startMass;
+  }
+
+  public void timePasses() {
+    ageYears *= 2;
+    massTons *= 8;
+    switch (type) {
+      case RED_GIANT:
+        type = StarType.WHITE_DWARF;
+        break;
+      case SUN:
+        type = StarType.RED_GIANT;
+        break;
+      case SUPERNOVA:
+        type = StarType.DEAD;
+        break;
+      case WHITE_DWARF:
+        type = StarType.SUPERNOVA;
+        break;
+      case DEAD:
+        ageYears *= 2;
+        massTons = 0;
+        break;
+      default:
+        break;
+    }
+  }
+
+  StarMemento getMemento() {
+    var state = new StarMementoInternal();
+    state.setAgeYears(ageYears);
+    state.setMassTons(massTons);
+    state.setType(type);
+    return state;
+  }
+
+  void setMemento(StarMemento memento) {
+    var state = (StarMementoInternal) memento;
+    this.type = state.getType();
+    this.ageYears = state.getAgeYears();
+    this.massTons = state.getMassTons();
+  }
+
+  @Override
+  public String toString() {
+    return String.format("%s age: %d years mass: %d tons", type.toString(), ageYears, massTons);
+  }
+
+  private static class StarMementoInternal implements StarMemento {
+
+    private StarType type;
+    private int ageYears;
+    private int massTons;
+
+    // setters and getters ->
+    ...
+  }
+}
+
+```
+
+Và đây là cách ta sử dụng các memento để lưu và trả lại trạng thái cho các ngôi sao:
+
+```
+    var states = new Stack<>();
+    var star = new Star(StarType.SUN, 10000000, 500000);
+    LOGGER.info(star.toString());
+    states.add(star.getMemento());
+    star.timePasses();
+    LOGGER.info(star.toString());
+    states.add(star.getMemento());
+    star.timePasses();
+    LOGGER.info(star.toString());
+    states.add(star.getMemento());
+    star.timePasses();
+    LOGGER.info(star.toString());
+    states.add(star.getMemento());
+    star.timePasses();
+    LOGGER.info(star.toString());
+    while (states.size() > 0) {
+      star.setMemento(states.pop());
+      LOGGER.info(star.toString());
+    }
+
+```
+
+## [Strategy](https://github.com/iluwatar/java-design-patterns/tree/master/strategy)
+
+Strategy Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép định nghĩa tập hợp các thuật toán, đóng gói từng thuật toán lại, và dễ dàng thay đổi linh hoạt các thuật toán bên trong object. Strategy cho phép thuật toán biến đổi độc lập khi người dùng sử dụng chúng.
+
+Ý nghĩa thực sự của Strategy Pattern là giúp tách rời phần xử lý một chức năng cụ thể ra khỏi đối tượng. Sau đó tạo ra một tập hợp các thuật toán để xử lý chức năng đó và lựa chọn thuật toán nào mà chúng ta thấy đúng đắn nhất khi thực thi chương trình. Mẫu thiết kế này thường được sử dụng để thay thế cho sự kế thừa, khi muốn chấm dứt việc theo dõi và chỉnh sửa một chức năng qua nhiều lớp con.
+
+>Ví dụ: Những người diệt rồng đã phát triển ra những chiến thuật tranh đấu khác nhau cho từng loại rồng.
+
+Đầu tiên chúng ta có interface chứa chiến lược diệt rồng và cách cài đặt của nó:
+
+```
+@FunctionalInterface
+public interface DragonSlayingStrategy {
+
+  void execute();
+}
+
+@Slf4j
+public class MeleeStrategy implements DragonSlayingStrategy {
+
+  @Override
+  public void execute() {
+    LOGGER.info("With your Excalibur you sever the dragon's head!");
+  }
+}
+
+@Slf4j
+public class ProjectileStrategy implements DragonSlayingStrategy {
+
+  @Override
+  public void execute() {
+    LOGGER.info("You shoot the dragon with the magical crossbow and it falls dead on the ground!");
+  }
+}
+
+@Slf4j
+public class SpellStrategy implements DragonSlayingStrategy {
+
+  @Override
+  public void execute() {
+    LOGGER.info("You cast the spell of disintegration and the dragon vaporizes in a pile of dust!");
+  }
+}
+
+```
+
+Và người diệt rồng sẽ chọn chiến lược phù hợp với đối thủ của mình.
+
+```
+public class DragonSlayer {
+
+  private DragonSlayingStrategy strategy;
+
+  public DragonSlayer(DragonSlayingStrategy strategy) {
+    this.strategy = strategy;
+  }
+
+  public void changeStrategy(DragonSlayingStrategy strategy) {
+    this.strategy = strategy;
+  }
+
+  public void goToBattle() {
+    strategy.execute();
+  }
+}
+
+```
