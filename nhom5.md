@@ -97,6 +97,24 @@ Có ba vấn đề chính với  Factory Pattern và Abstract Factory Pattern kh
 - Một số tham số có thể là tùy chọn nhưng trong Factory Pattern, chúng ta phải gửi tất cả tham số, với tham số tùy chọn nếu không nhập gì thì sẽ truyền là null.
 - Nếu một Object có quá nhiều thuộc tính thì việc tạo sẽ phức tạp.
 
+## Singleton
+
+```
+Singleton pattern (thuộc Creational) đảm bảo chỉ duy nhất môt new instance được tạo ra cho 1 lớp và nó sẽ cung cấp cho bạn một method để truy cập đến đối tượng duy nhất đó. Dù cho việc thực hiện cài đặt Singleton bằng cách nào đi nữa cũng đều dựa vào nguyên tắc dưới đây.
+
+- private constructor để hạn chế khởi tạo đối tượng từ bên ngoài
+- đặt private static variable cho đối tượng được khởi tạo, đảm bảo biến chỉ được khởi tạo trong chính lớp này.
+- có một method public để return instance đã được khởi tạo ở trên.
+
+link : https://github.com/iluwatar/java-design-patterns/tree/master/singleton/src/test/java/com/iluwatar/singleton
+
+## Composite
+
+```
+Composite Pattern được sử dụng khi chúng ta cần xử lý một nhóm đối tượng tương tự theo cách xử lý 1 object. Composite pattern sắp xếp các object theo cấu trúc cây để diễn giải 1 phần cũng như toàn bộ hệ thống phân cấp. Pattern này tạo một lớp chứa nhóm đối tượng của riêng nó. Lớp này cung cấp các cách để sửa đổi nhóm của cùng 1 object. Pattern này cho phép Client có thể viết code giống nhau để tương tác với composite object này, bất kể đó là một đối tượng riêng lẻ hay tập hợp các đối tượng.
+
+link: https://github.com/JakubVojvoda/design-patterns-java/blob/master/composite/Composite.java
+
 **Giống nhau**: 
 - Giống với mẫu chuẩn.
 - Build từ Retrofit, NetworkBehavior và ExecutorService
