@@ -9,9 +9,9 @@ Các thành viên làm phần bài báo cáo của mình vào một cái google 
 **[Link đến reposition được sử dụng trong bài báo cáo](https://github.com/bethrobson/Head-First-Design-Patterns)**
 
 ## **I. Giới thiệu về mẫu thiết kế:**
-Giả sử bạn muốn tạo một lớp và sử dụng lớp này để tạo một đối tượng mà đối tượng này được sử dụng bởi tất cả các lớp khác. Giải pháp tốt nhất trong trường hợp này là sử dụng Singleton design pattern.
-Như vậy design pattern là độc lập với ngôn ngữ lập trình để giải quyết các vấn đề phổ biến trong thiết kế hướng đối tượng. Nghĩa là một design pattern là một ý tưởng, không phải là một cài đặt cụ thể.
-Bằng cách sử dụng design pattern, chúng ta sẽ tạo ra những đoạn code linh hoạt hơn, có khả năng tái sử dụng hơn và dễ bảo trì nâng cấp hơn.
+- Giả sử bạn muốn tạo một lớp và sử dụng lớp này để tạo một đối tượng mà đối tượng này được sử dụng bởi tất cả các lớp khác. Giải pháp tốt nhất trong trường hợp này là sử dụng Singleton design pattern.
+- Như vậy design pattern là độc lập với ngôn ngữ lập trình để giải quyết các vấn đề phổ biến trong thiết kế hướng đối tượng. Nghĩa là một design pattern là một ý tưởng, không phải là một cài đặt cụ thể.
+- Bằng cách sử dụng design pattern, chúng ta sẽ tạo ra những đoạn code linh hoạt hơn, có khả năng tái sử dụng hơn và dễ bảo trì nâng cấp hơn.
 ## **II. Các mẫu thiết kế được sử dụng trong reposition:**
 ## **1. Abstract Factory ( nhà máy trừu tượng)**:
 - Là một mẫu thiết kế sáng tạo cho phép bạn tạo ra các họ các đối tượng liên quan mà không cần chỉ định các lớp cụ thể của chúng. Pattern Factory giống như một nhà máy sản sinh các đối tượng tương tự nhau này cho bạn.Pattern Factory  tạo các đối tượng đặc biệt từ các lớp cha và dễ dàng tạo extends system từ system cũ.
