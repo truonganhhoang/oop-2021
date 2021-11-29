@@ -26,7 +26,7 @@
 
 ### Flyweight pattern
 * Flyweight Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Nó cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.
-* Không có sự khác nhau giữa mẫu thiết kế chuẩn và mẫu thiết kế trong project. Đó là: [Flyweight](https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/flyweight).Flyweight giúp giảm số lượng đối tượng được tạo ra bằng cách chia sẻ đối tượng. Vì vậy, tiết kiệm bộ nhớ và các thiết bị lưu trữ cần thiết. 
+* Không có sự khác nhau giữa mẫu thiết kế chuẩn và mẫu thiết kế trong project. Đó là: [Flyweight](https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/flyweight) giúp giảm số lượng đối tượng được tạo ra bằng cách chia sẻ đối tượng. Vì vậy, tiết kiệm bộ nhớ và các thiết bị lưu trữ cần thiết. 
 * Cải thiện khả năng cache dữ liệu vì thời gian đáp ứng nhanh.
 
 ### Observer pattern
