@@ -1,4 +1,4 @@
-Nhóm gồm các thành viên:
+## ***Nhóm gồm các thành viên:***
 
 # **Nguyễn Anh Đức 20021336**
 
@@ -13,13 +13,64 @@ Nhóm gồm các thành viên:
 
 Mẫu thiết kế: Factory trong package service, mục đích tạo các lớp kế thừa các giao diện (ở đây đặc biệt ở chỗ: với mỗi giao diện chỉ có 1 lớp kế thừa)
 
+Ví dụ:
+* Giao diện MenuService:
+```java
+public interface MenuService {
+    List<Menu> listMenu() ;
+
+    Menu insertMenu(Menu menu) ;
+
+    void deleteMenu(Integer id) ;
+
+    void updateMenu(Menu menu) ;
+
+    Menu getMenuById(Integer id) ;
+}
+```
+* Lớp MenuServiceImpl:
+```java
+public class MenuServiceImpl implements MenuService {
+
+    @Autowired(required = false)
+    private MenuMapper menuMapper;
+
+    @Override
+    public List<Menu> listMenu() {
+        List<Menu> menuList = menuMapper.listMenu();
+        return menuList;
+    }
+
+    @Override
+    public Menu insertMenu(Menu menu) {
+        menuMapper.insert(menu);
+        return menu;
+    }
+
+    @Override
+    public void deleteMenu(Integer id) {
+        menuMapper.deleteById(id);
+    }
+
+    @Override
+    public void updateMenu(Menu menu) {
+        menuMapper.update(menu);
+    }
+
+    @Override
+    public Menu getMenuById(Integer id) {
+        return menuMapper.getMenuById(id);
+    }
+}
+```
+
 ### Repo 2: Link https://github.com/simple-android-framework/android_design_patterns_analysis
 
 Tóm tắt về đầy đủ 23 mẫu thiết kế
 
 Có code minh họa theo 2 mẫu thiết kế:
 
-#### Command:
+#### * Command:
 
 * Giao diện Command
 ```java
@@ -61,12 +112,12 @@ public class ReceiverRole {
     	private PeopleBean peopleCache = new PeopleBean();     	
       
       public ReceiverRole() {
-    		this.people = new PeopleBean(-1, "NULL");
-    	}
+    	this.people = new PeopleBean(-1, "NULL");
+      }
     	
-    	public ReceiverRole(PeopleBean people) {
-    		this.people = people;
-    	}
+      public ReceiverRole(PeopleBean people) {
+    	this.people = people;
+      }
 	
       public void opActionUpdateAge(int age) {
         System.out.println("执行命令前："+people.toString());
