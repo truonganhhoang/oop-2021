@@ -86,8 +86,8 @@ Bằng cách sử dụng design pattern, chúng ta sẽ tạo ra những đoạn
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 3. Bridge Pattern:
-Là một mẫu thiết kế cấu trúc cho phép bạn chia một lớp lớn hoặc một tập hợp các lớp có liên quan chặt chẽ thành hai phân cấp riêng biệt — trừu tượng và thực thi — có thể được phát triển độc lập với nhau. Bridge pattern được sử dụng khi chúng ta muốn tách một abtraction từ implementation của nó để cả hai có thể thay đổi một cách độc lập với nhau. Bridge Pattern là một mẫu cấu trúc (Structural Pattern)
-Minh hoạ:
+- Là một mẫu thiết kế cấu trúc cho phép bạn chia một lớp lớn hoặc một tập hợp các lớp có liên quan chặt chẽ thành hai phân cấp riêng biệt — trừu tượng và thực thi — có thể được phát triển độc lập với nhau. Bridge pattern được sử dụng khi chúng ta muốn tách một abtraction từ implementation của nó để cả hai có thể thay đổi một cách độc lập với nhau. Bridge Pattern là một mẫu cấu trúc (Structural Pattern)
+- Minh hoạ:
 ```swift
 package refactoring_guru.bridge.example;
 	
@@ -423,8 +423,8 @@ package refactoring_guru.composite.example;
 	}
 ```
 -So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 ## 11. Decorator Pattern:
 - Là một mẫu thiết kế cấu trúc cho phép bạn đính kèm các hành vi mới vào các đối tượng bằng cách đặt các đối tượng này bên trong các đối tượng trình bao bọc đặc biệt có chứa các hành vi.
 - Minh hoạ:
@@ -458,7 +458,7 @@ package refactoring_guru.decorator.example;
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 12. Flyweight Pattern:
--Là một mẫu thiết kế cấu trúc cho phép bạn lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.
+- Là một mẫu thiết kế cấu trúc cho phép bạn lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.
 - Minh hoạ:
 ```swift
 package refactoring_guru.flyweight.example;
@@ -589,8 +589,8 @@ public class Demo {
 }
 ```
 - So sánh: 
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 ## 14. Iterator pattern: 
 - Là một mẫu thiết kế hành vi cho phép bạn duyệt qua các phần tử của một bộ sưu tập mà không để lộ biểu diễn cơ bản của nó (danh sách, ngăn xếp, cây, v.v.).
 - Minh họa:
@@ -653,8 +653,8 @@ public class Demo {
 }
 ```
 - So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 ## 15. Mediator Pattern 
 - Là một mẫu thiết kế hành vi cho phép bạn giảm bớt sự phụ thuộc hỗn loạn giữa các đối tượng. Mẫu hạn chế giao tiếp trực tiếp giữa các đối tượng và buộc chúng chỉ cộng tác thông qua một đối tượng trung gian.
 - Minh họa:
@@ -690,9 +690,9 @@ public class Demo {
 }
 ```
 - So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
-## 16.Memento
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
+## 16. Memento
 - Là một mẫu thiết kế hành vi cho phép bạn lưu và khôi phục trạng thái trước đó của một đối tượng mà không tiết lộ chi tiết về quá trình triển khai của nó.
 - Minh họa:
 ```swift
@@ -734,8 +734,8 @@ public class Demo {
 }
 ```
 - So sánh: 
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 ## 17. Observer pattern 
 - Là một mẫu thiết kế hành vi cho phép bạn xác định cơ chế đăng ký để thông báo cho nhiều đối tượng về bất kỳ sự kiện nào xảy ra với đối tượng mà họ đang quan sát.
 - Minh họa:
@@ -765,8 +765,8 @@ public class Demo {
 }
 ```
 - So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 ## 18. Proxy Pattern 
 - Là mẫu thiết kế mà ở đó tất cả các truy cập trực tiếp đến một đối tượng nào đó sẽ được chuyển hướng vào một đối tượng trung gian (Proxy Class). Mẫu Proxy (người đại diện) đại diện cho một đối tượng khác thực thi các phương thức, phương thức đó có thể được định nghĩa lại cho phù hợp với múc đích sử dụng.
 - Minh họa:
@@ -816,8 +816,8 @@ public class Demo {
 }
 ```
 - So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 ## 19. Single Pattern 
 - Là một design pattern mà đảm bảo rằng một class chỉ có duy nhất một instance (khởi tạo - mình xin phép để nguyên không dịch từ này) và cung cấp một cáchs toàn cầu để truy cấp tới instance đó.
 - Minh họa:
@@ -850,8 +850,8 @@ public final class Singleton {
 }
 ```
 - So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 ## 20. State Pattern 
 - Là một trong những mẫu thiết kế thuộc nhóm behavioral cho phép một object có thể biến đổi hành vi của nó khi có những sự thay đổi trạng thái nội bộ.
 - Minh họa: 
@@ -874,8 +874,8 @@ public class Demo {
 }
 ```
 - So sánh: 
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 ## 21. Strategy pattern (mẫu chiến lược) 
 - Là một mẫu thiết kế hành vi cho phép bạn xác định một nhóm thuật toán, đặt mỗi thuật toán vào một lớp riêng biệt và làm cho các đối tượng của chúng có thể hoán đổi cho nhau.
 - Minh họa:
@@ -976,8 +976,8 @@ public class Demo {
 }
 ```
 - So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 ## 22. Template Method Pattern 
 - Là một mẫu thiết kế hành vi xác định khung của một thuật toán trong lớp cha nhưng cho phép các lớp con ghi đè các bước cụ thể của thuật toán mà không thay đổi cấu trúc của nó.
 - Minh họa:
@@ -1029,10 +1029,10 @@ public class Demo {
 }
 ```
 - So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 ## 23. Visitor 
-- Là mẩu thiết kế (Design Patterns là một mẫu thiết kế hành vi cho phép bạn tách các thuật toán khỏi các đối tượng mà chúng hoạt động trên đó.
+- Là mẫu thiết kế (Design Patterns là một mẫu thiết kế hành vi cho phép bạn tách các thuật toán khỏi các đối tượng mà chúng hoạt động trên đó.
 - Minh họa:
 ```swift
 package refactoring_guru.visitor.example;
@@ -1071,8 +1071,8 @@ public class Demo {
 }
 ```
 - So sánh:
-Giống nhau: Giống với mẫu chuẩn.
-Khác nhau: Không có sự khác nhau.
++ Giống nhau: Giống với mẫu chuẩn.
++ Khác nhau: Không có sự khác nhau.
 ## **III. Kết Luận** 
 Có thể nói, mẫu thiết kế là kỹ thuật trong lập trình hướng đối tượng, nó rất quan trọng khi giải quyết vấn đề của nhiều bài toán khác nhau. Đây là sự đúc kết kinh nghiệm để linh hoạt trong quá trình sử dụng về sau và mỗi lập trình viên muốn giỏi đều phải biết.
 Tóm lại, 23 mẫu thiết kế có thể chia thành 3 loại:
