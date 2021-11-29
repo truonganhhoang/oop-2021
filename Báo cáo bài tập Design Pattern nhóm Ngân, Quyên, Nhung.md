@@ -13,7 +13,7 @@
 ## 3. So sánh
 ### Factory Method
 * Factory method là để đưa toàn bộ logic của việc tạo mới object vào trong factory, che giấu logic của việc khởi tạo.Được định nghĩa interface giúp client tạo object nhưng ủy quyền cho các concreate factory để xác định class nào được trả về cho client.
-* Factory Method: [SignalMediaSourceFactory] https://github.com/landy8530/DesignPatterns/blob/be08a3ff79094c8dff94fdeb555047aa4620bf43/design-patterns-basic/src/main/java/org/landy/factory/method/BluetoothSenderFactory.java trong đó Factory pattern đã dùng để khởi tạo một product mới.
+* [Factory Method](https://github.com/landy8530/DesignPatterns/blob/be08a3ff79094c8dff94fdeb555047aa4620bf43/design-patterns-basic/src/main/java/org/landy/factory/method/BluetoothSenderFactory.java) trong đó Factory pattern đã dùng để khởi tạo một product mới.
 
 ### Abstract Factory
 * Link [AbstractFactory](https://github.com/landy8530/DesignPatterns/blob/be08a3ff79094c8dff94fdeb555047aa4620bf43/design-patterns-basic/src/main/java/org/landy/factory/abstr/AbstractFactory.java)
