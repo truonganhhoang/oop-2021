@@ -126,7 +126,7 @@ package refactoring_guru.bridge.example;
 + Khác nhau: Không có sự khác nhau.
 ## 4. Builder pattern:
 - Là một mẫu thiết kế sáng tạo cho phép bạn xây dựng các đối tượng phức tạp theo từng bước. Mẫu cho phép bạn tạo ra các kiểu và hình ảnh đại diện khác nhau của một đối tượng bằng cách sử dụng cùng một mã xây dựng.
-Minh hoạ:
+- Minh hoạ:
 ```swift
 package refactoring_guru.builder.example;
 	
@@ -205,8 +205,8 @@ package refactoring_guru.factory_method.example;
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 6. Facade Pattern:
--Là một mẫu thiết kế sáng tạo cung cấp một giao diện để tạo các đối tượng trong lớp cha, nhưng cho phép các lớp con thay đổi loại đối tượng sẽ được tạo. Facade Pattern cung cấp một interface đơn giản và cao cấp nhất cho phía client (máy khách) và cho phép nó truy cập vào hệ thống mà không cần biết bên trong có logic hệ thống nào hay nó hoạt động như thế nào.
--Minh hoạ: 
+- Là một mẫu thiết kế sáng tạo cung cấp một giao diện để tạo các đối tượng trong lớp cha, nhưng cho phép các lớp con thay đổi loại đối tượng sẽ được tạo. Facade Pattern cung cấp một interface đơn giản và cao cấp nhất cho phía client (máy khách) và cho phép nó truy cập vào hệ thống mà không cần biết bên trong có logic hệ thống nào hay nó hoạt động như thế nào.
+- Minh hoạ: 
 ```swift
 package refactoring_guru.facade.example;
 	
@@ -298,8 +298,8 @@ package refactoring_guru.prototype.example;
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 8. Chain_of_responsibility:
--Là một mẫu thiết kế hành vi bao gồm một nguồn các đối tượng lệnh và một loạt các đối tượng xử lý. Mỗi đối tượng xử lý chứa logic xác định các loại đối tượng lệnh mà nó có thể xử lý, phần còn lại được chuyển cho đối tượng xử lý tiếp theo trong chuỗi.
--Minh hoạ:
+- Là một mẫu thiết kế hành vi bao gồm một nguồn các đối tượng lệnh và một loạt các đối tượng xử lý. Mỗi đối tượng xử lý chứa logic xác định các loại đối tượng lệnh mà nó có thể xử lý, phần còn lại được chuyển cho đối tượng xử lý tiếp theo trong chuỗi.
+- Minh hoạ:
 ```swift
 package refactoring_guru.chain_of_responsibility.example;
 	
@@ -360,9 +360,9 @@ package refactoring_guru.chain_of_responsibility.example;
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 9. Command Pattern:
--Là một mẫu thiết kế hành vi biến một yêu cầu thành một đối tượng độc lập chứa tất cả thông tin về yêu cầu. Sự chuyển đổi này cho phép bạn chuyển các yêu cầu dưới dạng đối số của phương thức, trì hoãn hoặc xếp hàng đợi việc thực hiện một yêu cầu và hỗ trợ các hoạt động hoàn tác.
+- Là một mẫu thiết kế hành vi biến một yêu cầu thành một đối tượng độc lập chứa tất cả thông tin về yêu cầu. Sự chuyển đổi này cho phép bạn chuyển các yêu cầu dưới dạng đối số của phương thức, trì hoãn hoặc xếp hàng đợi việc thực hiện một yêu cầu và hỗ trợ các hoạt động hoàn tác.
 - Minh hoạ:
-- ```swift
+```swift
 package refactoring_guru.command.example;
 	
 
@@ -507,9 +507,8 @@ package refactoring_guru.flyweight.example;
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 13. Interpreter Pattern: 
-- là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Interpreter Pattern giúp người lập trình có thể “xây dựng” những đối tượng “động” bằng cách đọc mô tả về đối tượng rồi sau đó “xây dựng” đối tượng đúng theo mô tả đó.
+- Là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Interpreter Pattern giúp người lập trình có thể “xây dựng” những đối tượng “động” bằng cách đọc mô tả về đối tượng rồi sau đó “xây dựng” đối tượng đúng theo mô tả đó.
 - Minh họa: 
-
 ```swift
 package refactoring_guru.interpreter.example;
 	
@@ -593,9 +592,8 @@ public class Demo {
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 14. Iterator pattern: 
-- Iterator là một mẫu thiết kế hành vi cho phép bạn duyệt qua các phần tử của một bộ sưu tập mà không để lộ biểu diễn cơ bản của nó (danh sách, ngăn xếp, cây, v.v.).
+- Là một mẫu thiết kế hành vi cho phép bạn duyệt qua các phần tử của một bộ sưu tập mà không để lộ biểu diễn cơ bản của nó (danh sách, ngăn xếp, cây, v.v.).
 - Minh họa:
-
 ```swift
 Package refactoring_guru.iterator.example;
 	
@@ -658,9 +656,8 @@ public class Demo {
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 15. Mediator Pattern 
-- là một mẫu thiết kế hành vi cho phép bạn giảm bớt sự phụ thuộc hỗn loạn giữa các đối tượng. Mẫu hạn chế giao tiếp trực tiếp giữa các đối tượng và buộc chúng chỉ cộng tác thông qua một đối tượng trung gian.
+- Là một mẫu thiết kế hành vi cho phép bạn giảm bớt sự phụ thuộc hỗn loạn giữa các đối tượng. Mẫu hạn chế giao tiếp trực tiếp giữa các đối tượng và buộc chúng chỉ cộng tác thông qua một đối tượng trung gian.
 - Minh họa:
-
 ```swift
 package refactoring_guru.mediator.example;
 	
@@ -696,9 +693,8 @@ public class Demo {
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 16.Memento
-- là một mẫu thiết kế hành vi cho phép bạn lưu và khôi phục trạng thái trước đó của một đối tượng mà không tiết lộ chi tiết về quá trình triển khai của nó.
+- Là một mẫu thiết kế hành vi cho phép bạn lưu và khôi phục trạng thái trước đó của một đối tượng mà không tiết lộ chi tiết về quá trình triển khai của nó.
 - Minh họa:
-
 ```swift
 package refactoring_guru.memento.example;
 	
@@ -741,9 +737,8 @@ public class Demo {
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 17. Observer pattern 
-- là một mẫu thiết kế hành vi cho phép bạn xác định cơ chế đăng ký để thông báo cho nhiều đối tượng về bất kỳ sự kiện nào xảy ra với đối tượng mà họ đang quan sát.
+- Là một mẫu thiết kế hành vi cho phép bạn xác định cơ chế đăng ký để thông báo cho nhiều đối tượng về bất kỳ sự kiện nào xảy ra với đối tượng mà họ đang quan sát.
 - Minh họa:
-
 ```swift
 package refactoring_guru.observer.example;
 
@@ -773,9 +768,8 @@ public class Demo {
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 18. Proxy Pattern 
-- là mẫu thiết kế mà ở đó tất cả các truy cập trực tiếp đến một đối tượng nào đó sẽ được chuyển hướng vào một đối tượng trung gian (Proxy Class). Mẫu Proxy (người đại diện) đại diện cho một đối tượng khác thực thi các phương thức, phương thức đó có thể được định nghĩa lại cho phù hợp với múc đích sử dụng.
+- Là mẫu thiết kế mà ở đó tất cả các truy cập trực tiếp đến một đối tượng nào đó sẽ được chuyển hướng vào một đối tượng trung gian (Proxy Class). Mẫu Proxy (người đại diện) đại diện cho một đối tượng khác thực thi các phương thức, phương thức đó có thể được định nghĩa lại cho phù hợp với múc đích sử dụng.
 - Minh họa:
-
 ```swift
 package refactoring_guru.proxy.example;
 	
@@ -825,9 +819,8 @@ public class Demo {
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 19. Single Pattern 
--là một design pattern mà đảm bảo rằng một class chỉ có duy nhất một instance (khởi tạo - mình xin phép để nguyên không dịch từ này) và cung cấp một cáchs toàn cầu để truy cấp tới instance đó.
+- Là một design pattern mà đảm bảo rằng một class chỉ có duy nhất một instance (khởi tạo - mình xin phép để nguyên không dịch từ này) và cung cấp một cáchs toàn cầu để truy cấp tới instance đó.
 - Minh họa:
-
 ```swift
 package refactoring_guru.singleton.example.non_thread_safe;
 	
@@ -860,9 +853,8 @@ public final class Singleton {
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 20. State Pattern 
-- là một trong những mẫu thiết kế thuộc nhóm behavioral cho phép một object có thể biến đổi hành vi của nó khi có những sự thay đổi trạng thái nội bộ.
+- Là một trong những mẫu thiết kế thuộc nhóm behavioral cho phép một object có thể biến đổi hành vi của nó khi có những sự thay đổi trạng thái nội bộ.
 - Minh họa: 
-
 ```swift
 package refactoring_guru.state.example;
 	
@@ -885,9 +877,8 @@ public class Demo {
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 21. Strategy pattern (mẫu chiến lược) 
-- là một mẫu thiết kế hành vi cho phép bạn xác định một nhóm thuật toán, đặt mỗi thuật toán vào một lớp riêng biệt và làm cho các đối tượng của chúng có thể hoán đổi cho nhau.
+- Là một mẫu thiết kế hành vi cho phép bạn xác định một nhóm thuật toán, đặt mỗi thuật toán vào một lớp riêng biệt và làm cho các đối tượng của chúng có thể hoán đổi cho nhau.
 - Minh họa:
-
 ```swift
 package refactoring_guru.strategy.example;
 	
@@ -988,9 +979,8 @@ public class Demo {
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 22. Template Method Pattern 
-- là một mẫu thiết kế hành vi xác định khung của một thuật toán trong lớp cha nhưng cho phép các lớp con ghi đè các bước cụ thể của thuật toán mà không thay đổi cấu trúc của nó.
+- Là một mẫu thiết kế hành vi xác định khung của một thuật toán trong lớp cha nhưng cho phép các lớp con ghi đè các bước cụ thể của thuật toán mà không thay đổi cấu trúc của nó.
 - Minh họa:
-
 ```swift
 package refactoring_guru.template_method.example;
 	
@@ -1042,9 +1032,8 @@ public class Demo {
 Giống nhau: Giống với mẫu chuẩn.
 Khác nhau: Không có sự khác nhau.
 ## 23. Visitor 
-- là mẩu thiết kế (Design Patterns là một mẫu thiết kế hành vi cho phép bạn tách các thuật toán khỏi các đối tượng mà chúng hoạt động trên đó.
+- Là mẩu thiết kế (Design Patterns là một mẫu thiết kế hành vi cho phép bạn tách các thuật toán khỏi các đối tượng mà chúng hoạt động trên đó.
 - Minh họa:
-
 ```swift
 package refactoring_guru.visitor.example;
 	
