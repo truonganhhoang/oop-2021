@@ -52,7 +52,7 @@ Kiểu design pattern này được tạo ra theo mô hình Creational Pattern v
 link: https://github.com/square/retrofit/blob/master/retrofit-converters/java8/src/main/java/retrofit/converter/java8/Java8OptionalConverterFactory.java
 
 
-## Builder 
+## [Builder](https://github.com/square/retrofit/blob/master/retrofit-mock/src/main/java/retrofit2/mock/MockRetrofit.java) 
 
 ```
   public static final class Builder {
@@ -97,25 +97,6 @@ Có ba vấn đề chính với  Factory Pattern và Abstract Factory Pattern kh
 - Một số tham số có thể là tùy chọn nhưng trong Factory Pattern, chúng ta phải gửi tất cả tham số, với tham số tùy chọn nếu không nhập gì thì sẽ truyền là null.
 - Nếu một Object có quá nhiều thuộc tính thì việc tạo sẽ phức tạp.
 
-## Singleton
-
-```
-Singleton pattern (thuộc Creational) đảm bảo chỉ duy nhất môt new instance được tạo ra cho 1 lớp và nó sẽ cung cấp cho bạn một method để truy cập đến đối tượng duy nhất đó. Dù cho việc thực hiện cài đặt Singleton bằng cách nào đi nữa cũng đều dựa vào nguyên tắc dưới đây.
-
-- private constructor để hạn chế khởi tạo đối tượng từ bên ngoài
-- đặt private static variable cho đối tượng được khởi tạo, đảm bảo biến chỉ được khởi tạo trong chính lớp này.
-- có một method public để return instance đã được khởi tạo ở trên.
-
-link : https://github.com/iluwatar/java-design-patterns/tree/master/singleton/src/test/java/com/iluwatar/singleton
-
-
-## Composite 
-
-```
-Composite Pattern được sử dụng khi chúng ta cần xử lý một nhóm đối tượng tương tự theo cách xử lý 1 object. Composite pattern sắp xếp các object theo cấu trúc cây để diễn giải 1 phần cũng như toàn bộ hệ thống phân cấp. Pattern này tạo một lớp chứa nhóm đối tượng của riêng nó. Lớp này cung cấp các cách để sửa đổi nhóm của cùng 1 object. Pattern này cho phép Client có thể viết code giống nhau để tương tác với composite object này, bất kể đó là một đối tượng riêng lẻ hay tập hợp các đối tượng.
-
-link: https://github.com/JakubVojvoda/design-patterns-java/blob/master/composite/Composite.java
-
 **Giống nhau**: 
 - Giống với mẫu chuẩn.
 - Build từ Retrofit, NetworkBehavior và ExecutorService
@@ -124,11 +105,178 @@ link: https://github.com/JakubVojvoda/design-patterns-java/blob/master/composite
 **Khác biệt**:
 - Không có.
 
-https://github.com/square/retrofit/blob/master/retrofit-mock/src/main/java/retrofit2/mock/MockRetrofit.java
+## [Bridge](https://github.com/iluwatar/java-design-patterns/tree/master/bridge)
+
+Bridge Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Ý tưởng của nó là tách tính trừu tượng (abstraction) ra khỏi tính hiện thực (implementation) của nó. Từ đó có thể dễ dàng chỉnh sửa hoặc thay thế mà không làm ảnh hưởng đến những nơi có sử dụng lớp ban đầu.
+
+Điều đó có nghĩa là, ban đầu chúng ta thiết kế một class với rất nhiều xử lý, bây giờ chúng ta không muốn để những xử lý đó trong class đó nữa. Vì thế, chúng ta sẽ tạo ra một class khác và move các xử lý đó qua class mới. Khi đó, trong lớp cũ sẽ giữ một đối tượng thuộc về lớp mới, và đối tượng này sẽ chịu trách nhiệm xử lý thay cho lớp ban đầu.
+
+Bridge Pattern khá giống với mẫu Adapter Pattern ở chỗ là sẽ nhờ vào một lớp khác để thực hiện một số xử lý nào đó. Tuy nhiên, ý nghĩa và mục đích sử dụng của hai mẫu thiết kế này hoàn toàn khác nhau:
+
+- **Adapter Pattern** hay còn gọi là Wrapper pattern được dùng để biến đổi một class/ interface sang một dạng khác có thể sử dụng được. Adapter Pattern giúp các lớp không tương thích hoạt động cùng nhau mà bình thường là không thể.
+- **Bridge Pattern** được sử dụng được sử dụng để tách thành phần trừu tượng (abstraction) và thành phần thực thi (implementation) riêng biệt.
+- **Adapter Pattern** làm cho mọi thứ có thể hoạt động với nhau sau khi chúng đã được thiết kế (đã tồn tại). Bridge Pattern nên được thiết kế trước khi phát triển hệ thống để Abstraction và Implementation có thể thực hiện một cách độc lập.
+
+Ví dụ: Interface Weapon trừu tượng riêng biệt và có class Sword, Hammer cài đặt riêng biệt.
+
+```
+public interface Weapon {
+  void wield();
+  void swing();
+  void unwield();
+  Enchantment getEnchantment();
+}
+
+public class Sword implements Weapon {
+
+  private final Enchantment enchantment;
+
+  public Sword(Enchantment enchantment) {
+    this.enchantment = enchantment;
+  }
+
+  @Override
+  public void wield() {
+    LOGGER.info("The sword is wielded.");
+    enchantment.onActivate();
+  }
+
+  @Override
+  public void swing() {
+    LOGGER.info("The sword is swinged.");
+    enchantment.apply();
+  }
+
+  @Override
+  public void unwield() {
+    LOGGER.info("The sword is unwielded.");
+    enchantment.onDeactivate();
+  }
+
+  @Override
+  public Enchantment getEnchantment() {
+    return enchantment;
+  }
+}
+
+public class Hammer implements Weapon {
+
+  private final Enchantment enchantment;
+
+  public Hammer(Enchantment enchantment) {
+    this.enchantment = enchantment;
+  }
+
+  @Override
+  public void wield() {
+    LOGGER.info("The hammer is wielded.");
+    enchantment.onActivate();
+  }
+
+  @Override
+  public void swing() {
+    LOGGER.info("The hammer is swinged.");
+    enchantment.apply();
+  }
+
+  @Override
+  public void unwield() {
+    LOGGER.info("The hammer is unwielded.");
+    enchantment.onDeactivate();
+  }
+
+  @Override
+  public Enchantment getEnchantment() {
+    return enchantment;
+  }
+}
+```
+
+## [Prototype](https://github.com/iluwatar/java-design-patterns/tree/master/prototype)
 
 
+Prototype pattern là một trong những Creational pattern. Nó có nhiệm vụ khởi tạo một đối tượng bằng cách clone một đối tượng đã tồn tại thay vì khởi tạo với từ khoá new. Đối tượng mới là một bản sao có thể giống 100% với đối tượng gốc, chúng ta có thể thay đổi dữ liệu của nó mà không ảnh hưởng đến đối tượng gốc.
 
+Prototype Pattern được dùng khi việc tạo một object tốn nhiều chi phí và thời gian trong khi bạn đã có một object tương tự tồn tại.
 
+Trong Java cung cấp mẫu prototype pattern này bằng việc implement interface Cloneable và sử dụng method copy() để tạo object có đầy đủ thuộc tính của đối tượng ban đầu. 
+
+Đầu tiên khởi tạo một interface với 1 method để clone đối tượng.
+
+```
+public interface Prototype {
+  Object copy();
+}
+```
+
+Code ở đây có nhiều lớp các sinh vật khác nhau, ví dụ như Beast và OrcBeast.
+
+```
+@EqualsAndHashCode
+@NoArgsConstructor
+public abstract class Beast implements Prototype {
+
+  public Beast(Beast source) {
+  }
+
+  @Override
+  public abstract Beast copy();
+}
+
+@EqualsAndHashCode(callSuper = false)
+@RequiredArgsConstructor
+public class OrcBeast extends Beast {
+
+  private final String weapon;
+
+  public OrcBeast(OrcBeast orcBeast) {
+    super(orcBeast);
+    this.weapon = orcBeast.weapon;
+  }
+
+  @Override
+  public OrcBeast copy() {
+    return new OrcBeast(this);
+  }
+
+  @Override
+  public String toString() {
+    return "Orcish wolf attacks with " + weapon;
+  }
+}
+
+```
+
+Ta có thể tạo lớp HeroFactory và HeroFactoryImpl để sinh ra những sinh vật khác nhau từ prototypes.
+
+```
+public interface HeroFactory {
+  
+  Mage createMage();
+  Warlord createWarlord();
+  Beast createBeast();
+}
+
+@RequiredArgsConstructor
+public class HeroFactoryImpl implements HeroFactory {
+
+  private final Mage mage;
+  private final Warlord warlord;
+  private final Beast beast;
+
+  public Mage createMage() {
+    return mage.copy();
+  }
+
+  public Warlord createWarlord() {
+    return warlord.copy();
+  }
+
+  public Beast createBeast() {
+    return beast.copy();
+  }
+}
+```
 
 
 
