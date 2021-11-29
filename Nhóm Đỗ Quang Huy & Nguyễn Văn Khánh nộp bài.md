@@ -19,6 +19,12 @@
   </li>
   <b> => Như vậy mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Factory Pattern chuẩn<br/> </b>
   </ul>
+ <b>Mẫu thiết kế: <a href="https://github.com/sockeqwe/AdapterDelegates/tree/master/app/src/main/java/com/hannesdorfmann/adapterdelegates4/sample/adapterdelegates">Builder pattern</a></b>
+ <br />
+ <ul>
+  <li>Có tác dụng xây dựng đối tượng phức tạp từ các đối tượng đơn giản như DiffCatAdapterDelegate, DiffDogAdapterDelegate, CatAdapterDelegate, DogAdapterDelegate,...</li>
+  <b>=>Mẫu thiết kế này tương tự như mẫu thiết kế  Builder pattern chuẩn.</b>
+</ul>
 <p> - - --------------------------- </p>
 <br />
 <a href = "https://github.com/youlookwhat/DesignPattern"><b>Repo 2</b></a><br />
