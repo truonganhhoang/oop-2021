@@ -445,3 +445,78 @@ public class DragonSlayer {
 }
 
 ```
+
+
+## [Data transfer object](https://github.com/iluwatar/java-design-patterns/tree/master/data-transfer-object)
+
+Transfer Object/ Data Transfer Object Pattern là một dạng Architectural Design Pattern, được sử dụng khi chúng ta muốn truyền dữ liệu qua lại giữa các tầng trong ứng dụng, giữa Client – Server. Data Transfer Object (DTO) còn được gọi là Value Object (VO).
+
+Transfer Object đơn giản là một POJO (Plain Old Java Object), chỉ chứa các getter/ setter method và có thể có implement serialize để truyền tải dữ liệu thông qua network.
+
+DTO hoàn toàn không chứa behavior/ logic, chỉ được sử dụng để truyền dữ liệu và map dữ liệu từ các Domain Model trước khi truyền tới Client. Trong các ứng dụng đơn giản, các Domain Model thường có thể được sử dụng lại trực tiếp dưới dạng DTO và được truyền trực tiếp đến lớp hiển thị, do đó chỉ có một Data Model thống nhất. Đối với các ứng dụng phức tạp hơn, chúng ta không muốn hiển thị toàn bộ Domain Model cho Client, do đó, việc ánh xạ từ các Domain Model sang DTO là cần thiết.
+
+>Ví dụ: Ta cần phải thu thập thông tin của khách hàng từ một remote database. Thay vì truy vấn từng thuộc tính, ta có thể sử dụng data transfer object để chuyển tất cả những thuộc tính liên quan trong một lần duy nhất.
+
+Đầu tiên chúng ta có lớp CustomerDTO:
+
+```
+public class CustomerDto {
+  private final String id;
+  private final String firstName;
+  private final String lastName;
+
+  public CustomerDto(String id, String firstName, String lastName) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+}
+
+```
+
+CustomerResource sẽ là server cho thông tin khách hàng.
+
+```
+public class CustomerResource {
+  private final List<CustomerDto> customers;
+
+  public CustomerResource(List<CustomerDto> customers) {
+    this.customers = customers;
+  }
+
+  public List<CustomerDto> getAllCustomers() {
+    return customers;
+  }
+
+  public void save(CustomerDto customer) {
+    customers.add(customer);
+  }
+
+  public void delete(String customerId) {
+    customers.removeIf(customer -> customer.getId().equals(customerId));
+  }
+}
+
+```
+
+Giờ việc thu thập thông tin của khách hàng trở nên dễ dàng hơn nhiều khi chúng ta có data transfer object.
+
+```
+    var allCustomers = customerResource.getAllCustomers();
+    allCustomers.forEach(customer -> LOGGER.info(customer.getFirstName()));
+    // Kelly
+    // Alfonso
+
+```
