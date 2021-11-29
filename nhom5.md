@@ -3,10 +3,10 @@ Danh sách thành viên: Nguyễn Tuấn Nam, Đỗ Anh Tú, Lương Trung Kiên
 Link repo sử dụng: https://github.com/square/retrofit
 
 ## Factory Method
-interface: https://github.com/square/retrofit/blob/515bfc977fbc567919a595206749256f5a8b4620/retrofit/src/main/java/retrofit2/CallAdapter.java#L28
+[interface](https://github.com/square/retrofit/blob/515bfc977fbc567919a595206749256f5a8b4620/retrofit/src/main/java/retrofit2/CallAdapter.java#L28)
 
 
-families class: https://github.com/square/retrofit/blob/master/retrofit-adapters/guava/src/main/java/retrofit2/adapter/guava/GuavaCallAdapterFactory.java
+[families class](https://github.com/square/retrofit/blob/master/retrofit-adapters/guava/src/main/java/retrofit2/adapter/guava/GuavaCallAdapterFactory.java)
 + private static final class BodyCallAdapter<R> implements CallAdapter<R, ListenableFuture<R>>
 + private static final class ResponseCallAdapter<R>
   implements CallAdapter<R, ListenableFuture<Response<R>>>
@@ -35,7 +35,7 @@ super(response);
 }
 }
 ```
-link:https://github.com/square/retrofit/blob/515bfc977fbc567919a595206749256f5a8b4620/retrofit-adapters/java8/src/main/java/retrofit2/adapter/java8/HttpException.java#L22
+[link](https://github.com/square/retrofit/blob/515bfc977fbc567919a595206749256f5a8b4620/retrofit-adapters/java8/src/main/java/retrofit2/adapter/java8/HttpException.java#L22)
 ```
 public final class Java8OptionalConverterFactory extends Converter.Factory {
   public static Java8OptionalConverterFactory create() {
