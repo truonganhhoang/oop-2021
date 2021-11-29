@@ -43,7 +43,7 @@ Bằng cách sử dụng design pattern, chúng ta sẽ tạo ra những đoạn
 	        app.paint();
 	    }
 	}
-	```
+```
 - So sánh:
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
