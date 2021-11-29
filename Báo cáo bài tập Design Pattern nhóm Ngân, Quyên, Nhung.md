@@ -1,15 +1,18 @@
 # Báo cáo bài tập Design Pattern
 
-### Các thành viên nhóm: 
-### * Trần Thị Ngân - 20021399
-### * Lê Thị Cẩm Nhung - 20021408
-### * Phạm Thị Quyên
+## 1. Các thành viên nhóm: 
+### - Trần Thị Ngân - 20021399
+### - Lê Thị Cẩm Nhung - 20021408
+### - Phạm Thị Quyên
 
-### **Link đến reposition được sử dụng trong bài báo cáo [signalapp/Signal-Android](http:/https://github.com/signalapp/Signal-Android)**
-### **Link đến reposition thứ 2: https://github.com/landy8530/DesignPatterns/tree/be08a3ff79094c8dff94fdeb555047aa4620bf43**
+## 2. Link đến reposition được sử dụng trong bài báo cáo: 
+### - [signalapp/Signal-Android](https://github.com/signalapp/Signal-Android)
+### - [landy8530/DesignPatterns](https://github.com/landy8530/DesignPatterns)
+### - [HAOGRE/Jnotes](https://github.com/HAOGRE/Jnotes)
 
+## 3. So sánh
 ### Factory Method
-* Factory method là để đưa toàn bộ logic của việc tạo mới object vào trong factory, che giấu logic của việc khởi tạo.Được định nghĩa interface giúp client tạo object nhưng ủy quyền cho các concreate factory để xác định class nào được trả về cho client
+* Factory method là để đưa toàn bộ logic của việc tạo mới object vào trong factory, che giấu logic của việc khởi tạo.Được định nghĩa interface giúp client tạo object nhưng ủy quyền cho các concreate factory để xác định class nào được trả về cho client.
 * Factory Method: [SignalMediaSourceFactory](https://github.com/signalapp/SignalAndroid/blob/a5e5a735800cbdb3afa01a67390b6efa2fc91be6/app/src/main/java/org/thoughtcrime/securesms/video/exo/SignalMediaSourceFactory.java)
 trong đó factory method khác so với mẫu tiêu chuẩn bởi vì ở mẫu tiêu chuẩn dùng factory method để tạo(sản xuất) ra các đối tượng. Trong khi đó, ở đây đã dùng để override các phương thức.
 
@@ -52,9 +55,18 @@ trong đó factory method khác so với mẫu tiêu chuẩn bởi vì ở mẫu
 * Iterator cho phép xử lý nhiều loại tập hợp khác nhau bằng cách truy cập những phần tử của tập hợp với cùng một phương pháp, cùng một cách thức định sẵn, mà không cần phải hiểu rõ về những chi tiết bên trong của những tập hợp này.
 * Có sự khác nhau nhỏ so với mẫu thiết kế chuẩn. Trong repo này, Interator Pattern được áp dụng với Interface iterator trong gói java.util.Iterator ([CharacterIterator](https://github.com/signalapp/Signal-Android/blob/d74e9f74103ad76eb7b5378e06fb789e7b365767/app/src/main/java/org/thoughtcrime/securesms/util/CharacterIterable.java#L26))
 
+### Memento pattern
+* Memento là mẫu thiết kế có thể lưu lại trạng thái của một đối tượng để khôi phục lại sau này mà không vi phạm nguyên tắc đóng gói.
+* Cơ bản không có sự khác biệt so với mẫu thiết kế tiêu chuẩn.
+* Có đầy đủ các thành phần:
+* Originator ([BlankOriginator](https://github.com/HAOGRE/Jnotes/blob/master/src/com/haogre/dp/memento/BlackMemento.java#L19)): Đại diện cho đối tượng mà muốn lưu. Nó sử dụng memento để lưu và khôi phục trạng thái bên trong của nó.
+* Caretaker ([BlackCareTaker](https://github.com/HAOGRE/Jnotes/blob/master/src/com/haogre/dp/memento/BlackMemento.java#L53)): Nó giữ đối tượng memento và chịu trách nhiệm bảo vệ an toàn cho các đối tượng. Để khôi phục trạng thái trước đó, nó trả về đối tượng memento cho BlackOriginator.
+* Memento ([BlackMemento](https://github.com/HAOGRE/Jnotes/blob/master/src/com/haogre/dp/memento/BlackMemento.java#L10)): Đại diện cho một đối tượng để lưu trữ trạng thái của BlackOriginator. Nó bảo vệ chống lại sự truy cập của các đối tượng khác ngoài BlackOriginator.
+
 ### Mediator
 * Mediator Patern sử dụng để giảm sự phức tạp trong giao tiếp giữa các lớp và các đối tượng, cung cấp một lớp trung gian có nhiệm vụ xử lý thông tin liên lạc giữa các tầng lớp, hỗ trợ bảo trì mã code dễ dàng bằng cách khớp nối lỏng lẻo.
 * Có sự khác biệt nhỏ so với mẫu thiết kế tiêu chuẩn:
 * Không tạo Mediator Interface mà sử dụng TabLayoutMediator (import com.google.android.material.tabs.TabLayoutMediator)
 * Thành phần Colleague CustomChatColorCreatorFragment giữ tham chiếu đến [TabLayoutMediator](https://github.com/signalapp/Signal-Android/blob/811bef8c35291219b13a0995dfb8a50ef6d6b3d7/app/src/main/java/org/thoughtcrime/securesms/conversation/colors/ui/custom/CustomChatColorCreatorFragment.kt#21)
+
 
