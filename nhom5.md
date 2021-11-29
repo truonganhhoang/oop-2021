@@ -1,6 +1,6 @@
 Danh sách thành viên: Nguyễn Tuấn Nam, Đỗ Anh Tú, Lương Trung Kiên
 
-Link repo sử dụng: https://github.com/square/retrofit
+Link repo sử dụng: https://github.com/square/retrofit + https://github.com/iluwatar/java-design-patterns
 
 ## Factory Method
 [interface](https://github.com/square/retrofit/blob/515bfc977fbc567919a595206749256f5a8b4620/retrofit/src/main/java/retrofit2/CallAdapter.java#L28)
