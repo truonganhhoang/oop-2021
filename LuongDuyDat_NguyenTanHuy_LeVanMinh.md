@@ -16,51 +16,34 @@ Bằng cách sử dụng design pattern, chúng ta sẽ tạo ra những đoạn
 ## **1. Abstract Factory ( nhà máy trừu tượng)**:
 -Là một mẫu thiết kế sáng tạo cho phép bạn tạo ra các họ các đối tượng liên quan mà không cần chỉ định các lớp cụ thể của chúng. Pattern Factory giống như một nhà máy sản sinh các đối tượng tương tự nhau này cho bạn.Pattern Factory  tạo các đối tượng đặc biệt từ các lớp cha và dễ dàng tạo extends system từ system cũ.
 -Minh hoạ: 
-package refactoring_guru.abstract_factory.example;
-	
+package refactoring_guru.factory_method.example;
 
-	import refactoring_guru.abstract_factory.example.app.Application;
-	import refactoring_guru.abstract_factory.example.factories.GUIFactory;
-	import refactoring_guru.abstract_factory.example.factories.MacOSFactory;
-	import refactoring_guru.abstract_factory.example.factories.WindowsFactory;
-	
+import refactoring_guru.factory_method.example.factory.Dialog;
+import refactoring_guru.factory_method.example.factory.HtmlDialog;
+import refactoring_guru.factory_method.example.factory.WindowsDialog;
 
-	/**
-	 * EN: Demo class. Everything comes together here.
-	 *
-	 * RU: Демо-класс. Здесь всё сводится воедино.
-	 */
-	public class Demo {
-	
 
-	    /**
-	     * EN: Application picks the factory type and creates it in run time
-	     * (usually at initialization stage), depending on the configuration or
-	     * environment variables.
-	     *
-	     * RU: Приложение выбирает тип и создаёт конкретные фабрики динамически
-	     * исходя из конфигурации или окружения.
-	     */
-	    private static Application configureApplication() {
-	        Application app;
-	        GUIFactory factory;
-	        String osName = System.getProperty("os.name").toLowerCase();
-	        if (osName.contains("mac")) {
-	            factory = new MacOSFactory();
-	            app = new Application(factory);
-	        } else {
-	            factory = new WindowsFactory();
-	            app = new Application(factory);
-	        }
-	        return app;
-	    }
-	
+public class Demo {
+    private static Dialog dialog;
 
-	    public static void main(String[] args) {
-	        Application app = configureApplication();
-	        app.paint();
-	    }
-	}
+    public static void main(String[] args) {
+        configure();
+        runBusinessLogic();
+    }
+
+    
+    static void configure() {
+        if (System.getProperty("os.name").equals("Windows 10")) {
+            dialog = new WindowsDialog();
+        } else {
+            dialog = new HtmlDialog();
+        }
+    }
+
+    static void runBusinessLogic() {
+        dialog.renderWindow();
+    }
+}
 - So sánh:
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
