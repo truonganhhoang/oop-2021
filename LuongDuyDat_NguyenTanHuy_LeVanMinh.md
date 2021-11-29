@@ -422,7 +422,7 @@ package refactoring_guru.composite.example;
 	    }
 	}
 ```
--So sánh:
+- So sánh:
 + Giống nhau: Giống với mẫu chuẩn.
 + Khác nhau: Không có sự khác nhau.
 ## 11. Decorator Pattern:
