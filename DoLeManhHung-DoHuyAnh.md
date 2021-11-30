@@ -133,7 +133,7 @@ public class YoungTeamFactory implements TeamFactory {
 * Product đã được cài đặt chính xác.
 * AbstractFactory được khai báo chính xác.
 * ConcreteFactory có được xây dựng nhưng các biến không được khai báo dưới dạng *public*.
-```
+``` java
 public interface TeamFactory {
 
   Ship createShip();
@@ -190,7 +190,7 @@ public class Person {
 ## _Nhận xét:_
 
 * ConcreteBuilder chưa kế thừa Builder
-```
+``` java
 public static class Builder {
 
     private String name;
@@ -229,7 +229,7 @@ public static class Builder {
 * Director đã được cài đặt chính xác
 * Product  đã được cài đặt chính xác
 * Builder chưa phải là abstract class hay interface
-```
+``` java
 public class Person {
   private final String name;
   private final Integer age;
@@ -321,7 +321,7 @@ public class Singleton {
 * Đã có một method public static được cài đặt
 * Private Contructor đã được cài đặt
 * Chưa cài đặt biến ở dưới dạng ***private static final***
-```
+``` java
 private static Singleton instance;
 private Singleton() {}
 ```
@@ -423,7 +423,7 @@ public class IntrepidEnemy implements Enemy {
 * Implementor được khai báo chính xác
 * ConcreteImplementor được khai báo chính xác
 * Abstraction được cài đặt dưới dạng interface thay vì là class abstraction
-```
+``` java
 public interface War {
   Enemy getEnemy();
   void startWar();
