@@ -143,26 +143,27 @@ link:https://github.com/sherxon/AlgoDS.git
 Command Pattern được tạo ra để lưu trữ các câu lệnh và trạng thái của object. Nó cho phép tất cả những yêu cầu gửi đến object đó dưới dạng một object Command.
 Khi nó tìm được cách giải quyết thích hợp, nó sẽ chuyển đến Command, nơi mà nó sẽ được thực thi.
 
-public class Interval { 
- public int start; public int end;
+public class Interval {
+    public int start;
+    public int end;
 
- public Interval() {
-     start = 0;
-     end = 0;
- }
+    public Interval() {
+        start = 0;
+        end = 0;
+    }
 
- public Interval(int s, int e) {
-     start = s;
-     end = e;
- }
+    public Interval(int s, int e) {
+        start = s;
+        end = e;
+    }
 
-  @Override
-  public String toString() {
-     return "Interval{" +
-             "start=" + start +
-             ", end=" + end +
-             '}';
- }
+    @Override
+    public String toString() {
+        return "Interval{" +
+                "start=" + start +
+                ", end=" + end +
+                '}';
+    }
 }
 
 2, Observer Pattern trong ValidateCard.java. 
@@ -171,34 +172,38 @@ Trong những trường hợp như vậy, hầu hết thời gian và trạng th
 Mặc dù Java cung cấp cả một class và interface có lưu ý đến pattern này. Nhưng nó không phổ biến vì nó không được thực hiện một cách lý tưởng.
 
 public class ValidateCard {
- static List<Map<String, Object>> validateCards(String[] bannedPrefixes, String[] cardsToValidate) {
-     return Arrays.stream(cardsToValidate).
-      map(e -> ToMap(e, bannedPrefixes)).collect(Collectors.toList());
- }
 
- private static Map<String, Object> ToMap(String e, String[] bannedPrefixes) {
-     Map<String, Object> map = new HashMap<>();
-     map.put("card", e);
-     map.put("isValid", isValid(e));
-     map.put("isAllowed", isAllowed(e, bannedPrefixes));
-     return map;
- }
+    static List<Map<String, Object>> validateCards(String[] bannedPrefixes, String[] cardsToValidate) {
 
- private static boolean isAllowed(String e, String[] bannedPrefixes) {
-     for (String bannedPrefix : bannedPrefixes) {
-         if (e.startsWith(bannedPrefix))
-             return false;
-     }
-     return true;
- }
+        return Arrays.stream(cardsToValidate).
+                map(e -> ToMap(e, bannedPrefixes)).collect(Collectors.toList());
 
- private static boolean isValid(String e) {
-     int sum = 0;
-     for (int i = 0; i < e.length() - 1; i++) {
-         sum += (e.charAt(i) - '0') * 2;
-     }
-     return sum % 10 == e.charAt(e.length() - 1) - '0';
- }
+    }
+
+    private static Map<String, Object> ToMap(String e, String[] bannedPrefixes) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("card", e);
+        map.put("isValid", isValid(e));
+        map.put("isAllowed", isAllowed(e, bannedPrefixes));
+        return map;
+    }
+
+    private static boolean isAllowed(String e, String[] bannedPrefixes) {
+        for (String bannedPrefix : bannedPrefixes) {
+            if (e.startsWith(bannedPrefix))
+                return false;
+        }
+        return true;
+    }
+
+    private static boolean isValid(String e) {
+        int sum = 0;
+        for (int i = 0; i < e.length() - 1; i++) {
+            sum += (e.charAt(i) - '0') * 2;
+        }
+
+        return sum % 10 == e.charAt(e.length() - 1) - '0';
+    }
 }
 
 3, Interpreter pattern trong Factorial.java
@@ -307,18 +312,7 @@ public interface Graph {
 7, Mediator Pattern trong Vertex.
 Mediator Pattern tương tự như Adapter Pattern nhưng đó được sử dụng trong mục đích khác. Mediator Pattern hoạt động như một cầu nối.
 Trong các ứng dụng quy mô lớn, Mediator Pattern sẽ cung cấp một class trung gian để xử lý thông tin giữa các class.
-
-public class Vertex<T> {
-    private T value;
-    private Set<Vertex<T>> neighbors; // used with Unweighted graphs
-    private Vertex<T> parent; // used in dfs and bfs
-    private boolean visited; //used for bfs and dfs
-    private Number weight;
-    public Vertex(T value) {
-        this.value = value;
-        this.neighbors = new HashSet<>();
-    }
-
+	
     public Number getWeight() {
         return weight;
     }
@@ -346,7 +340,6 @@ public class Vertex<T> {
     public boolean isVisited() {
         return visited;
     }
-}
 8, Memento Pattern trong RecursiveCircus.java
 Memento Pattern liên quan đến các trạng thái trước đó của object. Điều này có nghĩa là nó được sử dụng khi chúng ta muốn lưu một số trạng thái của một object.
 Khi chúng ta sử dụng pattern này để lưu lại các trạng thái đó, thì chúng ta có thể hoàn toàn khôi phục lại nó sau này.
