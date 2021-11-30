@@ -1,4 +1,5 @@
-# oop-2021
+# Báo cáo tìm hiểu về mẫu thiết kế
+
 Môn học Lập trình hướng đối tượng với Java
 Thành viên nhóm:
 * 20021389 Nguyễn Khánh Thọ Lộc.
