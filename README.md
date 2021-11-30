@@ -2,6 +2,7 @@
 Môn học Lập trình hướng đối tượng với Java
 # Nhóm HLN
  ## Báo cáo tìm hiểu về mẫu thiết kế
+
  ## Thành viên: Họ và tên - MSSV
  ## 1. Đỗ Ngọc Long - 20021385
  ## 2. Cấn Mạnh Hùng - 20021364
@@ -9,11 +10,13 @@ Môn học Lập trình hướng đối tượng với Java
 
 
 
- **[Link đến reposition được sử dụng trong bài báo cáo mà nhóm đã tìm được và phân tích]: https://github.com/Naphier/unity-design-patterns **.
+ **[Link đến reposition được sử dụng trong bài báo cáo mà nhóm đã tìm được và phân tích]: https://github.com/tcorral/Design-Patterns-in-Javascript**.
  
-- bài báo cáo dựa trên sự đóng góp của các thành viên qua trao đổi để viết nên.
+- Bài báo cáo dựa trên sự đóng góp của các thành viên qua trao đổi để viết nên.
+- Repo được đánh giá 2.4k sao.
+- sau khi tham khảo và phân tích thì nhóm mình sẽ đi phân tích để mọi ngừoi hiểu rõ được Repo làm những gì và ứng dụng của Design Pattern.
 
-## Phân tích mẫu thế kế
+## Phân tích và so sánh mẫu thế kế
 
 
 ## Abstract Factory:
@@ -21,6 +24,7 @@ Môn học Lập trình hướng đối tượng với Java
 -	Giúp tránh được việc sử dụng điều kiện logic bên trong Factory Pattern. Khi một Factory Method lớn (có quá nhiều sử lý if-else hay switch-case), chúng ta nên sử dụng theo mô hình Abstract Factory để dễ quản lý hơn (cách phân chia có thể là gom nhóm các sub-class cùng loại vào một Factory).
 -	Hãy lấy một hãng sản xuất ô tô làm ví dụ, chẳng hạn Hyundai. Họ có nhà máy, hoặc xưởng, chế tạo bánh xe: bánh của Azera, bánh của Sonata, bánh của Veloster, v.v… Đến lượt cửa xe, cũng có nhà máy chế tạo cửa Azera, cửa Sonata, cửa Veloster. Thân xe, động cơ, đèn, và các thành phần khác có những nhà máy chế tạo chúng.
 -	Example: https://github.com/JangirSumit/abstract-factory-design-pattern .
+-	code Repo https://github.com/tcorral/Design-Patterns-in-Javascript/blob/es6/Adapter/scripts/Duck.js .
 ```
 	public abstract class Shape{
 		String color;
@@ -33,7 +37,8 @@ Môn học Lập trình hướng đối tượng với Java
 			if(shapeType.equals("SQUARE")
 				return new Square();
 ```
-=> https://github.com/Naphier/unity-design-patterns/tree/master/Assets/abstract%20factory
+=> Code Repo tương đối giống với mẫu.
+=> https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Factory
 
 ## Factory Method:
 -	Định nghĩa Interface để sinh ra đối tượng nhưng để cho lớp con quyết định lớp nào được dùng để sinh ra đối tượng Factory method cho phép một lớp chuyển quá trình khởi tạo đối tượng cho lớp con.
@@ -41,6 +46,7 @@ Môn học Lập trình hướng đối tượng với Java
 -	Factory Pattern giúp giảm sự phụ thuộc giữa các module (loose coupling): cung cấp 1 hướng tiếp cận với Interface thay thì các implement. Giúp chuơng trình độc lập với những lớp cụ thể mà chúng ta cần tạo 1 đối tượng, code ở phía client không bị ảnh hưởng khi thay đổi logic ở factory hay sub class.
 -	Thống nhất về naming convention: giúp cho các developer có thể hiểu về cấu trúc source code.
 -	Example: https://github.com/iluwatar/java-design-patterns/tree/master/factory-method .
+-	Code Repo: https://github.com/tcorral/Design-Patterns-in-Javascript/blob/es6/Factory/1/scripts/Pizza.js .
 ```
 	public class BankFactory {
  
@@ -63,6 +69,9 @@ Môn học Lập trình hướng đối tượng với Java
  
 }
 ```
+=> Code Repo tương đối giống với mẫu.
+=> https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Factory
+
 ## Adapter:
 -	Do vấn đề tương thích, thay đổi interface của một lớp thành một interface khác phù hợp với yêu cầu người sử dụng lớp.
 -	Trong công nghệ phần mềm, Adapter pattern là một mẫu thiết kế tiếp hợp cho phép chuyển đổi một interface có sẵn thành một interface khác thích hợp cho lớp đang viết.
@@ -71,6 +80,7 @@ Môn học Lập trình hướng đối tượng với Java
 -	bạn muốn sử dụng một lớp hiện có và giao diện của nó không khớp với một lớp bạn cần.
 -	bạn muốn tạo một lớp có thể sử dụng lại hợp tác với các lớp không nhất thiết phải có giao diện tương thích.
 - Example: https://github.com/Adapter-Hub/Hub .
+- Code Repo: https://github.com/tcorral/Design-Patterns-in-Javascript/blob/es6/Adapter/scripts/Duck.js .
 ```
 package com.gpcoder.patterns.structural.adapter;
  
@@ -82,6 +92,8 @@ public class JapaneseAdaptee {
     }
 }
 ```
+=> Code Repo tương đối giống với mẫu.
+=> https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Adapter
 
 ## Bridge:
 -	Tách rời ngữ nghĩa của một vấn đề khỏi việc cài đặt, mục đích để cả hai bộ phận (ngữ nghĩa và cài đặt) có thể thay đổi độc lập nhau.
@@ -111,10 +123,14 @@ public class JapaneseAdaptee {
   		}
 	}
 ```
+=> Code Repo tương đối giống với mẫu.
+=> https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Bridge
+
 ## Command: 
 -	Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc thành một đối tượng. Các yêu cầu sẽ được lưu trữ và gởi đi như các đối tượng.Đóng gói request vào trong một Object, nhờ đó có thể nthông số hoá chương trình nhận request và thực hiện các thao tác trên request: sắp xếp, log, undo…
 -	Chúng ta có thể xử lí vấn đề theo hướng command - đóng gói ý tưởng, những action cần làm khi button được ấn hoặc menu item được chọn. Tức là gom code để xử lý việc ấn button hoặc chọn menu trong object riêng. Những action này chính là những commands của Command pattern.
 - Example:	https://github.com/joshnh/Git-Commands .
+- Code Repo: https://github.com/tcorral/Design-Patterns-in-Javascript/blob/es6/Command/1/scripts/Command.js .
 ```
 package com.gpcoder.patterns.behavioral.command.bank;
  
@@ -134,12 +150,14 @@ public class Account {
     }
 }
 ```
-=> https://github.com/Naphier/unity-design-patterns/tree/master/Assets/command%20pattern
+=> Code Repo tương đối giống với mẫu.
+=> https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Command .
 
 ## Observer: 
 -	Định nghĩa sự phụ thuộc một-nhiều giữa các đối tượng sao cho khi một đối tượng thay đổi trạng thái thì tất cả các đối tượng phụ thuộc nó cũng thay đổi theo.
 -	Trong bài toán đưa ra, ta có thể thấy rằng mối quan hệ 1-n ở đây đó là 1-WeatherData và n-Screen(currentConditionstDisplay,statisticsDisplay, ...). Mỗi khi WeatherData có sự thay đổi về trạng thái (nhiệt độ, độ ẩm, áp suất) thì nó sẽ "thông báo" cho các màn hình đang "quan sát" sát nó để cập nhật lại việc hiển thị thông tin.
 -	Example: https://github.com/design-pattern-list/observer-pattern .
+-	Code Repo: https://github.com/tcorral/Design-Patterns-in-Javascript/blob/es6/Observer/scripts/CurrentConditionsDisplay.js .
 ```
 package refactoring_guru.observer.example.listeners;
 
@@ -149,7 +167,8 @@ public interface EventListener {
 	void update(String eventType, File file);
 }
 ```
-=> https://github.com/Naphier/unity-design-patterns/tree/master/Assets/ObserverPattern/Example
+=> Code Repo tương đối giống với mẫu.
+=> https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Observer .
 
 ## Buider:
 + Trong HouseBuilder.java khởi tạo lớp abstract HouseBuilder có chứa các phương thức abstract sử dụng mẫu thiết kế Fluent Interface Pattern trả về chính HouseBuider
@@ -161,9 +180,36 @@ public interface EventListener {
   
   public abstract HouseBuilder addWindows();
  ``` 
-+ Các lớp WoodHouseBuilder, StoneHouseBuilder, GingerbreadHouseBuilder kế thừa các thuộc tính trong lớp abstract HouseBuilder
-=> Tách tiến trình xây dựng 1 đối tượng phức tạp sao cho một tiến trình tạo được các biểu diễn khác nhau => Builder Design Pattern
-=> https://github.com/Naphier/unity-design-patterns/tree/master/Assets/builder%20pattern/example
+ - code gốc bên Repo.
+ ```
+ class MealBuilder {
+    prepareVeganMeal() {
+        var meal = new Meal();
+        meal.addItem(new VeganBurger());
+        meal.addItem(new Water());
+        meal.addItem(new Salad());
+        return meal;
+    }
+    prepareNonVeganMeal() {
+        var meal = new Meal();
+        meal.addItem(new BeefBurger());
+        meal.addItem(new Coke());
+        meal.addItem(new Fries());
+        return meal;
+    }
+    prepareDeluxeMeal() {
+        var meal = new Meal();
+        meal.addItem(new KobeBurger());
+        meal.addItem(new Champagne());
+        meal.addItem(new Crudettes());
+        return meal;
+    }
+}
+ ```
++ Các lớp WoodHouseBuilder, StoneHouseBuilder, GingerbreadHouseBuilder kế thừa các thuộc tính trong lớp abstract HouseBuilder.
+=> Tách tiến trình xây dựng 1 đối tượng phức tạp sao cho một tiến trình tạo được các biểu diễn khác nhau => Builder Design Pattern.
+=> ode Repo tương đối giống với mẫu.
+=> https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Builder .
 
 
 ## Kết luận: Trong dự án trên do nội dung là về design pattern nên mẫu thiết kế được sử dụng khá tương đồng với 23 mẫu thiết kế chuẩn.
