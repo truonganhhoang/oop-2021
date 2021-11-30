@@ -282,8 +282,8 @@ public interface Expression {
 }
 ```
 \+ TerminalExpression tương ứng với class TerminalExpression  
-\+ NonTerminalExpression tương ứng với class AndExpression,OrExpression
-
+\+ NonTerminalExpression tương ứng với class AndExpression,OrExpression<br/>
+\+ Client tương ứng với class InterpreterActivity 
 ```java
 public class InterpreterActivity extends AppCompatActivity {
 
@@ -332,8 +332,7 @@ public class InterpreterActivity extends AppCompatActivity {
         return new AndExpression(julie, married);
     }
 }
-```
-\+ Client tương ứng với class InterpreterActivity  
+``` 
 **\=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Interpreter Pattern chuẩn**
 
 **Mẫu 12: [Iterator Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/iterator)**  
