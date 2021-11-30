@@ -682,25 +682,23 @@ Cho phép một đối tượng thay đổi hành vi khi trạng thái bên tron
 
 ### Iterator: 
 Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử. Trong phần này:
-* *[Container.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/Container.java)*
-* *[Iterator.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/Iterator.java)*
 * *[IteratorActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/IteratorActivity.java)*
-* *[NameRepository.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/NameRepository.java)*
-1. Tạo interface Iterator, Container.
+1. Tạo interface *[Iterator.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/Iterator.java)*, *[Container.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/Container.java)*
+*.
 2. Tạo một lớp thực thể triển khai interface Container. Lớp này có một NameIterator của lớp bên trong thực hiện interface Iterator.
-3. Sử dụng NameRepository để lấy trình lặp và in tên.
+3. Sử dụng *[NameRepository.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/NameRepository.java)* để lấy trình lặp và in tên.
 
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Mediator: 
-Định nghĩa một đối tượng để bao bọc việc giao tiếp giữa một số đối tượng với nhau. 
+Định nghĩa một đối tượng để bao bọc việc giao tiếp giữa một số đối tượng với nhau. Gồm các file sau:
 * *[CharRoom.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/mediator/CharRoom.java)*
 * *[MediatorActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/mediator/MediatorActivity.java)*
 * *[User.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/mediator/User.java)*
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Memento: 
-Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối tượng mà vẫn không vi phạm việc bao bọc dữ liệu. 
+Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối tượng mà vẫn không vi phạm việc bao bọc dữ liệu. Gồm các file sau:
 * *[CareTaker.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/CareTaker.java)*
 * *[Memento.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/Memento.java)*
 * *[MementoActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/MementoActivity.java)*
@@ -709,88 +707,88 @@ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối t�
 
 ### Interpreter: Hỗ trợ việc định nghĩa biểu diễn văn phạm và bộ thông dịch cho một ngôn ngữ. Trong phần này:
 1. Tạo interface Expression.
-	 ```public interface Expression {
+	```public interface Expression {
 	    public boolean interpreter(String content);
 	}
 	```
 2. Tạo một lớp thực thể thực hiện interface trên. TerminalExpression, OrExpression, AndExpression.
-```public class TerminalExpression implements Expression {
+	```public class TerminalExpression implements Expression {
 
-	private String data;
+		private String data;
 
-	public TerminalExpression(String data) {
-		   this.data = data;
+		public TerminalExpression(String data) {
+			   this.data = data;
+		}
+
+		@Override
+		public boolean interpreter(String content) {
+			  // 是包含判断
+			   return content.contains(data);
+		}
 	}
+	```
 
-	@Override
-	public boolean interpreter(String content) {
-		  // 是包含判断
-		   return content.contains(data);
+	```public class OrExpression implements Expression {
+
+	    private Expression expression1;
+	    private Expression expression2;
+
+	    public OrExpression(Expression expression1, Expression expression2) {
+		this.expression1 = expression1;
+		this.expression2 = expression2;
+	    }
+
+	    @Override
+	    public boolean interpreter(String content) {
+		return expression1.interpreter(content) || expression2.interpreter(content);
+	    }
 	}
-}
-```
+	```
 
-```public class OrExpression implements Expression {
+	```public class AndExpression implements Expression {
 
-    private Expression expression1;
-    private Expression expression2;
+	    private Expression expression1;
+	    private Expression expression2;
 
-    public OrExpression(Expression expression1, Expression expression2) {
-        this.expression1 = expression1;
-        this.expression2 = expression2;
-    }
+	    public AndExpression(Expression expression1, Expression expression2) {
+		this.expression1 = expression1;
+		this.expression2 = expression2;
+	    }
 
-    @Override
-    public boolean interpreter(String content) {
-        return expression1.interpreter(content) || expression2.interpreter(content);
-    }
-}
-```
-
-```public class AndExpression implements Expression {
-
-    private Expression expression1;
-    private Expression expression2;
-
-    public AndExpression(Expression expression1, Expression expression2) {
-        this.expression1 = expression1;
-        this.expression2 = expression2;
-    }
-
-    @Override
-    public boolean interpreter(String content) {
-        return expression1.interpreter(content) && expression2.interpreter(content);
-    }
-}
-```
+	    @Override
+	    public boolean interpreter(String content) {
+		return expression1.interpreter(content) && expression2.interpreter(content);
+	    }
+	}
+	```
 
 3. Sử dụng class Expression để tạo các quy tắc và phân tích cú pháp chúng.
-```/**
- * 规则：jingbin 和 youlookwhat 是男性
- */
-public static Expression getMaleExpression() {
-    TerminalExpression jingbin = new TerminalExpression("jingbin");
-    TerminalExpression youlookwhat = new TerminalExpression("youlookwhat");
-    return new OrExpression(jingbin, youlookwhat);
-}
+	```/**
+	 * 规则：jingbin 和 youlookwhat 是男性
+	 */
+	public static Expression getMaleExpression() {
+	    TerminalExpression jingbin = new TerminalExpression("jingbin");
+	    TerminalExpression youlookwhat = new TerminalExpression("youlookwhat");
+	    return new OrExpression(jingbin, youlookwhat);
+	}
 
-/**
- * 规则：Julie 是一个已婚的女性
- */
-public static Expression getMarriedWomanExpression() {
-    TerminalExpression julie = new TerminalExpression("Julie");
-    TerminalExpression married = new TerminalExpression("Married");
-    return new AndExpression(julie, married);
-}
+	/**
+	 * 规则：Julie 是一个已婚的女性
+	 */
+	public static Expression getMarriedWomanExpression() {
+	    TerminalExpression julie = new TerminalExpression("Julie");
+	    TerminalExpression married = new TerminalExpression("Married");
+	    return new AndExpression(julie, married);
+	}
 
-Expression maleExpression = getMaleExpression();
-// jingbin is male: true
-Log.e("---", "jingbin is male: " + maleExpression.interpreter("jingbin"));
+	Expression maleExpression = getMaleExpression();
+	// jingbin is male: true
+	Log.e("---", "jingbin is male: " + maleExpression.interpreter("jingbin"));
 
-Expression womanExpression = getMarriedWomanExpression();
-// Julie is married woman: true
-Log.e("---", "Julie is married woman: " + womanExpression.interpreter("Married Julie"));
-```
+	Expression womanExpression = getMarriedWomanExpression();
+	// Julie is married woman: true
+	Log.e("---", "Julie is married woman: " + womanExpression.interpreter("Married Julie"));
+	```
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Chain of Responsibility: 
