@@ -148,6 +148,7 @@ Nhóm 2: Behavioral Design Patterns
 link:https://github.com/sherxon/AlgoDS.git
 
 1, Command Pattern trong Interval.java. 
+
 Command Pattern được tạo ra để lưu trữ các câu lệnh và trạng thái của object. Nó cho phép tất cả những yêu cầu gửi đến object đó dưới dạng một object Command.
 Khi nó tìm được cách giải quyết thích hợp, nó sẽ chuyển đến Command, nơi mà nó sẽ được thực thi.
 
@@ -176,6 +177,7 @@ public class Interval {
 }
 
 2, Observer Pattern trong ValidateCard.java. 
+
 Observer Pattern được sử dụng để theo dõi trạng thái của một object nhất định. Thường là trong một nhóm hoặc một mối quan hệ một - nhiều.
 Trong những trường hợp như vậy, hầu hết thời gian và trạng thái thay đổi của một object sẽ ảnh hưởng đến trạng thái của phần còn lại. Vì vậy, phải có một hệ thống ghi nhận lại những thay đổi, và thông báo cho các object khác.
 Mặc dù Java cung cấp cả một class và interface có lưu ý đến pattern này. Nhưng nó không phổ biến vì nó không được thực hiện một cách lý tưởng.
@@ -216,6 +218,7 @@ public class ValidateCard {
 }
 
 3, Interpreter pattern trong Factorial.java
+
 Interpreter Pattern được sử dụng bất cứ lúc nào chúng ta cần đánh giá, chuyển đổi bất kì loại ngữ pháp hay ngôn ngữ nào.
 Một ví dụ điển hình cho pattern này là google translate, nó sẽ nhận đầu vào và hiển thị cho chúng ta kết quả bằng ngôn ngữ khác.
 Một ví dụ khác đó là trình biên dịch Java. Trình biên dịch sẽ thông dịch mã Java và chuyển nó thành bytecode. Sau đó, JVM sử dụng để thực hiện các hoạt động trên thiết bị.
@@ -234,6 +237,7 @@ public class Factorial {
 }
 
 4, Template Method Pattern trong CycleDetection.java
+
 Template Method còn được gọi là Template Pattern được sử dụng để xác định một class abstract (trừu tượng), cung cấp các cách để chạy chạy phương thức của nó. Các class con kế thừa các phương thức này cũng phải tuân theo các định nghĩa bên trong nó.
 Trong một số trường hợp, class abstract có thể đã bao gồm một phương thức đã được triển khai trước đó. Và dĩ nhiên nó sẽ được chia sẽ đến tất cả các lớp con.
 
@@ -275,6 +279,7 @@ public abstract class CycleDetection {
 }
 
 5, Chain of Responsibility Pattern trong IsConnected.
+
 Chain of Resppinsibility Pattern được sử dụng rất nhiều trong lập trình. Nó thực hiện công việc định nghĩa ra một chuỗi các object, chúng ta sẽ gọi lần lượt từng object để xử lý yêu cầu. Vì vậy, mỗi bộ xử lý trong chuỗi có các logic xử lý riêng.
 Một điều quan trọng nữa là nó rất tiện dụng để tách sender ra khỏi receiver.
 
@@ -302,6 +307,7 @@ public class IsConnected extends DFS{
 }
 	
 6, Iterator Pattern trong Graph.java
+
 Iterator Pattern được sử dụng rất nhiều trong Java, và được xem như là mẫu cốt lõi của Java's Collection Framework.
 Pattern này có thể truy cập vào tất cả các phần tử của một collection object một cách tuần tự.
 	
@@ -323,7 +329,8 @@ public interface Graph {
      int size();
 }
 	
-7, Mediator Pattern trong Vertex.
+7, Mediator Pattern trong Vertex.java
+
 Mediator Pattern tương tự như Adapter Pattern nhưng đó được sử dụng trong mục đích khác. Mediator Pattern hoạt động như một cầu nối.
 Trong các ứng dụng quy mô lớn, Mediator Pattern sẽ cung cấp một class trung gian để xử lý thông tin giữa các class.
 	
@@ -355,6 +362,7 @@ Trong các ứng dụng quy mô lớn, Mediator Pattern sẽ cung cấp một cl
         return visited;
     }
 8, Memento Pattern trong RecursiveCircus.java
+
 Memento Pattern liên quan đến các trạng thái trước đó của object. Điều này có nghĩa là nó được sử dụng khi chúng ta muốn lưu một số trạng thái của một object.
 Khi chúng ta sử dụng pattern này để lưu lại các trạng thái đó, thì chúng ta có thể hoàn toàn khôi phục lại nó sau này.
 
@@ -377,7 +385,8 @@ public class RecursiveCircus {
     }
 }
 
-9, State Pattern trong PeekingIterajava
+9, State Pattern trong PeekingItera.java
+
 State Pattern được sử dụng khi một object cụ thể cần thay đổi hành động, dựa trên trạng thái của nó. Điều này được thực hiện bằng cách cung cấp cho mỗi object này một hoặc nhiều object state.
 Dựa trên các object state này, chúng ta hoàn toàn có thể thay đổi các hành động của các object liên quan.
 
@@ -410,6 +419,7 @@ public class PeekingIterator implements Iterator<Integer> {
 }
 	
 10, Strategy Pattern trong Edge.java
+	
 Strategy Pattern được sử dụng trong các tình huống các thuật toán hoặc hành vi của class là các các hành vi động (có thể thay đổi). Điều này có nghĩa là cả hành vi và thuật toán đều có thể thay đổi trong thời gian chạy, dựa vào đầu vào của client.
 Tương tự như State Pattern, Strategy Pattern sử dụng nhiều object xác định, tùy thuộc vào các mục tiêu khác nhau.
 	
@@ -443,6 +453,7 @@ public class Edge implements Comparable<Edge> {
 }
 	
 11, Visitor Pattern trong Vertex.java
+	
 Visitor Pattern được sử dụng để chuyển logic hoạt động từ từng phần riêng lẻ của một group sang một class mới. Class mới này thực hiện các thao tác bằng cách sử dụng dữ liệu từ mỗi phần tử riêng lẻ đó.
 Điều này được thực hiện bằng cách làm cho các phần tử chấp nhận một "Visitor". Visitor này sẽ thực hiện các thay đổi trong một class riêng biệt, mà không thay đổi các cấu trúc của lớp đã truy cập. Điều này giúp các bạn dễ dàng thêm chức năng mới mà không cần thay đổi các lớp đã truy cập.
 	
