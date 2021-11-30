@@ -9,7 +9,7 @@ Bài báo cáo design pattern môn lập trình hướng đối tượng
 _Sau đây là kết quả tìm hiểu của nhóm mình về cách áp dụng design pattern của một số repo._
 
   
->[**Repo 1**](https://github.com/sockeqwe/AdapterDelegates/)  
+>[**Repo 1: sockeqwe/AdapterDelegates**](https://github.com/sockeqwe/AdapterDelegates/)  
 
 **Mẫu thiết kế:** [Adapter pattern nằm trong AdapterDelegates](https://github.com/sockeqwe/AdapterDelegates/tree/master/library/src/main/java/com/hannesdorfmann/adapterdelegates4)
 
@@ -71,7 +71,7 @@ public class AdvertisementAdapterDelegate extends AdapterDelegate<List<Displayab
 \- - ---------------------------
 
   
->[**Repo 2**](https://github.com/youlookwhat/DesignPattern)  
+>[**Repo 2: youlookwhat/DesignPattern**](https://github.com/youlookwhat/DesignPattern)  
 
 **Mẫu thiết kế:** trong dự án trên chúng ta có thể thấy được các mẫu thiết kế sau:  
 *   **Mẫu 1: [Adapter Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/adapter)**  
