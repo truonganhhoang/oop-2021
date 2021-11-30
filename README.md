@@ -96,6 +96,15 @@ vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/composite
 o	Gán thêm trách nhiệm cho đối tượng (mở rộng chức năng) vào lúc chạy (dynamically).
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/decorator
 
+public interface MenuItem {
+
+	public double cost();
+	
+	public String description();
+	
+}
+
+
 •	Iterator: 
 o	Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/iterator
