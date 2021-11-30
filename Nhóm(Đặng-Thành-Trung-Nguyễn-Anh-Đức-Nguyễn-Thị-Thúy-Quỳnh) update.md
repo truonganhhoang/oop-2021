@@ -1,68 +1,166 @@
-## ***Nhóm gồm các thành viên:***
+# Báo cáo về 23 mẫu thiết kế
 
-# **Nguyễn Anh Đức 20021336**
+***Nhóm chúng em gồm các thành viên:***
 
-# **Nguyễn Thị Thúy Quỳnh 20021426**
+*Nguyễn Anh Đức 20021336*
 
-# **Đặng Thành Trung 20021455**
+*Nguyễn Thị Thúy Quỳnh 20021426*
 
+*Đặng Thành Trung 20021455*
 
-## *Các repo đã tìm được và phân tích:*
+Trong quá trình tìm kiếm, phân tích, nhóm em đã tìm được một số repo mã nguồn trên github có 23 mẫu thiết kế như sau.
 
-### Repo 1: Link https://github.com/shuleisanshi/myblog
+## Tóm tắt:
+*Nhóm em đã tìm và phân tích 4 repo:
 
-Mẫu thiết kế: Factory trong package service, mục đích tạo các lớp kế thừa các giao diện (ở đây đặc biệt ở chỗ: với mỗi giao diện chỉ có 1 lớp kế thừa)
+	 1. https://github.com/shuleisanshi/myblog
+	 
+	 2. https://github.com/simple-android-framework/android_design_patterns_analysis
+	 
+	 3. https://github.com/braisdom/ObjectiveSql
+	 
+	 4. https://github.com/Anuken/Mindustry*
 
-Ví dụ:
-* Giao diện MenuService:
-```java
-public interface MenuService {
-    List<Menu> listMenu() ;
+## Repo 1: Link https://github.com/shuleisanshi/myblog
 
-    Menu insertMenu(Menu menu) ;
+Repo này là mã nguồn của 1 blog cá nhân của tác giả. 
+Trong repo này, tác giả đã sử dụng 1 mẫu thiết kế thuộc nhóm *Structural* là Adapter và 1 mẫu thiết kế thuộc nhóm *Creational* là Builder.
 
-    void deleteMenu(Integer id) ;
+* Dễ thấy, mẫu thiết kế Adapter được tác giả áp dụng 10 lầnlần, theo từng nhóm các lớp và giao diện, mỗi nhóm đều có đầy đủ Adaptee, Adapter, Target và Client:
+  + Các Adaptee là các giao diện không tương thích, cần được tích hợp, nằm trong package [mapper](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/mapper), gồm: [ArticleMapper](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/mapper/ArticleMapper.java), [CategoryMapper](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/mapper/CategoryMapper.java), [CommentMapper](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/mapper/CommentMapper.java), [LinkMapper](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/mapper/LinkMapper.java), [MenuMapper](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/mapper/MenuMapper.java), [NoticeMapper](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/mapper/NoticeMapper.java), [OptionMapper](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/mapper/OptionMapper.java), [PageMapper](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/mapper/PageMapper.java), [TagMapper](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/mapper/TagMapper.java), [UserMapper](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/mapper/UserMapper.java).
+  + Các Target một interface chứa các chức năng được sử dụng bởi Client, nằm trong package [service](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service), gồm : [ArticleService](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/ArticleService.java), [CategoryService](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/CategoryService.java), [CommentService](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/CommentService.java), [LinkService](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/LinkService.java), [MenuService](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/MenuService.java), [NoticeService](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/NoticeService.java), [OptionService](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/OptionService.java), [PageService](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/PageService.java), [TagService](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/TagService.java), [UserService](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/UserService.java).
+  + Các Adapter (lớp tích hợp, giúp interface không tương thích tích hợp được với interface đang làm việc, thực hiện việc chuyển đổi và kết nối Adaptee với Client) tương ứng với các Adaptee trên nằm trong package [impl](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/impl) lần lượt là:  [ArticleServiceImpl](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/impl/ArticleService.java), [CategoryServiceImpl](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/impl/CategoryService.java), [CommentServiceImpl](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/impl/CommentService.java), [LinkServiceImpl](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/impl/LinkService.java), [MenuServiceImpl](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/impl/MenuService.java), [NoticeServiceImpl](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/impl/NoticeService.java), [OptionServiceImpl](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/impl/CategoryService.java), [PageServiceImpl](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/impl/CategoryService.java), [TagServiceImpl](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/impl/CategoryService.java), [UserServiceImpl](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/impl/CategoryService.java).
+  + Các Client là các lớp sử dụng các đối tượng có interface Target thuộc package [controller](https://github.com/shuleisanshi/myblog/tree/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/controller) (bao gồm 2 package bên trong là: [admin](https://github.com/shuleisanshi/myblog/tree/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/controller/admin) và [home](https://github.com/shuleisanshi/myblog/tree/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/controller/admin)).
 
-    void updateMenu(Menu menu) ;
+* Ta có thể quan sát rõ hơn qua ví dụ về các lớp và giao diện liên quan tới menu:
+	+ Giao diện [MenuMapper](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/mapper/MenuMapper.java):
+	```java
+	public interface MenuMapper {
 
-    Menu getMenuById(Integer id) ;
-}
-```
-* Lớp MenuServiceImpl:
-```java
-public class MenuServiceImpl implements MenuService {
+	    int deleteById(Integer menuId);
 
-    @Autowired(required = false)
-    private MenuMapper menuMapper;
+	    int insert(Menu menu);
 
-    @Override
-    public List<Menu> listMenu() {
-        List<Menu> menuList = menuMapper.listMenu();
-        return menuList;
-    }
+	    Menu getMenuById(Integer menuId);
+	    
+	    int update(Menu menu);
 
-    @Override
-    public Menu insertMenu(Menu menu) {
-        menuMapper.insert(menu);
-        return menu;
-    }
+	    List<Menu> listMenu() ;
+	}
+	```
+	Giao diện trên có chứa các phương thức dùng để chèn, xóa, cập nhật menu và một phương thức trả về 1 menu với mã số cho trước.
 
-    @Override
-    public void deleteMenu(Integer id) {
-        menuMapper.deleteById(id);
-    }
+	+ Giao diện [MenuService](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/MenuService.java) (vai trò Target):
+	```java
+	public interface MenuService {
+	
+	    List<Menu> listMenu();
 
-    @Override
-    public void updateMenu(Menu menu) {
-        menuMapper.update(menu);
-    }
+	    Menu insertMenu(Menu menu);
 
-    @Override
-    public Menu getMenuById(Integer id) {
-        return menuMapper.getMenuById(id);
-    }
-}
-```
+	    void deleteMenu(Integer id);
+
+	    void updateMenu(Menu menu);
+
+	    Menu getMenuById(Integer id);
+	}
+	```
+	Giao diện này có chứa các phương thức dùng để chèn, xóa, cập nhật menu và một phương thức trả về 1 menu với mã số cho trước gần như giống hệt với adaptee MenuMapper, chỉ khác tên và khác kiểu trả về của phương thức update(Menu);
+	
+	+ Lớp [MenuServiceImpl](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/service/impl/MenuService.java) (vai trò Adapter):
+	```java
+	public class MenuServiceImpl implements MenuService {
+
+	    @Autowired(required = false)
+	    private MenuMapper menuMapper;
+
+	    @Override
+	    public List<Menu> listMenu() {
+		List<Menu> menuList = menuMapper.listMenu();
+		return menuList;
+	    }
+
+	    @Override
+	    public Menu insertMenu(Menu menu) {
+		menuMapper.insert(menu);
+		return menu;
+	    }
+
+	    @Override
+	    public void deleteMenu(Integer id) {
+		menuMapper.deleteById(id);
+	    }
+
+	    @Override
+	    public void updateMenu(Menu menu) {
+		menuMapper.update(menu);
+	    }
+
+	    @Override
+	    public Menu getMenuById(Integer id) {
+		return menuMapper.getMenuById(id);
+	    }
+	}
+	```
+	Lớp này cài đặt tất cả các phương thức trong giao diện MenuService (target).
+	
+	+ Lớp [BackMenuController](https://github.com/shuleisanshi/myblog/blob/f337b7bded4bdc343227a467873e5cfdafac39c4/src/main/java/com/shulei/ssm/blog/controller/admin/BackMenuController.java) (vai trò Client):
+	```java
+	@Controller
+	@RequestMapping("/admin/menu")
+	public class BackMenuController {
+
+	    @Autowired
+	    private MenuService menuService;
+
+	    @RequestMapping(value = "")
+	    public String menuList(Model model)  {
+		List<Menu> menuList = menuService.listMenu();
+		model.addAttribute("menuList",menuList);
+		return "admin/menu/index";
+	    }
+
+	    @RequestMapping(value = "/insertSubmit",method = RequestMethod.POST)
+	    public String insertMenuSubmit(Menu menu)  {
+		if(menu.getMenuOrder() == null) {
+		    menu.setMenuOrder(1);
+		}
+		menuService.insertMenu(menu);
+		return "redirect:/admin/menu";
+	    }
+
+	    @RequestMapping(value = "/delete/{id}")
+	    public String deleteMenu(@PathVariable("id") Integer id)  {
+		menuService.deleteMenu(id);
+		return "redirect:/admin/menu";
+	    }
+
+	    @RequestMapping(value = "/edit/{id}")
+	    public ModelAndView editMenuView(@PathVariable("id") Integer id)  {
+		ModelAndView modelAndView = new ModelAndView();
+
+		Menu menu =  menuService.getMenuById(id);
+		modelAndView.addObject("menu",menu);
+
+		List<Menu> menuList = menuService.listMenu();
+		modelAndView.addObject("menuList",menuList);
+
+		modelAndView.setViewName("admin/menu/edit");
+		return modelAndView;
+	    }
+
+	    @RequestMapping(value = "/editSubmit",method = RequestMethod.POST)
+	    public String editMenuSubmit(Menu menu)  {
+		menuService.updateMenu(menu);
+		return "redirect:/admin/menu";
+	    }
+	}
+	```
+	Đây là lớp dùng để điều khiến, quản lý menu dành riêng cho admin. Lớp này có chứa 1 thuộc tính kiểu MenuService.
+	
+* **Nhận xét:** Khi đối chiếu với mẫu thiết kế Adapter chuẩn trên trang [GPCoder](https://gpcoder.com/4483-huong-dan-java-design-pattern-adapter/), em nhận thấy mẫu thiết kế tác giả dùng ở đây là hoàn toàn tương đồng với mô hình *Object Adapter – Composition (Chứa trong)* được nhắc trong bài viết.
+
+	Điểm khác biệt nhỏ ở đây là trong repo *my_blog* này, mẫu thiết kế Adapter được áp dụng rộng hơn (tới 10 lần) và ở trong môi trường phức tạp hơn so với trên GPCoder.
 
 ### Repo 2: Link https://github.com/simple-android-framework/android_design_patterns_analysis
 
@@ -70,7 +168,7 @@ Tóm tắt về đầy đủ 23 mẫu thiết kế
 
 Có code minh họa theo 2 mẫu thiết kế:
 
-#### * Command:
+### * Command:
 
 * Giao diện Command
 ```java
@@ -182,7 +280,7 @@ public class InvokerRole {
 }
 ```
 
-#### Iterator:
+### * Iterator:
 ```java
 private class ArrayListIterator implements Iterator<E> {
     /** Number of elements remaining in this iteration */
@@ -228,7 +326,7 @@ private class ArrayListIterator implements Iterator<E> {
 }
 ```
 
-### Repo 3: Link https://github.com/braisdom/ObjectiveSql
+## Repo 3: Link https://github.com/braisdom/ObjectiveSql
 
 Dựa vào mẫu thiết kế Active record khuyến khích phát triển nhanh chóng và làm sạch, mã có ít nhất và quy ước về cấu hình.
 
@@ -421,7 +519,7 @@ public class Hibernate implements ORMFramework {
 }
 ```
 
-### Repo 4: Link https://github.com/Anuken/Mindustry
+## Repo 4: Link https://github.com/Anuken/Mindustry
 
 Sử dụng mẫu thiết kế:
 
