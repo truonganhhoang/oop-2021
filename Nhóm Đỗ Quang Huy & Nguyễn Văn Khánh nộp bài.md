@@ -276,10 +276,64 @@ public interface Command {
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Context tương ứng với class AndExpression và class OrExpression  
 \+ Expression tương ứng với class Expression  
+```java
+public interface Expression {
+    public boolean interpreter(String content);
+}
+```
 \+ TerminalExpression tương ứng với class TerminalExpression  
-\+ NonTerminalExpression tương ứng với class  
+\+ NonTerminalExpression tương ứng với class AndExpression,OrExpression
 \+ Client tương ứng với class InterpreterActivity  
-\=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Interpreter Pattern chuẩn**
+```java
+public class InterpreterActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityInterpreterBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_interpreter);
+        setTitle("解释器模式");
+        binding.tvDefine.setText(EMTagHandler.fromHtml(AppConstant.INTERPRETER_DEFINE));
+
+        // 3. InterpreterPatternDemo 使用 Expression 类来创建规则，并解析它们
+        binding.btMan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Expression maleExpression = getMaleExpression();
+                // jingbin is male: true
+                Log.e("---", "jingbin is male: " + maleExpression.interpreter("jingbin"));
+            }
+        });
+
+        binding.btMarriedWoman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Expression womanExpression = getMarriedWomanExpression();
+                // Julie is married woman: true
+                Log.e("---", "Julie is married woman: " + womanExpression.interpreter("Married Julie"));
+            }
+        });
+    }
+
+    /**
+     * 规则：jingbin 和 youlookwhat 是男性
+     */
+    public static Expression getMaleExpression() {
+        TerminalExpression jingbin = new TerminalExpression("jingbin");
+        TerminalExpression youlookwhat = new TerminalExpression("youlookwhat");
+        return new OrExpression(jingbin, youlookwhat);
+    }
+
+    /**
+     * 规则：Julie 是一个已婚的女性
+     */
+    public static Expression getMarriedWomanExpression() {
+        TerminalExpression julie = new TerminalExpression("Julie");
+        TerminalExpression married = new TerminalExpression("Married");
+        return new AndExpression(julie, married);
+    }
+}
+```
+**\=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Interpreter Pattern chuẩn**
 
 **Mẫu 12: [Iterator Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/iterator)**  
 \-được sử dụng để cung cấp một cách thức truy cập tuần tự tới các phần tử của một đối tượng tổng hợp, mà không cần phải tạo dựng riêng các phương pháp truy cập cho đối tượng tổng hợp này.  
