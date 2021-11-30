@@ -7,6 +7,7 @@ Thành viên nhóm:
 * 20020182 Đào Trung Kiên.
 
 ***Creational design pattern:
+
 link: https://github.com/ajanata/PretendYoureXyzzy/tree/master/src/main/java/net/socialgamer/cah
 
 1, Singleton Pattern:
