@@ -283,7 +283,7 @@ Lấy hình ảnh từ đĩa làm ví dụ
 ## **3. Nhóm Behavior**
 ### Observer: 
 Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi một đối tượng thay đổi, tất cả các phụ thuộc của nó sẽ được thông báo và cập nhật tự động. Một số file mà sự án sử dụng Observer:
-* [Subject.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/interfaces/Subject.java) : interface chủ đề.
+* *[Subject.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/interfaces/Subject.java)*: interface chủ đề.
 	```java
 	/**
 	 * 注册一个观察者
@@ -300,7 +300,7 @@ Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi 
 	 */
 	public void notifyObservers();
 	 ```
-* [ObjectFor3D.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/classs/ObjectFor3D.java) : Lớp triển khai của 3D service number.
+* *[ObjectFor3D.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/classs/ObjectFor3D.java)*: Lớp triển khai của 3D service number.
 	```java
 	@Override
 	public void registerObserver(Observer observer) {
@@ -327,7 +327,7 @@ Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi 
 	    notifyObservers();
 	}
 	```
-* [Observer.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/interfaces/Observer.java): Tất cả observer đều cần triển khai interface này.
+* *[Observer.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/interfaces/Observer.java)*: Tất cả observer đều cần triển khai interface này.
 	```java
 	public ObserverUser1(Subject subject) {
 	    subject.registerObserver(this);
@@ -338,7 +338,7 @@ Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi 
 	}
 	```
 
-* [ObserverActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/ObserverActivity.java): final test
+* *[ObserverActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/ObserverActivity.java)*: final test
 	```java
 	// 创建服务号
 	 objectFor3D = new ObjectFor3D();
@@ -354,7 +354,7 @@ Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi 
 
 ### Command: 
 Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc thành một đối tượng. Các yêu cầu sẽ được lưu trữ và gởi đi như các đối tượng.Đóng gói request vào trong một Object, nhờ đó có thể nthông số hoá chương trình nhận request và thực hiện các thao tác trên request: sắp xếp, log, undo… Một số file mà sự án sử dụng Command:
-* [Door.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/Door.java): API của thiết bị gia dụng.
+* *[Door.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/Door.java)*: API của thiết bị gia dụng.
 	```java
 	package com.example.jingbin.designpattern.command;
 
@@ -376,17 +376,17 @@ Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc th
 	    }
 	   ```
 
-* [Command.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/Command.java): interface lệnh hợp nhất.
-* [DoorOpenCommand.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/DoorOpenCommand.java)
-* [ControlPanel.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/ControlPanel.java): Điều khiển từ xa.
-* [QuickCommand.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/QuickCommand.java): Định nghĩa một lệnh có thể thực hiện một loạt việc:
-* [CommandActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/CommandActivity.java): Thực thi bảng điều khiển từ xa.
+* *[Command.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/Command.java)*: interface lệnh hợp nhất.
+* *[DoorOpenCommand.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/DoorOpenCommand.java)*
+* *[ControlPanel.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/ControlPanel.java)*: Điều khiển từ xa.
+* *[QuickCommand.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/QuickCommand.java)*: Định nghĩa một lệnh có thể thực hiện một loạt việc:
+* *[CommandActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/CommandActivity.java)*: Thực thi bảng điều khiển từ xa.
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Status: 
 Cho phép một đối tượng thay đổi hành vi khi trạng thái bên trong của nó thay đổi, ta có cảm giác như class của đối tượng bị thay đổi. Một số file mà sự án sử dụng Status:
-* [VendingMachine.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/old/VendingMachine.java): Nhận diện ban đầu về máy bán hàng tự động cần được cải tiến.
-* [VendingMachineBetter.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/VendingMachineBetter.java): Máy máy bán hàng tự động cần được cải tiến.
+* *[VendingMachine.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/old/VendingMachine.java)*: Nhận diện ban đầu về máy bán hàng tự động cần được cải tiến.
+* *[VendingMachineBetter.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/VendingMachineBetter.java)*: Máy máy bán hàng tự động cần được cải tiến.
 	```java
 	// 放钱
 	public void insertMoney() {
@@ -416,10 +416,10 @@ Cho phép một đối tượng thay đổi hành vi khi trạng thái bên tron
 	}
 	```
 
-* [State.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/State.java): status interface
+* *[State.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/State.java)*: status interface
 * Lớp thực thi interface trạng thái tương ứng:
-+ [WinnerState.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/WinnerState.java): winner status.
-+ [SoldState.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/SoldState.java): Trạng thái đã bán.
++ *[WinnerState.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/WinnerState.java)*: winner status.
++ *[SoldState.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/SoldState.java)*: Trạng thái đã bán.
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Iterator: 
