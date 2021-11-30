@@ -19,6 +19,7 @@ Các classes có chứa reesource được truy cập trong chế độ chia s�
 
 Trong bài Singleton được sử dụng trong HibernateUtil.java
 public class HibernateUtil {
+
   public static final HibernateUtil instance = new HibernateUtil();
   /**
    * Hibernate session factory to use.
@@ -34,6 +35,7 @@ public class HibernateUtil {
 
 ví dụ : trong CacheControlFilter.java 
 public class CacheControlFilter implements Filter {
+
   @Override
   public void doFilter(final ServletRequest request, final ServletResponse response,
       final FilterChain chain) throws IOException, ServletException {
@@ -100,6 +102,7 @@ link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/
 package com.gpcoder.patterns.creational.prototype.computer;
 
 public class Computer implements Cloneable {
+
 	private String os;
 	private String office;
 	private String antivirus;
@@ -144,6 +147,7 @@ Command Pattern được tạo ra để lưu trữ các câu lệnh và trạng 
 Khi nó tìm được cách giải quyết thích hợp, nó sẽ chuyển đến Command, nơi mà nó sẽ được thực thi.
 
 public class Interval {
+
     public int start;
     public int end;
 
