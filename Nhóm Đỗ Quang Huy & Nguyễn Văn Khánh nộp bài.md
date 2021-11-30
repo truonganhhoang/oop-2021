@@ -27,6 +27,41 @@ public interface DiffItem {
 **Mẫu thiết kế: [Builder pattern](https://github.com/sockeqwe/AdapterDelegates/tree/master/app/src/main/java/com/hannesdorfmann/adapterdelegates4/sample/adapterdelegates)**  
 
 *   Có tác dụng xây dựng đối tượng phức tạp từ các đối tượng đơn giản như DiffCatAdapterDelegate, DiffDogAdapterDelegate, CatAdapterDelegate, DogAdapterDelegate,...
+```java
+public class AdvertisementAdapterDelegate extends AdapterDelegate<List<DisplayableItem>> {
+
+    LayoutInflater inflater;
+
+    public AdvertisementAdapterDelegate(Activity activity) {
+        inflater = activity.getLayoutInflater();
+    }
+
+    @Override
+    public boolean isForViewType(@NonNull List<DisplayableItem> items, int position) {
+        return items.get(position) instanceof Advertisement;
+    }
+
+    @NonNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent) {
+        return new AdvertisementViewHolder(inflater.inflate(R.layout.item_advertisement, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull List<DisplayableItem> items, int position, @NonNull RecyclerView.ViewHolder holder, @Nullable List<Object> payloads) {
+        // Notihing to bind in this example
+    }
+
+    /**
+     * The ViewHolder
+     */
+    static class AdvertisementViewHolder extends RecyclerView.ViewHolder {
+        public AdvertisementViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+}
+```
 
 **\=>Mẫu thiết kế này tương tự như mẫu thiết kế Builder pattern chuẩn.**
 
