@@ -4,7 +4,7 @@ Link repo sử dụng: https://github.com/square/retrofit + https://github.com/i
 
 Dưới đây là báo cáo của nhóm mình về các mẫu Design Pattern
 
-- # Structural pattern  
+- # Creational pattern  
 
 Nhóm khởi tạo – 5 mẫu gồm: Factory Method, Abstract Factory, Builder, Prototype, Singleton. Những Design pattern loại này cung cấp một giải pháp để tạo ra các object và che giấu được logic của việc tạo ra nó, thay vì tạo ra object một cách trực tiếp bằng cách sử dụng method new. Điều này giúp cho chương trình trở nên mềm dẻo hơn trong việc quyết định object nào cần được tạo ra trong những tình huống được đưa ra. 
   
@@ -224,7 +224,7 @@ public class ElfKingdomFactory implements KingdomFactory {
 
 
 
-## [Builder](https://github.com/square/retrofit/blob/master/retrofit-mock/src/main/java/retrofit2/mock/MockRetrofit.java) 
+- ## [Builder](https://github.com/square/retrofit/blob/master/retrofit-mock/src/main/java/retrofit2/mock/MockRetrofit.java) 
 
 ```Java
   public static final class Builder {
@@ -277,7 +277,11 @@ Có ba vấn đề chính với  Factory Pattern và Abstract Factory Pattern kh
 **Khác biệt**:
 - Không có.
 
-## [Bridge](https://github.com/iluwatar/java-design-patterns/tree/master/bridge)
+- # Structural pattern
+
+Structural Pattern (nhóm cấu trúc – 7 mẫu) gồm: Adapter, Bridge, Composite, Decorator, Facade, Flyweight và Proxy. Những Design pattern loại này liên quan tới class và các thành phần của object. Nó dùng để thiết lập, định nghĩa quan hệ giữa các đối tượng.
+
+- ## [Bridge](https://github.com/iluwatar/java-design-patterns/tree/master/bridge)
 
 Bridge Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Ý tưởng của nó là tách tính trừu tượng (abstraction) ra khỏi tính hiện thực (implementation) của nó. Từ đó có thể dễ dàng chỉnh sửa hoặc thay thế mà không làm ảnh hưởng đến những nơi có sử dụng lớp ban đầu.
 
@@ -364,10 +368,127 @@ public class Hammer implements Weapon {
 }
 ```
 
+- ## [Flyweight](https://github.com/iluwatar/java-design-patterns/tree/master/flyweight)
+
+Flyweight Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Nó cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.
+
+>Ví dụ: Một cửa hàng phép thuật bán rất nhiều thuốc, trong đó thay vì chúng ta tạo hàng loạt các Object mới cho từng loại thuốc thì ta có thể dùng 1 Object đại diện và dùng được cho tất cả các loại thuốc từ đó có thể giảm thiểu được dung lượng.
+
+Đầu tiên ta tạo rất nhiều loại thuốc
+
+```Java
+public interface Potion {
+  void drink();
+}
+
+@Slf4j
+public class HealingPotion implements Potion {
+  @Override
+  public void drink() {
+    LOGGER.info("You feel healed. (Potion={})", System.identityHashCode(this));
+  }
+}
+
+@Slf4j
+public class HolyWaterPotion implements Potion {
+  @Override
+  public void drink() {
+    LOGGER.info("You feel blessed. (Potion={})", System.identityHashCode(this));
+  }
+}
+
+@Slf4j
+public class InvisibilityPotion implements Potion {
+  @Override
+  public void drink() {
+    LOGGER.info("You become invisible. (Potion={})", System.identityHashCode(this));
+  }
+}
+```
+Thay vì phải tạo từng loại thuốc thì với class PotionFactory thì ta đã có thể rút ngắn được việc tạo 1 Object mới
+```Java
+public class PotionFactory {
+
+  private final Map<PotionType, Potion> potions;
+
+  public PotionFactory() {
+    potions = new EnumMap<>(PotionType.class);
+  }
+
+  Potion createPotion(PotionType type) {
+    var potion = potions.get(type);
+    if (potion == null) {
+      switch (type) {
+        case HEALING:
+          potion = new HealingPotion();
+          potions.put(type, potion);
+          break;
+        case HOLY_WATER:
+          potion = new HolyWaterPotion();
+          potions.put(type, potion);
+          break;
+        case INVISIBILITY:
+          potion = new InvisibilityPotion();
+          potions.put(type, potion);
+          break;
+        default:
+          break;
+      }
+    }
+    return potion;
+  }
+}
+
+```
+**Lợi ích**
+- Giảm số lượng đối tượng được tạo ra bằng cách chia sẻ đối tượng. Vì vậy, tiết kiệm bộ nhớ và các thiết bị lưu trữ cần thiết.
+- Cãi thiện khả năng cache dữ liệu vì thời gian đáp ứng nhanh.
+- Tăng performance.
 
 
+- ## [Composite](https://github.com/iluwatar/java-design-patterns/tree/master/composite)
+```Java
+  package com.iluwatar.composite;
 
-## [Memento](https://github.com/iluwatar/java-design-patterns/tree/master/memento)
+import java.util.List;
+
+/**
+ * Word.
+ */
+public class Word extends LetterComposite {
+
+  /**
+   * Constructor.
+   */
+  public Word(List<Letter> letters) {
+    letters.forEach(this::add);
+  }
+
+  /**
+   * Constructor.
+   * @param letters to include
+   */
+  public Word(char... letters) {
+    for (char letter : letters) {
+      this.add(new Letter(letter));
+    }
+  }
+
+  @Override
+  protected void printThisBefore() {
+    System.out.print(" ");
+  }
+}
+```
+
+Composite pattern (thuộc Structural) cho phép tương tác với tất cả các đối tượng tương tự nhau giống như là các đối tượng đơn hoặc collections. Ví dụ: Đối tượng File sẽ là 1 đối tượng đơn nếu bên trong nó không có file nào khác, nhưng đối tượng file (folder) sẽ được đối xử giống như 1 collections nếu bên trong nó lại có những File khác.
+
+
+- # Structural pattern
+
+Behavioral Pattern (nhóm tương tác/ hành vi – 11 mẫu) gồm: Interpreter, Template Method, Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, Strategy và Visitor. Nhóm này dùng trong thực hiện các hành vi của đối tượng, sự giao tiếp giữa các object với nhau.
+
+ - ## [Memento](https://github.com/iluwatar/java-design-patterns/tree/master/memento)
 
 Memento là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Memento là mẫu thiết kế có thể lưu lại trạng thái của một đối tượng để khôi phục lại sau này mà không vi phạm nguyên tắc đóng gói.
 
@@ -492,7 +613,7 @@ Và đây là cách ta sử dụng các memento để lưu và trả lại trạ
 
 ```
 
-## [Strategy](https://github.com/iluwatar/java-design-patterns/tree/master/strategy)
+- ## [Strategy](https://github.com/iluwatar/java-design-patterns/tree/master/strategy)
 
 Strategy Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép định nghĩa tập hợp các thuật toán, đóng gói từng thuật toán lại, và dễ dàng thay đổi linh hoạt các thuật toán bên trong object. Strategy cho phép thuật toán biến đổi độc lập khi người dùng sử dụng chúng.
 
@@ -561,7 +682,7 @@ public class DragonSlayer {
 ```
 
 
-## [Data transfer object](https://github.com/iluwatar/java-design-patterns/tree/master/data-transfer-object)
+- ## [Data transfer object](https://github.com/iluwatar/java-design-patterns/tree/master/data-transfer-object)
 
 Transfer Object/ Data Transfer Object Pattern là một dạng Architectural Design Pattern, được sử dụng khi chúng ta muốn truyền dữ liệu qua lại giữa các tầng trong ứng dụng, giữa Client – Server. Data Transfer Object (DTO) còn được gọi là Value Object (VO).
 
@@ -635,87 +756,7 @@ Giờ việc thu thập thông tin của khách hàng trở nên dễ dàng hơn
 
 ```
 
-
-
-
-## [Flyweight](https://github.com/iluwatar/java-design-patterns/tree/master/flyweight)
-
-Flyweight Pattern là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Nó cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.
-
->Ví dụ: Một cửa hàng phép thuật bán rất nhiều thuốc, trong đó thay vì chúng ta tạo hàng loạt các Object mới cho từng loại thuốc thì ta có thể dùng 1 Object đại diện và dùng được cho tất cả các loại thuốc từ đó có thể giảm thiểu được dung lượng.
-
-Đầu tiên ta tạo rất nhiều loại thuốc
-  
-```Java
-public interface Potion {
-  void drink();
-}
-
-@Slf4j
-public class HealingPotion implements Potion {
-  @Override
-  public void drink() {
-    LOGGER.info("You feel healed. (Potion={})", System.identityHashCode(this));
-  }
-}
-
-@Slf4j
-public class HolyWaterPotion implements Potion {
-  @Override
-  public void drink() {
-    LOGGER.info("You feel blessed. (Potion={})", System.identityHashCode(this));
-  }
-}
-
-@Slf4j
-public class InvisibilityPotion implements Potion {
-  @Override
-  public void drink() {
-    LOGGER.info("You become invisible. (Potion={})", System.identityHashCode(this));
-  }
-}
-```
-Thay vì phải tạo từng loại thuốc thì với class PotionFactory thì ta đã có thể rút ngắn được việc tạo 1 Object mới
-```Java
-public class PotionFactory {
-
-  private final Map<PotionType, Potion> potions;
-
-  public PotionFactory() {
-    potions = new EnumMap<>(PotionType.class);
-  }
-
-  Potion createPotion(PotionType type) {
-    var potion = potions.get(type);
-    if (potion == null) {
-      switch (type) {
-        case HEALING:
-          potion = new HealingPotion();
-          potions.put(type, potion);
-          break;
-        case HOLY_WATER:
-          potion = new HolyWaterPotion();
-          potions.put(type, potion);
-          break;
-        case INVISIBILITY:
-          potion = new InvisibilityPotion();
-          potions.put(type, potion);
-          break;
-        default:
-          break;
-      }
-    }
-    return potion;
-  }
-}
-
-```
-**Lợi ích**
-- Giảm số lượng đối tượng được tạo ra bằng cách chia sẻ đối tượng. Vì vậy, tiết kiệm bộ nhớ và các thiết bị lưu trữ cần thiết.
-- Cãi thiện khả năng cache dữ liệu vì thời gian đáp ứng nhanh.
-- Tăng performance.
-
-## [Iterator](https://github.com/iluwatar/java-design-patterns/tree/master/iterator)
+- ## [Iterator](https://github.com/iluwatar/java-design-patterns/tree/master/iterator)
 
 Iterator Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó được sử dụng để “Cung cấp một cách thức truy cập tuần tự tới các phần tử của một đối tượng tổng hợp, mà không cần phải tạo dựng riêng các phương pháp truy cập cho đối tượng tổng hợp này”.
 
@@ -805,41 +846,4 @@ while (itemIterator.hasNext()) {
   
 
   
-  
-## [Composite](https://github.com/iluwatar/java-design-patterns/tree/master/composite)
-```Java
-  package com.iluwatar.composite;
-
-import java.util.List;
-
-/**
- * Word.
- */
-public class Word extends LetterComposite {
-
-  /**
-   * Constructor.
-   */
-  public Word(List<Letter> letters) {
-    letters.forEach(this::add);
-  }
-
-  /**
-   * Constructor.
-   * @param letters to include
-   */
-  public Word(char... letters) {
-    for (char letter : letters) {
-      this.add(new Letter(letter));
-    }
-  }
-
-  @Override
-  protected void printThisBefore() {
-    System.out.print(" ");
-  }
-}
-```
-  
-  Composite pattern (thuộc Structural) cho phép tương tác với tất cả các đối tượng tương tự nhau giống như là các đối tượng đơn hoặc collections. Ví dụ: Đối tượng File sẽ là 1 đối tượng đơn nếu bên trong nó không có file nào khác, nhưng đối tượng file (folder) sẽ được đối xử giống như 1 collections nếu bên trong nó lại có những File khác.
   
