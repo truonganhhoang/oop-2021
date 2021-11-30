@@ -682,27 +682,214 @@ Cho phép một đối tượng thay đổi hành vi khi trạng thái bên tron
 
 ### Iterator: 
 Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử. Trong phần này:
-* *[IteratorActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/IteratorActivity.java)*
 1. Tạo interface *[Iterator.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/Iterator.java)*, *[Container.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/Container.java)*
 *.
-2. Tạo một lớp thực thể triển khai interface Container. Lớp này có một NameIterator của lớp bên trong thực hiện interface Iterator.
-3. Sử dụng *[NameRepository.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/NameRepository.java)* để lấy trình lặp và in tên.
+	```java
+	public interface Iterator {
 
+	    public boolean hasNext();
+
+	    public Object next();
+	}
+	
+	public interface Container {
+   	    public Iterator getIterator();
+	}
+	```
+2. Tạo một lớp thực thể triển khai interface Container. Lớp này có một NameIterator của lớp bên trong thực hiện interface Iterator.
+	```java
+	public class NameRepository implements Container {
+
+	     private String names[] = {"John", "jingbin", "youlookwhat", "lookthis"};
+
+	     @Override
+	     public Iterator getIterator() {
+		 return new NameIterator();
+	     }
+
+	     private class NameIterator implements Iterator {
+
+		 int index;
+
+		 @Override
+		 public boolean hasNext() {
+		     if (index < names.length) {
+			 return true;
+		     }
+		     return false;
+		 }
+
+		 @Override
+		 public Object next() {
+		     if (hasNext()) {
+			 return names[index++];
+		     }
+		     return null;
+		 }
+	     }
+
+	 }
+	 ```
+3. Sử dụng *[NameRepository.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/NameRepository.java)* để lấy trình lặp và in tên.
+	```java
+	NameRepository nameRepository = new NameRepository();
+	 for (Iterator iterator = nameRepository.getIterator(); iterator.hasNext(); ) {
+	     String name = (String) iterator.next();
+	     Log.e("---", name);
+	     /*
+	      * /---: John
+	      * /---: jingbin
+	      * /---: youlookwhat
+	      * /---: lookthis
+	      */
+	 }
+	 ```
+4. Bên cạnh đó, còn có:
+*[IteratorActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/IteratorActivity.java)*
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Mediator: 
-Định nghĩa một đối tượng để bao bọc việc giao tiếp giữa một số đối tượng với nhau. Gồm các file sau:
-* *[CharRoom.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/mediator/CharRoom.java)*
-* *[MediatorActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/mediator/MediatorActivity.java)*
-* *[User.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/mediator/User.java)*
+Định nghĩa một đối tượng để bao bọc việc giao tiếp giữa một số đối tượng với nhau. Trong phần này:
+1. Tạo 1 lớp trung gian:
+*[CharRoom.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/mediator/CharRoom.java)*
+	```java
+	public class CharRoom {
+	    public static void showMessage(User user, String message) {
+		Log.e("---", new Date().toString()
+			+ " [" + user.getName() + "] : " + message);
+	    }
+	}
+	```
+2. Tạo lớp *[User.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/mediator/User.java)*:
+	```java
+	public class User {
+	    private String name;
+
+	    public User(String name) {
+		this.name = name;
+	    }
+
+	    public String getName() {
+		return name;
+	    }
+
+	    public void setName(String name) {
+		this.name = name;
+	    }
+
+	    public void sendMessage(String message) {
+		  // 使用中介类
+		CharRoom.showMessage(this, message);
+	    }
+	}
+	```
+3. Sử dụng đối tượng User để hiển thị giao tiếp giữa chúng.
+	   ```java
+	   User jingbin = new User("jingbin");
+	   jingbin.sendMessage("Hi~ youlookwhat!");
+	   //---: Sun Feb 02 08:11:47 GMT+00:00 2020 [jingbin] : Hi~ youlookwhat!
+
+	   User jingbin = new User("youlookwhat");
+	   jingbin.sendMessage("Hi~ jingbin!");
+	   //---: Sun Feb 02 08:11:49 GMT+00:00 2020 [youlookwhat] : Hi~ jingbin!
+	   ```
+4. Bên cạnh đó, còn có: 
+*[MediatorActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/mediator/MediatorActivity.java)* 
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Memento: 
-Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối tượng mà vẫn không vi phạm việc bao bọc dữ liệu. Gồm các file sau:
-* *[CareTaker.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/CareTaker.java)*
-* *[Memento.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/Memento.java)*
-* *[MementoActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/MementoActivity.java)*
-* *[Originator.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/Originator.java)*
+Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối tượng mà vẫn không vi phạm việc bao bọc dữ liệu. Trong phần này:
+1. Tạo 1 lớp *[Memento.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/Memento.java)*:
+	```java
+	public class Memento {
+
+		private String state;
+
+		public Memento(String state) {
+		    this.state = state;
+		}
+
+		public String getState() {
+		    return state;
+		}
+
+		public void setState(String state) {
+		    this.state = state;
+		}
+	}
+	```
+2. Tạo lớp *[Originator.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/Originator.java)*:
+	```java
+	public class Originator {
+
+	    private String state;
+
+	    public String getState() {
+		return state;
+	    }
+
+	    public void setState(String state) {
+		this.state = state;
+	    }
+
+	    public Memento setSateToMemento() {
+		return new Memento(state);
+	    }
+
+	    public String getStateFromMemento(Memento memento) {
+		return memento.getState();
+	    }
+	}
+	```
+3. Tạo lớp *[CareTaker.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/CareTaker.java)*
+	```java
+	public class CareTaker {
+
+	    private List<Memento> mementoList = new ArrayList<Memento>();
+
+	    public void add(Memento memento) {
+		mementoList.add(memento);
+	    }
+
+	    public Memento get(int index) {
+		return mementoList.get(index);
+	    }
+	}
+	```
+4. Sử dụng các đối tượng CareTaker và Originator:
+```java
+// 管理者
+CareTaker careTaker = new CareTaker();
+
+Originator originator = new Originator();
+originator.setState("State #1");
+originator.setState("State #2");
+
+// 保存状态
+careTaker.add(originator.setSateToMemento());
+
+originator.setState("State #3");
+
+// 保存状态
+careTaker.add(originator.setSateToMemento());
+
+originator.setState("State #4");
+
+Log.e("---", "Current State: " + originator.getState());
+// 得到保存的状态
+String fromMemento1 = originator.getStateFromMemento(careTaker.get(0));
+Log.e("---", "First Saved State: " + fromMemento1);
+String fromMemento2 = originator.getStateFromMemento(careTaker.get(1));
+Log.e("---", "Second Saved State: " + fromMemento2);
+
+/*
+ * /---: Current State: State #4
+ * /---: First Saved State: State #2
+ * /---: Second Saved State: State #3
+ */
+ ```
+5. Bên cạch đó, còn có:
+*[MementoActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/MementoActivity.java)*
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Interpreter: Hỗ trợ việc định nghĩa biểu diễn văn phạm và bộ thông dịch cho một ngôn ngữ. Trong phần này:
@@ -797,9 +984,100 @@ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối t�
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Chain of Responsibility: 
-Khắc phục việc ghép cặp giữa bộ gởi và bộ nhận thông điệp. Các đối tượng nhận thông điệp được kết nối thành một chuỗi và thông điệp được chuyển dọc theo chuỗi nầy đến khi gặp được đối tượng xử lý nó. Tránh việc gắn kết cứng giữa phần tử gởi request với phần tử nhận và xử lý request bằng cách cho phép hơn 1 đối tượng có có cơ hội xử lý request. Liên kết các đối tượng nhận request thành 1 dây chuyền rồi gửi request xuyên qua từng đối tượng xử lý đến khi gặp đối tượng xử lý cụ thể. 
-* *[AbstractLogger.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/chainofresponsibility/AbstractLogger.java)*
-* *[ChainOfResponsibilityActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/chainofresponsibility/ChainOfResponsibilityActivity.java)*
+Khắc phục việc ghép cặp giữa bộ gởi và bộ nhận thông điệp. Các đối tượng nhận thông điệp được kết nối thành một chuỗi và thông điệp được chuyển dọc theo chuỗi nầy đến khi gặp được đối tượng xử lý nó. Tránh việc gắn kết cứng giữa phần tử gởi request với phần tử nhận và xử lý request bằng cách cho phép hơn 1 đối tượng có có cơ hội xử lý request. Liên kết các đối tượng nhận request thành 1 dây chuyền rồi gửi request xuyên qua từng đối tượng xử lý đến khi gặp đối tượng xử lý cụ thể. Trong phần này:
+1. Tạo 1 abstract logger class: *[AbstractLogger.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/chainofresponsibility/AbstractLogger.java)*
+	```java
+	public abstract class AbstractLogger {
+
+	    public static int INFO = 1;
+	    public static int DEBUG = 2;
+	    public static int ERROR = 3;
+
+	    protected int level;
+
+	    // 责任链中的下一个元素
+	    protected AbstractLogger nextLogger;
+
+	    public void setNextLogger(AbstractLogger nextLogger) {
+		this.nextLogger = nextLogger;
+	    }
+
+	    public void logMessage(int level, String message) {
+		if (this.level <= level) {
+		    write(message);
+		}
+		// 递归效果，不断调用下一级 logMessage
+		if (nextLogger != null) {
+		    nextLogger.logMessage(level, message);
+		}
+	    }
+
+	    protected abstract void write(String message);
+	}
+	```
+2. Tạo 1 lớp extends logger class 
+	```java
+	public class ConsoleLogger extends AbstractLogger {
+
+	     public ConsoleLogger(int level) {
+		 this.level = level;
+	     }
+
+	     @Override
+	     protected void write(String message) {
+		 Log.e("---", "Standard Console::Logger  " + message);
+	     }
+	 }
+	 public class FileLogger extends AbstractLogger {
+
+	     public FileLogger(int level) {
+		 this.level = level;
+	     }
+
+	     @Override
+	     protected void write(String message) {
+		 Log.e("---", "File::Logger  " + message);
+	     }
+	 }
+	 public class ErrorLogger extends AbstractLogger {
+
+	     public ErrorLogger(int level) {
+		 this.level = level;
+	     }
+
+	     @Override
+	     protected void write(String message) {
+		 Log.e("---", "Error Console::Logger  " + message);
+	     }
+	 }
+	 ```
+3. Tạo các loại đầu ghi khác nhau. Cung cấp cho chúng các mức độ lỗi khác nhau và đặt trình ghi tiếp theo trong mỗi trình ghi. Trình ghi tiếp theo trong mỗi trình ghi đại diện cho một phần của chuỗi.
+```java
+public static AbstractLogger getChainOfLoggers() {
+     ErrorLogger errorLogger = new ErrorLogger(AbstractLogger.ERROR);
+     FileLogger fileLogger = new FileLogger(AbstractLogger.DEBUG);
+     ConsoleLogger consoleLogger = new ConsoleLogger(AbstractLogger.INFO);
+     errorLogger.setNextLogger(fileLogger);
+     fileLogger.setNextLogger(consoleLogger);
+     return errorLogger;
+ }
+ 
+ AbstractLogger logger = getChainOfLoggers();
+ 
+ // ---: Standard Console::Logger  this is an information.
+ logger.logMessage(AbstractLogger.INFO, "this is an information.");
+ 
+ // ---: File::Logger  this is a debug level information.
+ // ---: Standard Console::Logger  this is a debug level information.
+ logger.logMessage(AbstractLogger.DEBUG, "this is a debug level information.");
+
+ // ---: Error Console::Logger  this is a error level information.
+ // ---: File::Logger  this is a error level information.
+ // ---: Standard Console::Logger  this is a error level information.
+ logger.logMessage(AbstractLogger.ERROR, "this is a error level information.");
+ ```
+4. Bên cạnh đó, còn có:
+*[ChainOfResponsibilityActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/chainofresponsibility/ChainOfResponsibilityActivity.java)*
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 
