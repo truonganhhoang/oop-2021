@@ -1,31 +1,111 @@
-                                                                                OOP-2021
+### OOP-2021
+********************************************************************************************************************************************************************************
+## Danh sách thành viên trong nhóm:
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+* **Đỗ Huy Anh** - *20020180*
 
-                                                                        Thành viên trong nhóm:
+* **Đỗ Lê Mạnh Hùng** - *20020322*
+********************************************************************************************************************************************************************************
 
-                                                                         Đỗ Huy Anh - 20020180
-                                                                       Đỗ Lê Mạnh Hùng - 20020322
+# **BẢN BÁO CÁO VỀ 23 MẪU THIẾT KẾ DESIGN PATTERN**
+********************************************************************************************************************************************************************************
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#### *CÁC LIÊN KẾT ĐƯỢC SỬ DỤNG TRONG BÀI:*
 
+- [Repository tham khảo 573 stars](https://bit.ly/3E8BNzk)   
 
-                                                          BẢN BÁO CÁO VỀ CHỦ ĐỀ 23 MẪU THIẾT KẾ DESIGN PATTERN
+- [23 mẫu chuẩn thiết kế Java design pattern](https://bit.ly/3pdSX8p)
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-                                                                        Link GitHub tham khảo:
+### I. **Định nghĩa:**
+- Design Pattern là một kỹ thuật trong lập trình hướng đối tượng, được sử dụng thường xuyên trong các ngôn ngữ hướng đối tượng. Design Pattern cung cấp các "mẫu thiết kế" và giải pháp để giải quyết các vấn đề chung thường gặp trong lập trình một cách tối ưu nhất.
+********************************************************************************************************************************************************************************
 
-                                                        > https://github.com/JamesZBL/java_design_patterns   ` Link github repo tham khảo. `
+### II. **Phân loại:**
 
-                                                                        > https://bit.ly/3pdSX8p                   ` Link 23 mẫu chuẩn. `
+#### *Hệ thống các mẫu Design pattern có 23 mẫu được chia thành 3 nhóm:*
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**1. Creational Pattern (Nhóm khởi tạo) gồm 5 mẫu:**
+- Factory Method 
+- Abstract Factory 
+- Builder 
+- Prototype 
+- Singleton
 
+**2. Structural Pattern (nhóm cấu trúc) gồm 7 mẫu:**
+- Adapter
+- Bridge
+- Composite
+- Decorator
+- Facade
+- Flyweight
+- Proxy
 
-###1. So sánh Abstract Factory
+**3. Behavioral Pattern (nhóm tương tác/ hành vi) gồm 11 mẫu:**
+- Interpreter
+- Template Method
+- Chain of Responsibility
+- Command
+- Iterator
+- Mediator
+- Memento
+- Observer
+- State
+- Strategy
+- Visitor
+********************************************************************************************************************************************************************************
+
+### III. **Phân tích và so sánh:**
+
+********************************************************************************************************************************************************************************
+
+### **Nhóm 1:**
+
+********************************************************************************************************************************************************************************
+
+#### *1. Factory Method:*
+
+*Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [Factory Method](https://github.com/JamesZBL/java_design_patterns/tree/master/factory-method) dùng để so sánh với [mẫu chuẩn]( https://gpcoder.com/4352-huong-dan-java-design-pattern-factory-method/) được minh họa bằng hình ảnh dưới đây:*
+
+``` java
+package me.zbl.factory.method;
+
+/**
+ * 食物类型
+ */
+public enum FoodType {
+
+  HOT("热的"), COLD("凉的");
+
+  private String name;
+
+  FoodType(String foodType) {
+    this.name = foodType;
+  }
+
+  public String getName() {
+    return name;
+  }
+}
 
 ```
+![Mẫu thiết kế chuẩn](https://gpcoder.com/wp-content/uploads/2018/09/design-patterns-factory-method-diagram.png)
+
+## _Nhận xét:_
+
+* Mô hình các loại thức ăn.
+* Super Class đã được cài đặt chính xác
+* Sub Class đã được cài đặt chính xác
+* Factory Class đã được cài đặt chính xác
+
+********************************************************************************************************************************************************************************
+
+#### *2. Abstract Factory:*
+
+*Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [Abstract Factory](https://github.com/JamesZBL/java_design_patterns/tree/master/abstract-factory) dùng để so sánh với [mẫu chuẩn](https://gpcoder.com/4365-huong-dan-java-design-pattern-abstract-factory/) được minh họa bằng hình ảnh dưới đây:*
+
+``` java
 public class YoungTeamFactory implements TeamFactory {
 
   public Ship createShip() {
@@ -42,23 +122,36 @@ public class YoungTeamFactory implements TeamFactory {
 }
 
 ```
+![Mẫu thiết kế chuẩn](https://gpcoder.com/wp-content/uploads/2018/09/design-patterns-abstract-factory-diagram.png)
 
-` https://gpcoder.com/wp-content/uploads/2018/09/design-patterns-abstract-factory-diagram.png `  ``Link ảnh so sánh với code trên``
+## _Nhận xét:_
 
-* AbstractProduct được khai báo chính xác
-* Product đã được cài đặt chính xác
+* AbstractProduct được khai báo chính xác.
+* Product đã được cài đặt chính xác.
 * AbstractFactory được khai báo chính xác.
 * ConcreteFactory có được xây dựng nhưng không theo cấu trúc chuẩn.
+* Lớp YoungTeamFactory trong mã nguồn tương ứng với 1 trong 4 lớp sau: Plastic Chair, Plastic Table, Wood Chair, Wood Table.
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                                           https://github.com/JamesZBL/java_design_patterns/tree/master/abstract-factory `Link code repo`
-                                           https://gpcoder.com/4365-huong-dan-java-design-pattern-abstract-factory/ ` Link code thep mẫu chuẩn `
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************************************************************************
 
 
-###2. So sánh Adapter
 
-```
+
+
+
+
+
+
+
+
+
+
+
+
+2. Mẫu thiết kế [Adapter(theo repo tìm được)](https://github.com/JamesZBL/java_design_patterns/tree/master/adapter) và so sánh với [mẫu chuẩn](https://gpcoder.com/4483-huong-dan-java-design-pattern-adapter/):
+
+* Dưới đây là một đoạn mã nguồn nhỏ thuộc mẫu thiết kế *adapter* chúng mình sử dụng để so sánh với mẫu thiết kế chuẩn được minh họa bằng ảnh bên dưới:
+``` java
 package me.zbl.adapter;
 
 /**
@@ -79,20 +172,17 @@ public class BusAdapter implements Car {
 }
 
 ```
-` https://gpcoder.com/wp-content/uploads/2018/10/design-patterns-class-adapter-diagram.png ` ``Link ảnh so sánh với code trên``
+
+![Mẫu thiết kế chuẩn](https://gpcoder.com/wp-content/uploads/2018/10/design-patterns-class-adapter-diagram.png)
+
+## _Nhận xét:_
 
 * Một ví dụ về mô hình xe Bus trong class Car.
 * Adaptee đã được khai báo chính xác
 * Adapter được khai báo chính xác
 * Target được khai báo chính xác
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                                             https://github.com/JamesZBL/java_design_patterns/tree/master/adapter `Link code repo`
-                                             https://gpcoder.com/4483-huong-dan-java-design-pattern-adapter/ `Link code theo mẫu chuẩn`
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-###3. So sánh Bridge
+3. So sánh Bridge
 
 ```
 public interface War {
