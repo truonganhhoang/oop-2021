@@ -132,8 +132,19 @@ public class YoungTeamFactory implements TeamFactory {
 * AbstractProduct được khai báo chính xác.
 * Product đã được cài đặt chính xác.
 * AbstractFactory được khai báo chính xác.
-* ConcreteFactory có được xây dựng nhưng không theo cấu trúc chuẩn.
+* ConcreteFactory có được xây dựng nhưng các biến không được khai báo dưới dạng *public*.
+```
+public interface TeamFactory {
+
+  Ship createShip();
+
+  Captain createCaptain();
+
+  Sailor createSailor();
+}
+```
 * Lớp YoungTeamFactory trong mã nguồn tương ứng với 1 trong 4 lớp sau: Plastic Chair, Plastic Table, Wood Chair, Wood Table.
+* Qua đoạn mã nguồn trên ta thấy là ngoài lớp dạng ConcreteFactory thì các lớp còn lại đều giống với dạng cấu trúc chuẩn.
 
 ********************************************************************************************************************************************************************************
 
@@ -179,10 +190,78 @@ public class Person {
 ## _Nhận xét:_
 
 * ConcreteBuilder chưa kế thừa Builder
+```
+public static class Builder {
+
+    private String name;
+    private Integer age;
+    private Nationality nationality;
+    private SkinColor skinColor;
+
+    public Builder age(Integer age) {
+      this.age = age;
+      return this;
+    }
+
+    public Builder name(String name) {
+      if (null == name) {
+        throw new IllegalArgumentException("人必须有名字!");
+      }
+      this.name = name;
+      return this;
+    }
+
+    public Builder nationality(Nationality nationality) {
+      this.nationality = nationality;
+      return this;
+    }
+
+    public Builder skinColor(SkinColor skinColor) {
+      this.skinColor = skinColor;
+      return this;
+    }
+
+    public Person build() {
+      return new Person(this);
+    }
+}
+```
 * Director đã được cài đặt chính xác
 * Product  đã được cài đặt chính xác
 * Builder chưa phải là abstract class hay interface
+```
+public class Person {
+  private final String name;
+  private final Integer age;
+  private final Nationality nationality;
 
+  public String getName() {
+    return name;
+  }
+
+  public Integer getAge() {
+    return age;
+  }
+
+  public Nationality getNationality() {
+    return nationality;
+  }
+
+  public SkinColor getSkinColor() {
+    return skinColor;
+  }
+
+  private final SkinColor skinColor;
+
+  public Person(Builder builder) {
+    this.name = builder.name;
+    this.age = builder.age;
+    this.skinColor = builder.skinColor;
+    this.nationality = builder.nationality;
+  }
+}
+```
+* Qua đây ta thấy trong dạng cấu trúc builder, các lớp Builder và ConcreteBuilder tương ứng trong mã nguồn chưa được cài đặt chính xác như mẫu chuẩn đã được cho ở trên, các thành phần còn lại thì đã chính xác.
 ********************************************************************************************************************************************************************************
 
  #### *4. Prototype:*
@@ -210,7 +289,7 @@ public abstract class Passenger extends Prototype {
 * Prototype đã được cài đặt chính xác
 * ConcretePrototype đã dược cài đặt chính xác
 * Client đã được cài đặt
- 
+* Qua đây ta thấy được cấu trúc ở mã nguồn đã giống với cấu trúc ở trong mẫu chuẩn đã được cho ở trên.
  ********************************************************************************************************************************************************************************
 
 #### *5. Singleton:*
@@ -242,6 +321,11 @@ public class Singleton {
 * Đã có một method public static được cài đặt
 * Private Contructor đã được cài đặt
 * Chưa cài đặt biến ở dưới dạng ***private static final***
+```
+private static Singleton instance;
+private Singleton() {}
+```
+* Qua đây ta thấy ngoài việc biến chưa được cài đặt dưới dạng chuẩn thì phần còn lại của cấu trúc trong mã nguồn đã giống với cấu trúc mẫu chuẩn được cho ở trên.
 
 ********************************************************************************************************************************************************************************
 
@@ -283,6 +367,7 @@ public class BusAdapter implements Car {
 * Adaptee đã được khai báo chính xác
 * Adapter được khai báo chính xác
 * Target được khai báo chính xác
+* Qua đây ta thấy được cấu trúc đã được cho ở trong mã nguồn đã chính xác khi so sánh với cấu trúc ở trong mẫu thiết kế chuẩn ở trên.
 
 ********************************************************************************************************************************************************************************
 
@@ -337,12 +422,17 @@ public class IntrepidEnemy implements Enemy {
 * Refined Abstraction được cài đặt chính xác
 * Implementor được khai báo chính xác
 * ConcreteImplementor được khai báo chính xác
-* Abstraction có một vài phần không theo cấu trúc chuẩn
-* Mô hình Intrep trong Enemy.
-
+* Abstraction được cài đặt dưới dạng interface thay vì là class abstraction
+```
+public interface War {
+  Enemy getEnemy();
+  void startWar();
+  void combatting();
+  void stopWar();
+}
+```
+* Qua đây ta thấy được class Abstraction tương ứng ở trong mã nguồn chưa đúng với cấu trúc mẫu chuẩn đã được cho ở trên. Phần còn lại của chương trình đã được cài đặt chính xác.
 ********************************************************************************************************************************************************************************
-
-
 #### *8. Composite:*
 
 *Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [Composite](https://github.com/JamesZBL/java_design_patterns/tree/master/composite) dùng để so sánh với [mẫu chuẩn](https://gpcoder.com/4554-huong-dan-java-design-pattern-composite/) được minh họa bằng hình ảnh dưới đây:*
@@ -393,6 +483,7 @@ public abstract class CharacterComposite {
 * Base Component đã được khai báo chính xác
 * Leaf đã được cài đặt chính xác
 * Composite đã được cài đặt chính xác
+* Qua đây ta thấy được cấu trúc trong mã nguồn đã chính xác so với cấu trúc ở trong mẫu chuẩn.
 
 ********************************************************************************************************************************************************************************
 
@@ -427,23 +518,17 @@ public interface Operation {
 * ConcreteComponent đã được cài đặt chính xác
 * Decorator đã được cài đặt chính xác
 * ConcreteDecorator đã được cài đặt chính xác
-
-
-
+* Qua đây ta thấy được cấu trúc trong mã nguồn đã chính xác so với cấu trúc ở trong mẫu chuẩn. 
 ********************************************************************************************************************************************************************************
 #### *10. Facade:*
 
 *Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [Facade](https://gpcoder.com/4604-huong-dan-java-design-pattern-facade/) dùng để so sánh với [mẫu chuẩn](https://github.com/JamesZBL/java_design_patterns/tree/master/facade) được minh họa bằng hình ảnh dưới đây:*
-
 ``` java
 package me.zbl.facade;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * 课堂参与者抽象类
- */
 public abstract class CourseParticipator {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(CourseParticipator.class);
@@ -508,16 +593,15 @@ public abstract class CourseParticipator {
   static enum Event {
     EVENT_GOTO_SCHOOL, EVENT_PREPARE, EVENT_PROCEED, EVENT_STOP, EVENT_GO_HOME;
   }
-  }
-  
-  ```
-  
+}
+```
   ![a](https://gpcoder.com/wp-content/uploads/2018/11/design-patterns-facade-diagram.png)
   
   ## _Nhận xét:_
   
   * Hàm abstract có các lớp con là student và teacher.
   * Có đầy đủ các cấu trúc giống như định dạng chuẩn.
+  * Qua đây ta thấy cấu trúc ở trong mã nguồn đã đạt được độ chính xác tương đương với cấu trúc ở trong mẫu chuẩn ở trên.
    
 ********************************************************************************************************************************************************************************
 
@@ -587,7 +671,7 @@ public class GunFactory {
 * UnsharedFlyweight đã được cài đặt chính xác
 * FlyweightFactory đã được cài đặt chính xác
 * Client đã được cài đặt
- 
+* Qua đây ta thấy cấu trúc ở trong mã nguồn đã đạt được độ chính xác tương đương với cấu trúc ở trong mẫu chuẩn ở trên.
 ********************************************************************************************************************************************************************************
 
 #### *12. Proxy:*
@@ -595,12 +679,8 @@ public class GunFactory {
 *Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [Proxy](https://github.com/JamesZBL/java_design_patterns/tree/master/proxy) dùng để so sánh với [mẫu chuẩn](https://gpcoder.com/4644-huong-dan-java-design-pattern-proxy/) được minh họa bằng hình ảnh dưới đây:*
 
 ``` java
-
 package me.zbl.proxy;
 
-/**
- * 房间接口
- */
 public interface Room {
 
   void enter(Customer customer);
@@ -658,12 +738,11 @@ public class MinusExpression extends Expression {
 
 * Theo mẫu chuẩn, ta thấy được có lớp MinusEx đã kế thừa lớp Expression.
 * Mẫu thiết kế giống 90%, thiếu mất cấu trúc context.
-
+* Qua đây ta thấy được đa phần cấu trúc trong mã nguồn đã giống với mẫu thiết kế, tuy vậy vẫn thiếu thành phần context để cho người dùng biết được đây là một ứng dụng máy tính bỏ túi
 ********************************************************************************************************************************************************************************
 
 #### *14. Template Method:*
 *Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [Factory Method](https://github.com/JamesZBL/java_design_patterns/tree/master/template-method) dùng để so sánh với [mẫu chuẩn](https://gpcoder.com/4810-huong-dan-java-design-pattern-template-method/) được minh họa bằng hình ảnh dưới đây:*
-
 ``` java
 package me.zbl.template.method;
 
@@ -685,29 +764,23 @@ public class Application {
     student.learn("认证听讲", "老师");
   }
 }
-
 ```
-
 ![a](https://gpcoder.com/wp-content/uploads/2019/01/design-patterns-template-method-example.png)
 
 ## _Nhận xét:_
 * Hàm tượng trưng client trong mẫu chuẩn.
 * Có đầy đủ cấu trúc Abstract Class và 1 concrete  Class ngoài ra thêm 1 phương thức của Abstract class và 1 hàm nữa.
- 
+* Qua đây ta có thể thấy được cấu trúc trong mã nguồn đã được cài đặt chính xác, ngoài ra còn được cài đặt thêm một vài phương thức và hàm khác để cho cấu trúc có độ hoàn chỉnh cao hơn.
 ********************************************************************************************************************************************************************************
 
 #### *15. Chain of Responsibility:*
 *Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [Chain of Responsibility](https://github.com/JamesZBL/java_design_patterns/tree/master/chain) dùng để so sánh với [mẫu chuẩn]( https://gpcoder.com/4665-huong-dan-java-design-pattern-chain-of-responsibility/) được minh họa bằng hình ảnh dưới đây:*
-
 ``` java
 package me.zbl.chain;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * 消息处理者
- */
 public abstract class RequestHandler {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(RequestHandler.class);
@@ -730,20 +803,18 @@ public abstract class RequestHandler {
     LOGGER.info("{}处理消息中，消息内容为：{}", this, request);
   }
 }
-
 ```
 ![a](https://gpcoder.com/wp-content/uploads/2018/12/design-patterns-chain-of-responsibility-diagram.png)
 
 ## _Nhận xét:_
 * Hàm abstract giống như mẫu chuẩn.
 * Mẫu thiết kế theo repo có cấu trúc giống 90% theo mẫu chuẩn, chỉ khác có thêm 2 lớp để khai báo.
-
+* Đã cài đặt được lớp Request tương đương với lớp Client ở trong mẫu chuẩn.
+* Qua đây ta thấy ngoài việc cấu trúc mã nguồn đã giống với cấu trúc mẫu chuẩn, đã có 2 lớp thêm được cài đặt để làm cấu trúc mã nguồn đa dạng hơn.
 ********************************************************************************************************************************************************************************
 
 #### *16. Command:*
 *Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [Command](https://github.com/JamesZBL/java_design_patterns/tree/master/command) dùng để so sánh với [mẫu chuẩn]( https://gpcoder.com/4686-huong-dan-java-design-pattern-command/) được minh họa bằng hình ảnh dưới đây:*
-
-
 ``` java
 package me.zbl.command;
 
@@ -763,18 +834,13 @@ public abstract class Command {
 }
 ```
 ![a](https://gpcoder.com/wp-content/uploads/2018/12/design-patterns-command-diagram.png)
-
-
 ## _Nhận xét:_
 * Hầm abstract có các hàm hỗ trợ cho lớp Command, giống như mẫu chuẩn.
 * Mẫu thiết kế theo repo có đủ cấu trúc, đó là interface or abstract class, có implemention, có tiếp nhận request, tiếp nhật concrete và nơi nhận( giống 100%).
- 
- 
+* Qua đây ta thấy cấu trúc ở trong mã nguồn đã đạt được độ chính xác tương đương với cấu trúc ở trong mẫu chuẩn ở trên.
 ********************************************************************************************************************************************************************************
-
 #### *17. Iterator:*
 *Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [Iterator](https://github.com/JamesZBL/java_design_patterns/tree/master/iterator) dùng để so sánh với [mẫu chuẩn]( https://gpcoder.com/4724-huong-dan-java-design-pattern-iterator/) được minh họa bằng hình ảnh dưới đây:*
-
 ```  java
 public class Item {
 
@@ -800,29 +866,22 @@ public class Item {
   }
 }
 ```
-
-
 ![a](https://gpcoder.com/wp-content/uploads/2018/12/design-patterns-iterator-diagram.png)
 
 ## _Nhận xét:_
 * Class Item gồm các item con bên trong, là lớp cha của các items đó.
-* Mẫu thiết kế giống 100%
- 
- 
+* Mẫu thiết kế giống 100%.
+* Qua đây ta thấy cấu trúc ở trong mã nguồn đã đạt được độ chính xác tương đương với cấu trúc ở trong mẫu chuẩn ở trên.
 ********************************************************************************************************************************************************************************
 
 #### *18. Mediator:*
 *Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [Mediator](https://github.com/JamesZBL/java_design_patterns/tree/master/mediator) dùng để so sánh với [mẫu chuẩn](  https://gpcoder.com/4740-huong-dan-java-design-pattern-mediator/) được minh họa bằng hình ảnh dưới đây:*
-
 ``` java
 package me.zbl.mediator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * 派对成员抽象类
- */
 public abstract class AbstractPartyMember implements PartyMember {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(AbstractPartyMember.class);
@@ -851,7 +910,6 @@ public abstract class AbstractPartyMember implements PartyMember {
   @Override
   public abstract String toString();
 }
-
 ```
 ![a](https://gpcoder.com/wp-content/uploads/2018/12/design-patterns-mediator-diagram.png)
 
@@ -859,6 +917,7 @@ public abstract class AbstractPartyMember implements PartyMember {
 
 * Class abtract khai báo các biến và hàm con, giống lớp chuẩn.
 * Có đầy đủ cấu trúc giống form chuẩn, và thêm 1 biến enum.
+* Qua đây ta thấy cấu trúc ở trong mã nguồn đã đạt được độ chính xác tương đương với cấu trúc ở trong mẫu chuẩn ở trên.
  
 ********************************************************************************************************************************************************************************
 
@@ -887,21 +946,16 @@ public interface Plant {
 ## _Nhận xét:_
 * Lớp interface Plant giống lớp Interface của mẫu chuẩn thiết kế.
 * Mẫu thiết kế theo repo đầy đủ cấu trúc originator, caretaker và memento trong đó có thêm 1 loại biến enum.
- 
+* Qua đây ta thấy cấu trúc ở trong mã nguồn đã đạt được độ chính xác tương đương với cấu trúc ở trong mẫu chuẩn ở trên.
 ********************************************************************************************************************************************************************************
-
 #### *20. Observer:*
 *Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [Observer](https://github.com/JamesZBL/java_design_patterns/tree/master/observer) dùng để so sánh với [mẫu chuẩn]( https://gpcoder.com/4747-huong-dan-java-design-pattern-observer/) được minh họa bằng hình ảnh dưới đây:*
-
 ``` java
 package me.zbl.observer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * 南方人
- */
 public class Southern implements TimeObserver {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Southern.class);
@@ -928,27 +982,22 @@ public class Southern implements TimeObserver {
     }
   }
 }
-
 ```
 ![a](https://gpcoder.com/wp-content/uploads/2018/12/design-patterns-observer-diagram.png)
 
 ## _Nhận xét:_
 * Hàm Southern kế thừa TimeObserver như mẫu chuẩn.
 * Có đầy đủ các  trúc như subject, observer, concreteSubject và concreteObserver, và thêm 1 biến enum.
-
-
+* Qua đây ta thấy cấu trúc ở trong mã nguồn đã đạt được độ chính xác tương đương với cấu trúc ở trong mẫu chuẩn ở trên.
+********************************************************************************************************************************************************************************
 #### *21. State:*
 *Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [State](https://github.com/JamesZBL/java_design_patterns/tree/master/state) dùng để so sánh với [mẫu chuẩn]( https://gpcoder.com/4785-huong-dan-java-design-pattern-state/) được minh họa bằng hình ảnh dưới đây:*
-
 ``` java
 package me.zbl.state;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * 清闲的状态
- */
 public class IdleState implements State {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(IdleState.class);
@@ -969,27 +1018,20 @@ public class IdleState implements State {
     LOGGER.info("{}正悠闲的听着歌", coder);
   }
 }
-
 ```
 ![a](https://gpcoder.com/wp-content/uploads/2019/01/design-patterns-state-diagram.png)
-
 
 ## _Nhận xét:_
 * Lớp con IdleState kế thừa lớp cha State theo cấu trúc mẫu chuẩn State.
 * Có đầy đủ các cấu trúc context, state và concreteState và có thêm hàm main.
- 
-
+* Qua đây ta thấy cấu trúc ở trong mã nguồn đã đạt được độ chính xác tương đương với cấu trúc ở trong mẫu chuẩn ở trên, ngoài ra còn có thêm hàm main để có thể thực thi chương trình.
 ********************************************************************************************************************************************************************************
 #### *22. Strategy:*
 
 *Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [Strategy](https://github.com/JamesZBL/java_design_patterns/tree/master/strategy) dùng để so sánh với [mẫu chuẩn](https://gpcoder.com/4796-huong-dan-java-design-pattern-strategy/) được minh họa bằng hình ảnh dưới đây:*
-
 ``` java
 package me.zbl.strategy;
 
-/**
- * 商人
- */
 public class BusinessMan {
 
   private TransportationStrategy strategy;
@@ -1009,23 +1051,20 @@ public class BusinessMan {
 ```
 ![a](https://gpcoder.com/wp-content/uploads/2019/01/design-patterns-strategy-example.png)
 
-
 ## _Nhận xét:_
 
 * Mô hình BusinessMan đầy đủ các biến như trên.
 * Có đầy đủ các cấu trúc như strategy, 2 concreteStrategy, context và 1 hàm main.
+* Qua đây ta thấy cấu trúc ở trong mã nguồn đã đạt được độ chính xác tương đương với cấu trúc ở trong mẫu chuẩn ở trên.
  
 ********************************************************************************************************************************************************************************
 #### *23. Visitor:*
 
 *Bên dưới là đoạn mã nguồn được sử dụng trong mẫu [Visitor](https://github.com/JamesZBL/java_design_patterns/tree/master/visitor) dùng để so sánh với [mẫu chuẩn](https://gpcoder.com/4813-huong-dan-java-design-pattern-visitor/) được minh họa bằng hình ảnh dưới đây:*
-
 ``` java
 package me.zbl.visitor;
 
-/**
- * 可访问的单元
- */
+
 public abstract class Unit {
 
   private Unit[] children;
@@ -1049,8 +1088,7 @@ public abstract class Unit {
 ## _Nhận xét:_
 * Nhìn vào dòng code cho thấy các desgin pattern đã được chuẩn bị giống 90%.
 * Có đầy đủ các file trong cấu trúc như visitor, concreteVisitor, element và phương thức của elements, objectStructure và client, và 1 hàm để chạy.
-
-
+* Qua đây ta thấy cấu trúc ở trong mã nguồn đã đạt được độ chính xác tương đương với cấu trúc ở trong mẫu chuẩn ở trên.
 ********************************************************************************************************************************************************************************
 
 # ***Kết luận: Repository chúng mình tìm được có điểm tương đồng tới 90% với 23 mẫu thiết kế chuẩn của ngôn ngữ java, các sự khác biệt đến từ các hàm khai báo con và các lớp cài đặt được thêm vào.***
