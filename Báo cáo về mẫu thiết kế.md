@@ -5,6 +5,8 @@
 >* Phan Hiền An 20021281	
 >### Repo: https://github.com/youlookwhat/DesignPattern
 
+# BÁO CÁO SO SÁNH VỀ MẪU THIẾT KẾ 
+
 ## **1. Nhóm Creational**
 ### Singleton:
 
@@ -225,6 +227,12 @@ Do vấn đề tương thích, thay đổi interface của một lớp thành m�
 Giống:
 * Gồm các thành phần cơ bản: Adaptee, Adapter, Target, Client.
 * Ở đây có thể thấy rằng điện thoại di động dựa trên một giao diện cung cấp điện áp 5V, còn điện gia đình là 220V. Vì vậy cần phải có **Adapter** (bucker) để sạc điện thoại di động.
+* Kiểm tra cuối cùng: sạc điện thoại
+   ```java
+ 	Mobile mobile = new Mobile();
+	V5Power v5Power = new V5PowerAdapter(new V200Power());
+	mobile.inputPower(v5Power);
+   ```
 The v5 interface is passed in, and classes that implement this interface can also be passed in
 Khác: 
 * Cơ bản giống với mẫu thiết kế chuẩn
@@ -236,54 +244,304 @@ Giống:
 * Về cấu trúc, gồm 4 thành phần cơ bản: Client, Abstraction, Refined Abstraction (AbstractionImpl), Implementor, ConcreteImplementor...
 * Các bước: 
 1. Tạo cầu nối để thực hiện giao diện.
-2. Tạo một lớp triển khai cầu nối thực thể triển khai giao diện DrawAPI. RedCircle , GreenCircle
+	```java
+	public interface DrawAPI {
+	    void drawCircle(int radius, int x, int y);
+	}
+	```
+2. Tạo một lớp triển khai cầu nối thực thể triển khai giao diện DrawAPI: RedCircle , GreenCircle
+	```java
+	public class RedCircle implements DrawAPI {
+
+	    @Override
+	    public void drawCircle(int radius, int x, int y) {
+		Log.e("---", "Drawing Circle[ color: red, radius: "
+			+ radius + ", x: " + x + ", " + y + "]");
+	    }
+	}
+	```
 3. Sử dụng giao diện DrawAPI để tạo một lớp trừu tượng: Shape.
+	```java
+	public abstract class Shape {
+
+	    protected DrawAPI drawAPI;
+
+	    protected Shape(DrawAPI drawAPI) {
+		this.drawAPI = drawAPI;
+	    }
+
+	    public abstract void draw();
+	}
+	```
 4. Tạo một lớp thực thể thực hiện giao diện Shape.
+	```java
+	public class Circle extends Shape {
+
+	    private int x, y, radius;
+
+	    protected Circle(int x, int y, int radius, DrawAPI drawAPI) {
+		super(drawAPI);
+		this.x = x;
+		this.y = y;
+		this.radius = radius;
+	    }
+
+	    @Override
+	    public void draw() {
+		drawAPI.drawCircle(radius, x, y);
+	    }
+	}
+	```
 5. Sử dụng các lớp Shape và DrawAPI để vẽ các vòng tròn có màu sắc khác nhau.
+	```java
+	// 画红圆
+	Circle circle = new Circle(10, 10, 100, new RedCircle());s
+	circle.draw();
+	// 画绿圆
+	Circle circle2 = new Circle(20, 20, 100, new GreenCircle());
+	circle2.draw();
+	```
 Khác:
-* Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế Builder chuẩn.
+* Không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế Bridge chuẩn.
 	
 ### Composite
 * Còn được gọi là mẫu tổng thể từng phần, được sử dụng để coi một nhóm các đối tượng tương tự như một đối tượng duy nhất. Chế độ kết hợp kết hợp các đối tượng dựa trên cấu trúc cây, được sử dụng để thể hiện các cấp độ một phần và tổng thể. Kiểu thiết kế này là kiểu cấu trúc, tạo ra cấu trúc dạng cây của các nhóm đối tượng.
 * Để tạo và in hệ thống phân cấp của nhân viên làm ví dụ
 1. Tạo một lớp Employee với danh sách các đối tượng Employee.
+	```java
+	public class Employee {
+
+	    private String name;
+	    // 部门
+	    private String dept;
+	    // 工资
+	    private int salary;
+	    // 员工 list
+	    private List<Employee> subordinates;
+
+	    public Employee(String name, String dept, int salary) {
+		this.name = name;
+		this.dept = dept;
+		this.salary = salary;
+		this.subordinates = new ArrayList<Employee>();
+	    }
+
+	    public void add(Employee e) {
+		subordinates.add(e);
+	    }
+
+	    public void remove(Employee e) {
+		subordinates.remove(e);
+	    }
+
+	    public List<Employee> getSubordinates() {
+		return subordinates;
+	    }
+
+	    @Override
+	    public String toString() {
+		return "Employee{" +
+			"name='" + name + '\'' +
+			", dept='" + dept + '\'' +
+			", salary=" + salary +
+			", subordinates=" + subordinates +
+			'}';
+	    }
+	}
+	```
 2. Sử dụng lớp Employee để tạo và in hệ thống phân cấp của nhân viên.
+	```java
+	final Employee ceo = new Employee("John", "CEO", 30000);
+
+	Employee headSales = new Employee("Robert", "Head sales", 20000);
+
+	Employee headMarketing = new Employee("Michel", "Head Marketing", 20000);
+
+	Employee clerk1 = new Employee("Laura", "Marketing", 10000);
+	Employee clerk2 = new Employee("Bob", "Marketing", 10000);
+
+	Employee salesExecutive1 = new Employee("Richard", "Sales", 10000);
+	Employee salesExecutive2 = new Employee("Rob", "Sales", 10000);
+
+	ceo.add(headSales);
+	ceo.add(headMarketing);
+
+	headSales.add(salesExecutive1);
+	headSales.add(salesExecutive2);
+
+	headMarketing.add(clerk1);
+	headMarketing.add(clerk2);
+
+	Log.e("---", ceo.toString());
+
+	// 打印
+	/*
+	 * Employee{name='John', dept='CEO', salary=30000,
+	 * subordinates=[Employee{name='Robert', dept='Head sales', salary=20000,
+	 * subordinates=[
+	 * Employee{name='Richard', dept='Sales', salary=10000, subordinates=[]},
+	 * Employee{name='Rob', dept='Sales', salary=10000, subordinates=[]}]},
+	 * Employee{name='Michel', dept='Head Marketing', salary=20000,
+	 * subordinates=[Employee{name='Laura', dept='Marketing', salary=10000, subordinates=[]},
+	 * Employee{name='Bob', dept='Marketing', salary=10000, subordinates=[]}]}]}
+	 */
+	 ```
 Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
 	
 ### Decorator
 Để thiết kế hệ thống trang bị của trò chơi, các yêu cầu cơ bản là có thể tính toán sức tấn công và mô tả của từng trang bị được khảm bằng các loại đá quý khác nhau:
-1. Lớp cha của thiết bị: IEquip.java
+1. Lớp cha của thiết bị: [IEquip.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/decorator/IEquip.java)
 2. Lớp thực tế của mỗi thiết bị:
-ví dụ: Hiện thực hóa vũ khí : ArmEquip.java
-3. Lớp siêu trang trí (đồ trang trí cũng thuộc về thiết bị): IEquipDecorator.java
+ví dụ: Hiện thực hóa vũ khí : [ArmEquip.java ](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/decorator/equip/ArmEquip.java)
+3. Lớp siêu trang trí (đồ trang trí cũng thuộc về thiết bị): [IEquipDecorator.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/decorator/gem/IEuipDecorator.java)
 4. Lớp hiện thực hóa trang trí:
-	ví dụ: Lớp triển khai Sapphire (tích lũy): BlueGemDecorator.java
+	ví dụ: Lớp triển khai Sapphire (tích lũy): [BlueGemDecorator.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/decorator/gem/BlueGemDecorator.java)
 	
 ### Facade
 * Cung cấp một giao diện thống nhất để truy cập một nhóm giao diện trong hệ thống con. Sự xuất hiện xác định giao diện cấp cao giúp hệ thống con dễ sử dụng hơn. Trên thực tế, để thuận tiện cho khách hàng, một nhóm các thao tác được gói gọn thành một phương thức.
 * Ví dụ: Khi muốn xem một bộ phim, cần:Bật máy làm bắp rang bơ, Làm bỏng ngô, Giảm độ sáng, Bật máy chiếu, Đặt vùng chiếu của máy chiếu xuống, Bật máy tính, Mở trình phát, Đặt âm của trình phát thành âm thanh vòm,...
 * Xem phim tốn nhiều tiền, mệt, xem xong phải tắt từng bước một. Vì vậy, sử dụng chế độ **Facade** để giải quyết các bước phức tạp này và thưởng thức bộ phim một cách dễ dàng. 
+* Kiểm tra cuối cùng: Xem bằng 1 cú nhấp chuột:
+	```java
+	new HomeTheaterFacade(computer, light, player, popcornPopper, projector).watchMovie();
+	```
+
 	
 ### Flyweight
 * Chứng minh chế độ này bằng cách tạo ra 5 đối tượng để vẽ 20 vòng tròn phân bố ở các vị trí khác nhau. Vì chỉ có 5 màu khả dụng nên thuộc tính màu được sử dụng để kiểm tra đối tượng Circle hiện có.
 * Khi có số lượng lớn đối tượng có thể gây tràn bộ nhớ, trừu tượng hóa các phần chung, nếu có các yêu cầu nghiệp vụ giống nhau thì trả về trực tiếp các đối tượng hiện có trong bộ nhớ để tránh tạo lại. Lấy ngẫu nhiên nhiều hình dạng làm ví dụ, có 4 bước:
 1. Tạo giao diện.
+	```java
+	public interface Shape {
+	    void draw();
+	}
+	```
 2. Tạo một lớp thực thể triển khai giao diện.
+	```java
+	    public class Circle implements Shape {
+
+	    private String color;
+	    private int x;
+	    private int y;
+	    private int radius;
+
+	    public Circle(String color) {
+		this.color = color;
+	    }
+
+	    public void setX(int x) {
+		this.x = x;
+	    }
+
+	    public void setY(int y) {
+		this.y = y;
+	    }
+
+	    public void setRadius(int radius) {
+		this.radius = radius;
+	    }
+
+	    @Override
+	    public void draw() {
+		Log.e("---", "Circle: Draw() [Color : " + color
+			+ ", x : " + x + ", y :" + y + ", radius :" + radius);
+	    }
+	}
+	```
 3. Tạo một factory để tạo ra các đối tượng của các lớp thực thể dựa trên thông tin đã cho.
+	```java
+	public class ShapeFactory {
+
+	    private static final HashMap<String, Shape> circleMap = new HashMap<String, Shape>();
+
+	    public static Shape getShape(String color) {
+		Shape shape = circleMap.get(color);
+		if (shape == null) {
+		    shape = new Circle(color);
+		    circleMap.put(color, shape);
+		    Log.e("getShape", "Creating circle of color : " + color);
+		}
+		return shape;
+	    }
+
+	}
+	```
 4. Sử dụng factory này để lấy các đối tượng lớp thực thể bằng cách chuyển thông tin về màu sắc.
+	```java
+	for (int i = 0; i < 20; i++) {
+	    Circle circle = (Circle) ShapeFactory.getShape(getRandomColor());
+	    circle.setX(getRandomX());
+	    circle.setY(getRandomY());
+	    circle.setRadius(100);
+	    circle.draw();
+	}
+	```
 Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
 	
 ### Proxy
 * Trong Proxy Pattern, một lớp đại diện cho chức năng của lớp khác.
+* Có cấu trúc giống với mẫu thiết kế chuẩn
 Lấy hình ảnh từ đĩa làm ví dụ
 1. Tạo giao diện. (Image.java)
+	``java
+	public interface Image {
+	   void display();
+	}
+	```
 2. Tạo một RealImage lớp thực thể triển khai giao diện. (Lớp proxy tương ứng: ProxyImage)
+	```java
+	public class RealImage implements Image {
+
+	    private String fileName;
+
+	    public RealImage(String fileName) {
+		this.fileName = fileName;
+		loadFromDisk(fileName);
+	    }
+
+	    private void loadFromDisk(String fileName) {
+		Log.e("RealImage", "loading " + fileName);
+	    }
+
+	    @Override
+	    public void display() {
+		Log.e("RealImage", "Displaying " + fileName);
+	    }
+	}
+	```
+
+	```java
+	public class ProxyImage implements Image {
+
+	    private String fileName;
+	    private RealImage realImage;
+
+	    public ProxyImage(String fileName) {
+		this.fileName = fileName;
+	    }
+
+	    @Override
+	    public void display() {
+		if (realImage == null) {
+		    realImage = new RealImage(fileName);
+		}
+		realImage.display();
+	    }
+	}
+	```
 3. Khi được yêu cầu, hãy sử dụng ProxyImage để lấy các đối tượng của lớp RealImage.
+```java
+Image image = new ProxyImage("test_10mb.png");
+// 第一次是new的，图像从磁盘加载
+image.display();
+// 第二次取缓存，图像不需要从磁盘加载
+image.display();
+```
 
 ## **3. Nhóm Behavior**
 ### Observer: 
 Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi một đối tượng thay đổi, tất cả các phụ thuộc của nó sẽ được thông báo và cập nhật tự động. Một số file mà sự án sử dụng Observer:
-* *[Subject.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/interfaces/Subject.java)*: interface chủ đề.
+* Subject.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/interfaces/Subject.java) : interface chủ đề.
 	```java
 	/**
 	 * 注册一个观察者
@@ -300,7 +558,7 @@ Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi 
 	 */
 	public void notifyObservers();
 	 ```
-* *[ObjectFor3D.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/classs/ObjectFor3D.java)*: Lớp triển khai của 3D service number.
+* ObjectFor3D.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/classs/ObjectFor3D.java) : Lớp triển khai của 3D service number.
 	```java
 	@Override
 	public void registerObserver(Observer observer) {
@@ -327,7 +585,7 @@ Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi 
 	    notifyObservers();
 	}
 	```
-* *[Observer.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/interfaces/Observer.java)*: Tất cả observer đều cần triển khai interface này.
+* Observer.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/interfaces/Observer.java): Tất cả observer đều cần triển khai interface này.
 	```java
 	public ObserverUser1(Subject subject) {
 	    subject.registerObserver(this);
@@ -338,7 +596,7 @@ Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi 
 	}
 	```
 
-* *[ObserverActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/ObserverActivity.java)*: final test
+* ObserverActivity.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/ObserverActivity.java): final test
 	```java
 	// 创建服务号
 	 objectFor3D = new ObjectFor3D();
@@ -354,7 +612,7 @@ Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi 
 
 ### Command: 
 Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc thành một đối tượng. Các yêu cầu sẽ được lưu trữ và gởi đi như các đối tượng.Đóng gói request vào trong một Object, nhờ đó có thể nthông số hoá chương trình nhận request và thực hiện các thao tác trên request: sắp xếp, log, undo… Một số file mà sự án sử dụng Command:
-* *[Door.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/Door.java)*: API của thiết bị gia dụng.
+* Door.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/Door.java): API của thiết bị gia dụng.
 	```java
 	package com.example.jingbin.designpattern.command;
 
@@ -376,17 +634,17 @@ Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc th
 	    }
 	   ```
 
-* *[Command.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/Command.java)*: interface lệnh hợp nhất.
-* *[DoorOpenCommand.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/DoorOpenCommand.java)*
-* *[ControlPanel.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/ControlPanel.java)*: Điều khiển từ xa.
-* *[QuickCommand.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/QuickCommand.java)*: Định nghĩa một lệnh có thể thực hiện một loạt việc:
-* *[CommandActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/CommandActivity.java)*: Thực thi bảng điều khiển từ xa.
+* Command.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/Command.java): interface lệnh hợp nhất.
+* DoorOpenCommand.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/DoorOpenCommand.java)
+* ControlPanel.java  (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/ControlPanel.java): Điều khiển từ xa.
+* QuickCommand.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/QuickCommand.java): Định nghĩa một lệnh có thể thực hiện một loạt việc:
+* CommandActivity.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/CommandActivity.java): Thực thi bảng điều khiển từ xa.
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Status: 
 Cho phép một đối tượng thay đổi hành vi khi trạng thái bên trong của nó thay đổi, ta có cảm giác như class của đối tượng bị thay đổi. Một số file mà sự án sử dụng Status:
-* *[VendingMachine.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/old/VendingMachine.java)*: Nhận diện ban đầu về máy bán hàng tự động cần được cải tiến.
-* *[VendingMachineBetter.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/VendingMachineBetter.java)*: Máy máy bán hàng tự động cần được cải tiến.
+* VendingMachine.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/old/VendingMachine.java): Nhận diện ban đầu về máy bán hàng tự động cần được cải tiến.
+* VendingMachineBetter.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/VendingMachineBetter.java): Máy máy bán hàng tự động cần được cải tiến.
 	```java
 	// 放钱
 	public void insertMoney() {
@@ -416,10 +674,10 @@ Cho phép một đối tượng thay đổi hành vi khi trạng thái bên tron
 	}
 	```
 
-* *[State.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/State.java)*: status interface
+* State.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/State.java): status interface
 * Lớp thực thi interface trạng thái tương ứng:
-+ *[WinnerState.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/WinnerState.java)*: winner status.
-+ *[SoldState.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/SoldState.java)*: Trạng thái đã bán.
++ WinnerState.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/WinnerState.java): winner status.
++ SoldState.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/SoldState.java): Trạng thái đã bán.
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Iterator: 
