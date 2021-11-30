@@ -104,12 +104,97 @@ giống với mẫu gốc nhưng ít các objects hơn.(https://stackjava.com/de
 3, Builder Design Pattern trong Constant.java:
 - Tách rời việc xây dựng (construction) một đối tượng phức tạp khỏi biểu diễn của nó sao cho cùng một tiến trình xây dựng có thể tạo được các biểu diễn khác nhau.
 
+public class Player {
+  private final User user;
+
+  private final List<WhiteCard> hand = new LinkedList<WhiteCard>();
+  private int score = 0;
+  private int skipCount = 0;
+
+  /**
+   * Create a new player object.
+   * 
+   * @param user
+   *          The {@code User} associated with this player.
+   */
+  public Player(final User user) {
+    this.user = user;
+  }
+
+  /**
+   * @return The {@code User} associated with this player.
+   */
+  public User getUser() {
+    return user;
+  }
+
+  /**
+   * @return The player's score.
+   */
+  public int getScore() {
+    return score;
+  }
+
+  /**
+   * Increase the player's score by 1 point.
+   */
+  public void increaseScore() {
+    score++;
+  }
+
+  /**
+   * Increase the player's score by the specified amount.
+   */
+  public void increaseScore(final int offset) {
+    score += offset;
+  }
+
+  /**
+   * Reset the player's score to 0.
+   */
+  public void resetScore() {
+    score = 0;
+  }
+
+  /**
+   * Increases this player's skipped round count.
+   */
+  public void skipped() {
+    skipCount++;
+  }
+
+  /**
+   * Reset this player's skipped round count to 0, because they have been back for a round.
+   */
+  public void resetSkipCount() {
+    skipCount = 0;
+  }
+
+  /**
+   * @return This player's skipped round count.
+   */
+  public int getSkipCount() {
+    return skipCount;
+  }
+
+  /**
+   * @return The backing object for the player's hand (i.e., it can be modified).
+   */
+  public List<WhiteCard> getHand() {
+    return hand;
+  }
+
+  @Override
+  public String toString() {
+    return String.format("%s (%dp, %ds)", user.toString(), score, skipCount);
+  }
+}
 
 Khi nào sử dụng mẫu thiết kế Builder:
 Khi xử lý liên quan đến việc tạo một đối tượng là vô cùng phức tạp, với rất nhiều tham số bắt buộc và tùy chọn
 Khi sự gia tăng số lượng tham số của hàm tạo dẫn đến một danh sách lớn các hàm tạo
 Khi client muốn các biểu diễn khác nhau cho đối tượng được xây dựng
-- So sánh: trả về nhiều thành phần còn của code mẫu thì nhiều hàm khác nhau hơn nhưng đều tạo được các biểu diễn khác nhau (https://stackjava.com/design-pattern/builder-pattern.html)
+- So sánh: mẫu thiết kế trong Repo gióng với mẫu code theo link đều có cấu trúc khá giống nhau cũng có cả overide phương thức(https://stackjava.com/design-pattern/builder-pattern.html)
 
 
 4, Abstract Factory Design Pattern dùng trong Constants.java:
@@ -141,6 +226,7 @@ ví dụ: trong code theo Repo
   public String getCPU() {
     return this.cpu;
   }
+	
 5, Prototype Pattern:
 - Qui định loại của các đối tượng cần tạo bằng cách dùng một đối tượng mẫu, tạo mới nhờ vào sao chép đối tượng mẫu này.
 link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/creational/prototype/computer/Computer.java
