@@ -408,14 +408,14 @@ phần Subject tương ứng với class Image
 \+ Context : chứa một tham chiếu đến đối tượng Strategy và nhận các yêu cầu từ Client, các yêu cầu này sau đó được ủy quyền cho Strategy thực hiện.  
 \=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Strategy Pattern chuẩn** 
 
-**Mẫu 21: [Template Method Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/templatemethod)  
+**Mẫu 21: [Template Method Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/templatemethod)**
 \- cho phép lớp con định nghĩa lại cách thực hiện của một thuật toán, mà không phải thay đổi cấu trúc thuật toán.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ AbstractClass : Định nghĩa các phương thức trừu tượng cho từng bước có thể được điều chỉnh bởi các lớp con.  
 \+ ConcreteClass : là một thuật toán cụ thể, cài đặt các phương thức của AbstractClass. Các thuật toán này ghi đè lên các phương thức trừu tượng để cung cấp các triển khai thực sự. Nó không thể ghi đè phương thức duy nhất đã được cài đặt ở AbstractClass (templateMethod).  
 \=> Mẫu thiết kế này hoàn toàn giống với mẫu thiết kế Template Method Pattern chuẩn do có AbstractClass tương ứng class Worker và ConcreteClass bao gồm các class còn lại** 
 
-**Mẫu 22: [Visitor Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/visitor)  
+**Mẫu 22: [Visitor Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/visitor)**
 \- Cho phép định nghĩa các thao tác (operations) trên một tập hợp các đối tượng (objects) không đồng nhất (về kiểu) mà không làm thay đổi định nghĩa về lớp (classes) của các đối tượng đó.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Visitor : Là một interface hoặc một abstract class được sử dụng để khai báo các hành vi cho tất cả các loại visitor. Class này định nghĩa một loạt các các phương thức truy cập chấp nhận các ConcreteElement cụ thể khác nhau làm tham số. Điều này sẽ hơi giống với cơ chế nạp chồng (overloading) nhưng các loại tham số nên khác nhau do đó các hành vi hoàn toàn khác nhau. Các hành vi truy cập sẽ được thực hiện trên từng phần tử cụ thể trong cấu trúc đối tượng thông qua phương thức visit(). Loại phần tử cụ thể đầu vào sẽ quyết định phương thức được gọi.  
@@ -536,5 +536,5 @@ public class VisitorActivity extends AppCompatActivity {
     }
 }
 ```
-\=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Visitor Pattern chuẩn.****
+**\=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Visitor Pattern chuẩn.**
  
