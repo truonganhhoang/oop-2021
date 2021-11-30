@@ -2,28 +2,226 @@ Danh sách thành viên: Nguyễn Tuấn Nam, Đỗ Anh Tú, Lương Trung Kiên
 
 Link repo sử dụng: https://github.com/square/retrofit + https://github.com/iluwatar/java-design-patterns
 
-## Factory Method
-[interface](https://github.com/square/retrofit/blob/515bfc977fbc567919a595206749256f5a8b4620/retrofit/src/main/java/retrofit2/CallAdapter.java#L28)
+Dưới đây là báo cáo của nhóm mình về các mẫu Design Pattern
 
+- # Structural pattern  
 
-[families class](https://github.com/square/retrofit/blob/master/retrofit-adapters/guava/src/main/java/retrofit2/adapter/guava/GuavaCallAdapterFactory.java)
-+ private static final class BodyCallAdapter<R> implements CallAdapter<R, ListenableFuture<R>>
-+ private static final class ResponseCallAdapter<R>
-  implements CallAdapter<R, ListenableFuture<Response<R>>>
-
-Factory Method Design Pattern hay gọi ngắn gọn là Factory Pattern là một trong những Pattern thuộc nhóm Creational Design Pattern. Nhiệm vụ của Factory Pattern là quản lý và trả về các đối tượng theo yêu cầu, giúp cho việc khởi tạo đổi tượng một cách linh hoạt hơn.
-
-Factory Pattern đúng nghĩa là một nhà máy, và nhà máy này sẽ “sản xuất” các đối tượng theo yêu cầu của chúng ta.
-
-Trong Factory Pattern, chúng ta tạo đối tượng mà không để lộ logic tạo đối tượng ở phía người dùng và tham chiếu đến đối tượng mới được tạo ra bằng cách sử dụng một interface chung.
-
-Factory Pattern được sử dụng khi có một class cha (super-class) với nhiều class con (sub-class), dựa trên đầu vào và phải trả về 1 trong những class con đó.
+Nhóm khởi tạo – 5 mẫu gồm: Factory Method, Abstract Factory, Builder, Prototype, Singleton. Những Design pattern loại này cung cấp một giải pháp để tạo ra các object và che giấu được logic của việc tạo ra nó, thay vì tạo ra object một cách trực tiếp bằng cách sử dụng method new. Điều này giúp cho chương trình trở nên mềm dẻo hơn trong việc quyết định object nào cần được tạo ra trong những tình huống được đưa ra. 
   
-**Giống nhau**:
-- Giống với mẫu chuẩn
+  - ## [Prototype](https://github.com/iluwatar/java-design-patterns/tree/master/prototype)
+
+
+Prototype pattern là một trong những Creational pattern. Nó có nhiệm vụ khởi tạo một đối tượng bằng cách clone một đối tượng đã tồn tại thay vì khởi tạo với từ khoá new. Đối tượng mới là một bản sao có thể giống 100% với đối tượng gốc, chúng ta có thể thay đổi dữ liệu của nó mà không ảnh hưởng đến đối tượng gốc.
+
+Prototype Pattern được dùng khi việc tạo một object tốn nhiều chi phí và thời gian trong khi bạn đã có một object tương tự tồn tại.
+
+Trong Java cung cấp mẫu prototype pattern này bằng việc implement interface Cloneable và sử dụng method copy() để tạo object có đầy đủ thuộc tính của đối tượng ban đầu. 
+
+Đầu tiên khởi tạo một interface với 1 method để clone đối tượng.
+
+```Java
+public interface Prototype {
+  Object copy();
+}
+```
+
+Code ở đây có nhiều lớp các sinh vật khác nhau, ví dụ như Beast và OrcBeast.
+
+```Java
+@EqualsAndHashCode
+@NoArgsConstructor
+public abstract class Beast implements Prototype {
+
+  public Beast(Beast source) {
+  }
+
+  @Override
+  public abstract Beast copy();
+}
+
+@EqualsAndHashCode(callSuper = false)
+@RequiredArgsConstructor
+public class OrcBeast extends Beast {
+
+  private final String weapon;
+
+  public OrcBeast(OrcBeast orcBeast) {
+    super(orcBeast);
+    this.weapon = orcBeast.weapon;
+  }
+
+  @Override
+  public OrcBeast copy() {
+    return new OrcBeast(this);
+  }
+
+  @Override
+  public String toString() {
+    return "Orcish wolf attacks with " + weapon;
+  }
+}
+
+```
+
+Ta có thể tạo lớp HeroFactory và HeroFactoryImpl để sinh ra những sinh vật khác nhau từ prototypes.
+
+```Java
+public interface HeroFactory {
   
-**Khác nhau**:  
-- có 1 số function không bị ghi đè
+  Mage createMage();
+  Warlord createWarlord();
+  Beast createBeast();
+}
+
+@RequiredArgsConstructor
+public class HeroFactoryImpl implements HeroFactory {
+
+  private final Mage mage;
+  private final Warlord warlord;
+  private final Beast beast;
+
+  public Mage createMage() {
+    return mage.copy();
+  }
+
+  public Warlord createWarlord() {
+    return warlord.copy();
+  }
+
+  public Beast createBeast() {
+    return beast.copy();
+  }
+}
+```
+ - ## [Abstract Factory](https://github.com/iluwatar/java-design-patterns/tree/master/abstract-factory)
+
+
+Abstract Factory pattern là một trong những Creational pattern. Nó là phương pháp tạo ra một Super-factory dùng để tạo ra các Factory khác. Hay còn được gọi là Factory của các Factory. Abstract Factory Pattern là một Pattern cấp cao hơn so với Factory Method Pattern.
+
+>Ví dụ: Có rất nhiều kiểu vương quốc thì việc dùng Abstract Factory là hợp lý khi ta có thể lựa chọn các loại vương quốc khác nhau.
+
+```Java
+// tao trước thành phần của kiểu vương quốc Elf
+public interface Castle {
+  String getDescription();
+}
+
+public interface King {
+  String getDescription();
+}
+
+public interface Army {
+  String getDescription();
+}
+
+// Elven implementations ->
+public class ElfCastle implements Castle {
+  static final String DESCRIPTION = "This is the elven castle!";
+  @Override
+  public String getDescription() {
+    return DESCRIPTION;
+  }
+}
+public class ElfKing implements King {
+  static final String DESCRIPTION = "This is the elven king!";
+  @Override
+  public String getDescription() {
+    return DESCRIPTION;
+  }
+}
+public class ElfArmy implements Army {
+  static final String DESCRIPTION = "This is the elven Army!";
+  @Override
+  public String getDescription() {
+    return DESCRIPTION;
+  }
+}
+
+// sau đó tạo interface kingdom rồi dùng ElfKingdomFactory implements KingdomFactory
+public interface KingdomFactory {
+  Castle createCastle();
+  King createKing();
+  Army createArmy();
+}
+
+public class ElfKingdomFactory implements KingdomFactory {
+
+  @Override
+  public Castle createCastle() {
+    return new ElfCastle();
+  }
+
+  @Override
+  public King createKing() {
+    return new ElfKing();
+  }
+
+  @Override
+  public Army createArmy() {
+    return new ElfArmy();
+  }
+}
+```
+**Nhận xét**
+  1. Giống với mẫu chuẩn.
+  2. Tạo 1 vài interface Castle, King, Army rồi chia nhỏ ra từng lớp ứng với từng loại ví dụ với ElfKingdom thì có ElfCastle, ElfKing, ElfArmy thì ta được 1 loại của Object Kingdom
+
+  - ## [Singleton](https://github.com/iluwatar/java-design-patterns/tree/master/singleton)
+
+```Java
+  abstract class SingletonTest<S> {
+  
+  private final Supplier<S> singletonInstanceMethod;
+
+  public SingletonTest(final Supplier<S> singletonInstanceMethod) {
+    this.singletonInstanceMethod = singletonInstanceMethod;
+  }
+
+  @Test
+  void testMultipleCallsReturnTheSameObjectInSameThread() {
+    // Create several instances in the same calling thread
+    var instance1 = this.singletonInstanceMethod.get();
+    var instance2 = this.singletonInstanceMethod.get();
+    var instance3 = this.singletonInstanceMethod.get();
+    // now check they are equal
+    assertSame(instance1, instance2);
+    assertSame(instance1, instance3);
+    assertSame(instance2, instance3);
+  }
+
+  @Test
+  void testMultipleCallsReturnTheSameObjectInDifferentThreads() throws Exception {
+    assertTimeout(ofMillis(10000), () -> {
+      // Create 10000 tasks and inside each callable instantiate the singleton class
+      final var tasks = IntStream.range(0, 10000)
+          .<Callable<S>>mapToObj(i -> this.singletonInstanceMethod::get)
+          .collect(Collectors.toCollection(ArrayList::new));
+
+      // Use up to 8 concurrent threads to handle the tasks
+      final var executorService = Executors.newFixedThreadPool(8);
+      final var results = executorService.invokeAll(tasks);
+
+      // wait for all of the threads to complete
+      final var expectedInstance = this.singletonInstanceMethod.get();
+      for (var res : results) {
+        final var instance = res.get();
+        assertNotNull(instance);
+        assertSame(expectedInstance, instance);
+      }
+
+      // tidy up the executor
+      executorService.shutdown();
+    });
+
+  }
+```
+  
+  Singleton pattern (thuộc Creational) đảm bảo chỉ duy nhất môt new instance được tạo ra cho 1 lớp và nó sẽ cung cấp cho bạn một method để truy cập đến đối tượng duy nhất đó. Dù cho việc thực hiện cài đặt Singleton bằng cách nào đi nữa cũng đều dựa vào nguyên tắc dưới đây.
+-  private constructor để hạn chế khởi tạo đối tượng từ bên ngoài
+- đặt private static variable cho đối tượng được khởi tạo, đảm bảo biến chỉ được khởi tạo trong chính lớp này.
+- có một method public để return instance đã được khởi tạo ở trên.
+
+
 
 
 ## [Builder](https://github.com/square/retrofit/blob/master/retrofit-mock/src/main/java/retrofit2/mock/MockRetrofit.java) 
@@ -166,91 +364,7 @@ public class Hammer implements Weapon {
 }
 ```
 
-## [Prototype](https://github.com/iluwatar/java-design-patterns/tree/master/prototype)
 
-
-Prototype pattern là một trong những Creational pattern. Nó có nhiệm vụ khởi tạo một đối tượng bằng cách clone một đối tượng đã tồn tại thay vì khởi tạo với từ khoá new. Đối tượng mới là một bản sao có thể giống 100% với đối tượng gốc, chúng ta có thể thay đổi dữ liệu của nó mà không ảnh hưởng đến đối tượng gốc.
-
-Prototype Pattern được dùng khi việc tạo một object tốn nhiều chi phí và thời gian trong khi bạn đã có một object tương tự tồn tại.
-
-Trong Java cung cấp mẫu prototype pattern này bằng việc implement interface Cloneable và sử dụng method copy() để tạo object có đầy đủ thuộc tính của đối tượng ban đầu. 
-
-Đầu tiên khởi tạo một interface với 1 method để clone đối tượng.
-
-```Java
-public interface Prototype {
-  Object copy();
-}
-```
-
-Code ở đây có nhiều lớp các sinh vật khác nhau, ví dụ như Beast và OrcBeast.
-
-```Java
-@EqualsAndHashCode
-@NoArgsConstructor
-public abstract class Beast implements Prototype {
-
-  public Beast(Beast source) {
-  }
-
-  @Override
-  public abstract Beast copy();
-}
-
-@EqualsAndHashCode(callSuper = false)
-@RequiredArgsConstructor
-public class OrcBeast extends Beast {
-
-  private final String weapon;
-
-  public OrcBeast(OrcBeast orcBeast) {
-    super(orcBeast);
-    this.weapon = orcBeast.weapon;
-  }
-
-  @Override
-  public OrcBeast copy() {
-    return new OrcBeast(this);
-  }
-
-  @Override
-  public String toString() {
-    return "Orcish wolf attacks with " + weapon;
-  }
-}
-
-```
-
-Ta có thể tạo lớp HeroFactory và HeroFactoryImpl để sinh ra những sinh vật khác nhau từ prototypes.
-
-```Java
-public interface HeroFactory {
-  
-  Mage createMage();
-  Warlord createWarlord();
-  Beast createBeast();
-}
-
-@RequiredArgsConstructor
-public class HeroFactoryImpl implements HeroFactory {
-
-  private final Mage mage;
-  private final Warlord warlord;
-  private final Beast beast;
-
-  public Mage createMage() {
-    return mage.copy();
-  }
-
-  public Warlord createWarlord() {
-    return warlord.copy();
-  }
-
-  public Beast createBeast() {
-    return beast.copy();
-  }
-}
-```
 
 
 ## [Memento](https://github.com/iluwatar/java-design-patterns/tree/master/memento)
@@ -520,78 +634,7 @@ Giờ việc thu thập thông tin của khách hàng trở nên dễ dàng hơn
     // Alfonso
 
 ```
-## [Abstract Factory](https://github.com/iluwatar/java-design-patterns/tree/master/abstract-factory)
 
-
-Abstract Factory pattern là một trong những Creational pattern. Nó là phương pháp tạo ra một Super-factory dùng để tạo ra các Factory khác. Hay còn được gọi là Factory của các Factory. Abstract Factory Pattern là một Pattern cấp cao hơn so với Factory Method Pattern.
-
->Ví dụ: Có rất nhiều kiểu vương quốc thì việc dùng Abstract Factory là hợp lý khi ta có thể lựa chọn các loại vương quốc khác nhau.
-
-```Java
-// tao trước thành phần của kiểu vương quốc Elf
-public interface Castle {
-  String getDescription();
-}
-
-public interface King {
-  String getDescription();
-}
-
-public interface Army {
-  String getDescription();
-}
-
-// Elven implementations ->
-public class ElfCastle implements Castle {
-  static final String DESCRIPTION = "This is the elven castle!";
-  @Override
-  public String getDescription() {
-    return DESCRIPTION;
-  }
-}
-public class ElfKing implements King {
-  static final String DESCRIPTION = "This is the elven king!";
-  @Override
-  public String getDescription() {
-    return DESCRIPTION;
-  }
-}
-public class ElfArmy implements Army {
-  static final String DESCRIPTION = "This is the elven Army!";
-  @Override
-  public String getDescription() {
-    return DESCRIPTION;
-  }
-}
-
-// sau đó tạo interface kingdom rồi dùng ElfKingdomFactory implements KingdomFactory
-public interface KingdomFactory {
-  Castle createCastle();
-  King createKing();
-  Army createArmy();
-}
-
-public class ElfKingdomFactory implements KingdomFactory {
-
-  @Override
-  public Castle createCastle() {
-    return new ElfCastle();
-  }
-
-  @Override
-  public King createKing() {
-    return new ElfKing();
-  }
-
-  @Override
-  public Army createArmy() {
-    return new ElfArmy();
-  }
-}
-```
-**Nhận xét**
-- Giống với mẫu chuẩn.
-- Tạo 1 vài interface Castle, King, Army rồi chia nhỏ ra từng lớp ứng với từng loại ví dụ với ElfKingdom thì có ElfCastle, ElfKing, ElfArmy thì ta được 1 loại của Object Kingdom
 
 
 
@@ -760,60 +803,7 @@ while (itemIterator.hasNext()) {
 - Đảm bảo nguyên tắc Single responsibility principle (SRP) : chúng ta có thể tách phần cài đặt các phương thức của tập hợp và phần duyệt qua các phần tử (iterator) theo từng class riêng lẻ.
 - Chúng ta có thể truy cập song song trên cùng một tập hợp vì mỗi đối tượng iterator có chứa trạng thái riêng của nó.
   
-## [Singleton](https://github.com/iluwatar/java-design-patterns/tree/master/singleton)
 
-```Java
-  abstract class SingletonTest<S> {
-  
-  private final Supplier<S> singletonInstanceMethod;
-
-  public SingletonTest(final Supplier<S> singletonInstanceMethod) {
-    this.singletonInstanceMethod = singletonInstanceMethod;
-  }
-
-  @Test
-  void testMultipleCallsReturnTheSameObjectInSameThread() {
-    // Create several instances in the same calling thread
-    var instance1 = this.singletonInstanceMethod.get();
-    var instance2 = this.singletonInstanceMethod.get();
-    var instance3 = this.singletonInstanceMethod.get();
-    // now check they are equal
-    assertSame(instance1, instance2);
-    assertSame(instance1, instance3);
-    assertSame(instance2, instance3);
-  }
-
-  @Test
-  void testMultipleCallsReturnTheSameObjectInDifferentThreads() throws Exception {
-    assertTimeout(ofMillis(10000), () -> {
-      // Create 10000 tasks and inside each callable instantiate the singleton class
-      final var tasks = IntStream.range(0, 10000)
-          .<Callable<S>>mapToObj(i -> this.singletonInstanceMethod::get)
-          .collect(Collectors.toCollection(ArrayList::new));
-
-      // Use up to 8 concurrent threads to handle the tasks
-      final var executorService = Executors.newFixedThreadPool(8);
-      final var results = executorService.invokeAll(tasks);
-
-      // wait for all of the threads to complete
-      final var expectedInstance = this.singletonInstanceMethod.get();
-      for (var res : results) {
-        final var instance = res.get();
-        assertNotNull(instance);
-        assertSame(expectedInstance, instance);
-      }
-
-      // tidy up the executor
-      executorService.shutdown();
-    });
-
-  }
-```
-  
-  Singleton pattern (thuộc Creational) đảm bảo chỉ duy nhất môt new instance được tạo ra cho 1 lớp và nó sẽ cung cấp cho bạn một method để truy cập đến đối tượng duy nhất đó. Dù cho việc thực hiện cài đặt Singleton bằng cách nào đi nữa cũng đều dựa vào nguyên tắc dưới đây.
--  private constructor để hạn chế khởi tạo đối tượng từ bên ngoài
-- đặt private static variable cho đối tượng được khởi tạo, đảm bảo biến chỉ được khởi tạo trong chính lớp này.
-- có một method public để return instance đã được khởi tạo ở trên.
   
   
 ## [Composite](https://github.com/iluwatar/java-design-patterns/tree/master/composite)
