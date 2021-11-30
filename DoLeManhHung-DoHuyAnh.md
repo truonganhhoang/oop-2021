@@ -96,9 +96,11 @@ public enum FoodType {
 ## _Nhận xét:_
 
 * Mô hình các loại thức ăn.
-* Super Class đã được cài đặt chính xác
-* Sub Class đã được cài đặt chính xác
-* Factory Class đã được cài đặt chính xác
+* Super Class đã được cài đặt chính xác.
+* Sub Class đã được cài đặt chính xác.
+* Factory Class đã được cài đặt chính xác.
+* Từ đoạn mã nguồn trên, ta thấy có biến foodType, biến này tương ứng với TPBank hoặc VietComBank, vì vậy trong Enum Foodtype khác với mẫu chuẩn 1 biến khai báo enum.
+* Các thành phần cấu trúc còn lại giống nhau.
 
 ********************************************************************************************************************************************************************************
 
