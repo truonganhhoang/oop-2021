@@ -171,34 +171,34 @@ Trong những trường hợp như vậy, hầu hết thời gian và trạng th
 Mặc dù Java cung cấp cả một class và interface có lưu ý đến pattern này. Nhưng nó không phổ biến vì nó không được thực hiện một cách lý tưởng.
 
 public class ValidateCard {
+ static List<Map<String, Object>> validateCards(String[] bannedPrefixes, String[] cardsToValidate) {
+     return Arrays.stream(cardsToValidate).
+      map(e -> ToMap(e, bannedPrefixes)).collect(Collectors.toList());
+ }
 
-static List<Map<String, Object>> validateCards(String[] bannedPrefixes, String[] cardsToValidate) {
-    return Arrays.stream(cardsToValidate).
-     map(e -> ToMap(e, bannedPrefixes)).collect(Collectors.toList());
-}
+ private static Map<String, Object> ToMap(String e, String[] bannedPrefixes) {
+     Map<String, Object> map = new HashMap<>();
+     map.put("card", e);
+     map.put("isValid", isValid(e));
+     map.put("isAllowed", isAllowed(e, bannedPrefixes));
+     return map;
+ }
 
-private static Map<String, Object> ToMap(String e, String[] bannedPrefixes) {
-    Map<String, Object> map = new HashMap<>();
-    map.put("card", e);
-    map.put("isValid", isValid(e));
-    map.put("isAllowed", isAllowed(e, bannedPrefixes));
-    return map;
-}
+ private static boolean isAllowed(String e, String[] bannedPrefixes) {
+     for (String bannedPrefix : bannedPrefixes) {
+         if (e.startsWith(bannedPrefix))
+             return false;
+     }
+     return true;
+ }
 
-private static boolean isAllowed(String e, String[] bannedPrefixes) {
-    for (String bannedPrefix : bannedPrefixes) {
-        if (e.startsWith(bannedPrefix))
-            return false;
-    }
-    return true;
-}
-
-private static boolean isValid(String e) {
-    int sum = 0;
-    for (int i = 0; i < e.length() - 1; i++) {
-        sum += (e.charAt(i) - '0') * 2;
-    }
-    return sum % 10 == e.charAt(e.length() - 1) - '0';
+ private static boolean isValid(String e) {
+     int sum = 0;
+     for (int i = 0; i < e.length() - 1; i++) {
+         sum += (e.charAt(i) - '0') * 2;
+     }
+     return sum % 10 == e.charAt(e.length() - 1) - '0';
+ }
 }
 
 3, Interpreter pattern trong Factorial.java
@@ -206,7 +206,6 @@ Interpreter Pattern được sử dụng bất cứ lúc nào chúng ta cần đ
 Một ví dụ điển hình cho pattern này là google translate, nó sẽ nhận đầu vào và hiển thị cho chúng ta kết quả bằng ngôn ngữ khác.
 Một ví dụ khác đó là trình biên dịch Java. Trình biên dịch sẽ thông dịch mã Java và chuyển nó thành bytecode. Sau đó, JVM sử dụng để thực hiện các hoạt động trên thiết bị.
 public class Factorial {
-
     private static long factorial(int num) {
         if (num <= 1)        // 1! = 1, hence return 1 when the num becomes 1.
             return 1;
