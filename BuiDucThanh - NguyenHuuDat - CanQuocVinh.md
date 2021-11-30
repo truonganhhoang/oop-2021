@@ -42,6 +42,18 @@ Với file RegexpMultilineCheck.java, đối tượng Builder được sử dụ
 #### c. So sánh với mẫu chuẩn
 Với mẫu chuẩn, ta cần 1 Interface và một class có implements Interface đó. Còn trong trường hợp này, người ta sử dụng Builder như một lớp con final trong một lớp cha final.
 
+### 3. Abstract Factory
+
+### 4. Singleton
+
+### 5. Prototype
+
+### 6. Adaptor
+
+### 7. Bridge
+
+### 8. Composite
+
 ### 9. Decorator Pattern:
 Gán thêm trách nhiệm cho đối tượng (mở rộng chức năng) vào lúc chạy (dynamically). Tần suất sử dụng: TB - 3/5.
 Lợi ích:
