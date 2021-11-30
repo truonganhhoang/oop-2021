@@ -7,33 +7,215 @@
 
 ## **1. Nhóm Creational**
 ### Singleton:
+
 - Giống nhau: giống nhau hoàn toàn.
     - Implement Singleton Pattern bằng cách **Bill Pugh Singleton Implementation:**
         - Sử dụng 1 static nested class với vai trò 1 helper khi muốn tách biệt chức năng cho 1 class function rõ ràng hơn.
+        - Khi Singleton được tải vào bộ nhớ thì ***SingletonInHodler*** chưa được tải vào. Nó chỉ được tải khi và chỉ khi phương thức ***getSingletonIn()*** được gọi. Với cách này tránh được lỗi cơ chế khởi tạo instance của Singleton trong Multi-Thread, performance cao do tách biệt được quá trình xử lý.
+    
+    ```java
+    public class SingletonIn {
+    
+        private SingletonIn() {
+        }
+    
+        private static class SingletonInHodler {
+            private static SingletonIn singletonIn = new SingletonIn();
+        }
+    
+        public static SingletonIn getSingletonIn() {
+            return SingletonInHodler.singletonIn;
+        }
+    }
+    ```
+    
 - Khác nhau: không có sự khác nhau.
 
 ### Factory Pattern:
+
 - Giống nhau:
-    - 1 Super Class là 1 Abstract Class - *RoujiaMoStore* đại diện cho cửa hàng bán bánh Rou Ji A nói chung.
-    - Các Sub Class là các chi nhánh cửa hàng. *(XianKuRoujiMo, XianSuanRoujiMo, XianlaRoujiMo, XianSuanRoujiMo)*
-    - 1 Factory Class - *XianSimpleRoujiaMoFactory* sẽ nhận input rồi trả lại chi nhánh tương ứng.
+    - 1 Super Class là 1 Abstract Class - *[RoujiaMoStore](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/factory/gcff/RoujiaMoStore.java)* đại diện cho cửa hàng bán bánh Rou Ji A nói chung.
+    
+    ```java
+    public abstract class RoujiaMoStore {
+    
+        public abstract RoujiaMo sellRoujiaMo(String type);
+    
+    //    public RoujiaMo sellRoujiaMo(String type) {
+    //
+    //        RoujiaMo roujiaMo = creatRoujiaMo(type);
+    //        roujiaMo.prepare();
+    //        roujiaMo.fire();
+    //        roujiaMo.pack();
+    //        return roujiaMo;
+    //
+    //    }
+    
+    }
+    ```
+    
+    - Các Sub Class là các chi nhánh cửa hàng. *([XianKuRoujiMo](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/factory/gcff/XianKuRoujiMo.java), [XianSuanRoujiMo](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/factory/gcff/XianSuanRoujiMo.java), [XianlaRoujiMo](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/factory/gcff/XianlaRoujiMo.java), [XianSuanRoujiMo](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/factory/gcff/XianSuanRoujiMo.java))*
+    - 1 Factory Class - *[XianSimpleRoujiaMoFactory](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/factory/gcff/XianSimpleRoujiaMoFactory.java)* sẽ nhận input rồi trả lại chi nhánh tương ứng.
+    
+    ```java
+    public class XianSimpleRoujiaMoFactory {
+    
+        public RoujiaMo creatRoujiaMo(String type) {
+            RoujiaMo roujiaMo = null;
+            switch (type) {
+                case "Suan":
+                    roujiaMo = new XianSuanRoujiMo();
+                    break;
+                case "La":
+                    roujiaMo = new XianKuRoujiMo();
+                    break;
+                case "Tian":
+                    roujiaMo = new XianlaRoujiMo();
+                    break;
+                default:// 默认为酸肉夹馍
+                    roujiaMo = new XianSuanRoujiMo();
+                    break;
+            }
+            return roujiaMo;
+        }
+    }
+    ```
+    
 - Khác nhau: không có sự khác nhau.
 
 ### Abstract Factory:
+
 - Giống nhau:
-    - **Abstract Factory:** 1 Interface *RouJiaMoYLFactroy* chứa các phương thức tạo đối tượng là nguyên liệu làm ra món Rou Ji A. (Meat, Yuan Liao).
-    - **Product** Các đối tượng Meat, Yuan Liao có các class con (đối tượng cụ thể): *XianFreshMeet*, *ChangShaFreshMeet, XianFreshYuanLiao*, *ChangShaFreshMeetYuanLiao,...)* là các ****Concrete Factory.**
-    - **Client**: RoujiaMo.java
-- Khác nhau: Abstract Factory chứa phương thức tạo đối tượng không phải abstract *(Meat, Yuan Liao) →* **Không có Abstract Product** mà chỉ có class thường.
+    - **Abstract Factory:** 1 Interface *[RouJiaMoYLFactroy](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/factory/cxgc/RoujiaMoYLFactory.java)* chứa các phương thức tạo đối tượng là nguyên liệu làm ra món Rou Ji A. (Meat, Yuan Liao).
+    
+    ```java
+    public interface RoujiaMoYLFactory {
+    
+        public Meet creatMeet();
+        public YuanLiao creatYuanLiao();
+    
+    }
+    ```
+    
+    - **Product** Các đối tượng Meat, Yuan Liao có các class con (đối tượng cụ thể): *[XianFreshMeet](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/factory/cxgc/XianFreshMeet.java)*, *[ChangShaFreshMeet](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/factory/cxgc/ChangShaFreshMeet.java), [XianTeSeYuanLiao](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/factory/cxgc/XianTeSeYuanLiao.java)*, *[ChangShaTeSeYuanLiao](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/factory/cxgc/ChangShaTeSeYuanLiao.java),...)* là các **Concrete Factory.**
+    - **Client**: [RoujiaMo](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/factory/cxgc/RoujiaMo.java)
+- Khác nhau: Abstract Factory chứa phương thức tạo đối tượng không phải abstract *(Meat, Yuan Liao) →* **Không có Abstract Factory** mà chỉ có class thường.
 
 ### Builder:
-- Giống nhau: có **Builder** *(Builder.java)* là 1 abstract class và được kế thừa bởi 1 **ConcreteBuilder** *(ConcreteBuider.java)*, có **Director** *(Director.java)* để gọi tới Builder.
+
+- Giống nhau: có **Builder** *([Builder.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/builder/Builder.java))* là 1 abstract class về 1 cửa hàng bán xe và được kế thừa bởi 1 **ConcreteBuilder** *([ConcreteBuider.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/builder/ConcreteBuilder.java))*, có **Director** *([Director.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/builder/Director.java))* để gọi tới Builder (lấy xe).
+
+```java
+public abstract class Builder {
+
+    public abstract void setPart(String name, String type);
+
+    public abstract Product getProduct();
+}
+```
+
+```java
+public class ConcreteBuilder extends Builder {
+
+    private Product product = new Product();
+
+    @Override
+    public void setPart(String name, String type) {
+        product.setName(name);
+        product.setType(type);
+    }
+
+    @Override
+    public Product getProduct() {
+        return product;
+    }
+}
+```
+
+```java
+public class Director {
+
+    private Builder builder = new ConcreteBuilder();
+
+    public Product getAProduct() {
+        builder.setPart("奥迪汽车", "Q5");
+        return builder.getProduct();
+    }
+
+    public Product getBProduct() {
+        builder.setPart("宝马汽车", "X7");
+        return builder.getProduct();
+    }
+}
+```
+
 - Khác nhau: không có sự khác nhau.
 
 ### Prototype:
+
 - Giống nhau:
-    - **Prototype:** 1 abstract Shape *(Shape.java) implements* `Cloneable`.
-    - **ConcretePrototype:** *ShapeCache.java*
+    - **Prototype:** 1 abstract Shape *([Shape.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/prototype/Shape.java)) implements* `Cloneable`.
+    
+    ```java
+    public abstract class Shape implements Cloneable {
+    
+        private String id;
+        protected String type;
+    
+        public abstract void draw();
+    
+        public String getId() {
+            return id;
+        }
+    
+        public void setId(String id) {
+            this.id = id;
+        }
+    
+        @Override
+        public Object clone() {
+            Object object = null;
+            try {
+                object = super.clone();
+            } catch (CloneNotSupportedException e) {
+                Log.e("--", e.getMessage());
+            }
+            return object;
+        }
+    }
+    ```
+    
+    - **ConcretePrototype:** *[ShapeCache.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/prototype/ShapeCache.java)* thể hiện cụ thể phương thức ***clone()***.
+    
+    ```java
+    public class ShapeCache {
+    
+        private static Hashtable<String, Shape> shapeMap = new Hashtable<String, Shape>();
+    
+        public static Shape getShape(String shapeId) {
+            Shape shapeCache = shapeMap.get(shapeId);
+            return (Shape) shapeCache.clone();
+        }
+    
+        // 对每种形状都运行数据库查询，并创建该形状
+        // shapeMap.put(shapeKey, shape);
+        // 例如，我们要添加三种形状
+        public static void loadCache() {
+            Circle circle = new Circle();
+            circle.setId("1");
+            shapeMap.put(circle.getId(), circle);
+    
+            Rectangle rectangle = new Rectangle();
+            rectangle.setId("2");
+            shapeMap.put(rectangle.getId(), rectangle);
+    
+            Square square = new Square();
+            square.setId("3");
+            shapeMap.put(square.getId(), square);
+        }
+    }
+    ```
+    
 - Khác nhau: không có sự khác nhau.
 
 ## **2. Nhóm Structural**
@@ -143,22 +325,135 @@ Lấy hình ảnh từ đĩa làm ví dụ
 ### Chain of Responsibility: Khắc phục việc ghép cặp giữa bộ gởi và bộ nhận thông điệp. Các đối tượng nhận thông điệp được kết nối thành một chuỗi và thông điệp được chuyển dọc theo chuỗi nầy đến khi gặp được đối tượng xử lý nó. Tránh việc gắn kết cứng giữa phần tử gởi request với phần tử nhận và xử lý request bằng cách cho phép hơn 1 đối tượng có có cơ hội xử lý request. Liên kết các đối tượng nhận request thành 1 dây chuyền rồi gửi request xuyên qua từng đối tượng xử lý đến khi gặp đối tượng xử lý cụ thể. => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Strategy:
+
 - Giống nhau:
-    - Nhân vật trò chơi ban đầu: Role.java
+    - Nhân vật trò chơi ban đầu: [*Role.java*](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/strategy/old/Role.java)
+    
+    ```java
+    public abstract class Role {
+    
+        protected String name;
+    
+        // 着装
+        protected abstract void display();
+    
+        // 逃跑
+        protected abstract void run();
+    
+        // 攻击
+        protected abstract void attack();
+    
+        // 防御
+        protected abstract void defend();
+    }
+    ```
+    
     - Khi có mã trùng lặp, lớp cha được tái cấu trúc.
 - Khác nhau: không có sự khác nhau.
 
 ### Template Method:
+
 - Giống nhau:
-    - Abstract Class: *Worker.java*
-    - Concrete Class: *ITWorker.java*
+    - Abstract Class: *[Worker.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/templatemethod/Worker.java) "*khung" nhân viên nói chung. Trong khung sẽ có nhiều đối tượng cụ thể có cùng các bước thực hiện nhưng trong mỗi bước có thể khác nhau. (Ví dụ đều cùng có tên, vào công ty, bật máy tính và làm việc sau đó tắt máy tan ca)
+    
+    ```java
+    public abstract class Worker {
+    
+        protected String name;
+    
+        public Worker(String name) {
+            this.name = name;
+        }
+    
+        public final void workOneDay() {
+            Log.e("workOneDay", "-----------------work start----------------");
+    
+            enterCompany();
+            computerOn();
+            work();
+            computerOff();
+            exitCompany();
+    
+            Log.e("workOneDay", "-----------------work end----------------");
+        }
+    
+        public abstract void work();
+    
+        public boolean isNeedPrintDate() {
+            return false;
+        }
+    
+        private void exitCompany() {
+            if (isNeedPrintDate()) {
+                Log.e("exitCompany", "---" + new Date().toLocaleString() + "--->");
+            }
+            Log.e("exitCompany", name + "---离开公司");
+        }
+    
+    //    -----------------------------------
+    
+        private void computerOn() {
+            Log.e("computerOn", "---打开电脑");
+        }
+    
+        private void computerOff() {
+            Log.e("computerOff", "---关闭电脑");
+        }
+    
+        private void enterCompany() {
+            Log.e("enterCompany", "---进入公司");
+        }
+    }
+    ```
+    
+    - Concrete Class: các đối tượng cụ thể khác nhau: *[ITWorker.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/templatemethod/worker/ITWorker.java), [HRWorker.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/templatemethod/worker/HRWorker.java), [CTOWorker.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/templatemethod/worker/CTOWorker.java).*
 - Khác nhau: không có sự khác nhau.
 
 ### Visitor:
+
 - Giống nhau:
-    - 1 Interface đại diện cho các yếu tố: *ComputerPart.java*
-    - Các class implements từ Interface đó: *Computer, Mouse, Monitor, Keyboard*.
-    - 1 Interface riêng cho khách truy cập *(ComputerPartVisitor.java)*
-    - Class dành cho khách truy cập *(ComputerPartDisplayVisitor.java)*
-    - Class hiển thị *(ComputerPartDisplayVisitor.java)*
+    - 1 Interface đại diện cho các yếu tố: *[ComputerPart.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/visitor/ComputerPart.java)*
+    
+    ```java
+    public interface ComputerPart {
+        public void accept(ComputerPartVisitor computerPartVisitor);
+    }
+    ```
+    
+    - Các class implements từ Interface đó: *[Computer](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/visitor/impl/Computer.java), [Mouse](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/visitor/impl/Mouse.java), [Monitor](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/visitor/impl/Monitor.java), [Keyboard](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/visitor/impl/Keyboard.java)*.
+    - 1 Interface riêng cho khách truy cập *([ComputerPartVisitor.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/visitor/ComputerPartVisitor.java))*
+    
+    ```java
+    public interface ComputerPart {
+        public void accept(ComputerPartVisitor computerPartVisitor);
+    }
+    ```
+    
+    - Class dành cho khách truy cập và hiển thị output *([ComputerPartDisplayVisitor.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/visitor/ComputerPartDisplayVisitor.java))*
+    
+    ```java
+    public class ComputerPartDisplayVisitor implements ComputerPartVisitor {
+    
+        @Override
+        public void visit(Computer computer) {
+            Log.e("---", "Displaying Computer.");
+        }
+    
+        @Override
+        public void visit(Mouse mouse) {
+            Log.e("---", "Displaying Mouse.");
+        }
+    
+        @Override
+        public void visit(Keyboard keyboard) {
+            Log.e("---", "Displaying Keyboard.");
+        }
+    
+        @Override
+        public void visit(Monitor monitor) {
+            Log.e("---", "Displaying Monitor.");
+        }
+    }
+    ```
+    
 - Khác nhau: không có sự khác nhau.
