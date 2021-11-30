@@ -37,7 +37,7 @@ Môn học Lập trình hướng đối tượng với Java
 			if(shapeType.equals("SQUARE")
 				return new Square();
 ```
-=> Code Repo tương đối giống với mẫu.
+# => Code Repo tương đối giống với mẫu.
 => https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Factory
 
 ## Factory Method:
@@ -69,7 +69,7 @@ Môn học Lập trình hướng đối tượng với Java
  
 }
 ```
-=> Code Repo tương đối giống với mẫu.
+# => Code Repo tương đối giống với mẫu.
 => https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Factory
 
 ## Adapter:
@@ -92,8 +92,8 @@ public class JapaneseAdaptee {
     }
 }
 ```
-=> Code Repo tương đối giống với mẫu.
-=> https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Adapter
+# => Code Repo tương đối giống với mẫu.
+=> https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Adapter .
 
 ## Bridge:
 -	Tách rời ngữ nghĩa của một vấn đề khỏi việc cài đặt, mục đích để cả hai bộ phận (ngữ nghĩa và cài đặt) có thể thay đổi độc lập nhau.
@@ -123,7 +123,7 @@ public class JapaneseAdaptee {
   		}
 	}
 ```
-=> Code Repo tương đối giống với mẫu.
+# => Code Repo tương đối giống với mẫu.
 => https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Bridge
 
 ## Command: 
@@ -150,7 +150,7 @@ public class Account {
     }
 }
 ```
-=> Code Repo tương đối giống với mẫu.
+# => Code Repo tương đối giống với mẫu.
 => https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Command .
 
 ## Observer: 
@@ -167,7 +167,7 @@ public interface EventListener {
 	void update(String eventType, File file);
 }
 ```
-=> Code Repo tương đối giống với mẫu.
+# => Code Repo tương đối giống với mẫu.
 => https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Observer .
 
 ## Buider:
@@ -208,7 +208,7 @@ public interface EventListener {
  ```
 + Các lớp WoodHouseBuilder, StoneHouseBuilder, GingerbreadHouseBuilder kế thừa các thuộc tính trong lớp abstract HouseBuilder.
 => Tách tiến trình xây dựng 1 đối tượng phức tạp sao cho một tiến trình tạo được các biểu diễn khác nhau => Builder Design Pattern.
-=> ode Repo tương đối giống với mẫu.
+# => Code Repo tương đối giống với mẫu.
 => https://github.com/tcorral/Design-Patterns-in-Javascript/tree/es6/Builder .
 
 
