@@ -1,6 +1,6 @@
 # OOP-2021
 Môn học Lập trình hướng đối tượng với Java
-### Báo cáo đánh giá Design Pattern
+# Báo cáo đánh giá Design Pattern
 
 Thành viên trong nhóm:
 + Bùi Minh Sơn 20021427
@@ -10,7 +10,7 @@ Thành viên trong nhóm:
 Repo đã tìm được và phân tích: https://github.com/OmarElgabry/DesignPatterns/tree/master/src?fbclid=IwAR3zcvkF1NME6gIojqlXHsJEQnlaZ-fpN46HoGKMaSQouK-o_uOHSZNU6eU
 
 
-# Điểm giống nhau:
+### Điểm giống nhau:
 
 -Có kết cấu tương tự với mẫu chuẩn.
 
@@ -22,7 +22,7 @@ Repo đã tìm được và phân tích: https://github.com/OmarElgabry/DesignPa
 
 -Code sạch sẽ
 
-#Điểm khác nhau:
+### Điểm khác nhau:
 
 -Không nhiều do là 1 mẫu thiết kế tương tự mẫu thiết kế chuẩn.
 
