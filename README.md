@@ -1,7 +1,6 @@
 # OOP-2021
 Môn học Lập trình hướng đối tượng với Java
-
-
+### Báo cáo đánh giá Design Pattern
 
 Thành viên trong nhóm:
 + Bùi Minh Sơn 20021427
@@ -11,21 +10,21 @@ Thành viên trong nhóm:
 Repo đã tìm được và phân tích: https://github.com/OmarElgabry/DesignPatterns/tree/master/src?fbclid=IwAR3zcvkF1NME6gIojqlXHsJEQnlaZ-fpN46HoGKMaSQouK-o_uOHSZNU6eU
 
 
-Điểm giống nhau:
+# Điểm giống nhau:
 
-Có kết cấu tương tự với mẫu chuẩn.
+-Có kết cấu tương tự với mẫu chuẩn.
 
-Hệ thống làm việc độc lập với cách sản phẩm của nó được tạo ra, cấu tạo và đại diện.
+-Hệ thống làm việc độc lập với cách sản phẩm của nó được tạo ra, cấu tạo và đại diện.
 
-Mỗi lớp chỉ chịu trách nhiệm về 1 một việc.
+-Mỗi lớp chỉ chịu trách nhiệm về 1 một việc.
 
-Khi chỉnh sửa thêm bớt thành phần thì không cần thay đổi code hiện tại.
+-Khi chỉnh sửa thêm bớt thành phần thì không cần thay đổi code hiện tại.
 
-Code sạch sẽ
+-Code sạch sẽ
 
-Điểm khác nhau:
+#Điểm khác nhau:
 
-Không nhiều do là 1 mẫu thiết kế tương tự mẫu thiết kế chuẩn.
+-Không nhiều do là 1 mẫu thiết kế tương tự mẫu thiết kế chuẩn.
 
 •	Singleton:
 o	Đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó.
