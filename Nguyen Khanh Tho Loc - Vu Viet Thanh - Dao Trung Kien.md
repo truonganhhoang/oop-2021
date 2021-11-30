@@ -4,9 +4,9 @@ Thành viên nhóm:
 * 20021389 Nguyễn Khánh Thọ Lộc.
 * 20021436 Vũ Viết Thành.
 * 20020182 Đào Trung Kiên.
+
 ***Creational design pattern:
 link: https://github.com/ajanata/PretendYoureXyzzy/tree/master/src/main/java/net/socialgamer/cah
-
 
 1, Singleton Pattern:
 - Đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó.
