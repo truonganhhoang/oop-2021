@@ -111,6 +111,199 @@ $expert->getDescription(); // Output: I can only fit iron doors
 ```
 Có thể thấy với mỗi loại cửa khác nhau sẽ gọi đến những gì liên quan đến nó hay là phải quan tâm đến những lớp con của của nó ví dụ như hàm **makeDoor()**  hay là hàm **MakeFittingExpert()**. 
 
+
+# Summary
+**Giống nhau:**
+
+- Các mẫu thiết kế giống vơi mẫu chuẩn sử dụng ngôn ngữ PHP
+
+- Mỗi design pattern có đầy đủ các class, cấu trúc, code dễ đọc dễ hiểu.
+
+- Giải thích rõ ràng dễ hiểu, Code tường minh dễ hiểu.
+
+**Khác nhau:**
+
+- Không có sự khác nhau, đây là một mẫu thiết kế gần như giống hệt so với mẫu chuẩn về mọi mặt.
+
+
+# Nhóm thứ hai Structural
+## Trong nhóm thứ hai này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là adapter pattern và decorator pattern.
+- Giải thích được định nghĩa, lấy ví dụ thực tế, rõ ràng dễ hiểu.
+- Đưa ra được khi nào nên sử dụng trong thực tế.
+- **Tác giả đã giải thích được sự khác nhau giữa adapter pattern và decorator pattern.**
+- ### 1. adapter pattern: là một mẫu thiết kế phần mềm cho phép giao diện của một lớp hiện có được sử dụng như một giao diện khác. Nó thường được sử dụng để làm cho các lớp hiện có hoạt động với những lớp khác mà không cần sửa đổi mã nguồn của chúng.
+```php
+interface Lion
+{
+    public function roar();
+}
+
+class AfricanLion implements Lion
+{
+    public function roar()
+    {
+    }
+}
+
+class AsianLion implements Lion
+{
+    public function roar()
+    {
+    }
+}
+```
+tạo thêm một class Hunter
+```php
+class Hunter
+{
+    public function hunt(Lion $lion)
+    {
+        $lion->roar();
+    }
+}
+```
+thêm một class con
+```php
+class WildDog
+{
+    public function bark()
+    {
+    }
+}
+
+// Adapter around wild dog to make it compatible with our game
+class WildDogAdapter implements Lion
+{
+    protected $dog;
+
+    public function __construct(WildDog $dog)
+    {
+        $this->dog = $dog;
+    }
+
+    public function roar()
+    {
+        $this->dog->bark();
+    }
+}
+```
+khi đó chúng ta có thể gọi WilDog thông qua WildDogAdapter:
+```php
+$wildDog = new WildDog();
+$wildDogAdapter = new WildDogAdapter($wildDog);
+
+$hunter = new Hunter();
+$hunter->hunt($wildDogAdapter);
+```
+Có thể thấy từ đoạn code trên, Adapter pattern cho phép bạn bọc một đối tượng không tương thích khác trong bộ điều hợp để làm cho nó tương thích với một lớp khác trong trường hợp này là lớp WildDog
+
+### 2. decorator pattern: là một mẫu thiết kế cho phép thêm hành vi vào một đối tượng riêng lẻ, tĩnh hoặc động, mà không ảnh hưởng đến hành vi của các đối tượng khác từ cùng một lớp.
+- Nói một cách dễ hiểu trong repo này tác giả đã lấy ví dụ về cà phê và những miêu tả thêm về chúng.
+
+đầu tiên tạo ra interface Coffee và lớp SimpleCoffee
+```php
+interface Coffee
+{
+    public function getCost();
+    public function getDescription();
+}
+
+class SimpleCoffee implements Coffee
+{
+    public function getCost()
+    {
+        return 10;
+    }
+
+    public function getDescription()
+    {
+        return 'Simple coffee';
+    }
+}
+```
+
+tạo thêm decorators cho lớp Coffee
+```php
+class MilkCoffee implements Coffee
+{
+    protected $coffee;
+
+    public function __construct(Coffee $coffee)
+    {
+        $this->coffee = $coffee;
+    }
+
+    public function getCost()
+    {
+        return $this->coffee->getCost() + 2;
+    }
+
+    public function getDescription()
+    {
+        return $this->coffee->getDescription() . ', milk';
+    }
+}
+
+class WhipCoffee implements Coffee
+{
+    protected $coffee;
+
+    public function __construct(Coffee $coffee)
+    {
+        $this->coffee = $coffee;
+    }
+
+    public function getCost()
+    {
+        return $this->coffee->getCost() + 5;
+    }
+
+    public function getDescription()
+    {
+        return $this->coffee->getDescription() . ', whip';
+    }
+}
+
+class VanillaCoffee implements Coffee
+{
+    protected $coffee;
+
+    public function __construct(Coffee $coffee)
+    {
+        $this->coffee = $coffee;
+    }
+
+    public function getCost()
+    {
+        return $this->coffee->getCost() + 3;
+    }
+
+    public function getDescription()
+    {
+        return $this->coffee->getDescription() . ', vanilla';
+    }
+}
+```
+khi khởi tạo chúng ta có thể :
+```php
+$someCoffee = new SimpleCoffee();
+echo $someCoffee->getCost(); // 10
+echo $someCoffee->getDescription(); // Simple Coffee
+
+$someCoffee = new MilkCoffee($someCoffee);
+echo $someCoffee->getCost(); // 12
+echo $someCoffee->getDescription(); // Simple Coffee, milk
+
+$someCoffee = new WhipCoffee($someCoffee);
+echo $someCoffee->getCost(); // 17
+echo $someCoffee->getDescription(); // Simple Coffee, milk, whip
+
+$someCoffee = new VanillaCoffee($someCoffee);
+echo $someCoffee->getCost(); // 20
+echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
+```
+Có thể thấy **someCoffee** có thể có thêm nhiều decorators cho phép bạn tự động thay đổi hành vi của **someCoffee** tại thời điểm chạy bằng cách gói chúng trong một đối tượng của lớp decorator.
+
 # Summary
 **Giống nhau:**
 
