@@ -1,7 +1,7 @@
 # OOP-2021
 Môn học Lập trình hướng đối tượng với Java
 
-# Bào cáo Design Pattern 
+# Báo cáo Design Pattern 
 
 Thành viên trong nhóm:
 + Bùi Minh Sơn 20021427
