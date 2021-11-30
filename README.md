@@ -11,7 +11,7 @@ Thành viên trong nhóm:
 Repo nhóm đã tìm được và phân tích: https://github.com/OmarElgabry/DesignPatterns/tree/master/src?fbclid=IwAR3zcvkF1NME6gIojqlXHsJEQnlaZ-fpN46HoGKMaSQouK-o_uOHSZNU6eU
 
 
-Điểm giống nhau:
+- Điểm giống nhau:
 
 Có kết cấu tương tự với mẫu chuẩn.
 
@@ -23,7 +23,7 @@ Khi chỉnh sửa thêm bớt thành phần thì không cần thay đổi code h
 
 Code sạch sẽ
 
-Điểm khác nhau:
+- Điểm khác nhau:
 
 Không nhiều do là 1 mẫu thiết kế tương tự mẫu thiết kế chuẩn.
 
