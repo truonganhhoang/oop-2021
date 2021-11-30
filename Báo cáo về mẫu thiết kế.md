@@ -301,7 +301,6 @@ Giống:
 	Circle circle2 = new Circle(20, 20, 100, new GreenCircle());
 	circle2.draw();
 	```
-Khác:
 * Không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế Bridge chuẩn.
 	
 ### Composite
@@ -483,7 +482,7 @@ Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi 
 * Có cấu trúc giống với mẫu thiết kế chuẩn
 Lấy hình ảnh từ đĩa làm ví dụ
 1. Tạo giao diện. (Image.java)
-	``java
+	```java
 	public interface Image {
 	   void display();
 	}
