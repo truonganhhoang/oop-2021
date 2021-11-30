@@ -1,15 +1,25 @@
-## ***Nhóm gồm các thành viên:***
+# Báo cáo về 23 mẫu thiết kế
 
-# **Nguyễn Anh Đức 20021336**
+***Nhóm em gồm các thành viên:***
 
-# **Nguyễn Thị Thúy Quỳnh 20021426**
+*Nguyễn Anh Đức 20021336*
 
-# **Đặng Thành Trung 20021455**
+*Nguyễn Thị Thúy Quỳnh 20021426*
 
+*Đặng Thành Trung 20021455*
 
-## *Các repo đã tìm được và phân tích:*
+Trong quá trình tìm kiếm, phân tích, nhóm em đã tìm được một số repo mã nguồn trên github có 23 mẫu thiết kế như sau.
+
+## Tóm tắt:
+*Nhóm em đã tìm được và phân tích 4 repo:
+	 1. https://github.com/shuleisanshi/myblog
+	 2. https://github.com/simple-android-framework/android_design_patterns_analysis
+	 3. https://github.com/braisdom/ObjectiveSql
+	 4. https://github.com/Anuken/Mindustry*
 
 ### Repo 1: Link https://github.com/shuleisanshi/myblog
+
+Repo này là mã nguồn của 1 blog cá nhân của tác giả. Tại đây, nhóm đã
 
 Mẫu thiết kế: Factory trong package service, mục đích tạo các lớp kế thừa các giao diện (ở đây đặc biệt ở chỗ: với mỗi giao diện chỉ có 1 lớp kế thừa)
 
