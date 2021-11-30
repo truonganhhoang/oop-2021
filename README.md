@@ -10,6 +10,7 @@ Thành viên trong nhóm:
 
 Repo nhóm đã tìm được và phân tích: https://github.com/OmarElgabry/DesignPatterns/tree/master/src?fbclid=IwAR3zcvkF1NME6gIojqlXHsJEQnlaZ-fpN46HoGKMaSQouK-o_uOHSZNU6eU
 
+sau đây là đánh giá của nhóm về design pattern
 
 ### Điểm giống nhau:
 
