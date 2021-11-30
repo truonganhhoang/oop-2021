@@ -210,7 +210,9 @@ public class ValidateCard {
 Interpreter Pattern được sử dụng bất cứ lúc nào chúng ta cần đánh giá, chuyển đổi bất kì loại ngữ pháp hay ngôn ngữ nào.
 Một ví dụ điển hình cho pattern này là google translate, nó sẽ nhận đầu vào và hiển thị cho chúng ta kết quả bằng ngôn ngữ khác.
 Một ví dụ khác đó là trình biên dịch Java. Trình biên dịch sẽ thông dịch mã Java và chuyển nó thành bytecode. Sau đó, JVM sử dụng để thực hiện các hoạt động trên thiết bị.
+
 public class Factorial {
+
     private static long factorial(int num) {
         if (num <= 1)        // 1! = 1, hence return 1 when the num becomes 1.
             return 1;
@@ -227,6 +229,7 @@ Template Method còn được gọi là Template Pattern được sử dụng đ
 Trong một số trường hợp, class abstract có thể đã bao gồm một phương thức đã được triển khai trước đó. Và dĩ nhiên nó sẽ được chia sẽ đến tất cả các lớp con.
 
 public abstract class CycleDetection {
+
     protected Graph graph;
     protected Set<Integer> visited;
     protected Set<Integer> exited;
@@ -267,6 +270,7 @@ Chain of Resppinsibility Pattern được sử dụng rất nhiều trong lập 
 Một điều quan trọng nữa là nó rất tiện dụng để tách sender ra khỏi receiver.
 
 public class IsConnected extends DFS{
+
     Graph graph;
 
     public IsConnected(Graph graph) {
@@ -293,6 +297,7 @@ Iterator Pattern được sử dụng rất nhiều trong Java, và được xem
 Pattern này có thể truy cập vào tất cả các phần tử của một collection object một cách tuần tự.
 	
 public interface Graph {
+
      boolean addVertex(Integer t);
 
      Double addEdge(Integer from, Integer to);
@@ -345,6 +350,7 @@ Memento Pattern liên quan đến các trạng thái trước đó của object.
 Khi chúng ta sử dụng pattern này để lưu lại các trạng thái đó, thì chúng ta có thể hoàn toàn khôi phục lại nó sau này.
 
 public class RecursiveCircus {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<String> list = new ArrayList<>();
@@ -399,6 +405,7 @@ Strategy Pattern được sử dụng trong các tình huống các thuật toá
 Tương tự như State Pattern, Strategy Pattern sử dụng nhiều object xác định, tùy thuộc vào các mục tiêu khác nhau.
 	
 public class Edge implements Comparable<Edge> {
+	
     private Double weight;
     private Integer from;
     private Integer to;
