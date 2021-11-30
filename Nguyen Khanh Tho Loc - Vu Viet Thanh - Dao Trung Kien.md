@@ -23,14 +23,21 @@ public class HibernateUtil {
   /**
    * Hibernate session factory to use.
    */
+   
   public final SessionFactory sessionFactory;
   private HibernateUtil() {
     sessionFactory = new Configuration().configure().buildSessionFactory();
   }
 }
 
+- So sánh: mẫu thiết kế trong Repo em tìm kiếm giống với mẫu gốc theo link. Cả 2 đều đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó (https://stackjava.com/design-pattern/singleton-pattern.html).
+
 2, Factory Method Design Pattern:
 - Định nghĩa Interface để sinh ra đối tượng nhưng để cho lớp con quyết định lớp nào được dùng để sinh ra đối tượng Factory method cho phép một lớp chuyển quá trình khởi tạo đối tượng cho lớp con.
+- Khi nào sử dụng mẫu thiết kế Factory Method:
+Khi việc implementation một interface hoặc một abstract class dự kiến sẽ thay đổi thường xuyên.
+Khi implementation hiện tại không thể dễ dàng thích ứng với thay đổi mới.
+Khi quá trình khởi tạo tương đối đơn giản và hàm tạo chỉ yêu cầu một số tham số.  
 
 ví dụ : trong CacheControlFilter.java 
 public class CacheControlFilter implements Filter {
@@ -53,15 +60,62 @@ public class CacheControlFilter implements Filter {
     // TODO pass
   }
 }
-Khi nào sử dụng mẫu thiết kế Factory Method:
-Khi việc implementation một interface hoặc một abstract class dự kiến sẽ thay đổi thường xuyên.
-Khi implementation hiện tại không thể dễ dàng thích ứng với thay đổi mới.
-Khi quá trình khởi tạo tương đối đơn giản và hàm tạo chỉ yêu cầu một số tham số.  
+
+Hoặc:
+ublic abstract class SafeTimerTask implements Runnable {
+
+  private static final Logger logger = Logger.getLogger(SafeTimerTask.class);
+
+  @Override
+  public final void run() {
+    try {
+      process();
+    } catch (final Exception e) {
+      logger.error("Exception running SafeTimerTask", e);
+    }
+  }
+
+  public abstract void process();
+
+}
+
+public class UserPingTask extends SafeTimerTask {
+
+  private final ConnectedUsers users;
+  private final ScheduledThreadPoolExecutor globalTimer;
+
+  @Inject
+  public UserPingTask(final ConnectedUsers users, final ScheduledThreadPoolExecutor globalTimer) {
+    this.users = users;
+    this.globalTimer = globalTimer;
+  }
+
+  @Override
+  public void process() {
+    users.checkForPingAndIdleTimeouts();
+    globalTimer.purge();
+  }
+}
+- So sánh: 
+mẫu thiết kế này định nghĩa 1 inteface để tạo các objects, nhưng để các class con quyết định loại class nào được tạo ra.
+giống với mẫu gốc nhưng ít các objects hơn.(https://stackjava.com/design-pattern/factory-pattern.html)
 
 
 3, Builder Design Pattern trong Constant.java:
 - Tách rời việc xây dựng (construction) một đối tượng phức tạp khỏi biểu diễn của nó sao cho cùng một tiến trình xây dựng có thể tạo được các biểu diễn khác nhau.
 
+
+Khi nào sử dụng mẫu thiết kế Builder:
+Khi xử lý liên quan đến việc tạo một đối tượng là vô cùng phức tạp, với rất nhiều tham số bắt buộc và tùy chọn
+Khi sự gia tăng số lượng tham số của hàm tạo dẫn đến một danh sách lớn các hàm tạo
+Khi client muốn các biểu diễn khác nhau cho đối tượng được xây dựng
+- So sánh: trả về nhiều thành phần còn của code mẫu thì nhiều hàm khác nhau hơn nhưng đều tạo được các biểu diễn khác nhau (https://stackjava.com/design-pattern/builder-pattern.html)
+
+
+4, Abstract Factory Design Pattern dùng trong Constants.java:
+Cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng
+
+ví dụ: trong code theo Repo
 @Override
     public String toString() {
       return event;
@@ -74,25 +128,19 @@ Khi quá trình khởi tạo tương đối đơn giản và hàm tạo chỉ y�
     public String getString() {
       return message;
     }
-Khi nào sử dụng mẫu thiết kế Builder:
-Khi xử lý liên quan đến việc tạo một đối tượng là vô cùng phức tạp, với rất nhiều tham số bắt buộc và tùy chọn
-Khi sự gia tăng số lượng tham số của hàm tạo dẫn đến một danh sách lớn các hàm tạo
-Khi client muốn các biểu diễn khác nhau cho đối tượng được xây dựng
- 
-
-4, Abstract Factory Design Pattern dùng trong Constants.java:
-Cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng
-
-ví dụ:
- public enum DisconnectReason implements Localizable{
- }
- public enum AjaxResponse implements ReturnableData{
- }
- public enum ErrorInformation implements ReturnableData{
- }
- public enum LongPollResponse implements ReturnableData{
- }
-
+- So sánh: rất giống với mấu thiết kế trong code mẫu theo link (https://stackjava.com/design-pattern/abstract-factory-pattern.html)
+  @Override
+  public String getRAM() {
+    return this.ram;
+  }
+  @Override
+  public String getHDD() {
+    return this.hdd;
+  }
+  @Override
+  public String getCPU() {
+    return this.cpu;
+  }
 5, Prototype Pattern:
 - Qui định loại của các đối tượng cần tạo bằng cách dùng một đối tượng mẫu, tạo mới nhờ vào sao chép đối tượng mẫu này.
 link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/creational/prototype/computer/Computer.java
@@ -134,6 +182,69 @@ public class Computer implements Cloneable {
 	public void setOthers(String others) {
 		this.others = others;
 	}
+}
+So sánh: có cấu trúc hoàn toàn giống với code mẫu theo link (https://stackjava.com/design-pattern/prototype-pattern.html)
+
+public class User {
+  private String firstName;
+  private String lastName;
+  private String displayName;
+  private String email;
+  private Address address;
+  public User() {
+  }
+  public User(String firstName, String lastName, String displayName, String email, Address address) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.displayName = displayName;
+    this.email = email;
+    this.address = address;
+  }
+  public String getFirstName() {
+    return firstName;
+  }
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+  public String getLastName() {
+    return lastName;
+  }
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+  public String getDisplayName() {
+    return displayName;
+  }
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
+  }
+  public String getEmail() {
+    return email;
+  }
+  public void setEmail(String email) {
+    this.email = email;
+  }
+  public Address getAddress() {
+    return address;
+  }
+  public void setAddress(Address address) {
+    this.address = address;
+  }
+  public User shallowCopy() {
+    User user = new User(this.firstName, this.lastName, this.displayName, this.email, this.address);
+    return user;
+  }
+  public User deepCopy() {
+    Address address = new Address(this.getAddress().getProvince(), this.getAddress().getDistrict(),
+        this.getAddress().getStreet());
+    User user = new User(this.firstName, this.lastName, this.displayName, this.email, address);
+    return user;
+  }
+  @Override
+  public String toString() {
+    return "User [firstName=" + firstName + ", lastName=" + lastName + ", displayName=" + displayName + ", email="
+        + email + ", address=" + address + "]";
+  }
 }
 
 ***Behavioral Design Patterns:
