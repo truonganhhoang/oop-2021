@@ -28,7 +28,7 @@ Factory Pattern được sử dụng khi có một class cha (super-class) với
 
 ## [Builder](https://github.com/square/retrofit/blob/master/retrofit-mock/src/main/java/retrofit2/mock/MockRetrofit.java) 
 
-```
+```Java
   public static final class Builder {
     private final Retrofit retrofit;
     private @Nullable NetworkBehavior behavior;
@@ -93,7 +93,7 @@ Bridge Pattern khá giống với mẫu Adapter Pattern ở chỗ là sẽ nhờ
 
 Ví dụ: Interface Weapon trừu tượng riêng biệt và có class Sword, Hammer cài đặt riêng biệt.
 
-```
+```Java
 public interface Weapon {
   void wield();
   void swing();
@@ -177,7 +177,7 @@ Trong Java cung cấp mẫu prototype pattern này bằng việc implement inter
 
 Đầu tiên khởi tạo một interface với 1 method để clone đối tượng.
 
-```
+```Java
 public interface Prototype {
   Object copy();
 }
@@ -185,7 +185,7 @@ public interface Prototype {
 
 Code ở đây có nhiều lớp các sinh vật khác nhau, ví dụ như Beast và OrcBeast.
 
-```
+```Java
 @EqualsAndHashCode
 @NoArgsConstructor
 public abstract class Beast implements Prototype {
@@ -223,7 +223,7 @@ public class OrcBeast extends Beast {
 
 Ta có thể tạo lớp HeroFactory và HeroFactoryImpl để sinh ra những sinh vật khác nhau từ prototypes.
 
-```
+```Java
 public interface HeroFactory {
   
   Mage createMage();
@@ -265,7 +265,7 @@ Hoàn tác (Undo) hoặc ctrl + z là một trong những thao tác được s�
 
 Ban đầu ta định nghĩa các loại ngôi sao cần xử lý.
 
-```
+```Java
 public enum StarType {
   SUN("sun"),
   RED_GIANT("red giant"),
@@ -279,7 +279,7 @@ public enum StarType {
 
 Tiếp theo ta có lớp Star để giải quyết với những trạng thái (các memento) mà chúng ta cần làm việc cùng.
 
-```
+```Java
 public interface StarMemento {
 }
 
@@ -355,7 +355,7 @@ public class Star {
 
 Và đây là cách ta sử dụng các memento để lưu và trả lại trạng thái cho các ngôi sao:
 
-```
+```Java
     var states = new Stack<>();
     var star = new Star(StarType.SUN, 10000000, 500000);
     LOGGER.info(star.toString());
@@ -388,7 +388,7 @@ Strategy Pattern là một trong những Pattern thuộc nhóm hành vi (Behavio
 
 Đầu tiên chúng ta có interface chứa chiến lược diệt rồng và cách cài đặt của nó:
 
-```
+```Java
 @FunctionalInterface
 public interface DragonSlayingStrategy {
 
@@ -426,7 +426,7 @@ public class SpellStrategy implements DragonSlayingStrategy {
 
 Và người diệt rồng sẽ chọn chiến lược phù hợp với đối thủ của mình.
 
-```
+```Java
 public class DragonSlayer {
 
   private DragonSlayingStrategy strategy;
@@ -459,7 +459,7 @@ DTO hoàn toàn không chứa behavior/ logic, chỉ được sử dụng để 
 
 Đầu tiên chúng ta có lớp CustomerDTO:
 
-```
+```Java
 public class CustomerDto {
   private final String id;
   private final String firstName;
@@ -488,7 +488,7 @@ public class CustomerDto {
 
 CustomerResource sẽ là server cho thông tin khách hàng.
 
-```
+```Java
 public class CustomerResource {
   private final List<CustomerDto> customers;
 
@@ -513,7 +513,7 @@ public class CustomerResource {
 
 Giờ việc thu thập thông tin của khách hàng trở nên dễ dàng hơn nhiều khi chúng ta có data transfer object.
 
-```
+```Java
     var allCustomers = customerResource.getAllCustomers();
     allCustomers.forEach(customer -> LOGGER.info(customer.getFirstName()));
     // Kelly
@@ -527,7 +527,7 @@ Abstract Factory pattern là một trong những Creational pattern. Nó là ph�
 
 >Ví dụ: Có rất nhiều kiểu vương quốc thì việc dùng Abstract Factory là hợp lý khi ta có thể lựa chọn các loại vương quốc khác nhau.
 
-```
+```Java
 // tao trước thành phần của kiểu vương quốc Elf
 public interface Castle {
   String getDescription();
@@ -602,7 +602,8 @@ Flyweight Pattern là một trong những Pattern thuộc nhóm cấu trúc (Str
 >Ví dụ: Một cửa hàng phép thuật bán rất nhiều thuốc, trong đó thay vì chúng ta tạo hàng loạt các Object mới cho từng loại thuốc thì ta có thể dùng 1 Object đại diện và dùng được cho tất cả các loại thuốc từ đó có thể giảm thiểu được dung lượng.
 
 Đầu tiên ta tạo rất nhiều loại thuốc
-```
+  
+```Java
 public interface Potion {
   void drink();
 }
@@ -632,7 +633,7 @@ public class InvisibilityPotion implements Potion {
 }
 ```
 Thay vì phải tạo từng loại thuốc thì với class PotionFactory thì ta đã có thể rút ngắn được việc tạo 1 Object mới
-```
+```Java
 public class PotionFactory {
 
   private final Map<PotionType, Potion> potions;
@@ -678,7 +679,7 @@ Iterator Pattern là một trong những Pattern thuộc nhóm hành vi (Behavio
 >Ví dụ: Rương kho báu có rất nhiều vật phẩm như nhẫn(rings), thuốc(potions) và vũ khí(weapons), ta có thể truy cập tuần tự bằng cách sử dụng Iterator pattern
 
 Đầu tiên ta tạo 1 rương có nhiều vật phẩm
-```
+```Java
 public class TreasureChest {
 
   private final List<Item> items;
@@ -708,7 +709,7 @@ public class TreasureChest {
 
 ```
 Sau đó ta định nghĩa lại Item 
-```
+```Java
 public class Item {
 
   private ItemType type;
@@ -740,7 +741,7 @@ public enum ItemType {
 }
 ```
 Sau đó ta chỉ việc tuần tự tìm vật phẩm trong rương.
-```
+```Java
 public interface Iterator<T> {
 
   boolean hasNext();
@@ -761,7 +762,7 @@ while (itemIterator.hasNext()) {
   
 ## [Singleton](https://github.com/iluwatar/java-design-patterns/tree/master/singleton)
 
-```
+```Java
   abstract class SingletonTest<S> {
   
   private final Supplier<S> singletonInstanceMethod;
@@ -816,7 +817,7 @@ while (itemIterator.hasNext()) {
   
   
 ## [Composite](https://github.com/iluwatar/java-design-patterns/tree/master/composite)
-```
+```Java
   package com.iluwatar.composite;
 
 import java.util.List;
