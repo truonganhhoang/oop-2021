@@ -72,7 +72,7 @@ public class AdvertisementAdapterDelegate extends AdapterDelegate<List<Displayab
   
 [**Repo 2**](https://github.com/youlookwhat/DesignPattern)  
 **Mẫu thiết kế:** trong dự án trên chúng ta có thể thấy được các mẫu thiết kế sau:  
-**Mẫu 1: [Adapter Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/adapter)**  
+*   **Mẫu 1: [Adapter Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/adapter)**  
 \- cho phép các inteface (giao diện) không liên quan tới nhau có thể làm việc cùng nhau  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ phần Adaptee là class V5Power  
@@ -139,7 +139,8 @@ public class AdapterActivity extends AppCompatActivity {
 ```
 **\=> Như vậy nó giống với mẫu chuẩn khai cài đặt theo cách Class Adapter – Inheritance** 
 
-**Mẫu 2: [Bridge Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/bridge)** \- được sử dụng để tách thành phần trừu tượng (abstraction) và thành phần thực thi (implementation) riêng biệt.  
+
+*   **Mẫu 2: [Bridge Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/bridge)** \- được sử dụng để tách thành phần trừu tượng (abstraction) và thành phần thực thi (implementation) riêng biệt.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ phần Implementor là class Shape  
 \+ phần Abstraction tương ứng với class DrawAPI  
@@ -186,7 +187,8 @@ public class BridgeActivity extends AppCompatActivity {
 ```
 **\=> Như vậy mẫu thiết kế này hoàn toàn giống với mẫu chuẩn** 
 
-**Mẫu 3: [Builder Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/builder)** \- Builder pattern là một trong những Creational pattern. Builder pattern là mẫu thiết kế đối tượng được tạo ra để xây dựng một đôi tượng phức tạp bằng cách sử dụng các đối tượng đơn giản và sử dụng tiếp cận từng bước, việc xây dựng các đối tượng đôc lập với các đối tượng khác.  
+
+*   **Mẫu 3: [Builder Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/builder)** \- Builder pattern là một trong những Creational pattern. Builder pattern là mẫu thiết kế đối tượng được tạo ra để xây dựng một đôi tượng phức tạp bằng cách sử dụng các đối tượng đơn giản và sử dụng tiếp cận từng bước, việc xây dựng các đối tượng đôc lập với các đối tượng khác.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ phần Product là class BuilderActivity  
 \+ phần Builder là class Builder  
@@ -211,7 +213,8 @@ public class Director {
 
 **\=> Như vậy nó nó có đầy đủ các thành phần của mẫu thiết kế Builder pattern chuẩn** 
 
-**Mẫu 4: [Chain of Responsibility](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/chainofresponsibility)** \- Chain of Responsiblity cho phép một đối tượng gửi một yêu cầu nhưng không biết đối tượng nào sẽ nhận và xử lý nó. Điều này được thực hiện bằng cách kết nối các đối tượng nhận yêu cầu thành một chuỗi (chain) và gửi yêu cầu theo chuỗi đó cho đến khi có một đối tượng xử lý nó. 
+
+*   **Mẫu 4: [Chain of Responsibility](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/chainofresponsibility)** \- Chain of Responsiblity cho phép một đối tượng gửi một yêu cầu nhưng không biết đối tượng nào sẽ nhận và xử lý nó. Điều này được thực hiện bằng cách kết nối các đối tượng nhận yêu cầu thành một chuỗi (chain) và gửi yêu cầu theo chuỗi đó cho đến khi có một đối tượng xử lý nó. 
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Handler : định nghĩa 1 interface để xử lý các yêu cầu. Gán giá trị cho đối tượng successor (không bắt buộc).
 ```java
@@ -248,7 +251,8 @@ public abstract class AbstractLogger {
 \+ Client : tạo ra các yêu cầu và yêu cầu đó sẽ được gửi đến các đối tượng tiếp nhận.  
 \=> Mẫu thiết kế này có đủ các thành phần như trong mẫu thiết kế Chain of Responsibility chuẩn** 
 
-**Mẫu 5: [Command Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/command)**  
+
+*   **Mẫu 5: [Command Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/command)**  
 \- cho phép tất cả những Request gửi đến object được lưu trữ trong chính object đó dưới dạng một object Command - giống như một class trung gian được tạo ra để lưu trữ các câu lệnh và trạng thái của object tại một thời điểm nào đó.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Command : là một interface hoặc abstract class, chứa một phương thức trừu tượng thực thi (execute) một hành động (operation) 
@@ -264,7 +268,8 @@ public interface Command {
 \+ Receiver : đây là thành phần thực sự xử lý business logic cho case request.  
 \=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Command Pattern chuẩn** 
 
-**Mẫu 6: [Composite Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/composite)**  
+
+*   **Mẫu 6: [Composite Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/composite)**  
 \- được sử dụng để tổng hợp những thành phần có quan hệ với nhau để tạo ra thành phần lớn hơn. Nó cho phép thực hiện các tương tác với tất cả đối tượng trong mẫu tương tự nhau.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Base Component : là một interface hoặc abstract class quy định các method chung cần phải có cho tất cả các thành phần tham gia vào mẫu này.  
@@ -274,7 +279,8 @@ public interface Command {
 \=> Trong mẫu này chỉ có 2 class CompositeActivity và Employee.Như vậy nó bị khuyết hai thành phần là Base Component và Leaf so với mẫu thiết kế Composite Pattern chuẩn** 
 
 
-**Mẫu 7: [Decorator Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/decorator)**  
+
+*   **Mẫu 7: [Decorator Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/decorator)**  
 \- cho phép người dùng thêm chức năng mới vào đối tượng hiện tại mà không muốn ảnh hưởng đến các đối tượng khác. Kiểu thiết kế này có cấu trúc hoạt động như một lớp bao bọc (wrap) cho lớp hiện có. Mỗi khi cần thêm tính năng mới, đối tượng hiện có được wrap trong một đối tượng mới (decorator class).  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Component: là một interface quy định các method chung cần phải có cho tất cả các thành phần tham gia vào mẫu này.  
@@ -284,7 +290,8 @@ public interface Command {
 \+ Client : đối tượng sử dụng Component.  
 \=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Decorator Pattern chuẩn** 
 
-**Mẫu 8: [Facade Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/facade)**  
+
+*   **Mẫu 8: [Facade Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/facade)**  
 \- cho phép các đối tượng truy cập trực tiếp giao diện chung này để giao tiếp với các giao diện có trong hệ thống con. Mục tiêu là che giấu các hoạt động phức tạp bên trong hệ thống con, làm cho hệ thống con dễ sử dụng hơn.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Facade: biết rõ lớp của hệ thống con nào đảm nhận việc đáp ứng yêu cầu của client, sẽ chuyển yêu cầu của client đến các đối tượng của hệ thống con tương ứng.  
@@ -292,14 +299,16 @@ public interface Command {
 \+ Client: đối tượng sử dụng Facade để tương tác với các subsystem.  
 \=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Facade Pattern chuẩn** 
 
-**Mẫu 9: [Factory Method Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/factory)**  
+
+*   **Mẫu 9: [Factory Method Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/factory)**  
 \- quản lý và trả về các đối tượng theo yêu cầu, giúp cho việc khởi tạo đổi tượng một cách linh hoạt hơn. Nó giống như một nhà máy, và nhà máy này sẽ “sản xuất” các đối tượng theo yêu cầu của chúng ta. **Mẫu thiết kế này có các thành phần sau:  
 \+ Super Class: một interface, abstract class hay một class thông thường.  
 \+ Sub Classes: các sub class sẽ implement các phương thức của supper class theo nghiệp vụ riêng của nó.  
 \+ Factory Class: một class chịu tránh nhiệm khởi tạo các đối tượng sub class dựa theo tham số đầu vào.  
 \=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Factory Method Pattern chuẩn** 
 
-**Mẫu 10: [Flyweight Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/flyweight)**  
+
+*   **Mẫu 10: [Flyweight Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/flyweight)**  
 \- cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ phần Flyweight là class Shape  
@@ -308,7 +317,8 @@ public interface Command {
 \+ phần Client thuộc class FlyweightActivity  
 \=> Như vậy mẫu thiết kế này khuyết phần UnsharedFlyweight so với mẫu thiết kế Flyweight Pattern chuẩn** 
 
-**Mẫu 11: [Interpreter Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/interpreter)**  
+
+*   **Mẫu 11: [Interpreter Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/interpreter)**  
 \- giúp người lập trình có thể “xây dựng” những đối tượng “động” bằng cách đọc mô tả về đối tượng rồi sau đó “xây dựng” đối tượng đúng theo mô tả đó.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Context tương ứng với class AndExpression và class OrExpression  
@@ -372,7 +382,8 @@ public class InterpreterActivity extends AppCompatActivity {
 ``` 
 **\=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Interpreter Pattern chuẩn**
 
-**Mẫu 12: [Iterator Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/iterator)**  
+
+*   **Mẫu 12: [Iterator Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/iterator)**  
 \-được sử dụng để cung cấp một cách thức truy cập tuần tự tới các phần tử của một đối tượng tổng hợp, mà không cần phải tạo dựng riêng các phương pháp truy cập cho đối tượng tổng hợp này.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ phần Aggregate là class Container  
@@ -381,7 +392,8 @@ public class InterpreterActivity extends AppCompatActivity {
 \+ phần ConcreteAggregate và ConcreteIterator được đặt chung trong class NameRepository  
 \=> Như vậy, nhìn chung nó có đầy đủ các thành phần như mẫu thiết kế Iterator Pattern, nhưng có một chút khác biệt về vị trí của các thành phần** 
 
-**Mẫu 13: [Mediator Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/mediator)**  
+
+*   **Mẫu 13: [Mediator Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/mediator)**  
 \- được sử dụng để giảm sự phức tạp trong “giao tiếp” giữa các lớp và các đối tượng. Mô hình này cung cấp một lớp trung gian có nhiệm vụ xử lý thông tin liên lạc giữa các tầng lớp, hỗ trợ bảo trì mã code dễ dàng bằng cách khớp nối lỏng lẻo.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Colleague : là một abstract class, giữ tham chiếu đến Mediator object.  
@@ -390,7 +402,8 @@ public class InterpreterActivity extends AppCompatActivity {
 \+ ConcreteMediator : cài đặt các phương thức của Mediator, biết và quản lý các Colleague object.  
 \=> Mẫu thiết kế này có sự khác biệt so với mẫu thiết kế Mediator Pattern chuẩn: Nó không có các lớp trừu trượng ở trên như trong mẫu thiết kế chuẩn** 
 
-**Mẫu 14: [Memento Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/memento)**  
+
+*   **Mẫu 14: [Memento Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/memento)**  
 \- là mẫu thiết kế có thể lưu lại trạng thái của một đối tượng để khôi phục lại sau này mà không vi phạm nguyên tắc đóng gói.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ phần Originator là class Originator  
@@ -399,7 +412,8 @@ public class InterpreterActivity extends AppCompatActivity {
 \+ Ngoài ra nó còn có một lớp để thực thi MementoActivity.  
 \=> Như vậy mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Memento Pattern chuẩn** 
 
-**Mẫu 15: [Observer Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/observer)**  
+
+*   **Mẫu 15: [Observer Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/observer)**  
 \- được sử dụng để định nghĩa mối phụ thuộc một – nhiều giữa các đối tượng để khi mà một đối tượng có sự thay đổi trạng thái, tất các thành phần phụ thuộc của nó sẽ được thông báo và cập nhật một cách tự động.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Subject : chứa danh sách các observer, cung cấp phương thức để có thể thêm và loại bỏ observer.  
@@ -408,7 +422,8 @@ public class InterpreterActivity extends AppCompatActivity {
 \+ ConcreteObserver : cài đặt các phương thức của Observer, lưu trữ trạng thái của subject, thực thi việc cập nhật để giữ cho trạng thái đồng nhất với subject gửi thông báo đến.  
 \=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Observer Pattern chuẩn** 
 
-**Mẫu 16: [Prototype Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/prototype)**  
+
+*   **Mẫu 16: [Prototype Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/prototype)**  
 \- có nhiệm vụ khởi tạo một đối tượng bằng cách clone một đối tượng đã tồn tại thay vì khởi tạo với từ khoá new.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Prototype : khai báo một class, interface hoặc abtract class cho việc clone chính nó.  
@@ -416,7 +431,8 @@ public class InterpreterActivity extends AppCompatActivity {
 \+ Client class : tạo mới object bằng cách gọi Prototype thực hiện clone chính nó.  
 \=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Prototype Pattern chuẩn** 
 
-**Mẫu 17: [Proxy Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/proxy)**  
+
+*   **Mẫu 17: [Proxy Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/proxy)**  
 \- được sử dụng để tạo ra một đối tượng sẽ ủy quyền, thay thế cho một đối tượng khác.  
 **Mẫu thiết kế này có các thành phần sau:  
 phần Subject tương ứng với class Image  
@@ -425,11 +441,13 @@ phần Subject tương ứng với class Image
 \+ phần Client tương ứng với class ProxyActivity  
 \=> Như vậy mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Proxy Pattern chuẩn** 
 
-**Mẫu 18: [Singleton Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/singleton)**  
+
+*   **Mẫu 18: [Singleton Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/singleton)**  
 \-được sử dụng để đảm bảo chỉ duy nhất một thể hiện (instance) được tạo ra và nó sẽ cung cấp cho bạn một method để có thể truy xuất được thể hiện duy nhất đó mọi lúc mọi nơi trong chương trình.  
 **Mẫu thiết kế trong dự án đã mô tả rất nhiều cách implement singleton dựa trên những nguyên tắc thiết kế Singleton và hoàn toàn giống với mẫu thiết kế Singleton Pattern chuẩn** 
 
-**Mẫu 19: [State Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/state)**  
+
+*   **Mẫu 19: [State Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/state)**  
 \- cho phép một đối tượng thay đổi hành vi của nó khi trạng thái nội bộ của nó thay đổi. Đối tượng sẽ xuất hiện để thay đổi lớp của nó.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Context : được sử dụng bởi Client. Client không truy cập trực tiếp đến State của đối tượng. Lớp Context này chứa thông tin của ConcreteState object, cho hành vi nào tương ứng với trạng thái nào hiện đang được thực hiện.  
@@ -437,7 +455,8 @@ phần Subject tương ứng với class Image
 \+ ConcreteState : cài đặt các phương thức của State. Mỗi ConcreteState có thể thực hiện logic và hành vi của riêng nó tùy thuộc vào Context.  
 \=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế State Pattern chuẩn** 
 
-**Mẫu 20: [Strategy Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/strategy)**  
+
+*   **Mẫu 20: [Strategy Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/strategy)**  
 \- cho phép định nghĩa tập hợp các thuật toán, đóng gói từng thuật toán lại, và dễ dàng thay đổi linh hoạt các thuật toán bên trong object. Strategy cho phép thuật toán biến đổi độc lập khi người dùng sử dụng chúng.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Strategy : định nghĩa các hành vi có thể có của một Strategy.  
@@ -445,14 +464,16 @@ phần Subject tương ứng với class Image
 \+ Context : chứa một tham chiếu đến đối tượng Strategy và nhận các yêu cầu từ Client, các yêu cầu này sau đó được ủy quyền cho Strategy thực hiện.  
 \=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Strategy Pattern chuẩn** 
 
-**Mẫu 21: [Template Method Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/templatemethod)**
+
+*   **Mẫu 21: [Template Method Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/templatemethod)**
 \- cho phép lớp con định nghĩa lại cách thực hiện của một thuật toán, mà không phải thay đổi cấu trúc thuật toán.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ AbstractClass : Định nghĩa các phương thức trừu tượng cho từng bước có thể được điều chỉnh bởi các lớp con.  
 \+ ConcreteClass : là một thuật toán cụ thể, cài đặt các phương thức của AbstractClass. Các thuật toán này ghi đè lên các phương thức trừu tượng để cung cấp các triển khai thực sự. Nó không thể ghi đè phương thức duy nhất đã được cài đặt ở AbstractClass (templateMethod).  
 \=> Mẫu thiết kế này hoàn toàn giống với mẫu thiết kế Template Method Pattern chuẩn do có AbstractClass tương ứng class Worker và ConcreteClass bao gồm các class còn lại** 
 
-**Mẫu 22: [Visitor Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/visitor)**
+
+*   **Mẫu 22: [Visitor Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/visitor)**
 \- Cho phép định nghĩa các thao tác (operations) trên một tập hợp các đối tượng (objects) không đồng nhất (về kiểu) mà không làm thay đổi định nghĩa về lớp (classes) của các đối tượng đó.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Visitor : Là một interface hoặc một abstract class được sử dụng để khai báo các hành vi cho tất cả các loại visitor. Class này định nghĩa một loạt các các phương thức truy cập chấp nhận các ConcreteElement cụ thể khác nhau làm tham số. Điều này sẽ hơi giống với cơ chế nạp chồng (overloading) nhưng các loại tham số nên khác nhau do đó các hành vi hoàn toàn khác nhau. Các hành vi truy cập sẽ được thực hiện trên từng phần tử cụ thể trong cấu trúc đối tượng thông qua phương thức visit(). Loại phần tử cụ thể đầu vào sẽ quyết định phương thức được gọi.  
@@ -575,5 +596,4 @@ public class VisitorActivity extends AppCompatActivity {
 ```
 **\=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Visitor Pattern chuẩn.**
 
-**_せんせいしね_**
  
