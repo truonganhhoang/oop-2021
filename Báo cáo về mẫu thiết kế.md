@@ -783,16 +783,16 @@ Truy xuất các phần tử của đối tượng dạng tập hợp tuần t�
 	    }
 	}
 	```
-3. Sử dụng đối tượng User để hiển thị giao tiếp giữa chúng.
-	   ```java
-	   User jingbin = new User("jingbin");
-	   jingbin.sendMessage("Hi~ youlookwhat!");
-	   //---: Sun Feb 02 08:11:47 GMT+00:00 2020 [jingbin] : Hi~ youlookwhat!
-
-	   User jingbin = new User("youlookwhat");
-	   jingbin.sendMessage("Hi~ jingbin!");
-	   //---: Sun Feb 02 08:11:49 GMT+00:00 2020 [youlookwhat] : Hi~ jingbin!
-	   ```
+3. Sử dụng đối tượng User để hiển thị giao tiếp giữa chúng:
+    ```java
+    User jingbin = new User("jingbin");
+    jingbin.sendMessage("Hi~ youlookwhat!");
+    //---: Sun Feb 02 08:11:47 GMT+00:00 2020 [jingbin] : Hi~ youlookwhat!
+    
+    User jingbin = new User("youlookwhat");
+    jingbin.sendMessage("Hi~ jingbin!");
+    //---: Sun Feb 02 08:11:49 GMT+00:00 2020 [youlookwhat] : Hi~ jingbin!
+    ```
 4. Bên cạnh đó, còn có: 
 *[MediatorActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/mediator/MediatorActivity.java)* 
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
