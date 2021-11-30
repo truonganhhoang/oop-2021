@@ -6,7 +6,7 @@ Bài báo cáo design pattern môn lập trình hướng đối tượng
 *   Đỗ Quang Huy - _20021365_
 *   Nguyễn Văn Khánh - _20021375_
 
-_Sau đây là kết quả tìm hiểu của nhóm em về các repo áp dụng design pattern._
+_Sau đây là kết quả tìm hiểu của nhóm mình về cách áp dụng design pattern của một số repo._
 
   
 [**Repo 1**](https://github.com/sockeqwe/AdapterDelegates/)  
@@ -595,5 +595,8 @@ public class VisitorActivity extends AppCompatActivity {
 }
 ```
 **\=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Visitor Pattern chuẩn.**
+
+
+_Bên trên là tất cả kết quả tìm hiểu của nhóm mình, nếu có thiếu sót hay có gì cần bổ sung mong sẽ được các bạn ghi ở dưới comment!_
 
  
