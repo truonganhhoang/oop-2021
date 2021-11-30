@@ -582,4 +582,4 @@ Khắc phục việc ghép cặp giữa bộ gởi và bộ nhận thông điệ
 - Khác nhau: không có sự khác nhau.
 
 ## **4. Kết luận**
-Nhìn chung, các mẫu thiết kế dùng trong project trên không có sự khác biệt so với các mẫu thiết kế tiêu chuẩn. 
+Nhìn chung, 23 mẫu thiết kế dùng trong project trên không có sự khác biệt so với 23 mẫu thiết kế tiêu chuẩn. 
