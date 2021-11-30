@@ -677,6 +677,7 @@ Cho phép một đối tượng thay đổi hành vi khi trạng thái bên tron
 * Lớp thực thi interface trạng thái tương ứng:
 + *[WinnerState.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/WinnerState.java)*: winner status.
 + *[SoldState.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/SoldState.java)*: Trạng thái đã bán.
+
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Iterator: 
@@ -688,6 +689,7 @@ Truy xuất các phần tử của đối tượng dạng tập hợp tuần t�
 1. Tạo interface Iterator, Container.
 2. Tạo một lớp thực thể triển khai interface Container. Lớp này có một NameIterator của lớp bên trong thực hiện interface Iterator.
 3. Sử dụng NameRepository để lấy trình lặp và in tên.
+
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Mediator: 
@@ -707,25 +709,26 @@ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối t�
 
 ### Interpreter: Hỗ trợ việc định nghĩa biểu diễn văn phạm và bộ thông dịch cho một ngôn ngữ. Trong phần này:
 1. Tạo interface Expression.
- ```public interface Expression {
-    public boolean interpreter(String content);
-}
-```
+	 ```public interface Expression {
+	    public boolean interpreter(String content);
+	}
+	```
 2. Tạo một lớp thực thể thực hiện interface trên. TerminalExpression, OrExpression, AndExpression.
 * ```public class TerminalExpression implements Expression {
 
 	private String data;
-	
+
 	public TerminalExpression(String data) {
-	    this.data = data;
+		   this.data = data;
 	}
-	
+
 	@Override
 	public boolean interpreter(String content) {
-	   // 是包含判断
-	    return content.contains(data);
+		  // 是包含判断
+		   return content.contains(data);
 	}
-}```
+}
+```
 
 * ```public class OrExpression implements Expression {
 
@@ -741,7 +744,8 @@ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối t�
     public boolean interpreter(String content) {
         return expression1.interpreter(content) || expression2.interpreter(content);
     }
-}```
+}
+```
 
 * ```public class AndExpression implements Expression {
 
@@ -757,7 +761,8 @@ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối t�
     public boolean interpreter(String content) {
         return expression1.interpreter(content) && expression2.interpreter(content);
     }
-}```
+}
+```
 
 3. Sử dụng class Expression để tạo các quy tắc và phân tích cú pháp chúng.
 ```/**
