@@ -7,9 +7,14 @@ Môn học Lập trình hướng đối tượng với Java
  ## 2. Cấn Mạnh Hùng - 20021364
  ## 3. Nguyễn Phúc Nguyên - 20021406
 
-### **Cách thức thực hiện bài báo cáo**: Mỗi thành viên làm phần bài báo cáo của mình rồi commit vào reposition của nhóm ([Link reposition của nhóm]), bạn Đỗ Ngọc Long tổng hợp và sắp xếp phần báo cáo của các thành viên vào file báo cáo của nhóm.
+
+
+ **[Link đến reposition được sử dụng trong bài báo cáo mà nhóm đã tìm được và phân tích]: https://github.com/Naphier/unity-design-patterns **.
  
- - **[Link đến reposition được sử dụng trong bài báo cáo] (https://github.com/Naphier/unity-design-patterns)**
+- bài báo cáo dựa trên sự đóng góp của các thành viên qua trao đổi để viết nên.
+
+## Phân tích mẫu thế kế
+
 
 ## Abstract Factory:
 -	Cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần quy định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng.
