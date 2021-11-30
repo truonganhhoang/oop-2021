@@ -8,7 +8,7 @@ Thành viên trong nhóm:
 + Nông Ngọc Sơn 20021430
 + Nguyễn Đức Dũng 20020181
 
-Repo đã tìm được và phân tích: https://github.com/OmarElgabry/DesignPatterns/tree/master/src?fbclid=IwAR3zcvkF1NME6gIojqlXHsJEQnlaZ-fpN46HoGKMaSQouK-o_uOHSZNU6eU
+Repo nhóm đã tìm được và phân tích: https://github.com/OmarElgabry/DesignPatterns/tree/master/src?fbclid=IwAR3zcvkF1NME6gIojqlXHsJEQnlaZ-fpN46HoGKMaSQouK-o_uOHSZNU6eU
 
 
 Điểm giống nhau:
