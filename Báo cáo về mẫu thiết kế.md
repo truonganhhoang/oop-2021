@@ -707,12 +707,14 @@ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối t�
 
 ### Interpreter: Hỗ trợ việc định nghĩa biểu diễn văn phạm và bộ thông dịch cho một ngôn ngữ. Trong phần này:
 1. Tạo interface Expression.
-	```public interface Expression {
+	```java
+	public interface Expression {
 	    public boolean interpreter(String content);
 	}
 	```
 2. Tạo một lớp thực thể thực hiện interface trên. TerminalExpression, OrExpression, AndExpression.
-	```public class TerminalExpression implements Expression {
+	```java
+	public class TerminalExpression implements Expression {
 
 		private String data;
 
@@ -728,7 +730,8 @@ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối t�
 	}
 	```
 
-	```public class OrExpression implements Expression {
+	```java
+	public class OrExpression implements Expression {
 
 	    private Expression expression1;
 	    private Expression expression2;
@@ -745,7 +748,8 @@ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối t�
 	}
 	```
 
-	```public class AndExpression implements Expression {
+	```java
+	public class AndExpression implements Expression {
 
 	    private Expression expression1;
 	    private Expression expression2;
@@ -763,7 +767,8 @@ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối t�
 	```
 
 3. Sử dụng class Expression để tạo các quy tắc và phân tích cú pháp chúng.
-	```/**
+	```java
+	/**
 	 * 规则：jingbin 和 youlookwhat 是男性
 	 */
 	public static Expression getMaleExpression() {
