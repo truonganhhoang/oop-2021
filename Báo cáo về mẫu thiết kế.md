@@ -299,8 +299,7 @@ Lấy hình ảnh từ đĩa làm ví dụ
 	public void notifyObservers();
 	 ```
 * ObjectFor3D.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/classs/ObjectFor3D.java) : Lớp triển khai của 3D service number.
-	```
-	@Override
+	```@Override
 	public void registerObserver(Observer observer) {
 	    observers.add(observer);
 	}
@@ -324,21 +323,19 @@ Lấy hình ảnh từ đĩa làm ví dụ
 	    this.msg = msg;
 	    notifyObservers();
 	}
-	    ```
-* Observer.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/interfaces/Observer.java): Tất cả observer đều cần triển khai interface này.
 	```
-	 public ObserverUser1(Subject subject) {
+* Observer.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/interfaces/Observer.java): Tất cả observer đều cần triển khai interface này.
+	```public ObserverUser1(Subject subject) {
 	    subject.registerObserver(this);
 	}
 	@Override
 	public void update(String msg) {
 	    Log.e("-----ObserverUser1 ", "得到 3D 号码:" + msg + ", 我要记下来。");
 	}
-	   ```
+	```
 
 * ObserverActivity.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/ObserverActivity.java): final test
-	```
-	// 创建服务号
+	```// 创建服务号
 	 objectFor3D = new ObjectFor3D();
 	 // 创建两个订阅者
 	 observerUser1 = new ObserverUser1(objectFor3D);
@@ -346,14 +343,13 @@ Lấy hình ảnh từ đĩa làm ví dụ
 	 // 两个观察者,发送两条信息
 	 objectFor3D.setMsg("201610121 的3D号为:127");
 	 objectFor3D.setMsg("20161022 的3D号为:000");
-	   ```
+	 ```
 
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Command: Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc thành một đối tượng. Các yêu cầu sẽ được lưu trữ và gởi đi như các đối tượng.Đóng gói request vào trong một Object, nhờ đó có thể nthông số hoá chương trình nhận request và thực hiện các thao tác trên request: sắp xếp, log, undo… Một số file mà sự án sử dụng Command:
 * Door.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/Door.java): API của thiết bị gia dụng.
-	```
-	package com.example.jingbin.designpattern.command;
+	```package com.example.jingbin.designpattern.command;
 
 	import android.util.Log;
 
@@ -383,8 +379,7 @@ Lấy hình ảnh từ đĩa làm ví dụ
 ### Status: Cho phép một đối tượng thay đổi hành vi khi trạng thái bên trong của nó thay đổi, ta có cảm giác như class của đối tượng bị thay đổi. Một số file mà sự án sử dụng Status:
 * VendingMachine.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/old/VendingMachine.java): Nhận diện ban đầu về máy bán hàng tự động cần được cải tiến.
 * VendingMachineBetter.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/VendingMachineBetter.java): Máy máy bán hàng tự động cần được cải tiến.
-	```
-	// 放钱
+	```// 放钱
 	public void insertMoney() {
 	    currentState.insertMoney();
 	}
@@ -410,7 +405,7 @@ Lấy hình ảnh từ đĩa làm ví dụ
 	public void setState(State state) {
 	    this.currentState = state;
 	}
-	   ```
+	```
 
 * State.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/State.java): status interface
 * Lớp thực thi interface trạng thái tương ứng:
