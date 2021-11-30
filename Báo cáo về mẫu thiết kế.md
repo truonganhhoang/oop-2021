@@ -714,7 +714,7 @@ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối t�
 	}
 	```
 2. Tạo một lớp thực thể thực hiện interface trên. TerminalExpression, OrExpression, AndExpression.
-* ```public class TerminalExpression implements Expression {
+```public class TerminalExpression implements Expression {
 
 	private String data;
 
@@ -730,7 +730,7 @@ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối t�
 }
 ```
 
-* ```public class OrExpression implements Expression {
+```public class OrExpression implements Expression {
 
     private Expression expression1;
     private Expression expression2;
@@ -747,7 +747,7 @@ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối t�
 }
 ```
 
-* ```public class AndExpression implements Expression {
+```public class AndExpression implements Expression {
 
     private Expression expression1;
     private Expression expression2;
