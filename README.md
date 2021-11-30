@@ -30,10 +30,48 @@ Không nhiều do là 1 mẫu thiết kế tương tự mẫu thiết kế chu�
 •	Singleton:
 o	Đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó.
  vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/singleton
+ package singleton.classic;
+
+public class Database {
+
+	private static Database database = null;
+	
+	private Database(){}
+	
+	public static Database getInstance(){
+		if(database == null){
+			database = new Database();
+		}
+		return database;
+	}
+	
+	public void display(){
+		System.out.println("I'm the Classic Singleton");
+		System.out.println("Be Caution: I'm NOT thread safe");
+	}
+}
  
 •	Abstract Factory:
 o	Cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/factory/abstr
+package factory.abstr;
+
+public class MammalsFactory extends AnimalFactory{
+
+	@Override
+	public Animal create(String animal) {
+		
+		animal = animal.toUpperCase();
+
+		if(animal.equals("CAT")){
+			return new Cat();
+		}else if(animal.equals("FOX")){
+			return new Fox();
+		}
+		return null;
+	}
+
+}
 
 •	Factory Method:
 o	Định nghĩa Interface để sinh ra đối tượng nhưng để cho lớp con quyết định lớp nào được dùng để sinh ra đối tượng Factory method cho phép một lớp chuyển quá trình khởi tạo đối tượng cho lớp con.
