@@ -100,16 +100,176 @@ vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/decorator
 o	Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/iterator
 
+//separate
+public class MyList implements Iterable<String>{
+
+	private static final int MAX_SIZE = 6;
+	private int length = 0;
+	private String list[];
+
+	public MyList(){
+		list = new String[MAX_SIZE];
+	}
+	
+	public void addItem(String str){
+		if(length >= MAX_SIZE){
+			System.out.println("The list is full, You can't add anymore");
+		}else{
+			list[length++] = str;
+		}
+	}
+	
+	@Override
+	public Iterator<String> iterator() {
+		return new ListIterator(list, length);
+	}
+}
+	
+//single
+public class MyList implements Iterable<String>{
+
+	private static final int MAX_SIZE = 6;
+	private int length = 0;
+	private String list[];
+
+	public MyList(){
+		list = new String[MAX_SIZE];
+	}
+	
+	public void addItem(String str){
+		if(length >= MAX_SIZE){
+			System.out.println("The list is full, You can't add anymore");
+		}else{
+			list[length++] = str;
+		}
+	}
+	
+	@Override
+	public Iterator<String> iterator() {
+		return new ListIterator(list);
+	}
+	
+	private class ListIterator implements Iterator<String> {
+
+		private String list[];
+		private int size = 0;
+		private int curIndex = 0;
+		
+		public ListIterator(String[] list) {
+			this.list = list;
+			this.size = length;
+		}
+		
+		@Override
+		public boolean hasNext() {
+			return size > curIndex;
+		}
+
+		@Override
+		public String next() {
+			if (!hasNext()) {
+				throw new NoSuchElementException();
+			}
+			return list[curIndex++];
+		}
+		
+		public void remove(){
+			throw new UnsupportedOperationException(); 
+		}
+	}
+}
+	
 •	State: 
 o	Cho phép một đối tượng thay đổi hành vi khi trạng thái bên trong của nó thay đổi, ta có cảm giác như class của đối tượng bị thay đổi.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/state
+
+public class Microwave {
+
+	private State WaitingState;
+	private State WorkingState;
+	private State PausedState;
+
+	private State curState;
+	
+	public Microwave(){
+		WaitingState = new WaitingState(this);
+		WorkingState = new WorkingState(this);
+		PausedState  = new PausedState(this);
+		
+		curState  = WaitingState;
+	}
+	
+	public void start(){
+		curState.start();
+	}
+	
+	public void pause(){
+		curState.pause();
+	}
+	
+	public void stop(){
+		curState.stop();
+	}
+	
+	public void setCurState(State state){
+		curState = state;
+	}
+	
+	public State getWaitingState() {
+		return WaitingState;
+	}
+
+	public State getWorkingState() {
+		return WorkingState;
+	}
+
+	public State getPausedState() {
+		return PausedState;
+	}
+	
+}
 
 •	Observer: 
 o	Định nghĩa sự phụ thuộc một-nhiều giữa các đối tượng sao cho khi một đối tượng thay đổi trạng thái thì tất cả các đối tượng phụ thuộc nó cũng thay đổi theo.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/observer
 
+public class Subscriber implements Observer{
+
+	private String name;
+	
+	public Subscriber(String _name, Observable observable){
+		name = _name;
+		observable.addObserver(this);
+	}
+	
+	@Override
+	public void update(Observable observable, Object arg) {
+		if(observable instanceof Newsletter){
+			System.out.println("Subscriber " + name + " was notified " + observable);			
+		}
+	}
+
+	
+}
+
 •	Strategy: 
 o	Bao bọc một họ các thuật toán bằng các lớp đối tượng để thuật toán có thể thay đổi độc lập đối với chương trình sử dụng thuật toán.Cung cấp một họ giải thuật cho phép client chọn lựa linh động một giải thuật cụ thể khi sử dụng.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/strategy
 
-
+public abstract class Customer {
+	
+	private Payment payment;
+	
+	public Customer(){
+	}
+	
+	public void setPayment(Payment _payment){
+		payment = _payment;
+	}
+	
+	public void purchase(int amount){
+		payment.make(amount);
+	}
+	
+	public abstract void display();
+}
