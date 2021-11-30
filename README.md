@@ -110,6 +110,7 @@ o	Truy xuất các phần tử của đối tượng dạng tập hợp tuần t
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/iterator
 
 //separate
+
 public class MyList implements Iterable<String>{
 
 	private static final int MAX_SIZE = 6;
@@ -135,6 +136,7 @@ public class MyList implements Iterable<String>{
 }
 	
 //single
+	
 public class MyList implements Iterable<String>{
 
 	private static final int MAX_SIZE = 6;
