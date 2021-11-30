@@ -857,37 +857,37 @@ Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối t�
 	}
 	```
 4. Sử dụng các đối tượng CareTaker và Originator:
-```java
-// 管理者
-CareTaker careTaker = new CareTaker();
+	```java
+	// 管理者
+	CareTaker careTaker = new CareTaker();
 
-Originator originator = new Originator();
-originator.setState("State #1");
-originator.setState("State #2");
+	Originator originator = new Originator();
+	originator.setState("State #1");
+	originator.setState("State #2");
 
-// 保存状态
-careTaker.add(originator.setSateToMemento());
+	// 保存状态
+	careTaker.add(originator.setSateToMemento());
 
-originator.setState("State #3");
+	originator.setState("State #3");
 
-// 保存状态
-careTaker.add(originator.setSateToMemento());
+	// 保存状态
+	careTaker.add(originator.setSateToMemento());
 
-originator.setState("State #4");
+	originator.setState("State #4");
 
-Log.e("---", "Current State: " + originator.getState());
-// 得到保存的状态
-String fromMemento1 = originator.getStateFromMemento(careTaker.get(0));
-Log.e("---", "First Saved State: " + fromMemento1);
-String fromMemento2 = originator.getStateFromMemento(careTaker.get(1));
-Log.e("---", "Second Saved State: " + fromMemento2);
+	Log.e("---", "Current State: " + originator.getState());
+	// 得到保存的状态
+	String fromMemento1 = originator.getStateFromMemento(careTaker.get(0));
+	Log.e("---", "First Saved State: " + fromMemento1);
+	String fromMemento2 = originator.getStateFromMemento(careTaker.get(1));
+	Log.e("---", "Second Saved State: " + fromMemento2);
 
-/*
- * /---: Current State: State #4
- * /---: First Saved State: State #2
- * /---: Second Saved State: State #3
- */
- ```
+	/*
+	 * /---: Current State: State #4
+	 * /---: First Saved State: State #2
+	 * /---: Second Saved State: State #3
+	 */
+	 ```
 5. Bên cạch đó, còn có:
 *[MementoActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/MementoActivity.java)*
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
