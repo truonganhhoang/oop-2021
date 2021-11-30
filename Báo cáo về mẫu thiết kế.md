@@ -681,28 +681,119 @@ Cho phép một đối tượng thay đổi hành vi khi trạng thái bên tron
 
 ### Iterator: 
 Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử. Trong phần này:
-* Tạo interface Iterator, Container.
-* Tạo một lớp thực thể triển khai interface Container. Lớp này có một NameIterator của lớp bên trong thực hiện interface Iterator.
-* Sử dụng NameRepository để lấy trình lặp và in tên.
+* *[Container.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/Container.java)*
+* *[Iterator.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/Iterator.java)*
+* *[IteratorActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/IteratorActivity.java)*
+* *[NameRepository.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/iterator/NameRepository.java)*
+1. Tạo interface Iterator, Container.
+2. Tạo một lớp thực thể triển khai interface Container. Lớp này có một NameIterator của lớp bên trong thực hiện interface Iterator.
+3. Sử dụng NameRepository để lấy trình lặp và in tên.
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Mediator: 
 Định nghĩa một đối tượng để bao bọc việc giao tiếp giữa một số đối tượng với nhau. 
+* *[CharRoom.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/mediator/CharRoom.java)*
+* *[MediatorActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/mediator/MediatorActivity.java)*
+* *[User.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/mediator/User.java)*
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Memento: 
 Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối tượng mà vẫn không vi phạm việc bao bọc dữ liệu. 
+* *[CareTaker.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/CareTaker.java)*
+* *[Memento.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/Memento.java)*
+* *[MementoActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/MementoActivity.java)*
+* *[Originator.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/memento/Originator.java)*
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Interpreter: Hỗ trợ việc định nghĩa biểu diễn văn phạm và bộ thông dịch cho một ngôn ngữ. Trong phần này:
-* Tạo interface Expression.
-* Tạo một lớp thực thể thực hiện interface trên. TerminalExpression, OrExpression, AndExpression.
-* Sử dụng class Expression để tạo các quy tắc và phân tích cú pháp chúng.
+1. Tạo interface Expression.
+ ```public interface Expression {
+    public boolean interpreter(String content);
+}
+```
+2. Tạo một lớp thực thể thực hiện interface trên. TerminalExpression, OrExpression, AndExpression.
+* ```public class TerminalExpression implements Expression {
+
+	private String data;
+	
+	public TerminalExpression(String data) {
+	    this.data = data;
+	}
+	
+	@Override
+	public boolean interpreter(String content) {
+	   // 是包含判断
+	    return content.contains(data);
+	}
+}```
+
+* ```public class OrExpression implements Expression {
+
+    private Expression expression1;
+    private Expression expression2;
+
+    public OrExpression(Expression expression1, Expression expression2) {
+        this.expression1 = expression1;
+        this.expression2 = expression2;
+    }
+
+    @Override
+    public boolean interpreter(String content) {
+        return expression1.interpreter(content) || expression2.interpreter(content);
+    }
+}```
+
+* ```public class AndExpression implements Expression {
+
+    private Expression expression1;
+    private Expression expression2;
+
+    public AndExpression(Expression expression1, Expression expression2) {
+        this.expression1 = expression1;
+        this.expression2 = expression2;
+    }
+
+    @Override
+    public boolean interpreter(String content) {
+        return expression1.interpreter(content) && expression2.interpreter(content);
+    }
+}```
+
+3. Sử dụng class Expression để tạo các quy tắc và phân tích cú pháp chúng.
+```/**
+ * 规则：jingbin 和 youlookwhat 是男性
+ */
+public static Expression getMaleExpression() {
+    TerminalExpression jingbin = new TerminalExpression("jingbin");
+    TerminalExpression youlookwhat = new TerminalExpression("youlookwhat");
+    return new OrExpression(jingbin, youlookwhat);
+}
+
+/**
+ * 规则：Julie 是一个已婚的女性
+ */
+public static Expression getMarriedWomanExpression() {
+    TerminalExpression julie = new TerminalExpression("Julie");
+    TerminalExpression married = new TerminalExpression("Married");
+    return new AndExpression(julie, married);
+}
+
+Expression maleExpression = getMaleExpression();
+// jingbin is male: true
+Log.e("---", "jingbin is male: " + maleExpression.interpreter("jingbin"));
+
+Expression womanExpression = getMarriedWomanExpression();
+// Julie is married woman: true
+Log.e("---", "Julie is married woman: " + womanExpression.interpreter("Married Julie"));
+```
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Chain of Responsibility: 
 Khắc phục việc ghép cặp giữa bộ gởi và bộ nhận thông điệp. Các đối tượng nhận thông điệp được kết nối thành một chuỗi và thông điệp được chuyển dọc theo chuỗi nầy đến khi gặp được đối tượng xử lý nó. Tránh việc gắn kết cứng giữa phần tử gởi request với phần tử nhận và xử lý request bằng cách cho phép hơn 1 đối tượng có có cơ hội xử lý request. Liên kết các đối tượng nhận request thành 1 dây chuyền rồi gửi request xuyên qua từng đối tượng xử lý đến khi gặp đối tượng xử lý cụ thể. 
+* *[AbstractLogger.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/chainofresponsibility/AbstractLogger.java)*
+* *[ChainOfResponsibilityActivity.java](https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/chainofresponsibility/ChainOfResponsibilityActivity.java)*
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
+
 
 ### Strategy:
 
