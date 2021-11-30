@@ -1,6 +1,7 @@
 # OOP-2021
 Môn học Lập trình hướng đối tượng với Java
-# Báo cáo đánh giá Design Pattern
+
+
 
 Thành viên trong nhóm:
 + Bùi Minh Sơn 20021427
@@ -10,25 +11,26 @@ Thành viên trong nhóm:
 Repo đã tìm được và phân tích: https://github.com/OmarElgabry/DesignPatterns/tree/master/src?fbclid=IwAR3zcvkF1NME6gIojqlXHsJEQnlaZ-fpN46HoGKMaSQouK-o_uOHSZNU6eU
 
 
-### Điểm giống nhau:
+Điểm giống nhau:
 
--Có kết cấu tương tự với mẫu chuẩn.
+Có kết cấu tương tự với mẫu chuẩn.
 
--Hệ thống làm việc độc lập với cách sản phẩm của nó được tạo ra, cấu tạo và đại diện.
+Hệ thống làm việc độc lập với cách sản phẩm của nó được tạo ra, cấu tạo và đại diện.
 
--Mỗi lớp chỉ chịu trách nhiệm về 1 một việc.
+Mỗi lớp chỉ chịu trách nhiệm về 1 một việc.
 
--Khi chỉnh sửa thêm bớt thành phần thì không cần thay đổi code hiện tại.
+Khi chỉnh sửa thêm bớt thành phần thì không cần thay đổi code hiện tại.
 
--Code sạch sẽ
+Code sạch sẽ
 
-### Điểm khác nhau:
+Điểm khác nhau:
 
--Không nhiều do là 1 mẫu thiết kế tương tự mẫu thiết kế chuẩn.
+Không nhiều do là 1 mẫu thiết kế tương tự mẫu thiết kế chuẩn.
 
 •	Singleton:
 o	Đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó.
  vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/singleton
+ package singleton.classic;
 
 public class Database {
 
@@ -52,7 +54,6 @@ public class Database {
 •	Abstract Factory:
 o	Cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/factory/abstr
-
 package factory.abstr;
 
 public class MammalsFactory extends AnimalFactory{
@@ -75,40 +76,123 @@ public class MammalsFactory extends AnimalFactory{
 •	Factory Method:
 o	Định nghĩa Interface để sinh ra đối tượng nhưng để cho lớp con quyết định lớp nào được dùng để sinh ra đối tượng Factory method cho phép một lớp chuyển quá trình khởi tạo đối tượng cho lớp con.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/factory
+package factory.method;
 
-package factory.abstr;
+public class AnimalFactory {
 
-public class MammalsFactory extends AnimalFactory{
-
-	@Override
-	public Animal create(String animal) {
+	public Animal create(String animal){
 		
 		animal = animal.toUpperCase();
 
 		if(animal.equals("CAT")){
 			return new Cat();
-		}else if(animal.equals("FOX")){
-			return new Fox();
+		}else if(animal.equals("DOG")){
+			return new Dog();
 		}
 		return null;
 	}
-
 }
 
 •	Prototype:
 o	Qui định loại của các đối tượng cần tạo bằng cách dùng một đối tượng mẫu, tạo mới nhờ vào sao chép đối tượng mẫu này.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/prototype
+ackage prototype.inter;
+
+public class ProductFactory {
+
+	private Book book;
+	private Album album;
+	private Movie movie;
+	
+	public ProductFactory(Album _album, Book _book, Movie _movie){
+		album = _album;
+		book = _book;
+		movie = _movie;
+	}
+	
+	public Book getBook() {
+		return book.clone();
+	}
+
+	public Album getAlbum() {
+		return album.clone();
+	}
+
+	public Movie getMovie() {
+		return movie.clone();
+	}	
+	
+}
 
 •	Adapter:
 o	Do vấn đề tương thích, thay đổi interface của một lớp thành một interface khác phù hợp với yêu cầu người sử dụng lớp.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/adapter
+package adapter.inter;
+
+public class FormatAdapter implements MediaPlayer{
+
+	private MediaPackage media;
+	
+	public FormatAdapter(MediaPackage _media){
+		media = _media;
+	}
+	
+	@Override
+	public void play() {
+		System.out.print("Using Adapter - ");
+		media.playFile();
+	}
+	
+}
 •	Bridge:
 o	Tách rời ngữ nghĩa của một vấn đề khỏi việc cài đặt, mục đích để cả hai bộ phận (ngữ nghĩa và cài đặt) có thể thay đổi độc lập nhau.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/bridge
+package bridge;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		// decouple Rectangle & Circle classes from Color Implementation,
+		// As long as they can vary independently during the run time.
+		AbstractShape shape = new Rectangle(new Blue());
+		shape.applyColor();
+		
+		shape = new Circle(new Red());
+		shape.applyColor();
+	}
+
+}
 •	Composite:
 o	Tổ chức các đối tượng theo cấu trúc phân cấp dạng cây. Tất cả các đối tượng trong cấu trúc được thao tác theo một cách thuần nhất như nhau.
 Tạo quan hệ thứ bậc bao gộp giữa các đối tượng. Client có thể xem đối tượng bao gộp và bị bao gộp như nhau -> khả năng tổng quát hoá trong code của client -> dễ phát triển, nâng cấp, bảo trì.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/composite
+package composite;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		// start drawing zoo picture
+		Picture zoo = new Picture("Zoo");
+		
+		// add shapes(circle, rectangle, line, picture) to picture
+		zoo.add(new Circle());
+		zoo.add(new Rectangle());
+		zoo.add(new Line());
+
+		Picture lion = new Picture("Lion");
+
+		lion.add(new Circle());
+		lion.add(new Rectangle());
+		
+		zoo.add(lion);
+
+		// draw zoo picture
+		zoo.draw();
+	}
+
+}
 
 •	Decorator:
 o	Gán thêm trách nhiệm cho đối tượng (mở rộng chức năng) vào lúc chạy (dynamically).
