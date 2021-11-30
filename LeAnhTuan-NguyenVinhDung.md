@@ -1,9 +1,18 @@
-# Lê Anh Tuấn - 20021464
-# Nguyễn Vĩnh Dũng - 20021317
+# Báo cáo về Design Pattern
 
+Các thành viên tham gia:
 
+Lê Anh Tuấn - 20021464
 
-# Link project trên github: https://github.com/QianMo/Unity-Design-Pattern
+Nguyễn Vĩnh Dũng - 20021317
+
+# Khái quát chung:
+
+Nhóm chúng em tìm được 18/23 mẫu thiết kế trong Repositories dưới đây
+
+Link:   https://github.com/QianMo/Unity-Design-Pattern
+
+Ở mỗi mẫu thiết kế, chúng em chỉ rõ được khái niệm, các class và interface được sử dụng kèm theo link folder chi tiết để mọi người có thể theo dõi rõ hơn.
 
 # Các loại Design Pattern cơ bản
 
@@ -20,7 +29,10 @@
         Mẫu thiết kế này trình bày phương pháp thiết kế liên quan đến hành vi của các đối tượng.
 
 # CÁC MẪU THIẾT KẾ ĐƯỢC SỬ DỤNG TRONG PROJECT
- 
+
+
+## Behavioral Patterns:
+
 * Command Pattern: Đóng gói một yêu cầu dưới dạng một đối tượng, do đó cho phép bạn tham số hóa các máy khách với các yêu cầu khác nhau, yêu cầu hàng đợi hoặc nhật ký và hỗ trợ các hoạt động hoàn tác. 
 
     - Các lớp và đối tượng minh hoạ: 
@@ -137,6 +149,7 @@
 
     - Các lớp và đối tượng minh hoạ:  https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Behavioral%20Patterns/Visitor%20Pattern
 
+## Structural Patterns:
 
 * Adapter Pattern: Chuyển đổi giao diện của một lớp thành giao diện khác mà khách hàng mong đợi. Bộ điều hợp cho phép các lớp hoạt động cùng nhau mà không thể vì giao diện không tương thích.
 
@@ -212,6 +225,7 @@
         
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Structural%20Patterns/Decorator%20Pattern
 
+## Creational Patterns:
 
 * Proxy Pattern: Cung cấp người thay thế hoặc trình giữ chỗ cho một đối tượng khác để kiểm soát quyền truy cập vào nó.
 
@@ -346,6 +360,11 @@
             Ghi đè phương thức factory để trả về một phiên bản của ConcreteProduct.
 
     - Link folder chi tiết: https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Creational%20Patterns/Factory%20Method%20Pattern
+
+# Nhận xét chung: 
+Các mẫu thiết kế được tìm thấy ở repo nhìn chung giống đến 80% so với mẫu chuẩn, chỉ có một số sự khác biệt nhỏ về cách triển khai class.
+
+
 
 
     
