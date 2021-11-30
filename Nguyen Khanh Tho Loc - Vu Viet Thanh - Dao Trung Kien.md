@@ -6,7 +6,9 @@ Thành viên nhóm:
 * 20021436 Vũ Viết Thành.
 * 20020182 Đào Trung Kiên.
 
-***Creational design pattern:
+Sau khi tìm hiểu về mẫu thiết kế trong mã nguồn trên, nhóm đã hoàn thành được bài báo như sau:
+
+Nhóm 1: Creational design pattern
 
 link: https://github.com/ajanata/PretendYoureXyzzy/tree/master/src/main/java/net/socialgamer/cah
 
@@ -141,7 +143,8 @@ public class Computer implements Cloneable {
 	}
 }
 
-***Behavioral Design Patterns:
+Nhóm 2: Behavioral Design Patterns
+
 link:https://github.com/sherxon/AlgoDS.git
 
 1, Command Pattern trong Interval.java. 
