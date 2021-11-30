@@ -596,7 +596,7 @@ public class VisitorActivity extends AppCompatActivity {
 ```
 **\=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Visitor Pattern chuẩn.**
 
-
+**KẾT LUẬN: Các mẫu thiết kế tìm được ở trên phần lớn giống như trong mẫu thiết kế chuẩn.**<br/>
 _Bên trên là tất cả kết quả tìm hiểu của nhóm mình, nếu có thiếu sót hay có gì cần bổ sung mong sẽ được các bạn ghi ở dưới comment!_
 
  
