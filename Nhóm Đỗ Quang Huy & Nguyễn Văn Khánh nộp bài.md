@@ -39,18 +39,115 @@ public interface DiffItem {
 \- cho phép các inteface (giao diện) không liên quan tới nhau có thể làm việc cùng nhau  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ phần Adaptee là class V5Power  
+```java
+public interface V5Power {
+    public int provideV5Power();
+}
+```
 \+ phần Adapter là class V5PowerAdapter  
+```java
+public class V5PowerAdapter implements V5Power {
+
+    private int v220power;
+
+    public V5PowerAdapter(V220Power v220Power) {
+        v220power = v220Power.provideV220Power();
+    }
+
+    @Override
+    public int provideV5Power() {
+
+        Log.e("---", "适配器: 经过复杂的操作,将" + v220power + "v电压转为5v");
+        return 5;
+    }
+
+
+}
+```
 \+ phần Client thuộc lớp AdapterActivity  
-\=> Như vậy nó giống với mẫu chuẩn khai cài đặt theo cách Class Adapter – Inheritance** 
+```java
+public class AdapterActivity extends AppCompatActivity {
+
+    @BindView(R.id.tv_define)
+    TextView tvDefine;
+    @BindView(R.id.activity_adapter)
+    LinearLayout activityAdapter;
+    @BindView(R.id.by_adapter)
+    Button byAdapter;
+    @BindView(R.id.bt_adapter_text)
+    Button btAdapterText;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_adapter);
+        ButterKnife.bind(this);
+        setTitle("适配器模式");
+        tvDefine.setText(EMTagHandler.fromHtml(AppConstant.ADAPTER_DEFINE));
+        btAdapterText.setText("将220V家用电转换为5V");
+
+        btAdapterText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /**
+                 * 给手机充电
+                 */
+                Mobile mobile = new Mobile();
+                V5Power v5Power = new V5PowerAdapter(new V220Power());
+                mobile.inputPower(v5Power);
+            }
+        });
+    }
+}
+```
+**\=> Như vậy nó giống với mẫu chuẩn khai cài đặt theo cách Class Adapter – Inheritance** 
 
 **Mẫu 2: [Bridge Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/bridge)** \- được sử dụng để tách thành phần trừu tượng (abstraction) và thành phần thực thi (implementation) riêng biệt.  
 **Mẫu thiết kế này có các thành phần sau:  
 \+ phần Implementor là class Shape  
 \+ phần Abstraction tương ứng với class DrawAPI  
+```java
+public interface DrawAPI {
+
+    public void drawCircle(int radius, int x, int y);
+
+}
+```
 \+ phần Refined Abstraction (AbstractionImpl) tương ứng với các class GreenCircle và RedCircle  
 \+ phần ConcreteImplementor tương ứng với class Circle  
 \+ phần Client tương ứng với class BridgeActivity  
-\=> Như vậy mẫu thiết kế này hoàn toàn giống với mẫu chuẩn** 
+```java
+public class BridgeActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityBridgeBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_bridge);
+        setTitle("桥接模式");
+        binding.tvDefine.setText(EMTagHandler.fromHtml(AppConstant.BRIDGE_DEFINE));
+
+        binding.btRed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 画红圆
+                Circle circle = new Circle(10, 10, 100, new RedCircle());
+                circle.draw();
+            }
+        });
+
+        binding.btGreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 画绿圆
+                Circle circle = new Circle(20, 20, 100, new GreenCircle());
+                circle.draw();
+            }
+        });
+    }
+
+}
+```
+**\=> Như vậy mẫu thiết kế này hoàn toàn giống với mẫu chuẩn** 
 
 **Mẫu 3: [Builder Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/builder)** \- Builder pattern là một trong những Creational pattern. Builder pattern là mẫu thiết kế đối tượng được tạo ra để xây dựng một đôi tượng phức tạp bằng cách sử dụng các đối tượng đơn giản và sử dụng tiếp cận từng bước, việc xây dựng các đối tượng đôc lập với các đối tượng khác.  
 **Mẫu thiết kế này có các thành phần sau:  
@@ -58,18 +155,72 @@ public interface DiffItem {
 \+ phần Builder là class Builder  
 \+ phần ConcreteBuilder thuộc class ConcreteBuilder  
 \+ Director/ Client: là nơi sẽ gọi tới Builder để tạo ra đối tượng tương ứng với các class Director và Product  
-\=> Như vậy nó nó có đầy đủ các thành phần của mẫu thiết kế Builder pattern chuẩn** 
+```java
+public class Director {
 
-**Mẫu 4: [Chain of Responsibility](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/chainofresponsibility)** \- Chain of Responsiblity cho phép một đối tượng gửi một yêu cầu nhưng không biết đối tượng nào sẽ nhận và xử lý nó. Điều này được thực hiện bằng cách kết nối các đối tượng nhận yêu cầu thành một chuỗi (chain) và gửi yêu cầu theo chuỗi đó cho đến khi có một đối tượng xử lý nó. **Mẫu thiết kế này có các thành phần sau:  
-\+ Handler : định nghĩa 1 interface để xử lý các yêu cầu. Gán giá trị cho đối tượng successor (không bắt buộc).  
-\+ ConcreteHandler : xử lý yêu cầu. Có thể truy cập đối tượng successor (thuộc class Handler). Nếu đối tượng ConcreateHandler không thể xử lý được yêu cầu, nó sẽ gởi lời yêu cầu cho successor của nó.  
+    private Builder builder = new ConcreteBuilder();
+
+    public Product getAProduct() {
+        builder.setPart("奥迪汽车", "Q5");
+        return builder.getProduct();
+    }
+
+    public Product getBProduct() {
+        builder.setPart("宝马汽车", "X7");
+        return builder.getProduct();
+    }
+}
+```
+
+**\=> Như vậy nó nó có đầy đủ các thành phần của mẫu thiết kế Builder pattern chuẩn** 
+
+**Mẫu 4: [Chain of Responsibility](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/chainofresponsibility)** \- Chain of Responsiblity cho phép một đối tượng gửi một yêu cầu nhưng không biết đối tượng nào sẽ nhận và xử lý nó. Điều này được thực hiện bằng cách kết nối các đối tượng nhận yêu cầu thành một chuỗi (chain) và gửi yêu cầu theo chuỗi đó cho đến khi có một đối tượng xử lý nó. 
+**Mẫu thiết kế này có các thành phần sau:  
+\+ Handler : định nghĩa 1 interface để xử lý các yêu cầu. Gán giá trị cho đối tượng successor (không bắt buộc).
+```java
+public abstract class AbstractLogger {
+
+    public static int INFO = 1;
+    public static int DEBUG = 2;
+    public static int ERROR = 3;
+
+    protected int level;
+
+    // 责任链中的下一个元素
+    protected AbstractLogger nextLogger;
+
+    public void setNextLogger(AbstractLogger nextLogger) {
+        this.nextLogger = nextLogger;
+    }
+
+    public void logMessage(int level, String message) {
+        if (this.level <= level) {
+            write(message);
+        }
+        // 递归效果，不断调用下一级 logMessage
+        if (nextLogger != null) {
+            nextLogger.logMessage(level, message);
+        }
+    }
+
+    protected abstract void write(String message);
+}
+```
+
+**\+ ConcreteHandler : xử lý yêu cầu. Có thể truy cập đối tượng successor (thuộc class Handler). Nếu đối tượng ConcreateHandler không thể xử lý được yêu cầu, nó sẽ gởi lời yêu cầu cho successor của nó.  
 \+ Client : tạo ra các yêu cầu và yêu cầu đó sẽ được gửi đến các đối tượng tiếp nhận.  
 \=> Mẫu thiết kế này có đủ các thành phần như trong mẫu thiết kế Chain of Responsibility chuẩn** 
 
 **Mẫu 5: [Command Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/command)**  
 \- cho phép tất cả những Request gửi đến object được lưu trữ trong chính object đó dưới dạng một object Command - giống như một class trung gian được tạo ra để lưu trữ các câu lệnh và trạng thái của object tại một thời điểm nào đó.  
 **Mẫu thiết kế này có các thành phần sau:  
-\+ Command : là một interface hoặc abstract class, chứa một phương thức trừu tượng thực thi (execute) một hành động (operation)  
+\+ Command : là một interface hoặc abstract class, chứa một phương thức trừu tượng thực thi (execute) một hành động (operation) 
+```java
+public interface Command {
+
+    public void execute();
+}
+```
 \+ ConcreteCommand : là các implementation của Command. Định nghĩa một sự gắn kết giữa một đối tượng Receiver và một hành động.  
 \+ Client : tiếp nhận request từ phía người dùng, đóng gói request thành ConcreteCommand thích hợp và thiết lập receiver của nó.  
 \+ Invoker : tiếp nhận ConcreteCommand từ Client và gọi execute() của ConcreteCommand để thực thi request.  
@@ -81,9 +232,10 @@ public interface DiffItem {
 **Mẫu thiết kế này có các thành phần sau:  
 \+ Base Component : là một interface hoặc abstract class quy định các method chung cần phải có cho tất cả các thành phần tham gia vào mẫu này.  
 \+ Leaf : là lớp hiện thực (implements) các phương thức của Component. Nó là các object không có con.  
-\+ Composite : lưu trữ tập hợp các Leaf và cài đặt các phương thức của Base Component. C  
+\+ Composite : lưu trữ tập hợp các Leaf và cài đặt các phương thức của Base Component.
 \+ Client: sử dụng Base Component để làm việc với các đối tượng trong Composite.  
 \=> Trong mẫu này chỉ có 2 class CompositeActivity và Employee.Như vậy nó bị khuyết hai thành phần là Base Component và Leaf so với mẫu thiết kế Composite Pattern chuẩn** 
+
 
 **Mẫu 7: [Decorator Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/decorator)**  
 \- cho phép người dùng thêm chức năng mới vào đối tượng hiện tại mà không muốn ảnh hưởng đến các đối tượng khác. Kiểu thiết kế này có cấu trúc hoạt động như một lớp bao bọc (wrap) cho lớp hiện có. Mỗi khi cần thêm tính năng mới, đối tượng hiện có được wrap trong một đối tượng mới (decorator class).  
@@ -122,8 +274,12 @@ public interface DiffItem {
 **Mẫu 11: [Interpreter Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/interpreter)**  
 \- giúp người lập trình có thể “xây dựng” những đối tượng “động” bằng cách đọc mô tả về đối tượng rồi sau đó “xây dựng” đối tượng đúng theo mô tả đó.  
 **Mẫu thiết kế này có các thành phần sau:  
-\+ Context tương ứng với class AndExpression và class OrExpression + Expression tương ứng với class Expression + TerminalExpression tương ứng với class TerminalExpression + NonTerminalExpression tương ứng với class + Client tương ứng với class InterpreterActivity  
-\=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Interpreter Pattern chuẩn** 
+\+ Context tương ứng với class AndExpression và class OrExpression  
+\+ Expression tương ứng với class Expression  
+\+ TerminalExpression tương ứng với class TerminalExpression  
+\+ NonTerminalExpression tương ứng với class  
+\+ Client tương ứng với class InterpreterActivity  
+\=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Interpreter Pattern chuẩn**
 
 **Mẫu 12: [Iterator Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/iterator)**  
 \-được sử dụng để cung cấp một cách thức truy cập tuần tự tới các phần tử của một đối tượng tổng hợp, mà không cần phải tạo dựng riêng các phương pháp truy cập cho đối tượng tổng hợp này.  
