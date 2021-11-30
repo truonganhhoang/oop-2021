@@ -758,4 +758,97 @@ while (itemIterator.hasNext()) {
 **Một số lợi ích khi sử dụng Iterator Pattern:**
 - Đảm bảo nguyên tắc Single responsibility principle (SRP) : chúng ta có thể tách phần cài đặt các phương thức của tập hợp và phần duyệt qua các phần tử (iterator) theo từng class riêng lẻ.
 - Chúng ta có thể truy cập song song trên cùng một tập hợp vì mỗi đối tượng iterator có chứa trạng thái riêng của nó.
+  
+## [Singleton](https://github.com/iluwatar/java-design-patterns/tree/master/singleton)
 
+```
+  abstract class SingletonTest<S> {
+  
+  private final Supplier<S> singletonInstanceMethod;
+
+  public SingletonTest(final Supplier<S> singletonInstanceMethod) {
+    this.singletonInstanceMethod = singletonInstanceMethod;
+  }
+
+  @Test
+  void testMultipleCallsReturnTheSameObjectInSameThread() {
+    // Create several instances in the same calling thread
+    var instance1 = this.singletonInstanceMethod.get();
+    var instance2 = this.singletonInstanceMethod.get();
+    var instance3 = this.singletonInstanceMethod.get();
+    // now check they are equal
+    assertSame(instance1, instance2);
+    assertSame(instance1, instance3);
+    assertSame(instance2, instance3);
+  }
+
+  @Test
+  void testMultipleCallsReturnTheSameObjectInDifferentThreads() throws Exception {
+    assertTimeout(ofMillis(10000), () -> {
+      // Create 10000 tasks and inside each callable instantiate the singleton class
+      final var tasks = IntStream.range(0, 10000)
+          .<Callable<S>>mapToObj(i -> this.singletonInstanceMethod::get)
+          .collect(Collectors.toCollection(ArrayList::new));
+
+      // Use up to 8 concurrent threads to handle the tasks
+      final var executorService = Executors.newFixedThreadPool(8);
+      final var results = executorService.invokeAll(tasks);
+
+      // wait for all of the threads to complete
+      final var expectedInstance = this.singletonInstanceMethod.get();
+      for (var res : results) {
+        final var instance = res.get();
+        assertNotNull(instance);
+        assertSame(expectedInstance, instance);
+      }
+
+      // tidy up the executor
+      executorService.shutdown();
+    });
+
+  }
+```
+  
+  Singleton pattern (thuộc Creational) đảm bảo chỉ duy nhất môt new instance được tạo ra cho 1 lớp và nó sẽ cung cấp cho bạn một method để truy cập đến đối tượng duy nhất đó. Dù cho việc thực hiện cài đặt Singleton bằng cách nào đi nữa cũng đều dựa vào nguyên tắc dưới đây.
+-  private constructor để hạn chế khởi tạo đối tượng từ bên ngoài
+- đặt private static variable cho đối tượng được khởi tạo, đảm bảo biến chỉ được khởi tạo trong chính lớp này.
+- có một method public để return instance đã được khởi tạo ở trên.
+  
+  
+## [Composite](https://github.com/iluwatar/java-design-patterns/tree/master/composite)
+```
+  package com.iluwatar.composite;
+
+import java.util.List;
+
+/**
+ * Word.
+ */
+public class Word extends LetterComposite {
+
+  /**
+   * Constructor.
+   */
+  public Word(List<Letter> letters) {
+    letters.forEach(this::add);
+  }
+
+  /**
+   * Constructor.
+   * @param letters to include
+   */
+  public Word(char... letters) {
+    for (char letter : letters) {
+      this.add(new Letter(letter));
+    }
+  }
+
+  @Override
+  protected void printThisBefore() {
+    System.out.print(" ");
+  }
+}
+```
+  
+  Composite pattern (thuộc Structural) cho phép tương tác với tất cả các đối tượng tương tự nhau giống như là các đối tượng đơn hoặc collections. Ví dụ: Đối tượng File sẽ là 1 đối tượng đơn nếu bên trong nó không có file nào khác, nhưng đối tượng file (folder) sẽ được đối xử giống như 1 collections nếu bên trong nó lại có những File khác.
+  
