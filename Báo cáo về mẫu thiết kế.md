@@ -281,7 +281,8 @@ Lấy hình ảnh từ đĩa làm ví dụ
 3. Khi được yêu cầu, hãy sử dụng ProxyImage để lấy các đối tượng của lớp RealImage.
 
 ## **3. Nhóm Behavior**
-### Observer: Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi một đối tượng thay đổi, tất cả các phụ thuộc của nó sẽ được thông báo và cập nhật tự động. Một số file mà sự án sử dụng Observer:
+### Observer: 
+Xác định một-nhiều phụ thuộc giữa các đối tượng, để khi một đối tượng thay đổi, tất cả các phụ thuộc của nó sẽ được thông báo và cập nhật tự động. Một số file mà sự án sử dụng Observer:
 * Subject.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/observer/interfaces/Subject.java) : interface chủ đề.
 	```java
 	/**
@@ -351,7 +352,8 @@ Lấy hình ảnh từ đĩa làm ví dụ
 
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
-### Command: Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc thành một đối tượng. Các yêu cầu sẽ được lưu trữ và gởi đi như các đối tượng.Đóng gói request vào trong một Object, nhờ đó có thể nthông số hoá chương trình nhận request và thực hiện các thao tác trên request: sắp xếp, log, undo… Một số file mà sự án sử dụng Command:
+### Command: 
+Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc thành một đối tượng. Các yêu cầu sẽ được lưu trữ và gởi đi như các đối tượng.Đóng gói request vào trong một Object, nhờ đó có thể nthông số hoá chương trình nhận request và thực hiện các thao tác trên request: sắp xếp, log, undo… Một số file mà sự án sử dụng Command:
 * Door.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/Door.java): API của thiết bị gia dụng.
 	```java
 	package com.example.jingbin.designpattern.command;
@@ -381,7 +383,8 @@ Lấy hình ảnh từ đĩa làm ví dụ
 * CommandActivity.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/command/CommandActivity.java): Thực thi bảng điều khiển từ xa.
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
-### Status: Cho phép một đối tượng thay đổi hành vi khi trạng thái bên trong của nó thay đổi, ta có cảm giác như class của đối tượng bị thay đổi. Một số file mà sự án sử dụng Status:
+### Status: 
+Cho phép một đối tượng thay đổi hành vi khi trạng thái bên trong của nó thay đổi, ta có cảm giác như class của đối tượng bị thay đổi. Một số file mà sự án sử dụng Status:
 * VendingMachine.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/old/VendingMachine.java): Nhận diện ban đầu về máy bán hàng tự động cần được cải tiến.
 * VendingMachineBetter.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/VendingMachineBetter.java): Máy máy bán hàng tự động cần được cải tiến.
 	```java
@@ -419,15 +422,20 @@ Lấy hình ảnh từ đĩa làm ví dụ
 + SoldState.java (https://github.com/youlookwhat/DesignPattern/blob/master/app/src/main/java/com/example/jingbin/designpattern/state/better/SoldState.java): Trạng thái đã bán.
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
-### Iterator: Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử. Trong phần này:
+### Iterator: 
+Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử. Trong phần này:
 * Tạo interface Iterator, Container.
 * Tạo một lớp thực thể triển khai interface Container. Lớp này có một NameIterator của lớp bên trong thực hiện interface Iterator.
 * Sử dụng NameRepository để lấy trình lặp và in tên.
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
-### Mediator: Định nghĩa một đối tượng để bao bọc việc giao tiếp giữa một số đối tượng với nhau. => Khuôn dạng khá giống mẫu tiêu chuẩn.
+### Mediator: 
+Định nghĩa một đối tượng để bao bọc việc giao tiếp giữa một số đối tượng với nhau. 
+=> Khuôn dạng khá giống mẫu tiêu chuẩn.
 
-### Memento: Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối tượng mà vẫn không vi phạm việc bao bọc dữ liệu. => Khuôn dạng khá giống mẫu tiêu chuẩn.
+### Memento: 
+Hiệu chỉnh và trả lại như cũ trạng thái bên trong của đối tượng mà vẫn không vi phạm việc bao bọc dữ liệu. 
+=> Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Interpreter: Hỗ trợ việc định nghĩa biểu diễn văn phạm và bộ thông dịch cho một ngôn ngữ. Trong phần này:
 * Tạo interface Expression.
@@ -435,7 +443,9 @@ Lấy hình ảnh từ đĩa làm ví dụ
 * Sử dụng class Expression để tạo các quy tắc và phân tích cú pháp chúng.
 => Khuôn dạng khá giống mẫu tiêu chuẩn.
 
-### Chain of Responsibility: Khắc phục việc ghép cặp giữa bộ gởi và bộ nhận thông điệp. Các đối tượng nhận thông điệp được kết nối thành một chuỗi và thông điệp được chuyển dọc theo chuỗi nầy đến khi gặp được đối tượng xử lý nó. Tránh việc gắn kết cứng giữa phần tử gởi request với phần tử nhận và xử lý request bằng cách cho phép hơn 1 đối tượng có có cơ hội xử lý request. Liên kết các đối tượng nhận request thành 1 dây chuyền rồi gửi request xuyên qua từng đối tượng xử lý đến khi gặp đối tượng xử lý cụ thể. => Khuôn dạng khá giống mẫu tiêu chuẩn.
+### Chain of Responsibility: 
+Khắc phục việc ghép cặp giữa bộ gởi và bộ nhận thông điệp. Các đối tượng nhận thông điệp được kết nối thành một chuỗi và thông điệp được chuyển dọc theo chuỗi nầy đến khi gặp được đối tượng xử lý nó. Tránh việc gắn kết cứng giữa phần tử gởi request với phần tử nhận và xử lý request bằng cách cho phép hơn 1 đối tượng có có cơ hội xử lý request. Liên kết các đối tượng nhận request thành 1 dây chuyền rồi gửi request xuyên qua từng đối tượng xử lý đến khi gặp đối tượng xử lý cụ thể. 
+=> Khuôn dạng khá giống mẫu tiêu chuẩn.
 
 ### Strategy:
 
