@@ -9,7 +9,7 @@ Bài báo cáo design pattern môn lập trình hướng đối tượng
 _Sau đây là kết quả tìm hiểu của nhóm mình về cách áp dụng design pattern của một số repo._
 
   
-[**Repo 1**](https://github.com/sockeqwe/AdapterDelegates/)  
+>[**Repo 1**](https://github.com/sockeqwe/AdapterDelegates/)  
 **Mẫu thiết kế:** [Adapter pattern nằm trong AdapterDelegates](https://github.com/sockeqwe/AdapterDelegates/tree/master/library/src/main/java/com/hannesdorfmann/adapterdelegates4)
 
 *   Ý tưởng của thư viện này là xây dựng các bộ điều hợp của bạn bằng cách tạo các thành phần có thể tái sử dụng. Ý tưởng là bạn xác định một AdapterDelegate cho mỗi loại chế độ xem. Người đại diện này chịu trách nhiệm tạo ViewHolder và ràng buộc ViewHolder cho một kiểu xem nhất định. Sau đó, bạn có thể soạn RecyclerView Adapter của mình bằng cách đăng ký AdapterDelegates mà bạn thực sự cần.
@@ -70,7 +70,7 @@ public class AdvertisementAdapterDelegate extends AdapterDelegate<List<Displayab
 \- - ---------------------------
 
   
-[**Repo 2**](https://github.com/youlookwhat/DesignPattern)  
+>[**Repo 2**](https://github.com/youlookwhat/DesignPattern)  
 **Mẫu thiết kế:** trong dự án trên chúng ta có thể thấy được các mẫu thiết kế sau:  
 *   **Mẫu 1: [Adapter Pattern](https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern/adapter)**  
 \- cho phép các inteface (giao diện) không liên quan tới nhau có thể làm việc cùng nhau  
