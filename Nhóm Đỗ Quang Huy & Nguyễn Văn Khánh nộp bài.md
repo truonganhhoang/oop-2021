@@ -1,10 +1,12 @@
-Môn lập trình hướng đối tượng
+Bài báo cáo design pattern môn lập trình hướng đối tượng
 =============================
 
 **Nhóm gồm các thành viên**
 
 *   Đỗ Quang Huy - _20021365_
 *   Nguyễn Văn Khánh - _20021375_
+
+_Sau đây là kết quả tìm hiểu của nhóm em về các repo áp dụng design pattern._
 
   
 [**Repo 1**](https://github.com/sockeqwe/AdapterDelegates/)  
@@ -572,4 +574,6 @@ public class VisitorActivity extends AppCompatActivity {
 }
 ```
 **\=> Mẫu thiết kế này có đủ các thành phần như trên giống như trong mẫu thiết kế Visitor Pattern chuẩn.**
+
+**_せんせいしね_**
  
