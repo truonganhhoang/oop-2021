@@ -89,4 +89,4 @@ Ví dụ rất nhiều phần tử GUI hợp tác với sự trợ giúp của n
 2. ***Thân Chí Đạt - 17020678***.
 3. ***Đỗ Văn Đạt - 19020244***.
 
-**Repository:** [spring-boot](https://github.com/spring-projects/spring-boot)
+**Repository:** [spring-boot](https://github.com/spring-projects/spring-petclinic)
