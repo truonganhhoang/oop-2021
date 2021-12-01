@@ -11,7 +11,7 @@
 - Là một mẫu thiết kế sáng tạo cho phép bạn tạo ra các họ các đối tượng liên quan mà không cần chỉ định các lớp cụ thể của chúng.
 - Code: [Abstract Factory](https://github.com/abishekaditya/DesignPatterns/tree/master/FactoryPattern/Abstract%20Factory)
 - Ở đây, cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng, 2 class được khai báo theo mẫu chuẩn.
-```
+```csharp
 internal class ChicagoIngredientsFactory : IIngredientsFactory
 internal class NyIngredientsFactory : IIngredientsFactory
 ```
@@ -20,7 +20,7 @@ internal class NyIngredientsFactory : IIngredientsFactory
 - Là một mẫu thiết kế sáng tạo cung cấp một giao diện để tạo các đối tượng trong lớp cha, nhưng cho phép các lớp con thay đổi loại đối tượng sẽ được tạo.
 - Code: [Factory Method](https://github.com/abishekaditya/DesignPatterns/tree/master/FactoryPattern/Factory%20Method)
 - Lớp tạo khai báo phương thức gốc phải trả về một đối tượng của một lớp sản phẩm. Các lớp con ChicagoPizzaFactory, NyPizzaFactory cung cấp việc triển khai phương thức này.
-```
+```csharp
 abstract class PizzaFactory
     {
         public Pizza Order(string type) {}
@@ -39,7 +39,7 @@ class NyPizzaFactory : PizzaFactory
 - Builder là một mẫu thiết kế sáng tạo cho phép bạn xây dựng các đối tượng phức tạp theo từng bước. Mẫu cho phép bạn tạo ra các kiểu và hình ảnh đại diện khác nhau của một đối tượng bằng cách sử dụng cùng một mã xây dựng.
 - Code: [Builder](https://github.com/abishekaditya/DesignPatterns/tree/master/BuilderPattern)
 - Khởi tạo interface IBuilder:
-```
+```csharp
 public interface IBuilder
     {
         void AddIngredients();
@@ -55,7 +55,7 @@ public interface IBuilder
 - Prototype là một mẫu thiết kế sáng tạo cho phép bạn sao chép các đối tượng hiện có mà không làm cho mã của bạn phụ thuộc vào các lớp của chúng.
 - Code: [Prototype Pattern](https://github.com/abishekaditya/DesignPatterns/tree/master/PrototypePattern)
 - Khởi tạo `interface IFigure : ICloneable` dùng làm đối tượng mẫu để quy định các loại đối tượng của lớp Circle và Rectangle, hai lớp đó kế thừa lớp IFigure. Tất cả các lớp sau tuân theo cùng một interface, cung cấp một phương thức clone().
-```
+```csharp
 interface IFigure : ICloneable
     {}
 class Circle : IFigure
@@ -79,7 +79,7 @@ class Rectangle : IFigure
  - Singleton cho phép đảm bảo rằng một lớp chỉ có một thể hiện, đồng thời cung cấp một điểm truy cập toàn cục cho thể hiện này.
  - Code: [Singleton](https://github.com/abishekaditya/DesignPatterns/tree/master/SingletonPattern)
  - Class `ChocolateBoiler` được khởi tạo là `internal partial class ChocolateBoiler`, bên trong là phương thức khởi tạo tĩnh và phương thức khởi tạo private.
- ```
+ ```csharp
  internal partial class ChocolateBoiler
     {
         private static readonly Lazy<ChocolateBoiler> _singleton = new Lazy<ChocolateBoiler>(() => new ChocolateBoiler());
@@ -111,7 +111,7 @@ class Rectangle : IFigure
  ## 2.1 Chain of Responsibility
  - Cho phép chuyển các yêu cầu dọc theo một chuỗi các trình xử lý. Khi nhận được yêu cầu, mỗi trình xử lý sẽ quyết định xử lý yêu cầu hoặc chuyển nó cho trình xử lý tiếp theo trong chuỗi.
  - Code: [Chain of Responsibility](https://github.com/abishekaditya/DesignPatterns/tree/master/ChainOfResponsibilityPattern)
- ```
+ ```csharp
  // Giao diện trình xử lý khai báo một phương pháp để xây dựng một chuỗi trình xử lý. Nó cũng khai báo phương thức để thực hiện một yêu cầu.
 public interface IHandler {
         void AddChain(IHandler handler);
@@ -139,7 +139,7 @@ public class MultiplicationHandler : BaseHandler {
 - Command biến một yêu cầu thành một đối tượng độc lập chứa tất cả thông tin về yêu cầu. Sự chuyển đổi này cho phép bạn chuyển các yêu cầu dưới dạng đối số của phương thức, trì hoãn hoặc xếp hàng đợi việc thực hiện một yêu cầu và hỗ trợ các hoạt động hoàn tác.
 - Code: [Command](https://github.com/abishekaditya/DesignPatterns/tree/master/CommandPattern)
 - The base command class xác định giao diện chung cho các concrete commands.
-```
+```csharp
 internal interface ICommand
     {
         void Execute();
@@ -147,7 +147,7 @@ internal interface ICommand
     }
 ```
 - The concrete commands:
-```
+```csharp
 internal class GarageDoorCloseCommand : ICommand
     {
         public GarageDoorCloseCommand(Garage g) {...}
@@ -169,7 +169,7 @@ v.v.....
 - Là một mẫu thiết kế hành vi cho phép duyệt tuần tự thông qua một cấu trúc dữ liệu phức tạp mà không để lộ các chi tiết bên trong của nó. Ý tưởng chính của mẫu Iterator là trích xuất hành vi truyền tải của một tập hợp thành một đối tượng riêng biệt được gọi là trình vòng lặp.
 - Ví dụ như trình vòng lặp hồ sơ mạng xã hội,  mẫu Iterator được sử dụng để duyệt qua các hồ sơ có trong một bộ sưu tập mạng xã hội từ xa mà không để lộ bất kỳ chi tiết giao tiếp nào với phía client.
 - VD trong project [Iterator](https://github.com/abishekaditya/DesignPatterns/blob/master/IteratorPattern/Client.cs)
- ```
+ ```csharp
  public class Client
     {
         private IEnumerable _breakfast;
@@ -206,7 +206,7 @@ v.v.....
   - Làm giảm sự ghép nối giữa các thành phần của chương trình bằng cách làm cho chúng giao tiếp gián tiếp, thông qua một đối tượng trung gian đặc biệt.
   - Ví dụ rất nhiều phần tử GUI hợp tác với sự trợ giúp của người trung gian nhưng không phụ thuộc vào nhau.
   - VD trong project [Mediator](https://github.com/abishekaditya/DesignPatterns/blob/master/MediatorPattern/Customer.cs)
- ```
+ ```csharp
    class Customer : Colleague
     {
         public Customer(Mediator mediator) : base(mediator) {}
@@ -234,7 +234,7 @@ v.v.....
 - Là một mẫu thiết kế hành vi cho phép một đối tượng thay đổi hành vi khi trạng thái bên trong của nó thay đổi.
 - State pattern gợi ý nên tạo các lớp mới cho tất cả các trạng thái có thể có của một đối tượng và trích xuất tất cả các hành vi dành riêng cho trạng thái vào các lớp này.
 - VD trong project [State](https://github.com/abishekaditya/DesignPatterns/blob/master/StatePattern/GumballMachine.cs)
-```
+```csharp
 public void InsertQuarter()
         {
             State.InsertQuarter();
@@ -265,7 +265,7 @@ public void InsertQuarter()
 - Là một mẫu thiết kế biến một tập hợp các hành vi thành các đối tượng và làm cho chúng có thể hoán đổi cho nhau bên trong đối tượng ngữ cảnh ban đầu.
 - Strategy pattern gợi ý rằng nên chọn một lớp thực hiện điều gì đó cụ thể theo nhiều cách khác nhau và trích xuất tất cả các thuật toán này thành các lớp riêng biệt.
 - VD trong project [Strategy](https://github.com/abishekaditya/DesignPatterns/blob/master/StrategyPattern/QuackSqueak.cs)
-```
+```csharp
 class QuackSqueak : IQuackBehaviour
      {
         public void Quack()
@@ -285,7 +285,7 @@ class QuackSqueak : IQuackBehaviour
 - Là một mẫu thiết kế hành vi cho phép thêm các hành vi mới vào hệ thống phân cấp lớp hiện có mà không thay đổi bất kỳ mã hiện có nào.
 - Visitor pattern không phải là một mẫu quá phổ biến vì tính phức tạp và khả năng áp dụng hẹp của nó.
 - VD trong project [Visitor](https://github.com/abishekaditya/DesignPatterns/blob/master/VisitorPattern/LivingRoomVisitor.cs)
-```
+```csharp
 public class LivingRoomVisitor : IUnitVisitor
     {
         public void VisitApartment(Apartment apartment)
@@ -315,7 +315,7 @@ public class LivingRoomVisitor : IUnitVisitor
 
 Các client interface:
 IDuck.cs:
-```
+```csharp
 	public interface IDuck
     {
         void Quack();
@@ -324,7 +324,7 @@ IDuck.cs:
 ```
 
 ITurkey.cs:
-```
+```csharp
 public interface ITurkey
     {
         void Gobble();
@@ -332,7 +332,7 @@ public interface ITurkey
     }
 ```
 Method Tester trong class Program.cs tương ứng là methodService.
-```
+```csharp
 private static void Tester(IDuck duck)
     {
         duck.Fly();
@@ -341,7 +341,7 @@ private static void Tester(IDuck duck)
 ```
 
 Môt instance của ITukey muốn sử dụng Tester phải chuyển đổi sang IDuck thông qua class TurkeyAdapter:
-```
+```csharp
     public class TurkeyAdapter : IDuck
     {
     ...
@@ -357,8 +357,7 @@ Môt instance của ITukey muốn sử dụng Tester phải chuyển đổi sang
     }
 ```
 Ví dụ với 2 client WildTurkey và TurkeyAdapter
-
-```
+```csharp
     private static void Main()
     {
         var turkey = new WildTurkey();
@@ -375,7 +374,7 @@ Kết luận: hoàn toàn tương đồng so với mẫu thiết kế Adapte, s�
 Được sử dụng trong [BridgePattern.](https://github.com/abishekaditya/DesignPatterns/tree/master/BridgePattern)
 
 Các implementation gồm IEnchantment và IWeapon:
-```
+```csharp
     public interface IEnchantment
     {
         void OnActivate();
@@ -397,7 +396,7 @@ Các instance của IWeapon: Sword, Hammer.
 Author đã sử dụng 2 bridge để quán lý 2 thể loại vũ khí là bùa mê (Enchantment) và vũ khí vật lý (Weapon). Các intance sẽ cho biết cách sử dụng và hiệu ứng của từng loại. Giống với mẫu Brigde
 
 Điểm khác: Author có kết hợp sử dụng thêm mẫu Adapter để chuyển đổi IWeapon sang IEnchantment.
-```
+```csharp
     public interface IWeapon
     {
         ...
@@ -413,7 +412,7 @@ Lớp cha MenuComponent gồm các leaf Menu, MenuIteam và Composite là Client
 
 Ví dụ trong program.cs, Client sử dụng các instance của MenuComponent để quản lý bữa ăn (sửa dụng Menu) và thực đơn trong bữa ăn (MenuIteam).
 
-```
+```csharp
 static class Program
     {
         public static void Main()
@@ -459,7 +458,7 @@ Kết luận: Sử dụng mẫu Composite để quản lý các loại Menu, câ
 
 Kết luận: Author đã sử dụng mẫu Facade để thiết kế các class quản lý từng tác vụ được quản lý chung bới class *HomeTheatreFacade* khi đó Client chỉ cần thao tác với *HomeTheatreFacade* để sử dụng các chứ năng được cung cấp bởi tất cả các subsystem.
 Ví dụ trong program.cs:
-```
+```csharp
     internal static class Program
     {
         private static void Main()
@@ -485,7 +484,7 @@ Ví dụ trong program.cs:
 
 **Component** tương ứng là abstract class *Beverage* khai báo các method chung cho quá trình bao bọc (Mix đồ uống - Description và giá thành - Cost) và đối tượng là đồ uống:
 
-```
+```csharp
     abstract class Beverage
     {
         protected string _description = "No Description";
@@ -495,7 +494,7 @@ Ví dụ trong program.cs:
 ```
 Các **Concrete Component** là các class Espresso, DrakRoast, HouseBlend. Là các đối tượng đồ uống xác định.
 ví dụ Espresso.cs
-```
+```csharp
 class Espresso : Beverage
     {
         public Espresso()
@@ -522,7 +521,7 @@ class Espresso : Beverage
 IBeverage  OolingMilkTea FoamMilkTea CoconutMilkTea BubbleMilkTea 
 
 **Flyweight Factory** tương ứng là class *BubbleTeaShop* đại diện cho một cửa hàng đồ uống quản lý các loại đồ uống - Enumerate(), các hóa đơn - TakeOrders():
-```
+```csharp
     private void TakeOrders()
         {
             var factory = new BeverageFlyweightFactory();
@@ -552,7 +551,7 @@ Kết luận: Tương đồng với mẫu thiết ké nhưng chưa thể hiện 
 Được sử dụng tại [ProxyPattern](https://github.com/abishekaditya/DesignPatterns/tree/master/ProxyPattern)
 
 **Service** là RealImg
-```
+```csharp
     public class RealImage : Image
     {
 
@@ -576,7 +575,7 @@ Kết luận: Tương đồng với mẫu thiết ké nhưng chưa thể hiện 
     }
 ```
 **Service Interface** tương ứng là class Image cung cấp service display() của class RealImg. Và **Proxy** tương ứng là ProxyImg tham chiếu đến display().
-```
+```csharp
     public class ProxyImage : Image
     {
     ...
