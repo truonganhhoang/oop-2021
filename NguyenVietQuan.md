@@ -13,7 +13,28 @@
  1. _Giống nhau_: 
    - Builder pattern là một mẫu thiết kế thuộc "Nhóm khởi tạo" (Creational Pattern). Mẫu thiết kế này cho phép lập trình viên tạo ra những đối tượng phức tạp nhưng chỉ cần thông qua các câu lệnh đơn giản để tác động nên các thuộc tính của nó.
    - Đều dùng khi cần tạo ra một đối tượng phức tạp. Một đối tượng mà thuật toán để tạo tạo lập các thuộc tính là độc lập đối với các thuộc tính khác.
-   - Về cấu trúc, đều sử dụng các 4 thành phần cơ bản như: Builder, Director, ConcreateBuilder, Product. Các đối tượng tương ứng trong lớp này là: HouseBuilder, PizzaBuilder, HouseDirector,..
+   - Về cấu trúc, đều sử dụng các 4 thành phần cơ bản như: Builder, Director, ConcreateBuilder, Product. Các đối tượng tương ứng trong lớp này là: HouseBuilder, PizzaBuilder, HouseDirector,.. 
+   - ```java
+     public abstract class HouseBuilder {
+	    String builderName;
+	    enum HouseType {
+		WOOD, CLAY, GINGERBREAD, STONE 
+	    }
+	    HouseType houseType;
+	    House house = new House();
+	
+	    public void setHouseType(HouseType houseType) {
+		this.houseType = houseType;
+		house.setHouseType(houseType);
+	    }
+	    // Each method in the Builder returns the Builder so we can use the Fluent Interface Pattern
+	    public abstract HouseBuilder addWalls();
+	    public abstract HouseBuilder addRoof();
+	    public abstract HouseBuilder addWindows();
+
+	    public House build() {
+		System.out.println("Build the house!");
+	
    - Link design pattern: https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/builder/house.
    2. _Khác nhau_:
 - Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế Builder chuẩn.
@@ -23,6 +44,20 @@
 - Được sử dụng để tách thành phần trừu tượng (Abstraction) và thành phần thực thi (Implementation) riêng biệt.
 - Gồm 4 thành phần cơ bản: Client, Abstraction, Refined Abstraction (AbstractionImpl), Implementor, ConcreteImplementor...
 - Cụ thể ở trong mẫu đã chọn là các lớp Client.java, các lớp abstract như RemoteControl.java, Imprementor như GenericRemote.java...
+- ```java
+  public class GenericRemote extends RemoteControl {
+    public GenericRemote(TVFactory tvFactory) {
+    super(tvFactory);
+    }
+    public void nextChannel() {
+    int channel = this.getChannel();
+    this.setChannel(channel+1);
+    }
+    public void prevChannel() {
+    int channel = this.getChannel();
+    this.setChannel(channel-1);
+    }
+    }
 - Link design pattern: https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/bridge/remote.
 2. _Khác nhau_:
 - Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế Builder chuẩn.
@@ -31,6 +66,25 @@
 - Đều sử dụng Adapt Pattern: Adapter Pattern (Người chuyển đổi) là một trong những Pattern thuộc nhóm cấu trúc (Structural Pattern). Adapter Pattern cho phép các inteface (giao diện) không liên quan tới nhau có thể làm việc cùng nhau. Đối tượng giúp kết nối các interface gọi là Adapter.
 - Gồm các thành phần cơ bản: Adaptee, Adapter, Target, Client.
 - Client là lớp Duck.java, Target là Drone.java, Adapter là Mallarđuck,...
+- ```java
+    public class DuckAdapter implements Turkey {
+    Duck duck;
+    Random rand;
+
+	    public DuckAdapter(Duck duck) {
+		    this.duck = duck;
+		    rand = new Random();
+	    }
+    
+	    public void gobble() {
+		    duck.quack();
+	    }
+  
+	    public void fly() {
+		if (rand.nextInt(5)  == 0) {
+		     duck.fly();
+		}
+	    }}
 - Link design pattern: https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/adapter/ducks.
 2. _Khác nhau_:
 - Sử dụng thêm mẫu Iterator pattern, cụ thể ở package iterenum.
@@ -41,13 +95,59 @@
 - Gồm các thành phần cơ bản sau: Super Class, Sub classes, Factory Class,...
 - Trong đó, Super class như Pizza đại diện cho các loại Pizza, các sub classes của nó là cheesePizza, clamPizza, PepperoniPizza, VeggiePizza.
 - Factory class là simplePizzaFactory, PizzStore có trách nhiệm khởi tạo các sub classes.
+- ```java
+  abstract public class Pizza {
+	    String name;
+	    String dough;
+	    String sauce;
+	    List<String> toppings = new ArrayList<String>();
+
+	    public String getName() {
+		    return name;
+	    }
+
+	    public void prepare() {
+		    System.out.println("Preparing " + name);
+	    }
+    
+	    public void bake() {
+		    System.out.println("Baking " + name);
+	    }
+
+	    public void cut() {
+		    System.out.println("Cutting " + name);
+	    }
+
+	    public void box() {
+		    System.out.println("Boxing " + name);
+	    }
+
+	    public String toString() {
+		// code to display pizza name and ingredients
+		    StringBuffer display = new StringBuffer();
+		    display.append("---- " + name + " ----\n");
+		    display.append(dough + "\n");
+		    display.append(sauce + "\n");
+		    for (String topping : toppings) {
+			    display.append(topping + "\n");
+		    }
+		    return display.toString();
+        }
+       }
 - Link design pattern: https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/factory/pizzas.
 2. _Khác nhau_:
 - Có cấu trúc giống với mẫu thiết kế chuẩn.
 # Singleton package:
 1. _Giống nhau_:
 - Sử dụng Singleton pattern: Đảm bảo class tạo ra duy nhất 1 biến đó (kiểu như là static class vậy). Và tất nhiên là static thì phải có cách truy cập trong phạm vi toàn cầu
-- Mỗi class đều bao gồm 1 class Singleton và 1 class SingletonClient để kiểm tra tính unique của Singleton class
+- Mỗi class đều bao gồm 1 class Singleton và 1 class SingletonClient để kiểm tra tính unique của Singleton class.
+- ```java
+    public enum Singleton {
+	    UNIQUE_INSTANCE;
+	    public String getDescription() {
+		    return "I'm a thread safe Singleton!";
+            }
+    }
 - Link design pattern: https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/singleton/enumS.
 2. _Khác nhau_:
 - Mỗi class lại chưa 1 cách để implement Singleton pattern khác nhau
@@ -55,7 +155,31 @@
 # Prototype package:
 1. _Giống nhau_:
 - Sử dụng Protype pattern: Tạo 1 đối tượng bằng cách Clone một đối tượng đã tồn tại
-- Có method Copy cho từng class phục vụ cho Clone
+- Có method Copy cho từng class phục vụ cho Clone 
+- ```java
+    public class Client {
+	    public static void main(String[] args) {
+		Prototype p1 = new ConcretePrototype1();
+		Prototype p2 = new ConcretePrototype2();
+		
+		// ... later ...
+		operation(p1);
+		operation(p2);
+	}
+	
+	public static Prototype operation(Prototype p) {
+		// This code doesn't know or care what the concrete type of p is
+		Prototype pCopy = null;
+		try {
+			pCopy = p.copy();
+			// do something useful with pCopy
+			System.out.println("Operating with pCopy!");
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return pCopy;
+            }
+  }
 - Link design pattern:https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/prototype.
 2. _Khác nhau_:
 - Đơn giản chỉ là việc Implement thêm method clone nên không có sự mới mẻ gì    
@@ -87,6 +211,36 @@
 - Đều sử dụng mẫu thiết kế chuẩn Strategy Pattern: Đây là một trong nhưng mẫu có hiệu suất sử dụng trung bình cao trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, Bao bọc một họ các thuật toán bằng các lớp đối tượng để thuật toán có thể thay đổi độc lập đối với chương trình sử dụng thuật toán.Cung cấp một họ giải thuật cho phép client chọn lựa linh động một giải thuật cụ thể khi sử dụng.
 - Gồm 4 thành phần cơ bản: Strategy, ConcreteStrategy, Context.
 - Cụ thể: QuackBehavior.java là một lớp trừu tượng đại diên cho hành vi của Client. Tiếp đến Quack.java Class này được ứng dụng QuackBehavior.java để thực hiện mục đích của mình: Cấu hình cho client.
+- ```java
+     public abstract class Duck {
+	    FlyBehavior flyBehavior;
+	    QuackBehavior quackBehavior;
+
+	    public Duck() {
+	    }
+
+	    public void setFlyBehavior(FlyBehavior fb) {
+	    	flyBehavior = fb;
+	    }
+
+	    public void setQuackBehavior(QuackBehavior qb) {
+	    	quackBehavior = qb;
+	    }
+
+	    abstract void display();
+
+	    public void performFly() {
+	    	flyBehavior.fly();
+	}
+
+	    public void performQuack() {
+		    quackBehavior.quack();
+	    }
+
+	    public void swim() {
+    		System.out.println("All ducks float, even decoys!");
+            }
+        }
 - Link design pattern: https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/strategy.
 2. _Khác nhau_:
 - Về cơ bản, khuôn dạng cũng giống với mẫu chuẩn.
@@ -122,6 +276,59 @@
 - - Leaf là lớp Menu.java.
 - - Composite là lớp MenuItem.java
 - - Client là Waitress.java
+- ```java 
+    public class Menu extends MenuComponent {
+	    Iterator<MenuComponent> iterator = null;
+	    ArrayList<MenuComponent> menuComponents = new ArrayList<MenuComponent>();
+	    String name;
+	    String description;
+  
+	    public Menu(String name, String description) {
+	    	this.name = name;
+	    	this.description = description;
+	    }
+ 
+	    public void add(MenuComponent menuComponent) {
+	    	menuComponents.add(menuComponent);
+	    }
+ 
+	    public void remove(MenuComponent menuComponent) {
+	    	menuComponents.remove(menuComponent);
+	    }
+ 
+	    public MenuComponent getChild(int i) {
+	    	return menuComponents.get(i);
+	    }
+ 
+	    public String getName() {
+	    	return name;
+	    }
+ 
+	    public String getDescription() {
+	    	return description;
+	    }
+
+  
+	    public Iterator<MenuComponent> createIterator() {
+	    	if (iterator == null) {
+	    		iterator = new CompositeIterator(menuComponents.iterator());
+	    	}
+	    	return iterator;
+	    }
+ 
+ 
+	    public void print() {
+	    	System.out.print("\n" + getName());
+	    	System.out.println(", " + getDescription());
+	    	System.out.println("---------------------");
+  
+	    	Iterator<MenuComponent> iterator = menuComponents.iterator();
+	    	while (iterator.hasNext()) {
+	    		MenuComponent menuComponent = iterator.next();
+	    		menuComponent.print();
+	    	}
+        }
+    }
 - Link design pattern: https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator.
 2. _Khác nhau_:
 - Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
