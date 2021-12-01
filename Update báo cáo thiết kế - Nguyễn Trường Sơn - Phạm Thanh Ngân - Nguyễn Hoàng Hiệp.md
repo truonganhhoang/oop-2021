@@ -9,7 +9,8 @@
 
 #### **Về việc làm bài báo cáo**: 
 - Mỗi thành viên sẽ làm phần việc mình được giao và sẽ commit vào repo chung của nhóm khi đã hoàn tất (**[link repo của nhóm](https://github.com/sonishere/oop-2021)**)
-- **[Link repo làm tài liệu tham khảo và phân tích](https://github.com/youlookwhat/DesignPattern)**
+- **[Link repo mẫu làm tài liệu tham khảo và phân tích](https://github.com/youlookwhat/DesignPattern)**
+- **[Link tài liệu lí thuyết làm cơ sở tham khảo và phân tích](https://gpcoder.com/4164-gioi-thieu-design-patterns/)**
 
 ## Nội dung báo cáo:
 ### **A. Creational Pattern**
@@ -490,16 +491,61 @@
 - Bản chất: Strategy Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép định nghĩa tập hợp các thuật toán, đóng gói từng thuật toán lại, và dễ dàng thay đổi linh hoạt các thuật toán bên trong object. Strategy cho phép thuật toán biến đổi độc lập khi người dùng sử dụng chúng.
 - Giống nhau:
    - Repo bao gồm:
-      - Class **Strategy** tên Role định nghĩa các hành vi có thể có của một Strategy 
-      - Các **ConcreteStrategy ** class (IAttackBehavior, IDefendBehavior IRunBehavior) cài đặt các hành vi cụ thể của Strategy. 
+    - Class **Strategy** tên Role định nghĩa các hành vi có thể có của một Strategy 
+```java
+      public abstract class Role {
+
+        protected String name;
+
+        // 着装
+        protected abstract void display();
+
+        // 逃跑
+        protected abstract void run();
+
+        // 攻击
+        protected abstract void attack();
+
+        // 防御
+        protected abstract void defend();
+    }
+```
+   - Các **ConcreteStrategy** class (IAttackBehavior, IDefendBehavior IRunBehavior) cài đặt các hành vi cụ thể của Strategy. 
 - Khác nhau: Không tồn tại class **Context** đóng vai trò nhận các yêu cầu từ Client, các yêu cầu này sau đó được ủy quyền cho Strategy thực hiện.
 #### ***10. Template Method***
 - Bản chất: Template Method Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Pattern này nói rằng “Định nghĩa một bộ khung của một thuật toán trong một chức năng, chuyển giao việc thực hiện nó cho các lớp con. Mẫu Template Method cho phép lớp con định nghĩa lại cách thực hiện của một thuật toán, mà không phải thay đổi cấu trúc thuật toán“.
+- Giống nhau
+  - Repo bao gồm:
+    - Class **Abstract Class** tên Worker có chức năng định nghĩa các phương thức trừu tượng cho từng bước có thể được điều chỉnh bởi các lớp con, cài đặt một phương thức duy nhất điều khiển thuật toán và gọi các bước riêng lẻ đã được cài đặt ở các lớp con. 
+    - Class **ConcreteClass** (CTOWorker.java, HRWorker.java, ITWorker.java, OtherWorker.java, QAWorker.java) là các thuật toán cụ thể, cài đặt các phương thức của AbstractClass. Các thuật toán này ghi đè lên các phương thức trừu tượng để cung cấp các triển khai thực sự.
 - Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
 #### ***11. Visitor***
 - Bản chất: Visitor Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Visitor cho phép định nghĩa các thao tác (operations) trên một tập hợp các đối tượng (objects) không đồng nhất (về kiểu) mà không làm thay đổi định nghĩa về lớp (classes) của các đối tượng đó. Để đạt được điều này, trong mẫu thiết kế visitor ta định nghĩa các thao tác trên các lớp tách biệt gọi các lớp visitors, các lớp này cho phép tách rời các thao tác với các đối tượng mà nó tác động đến. Với mỗi thao tác được thêm vào, một lớp visitor tương ứng được tạo ra.
 - Giống nhau: 
-- Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+  - Trong repo bao gồm:
+   - Class **Visitor** tên ComputerPart là một interface hoặc một abstract class được sử dụng để khai báo các hành vi cho tất cả các loại visitor
+```java
+        public interface ComputerPartVisitor {
+
+            public void visit(Computer computer);
+
+            public void visit(Mouse mouse);
+
+            public void visit(Keyboard keyboard);
+
+            public void visit(Monitor monitor);
+        }
+```
+  - Class **ConcreteVisitor** tên ComputerPartVisitorDisplay dành cho khách truy cập và hiển thị output
+
+  - Class **Element** tên ComputerPart là một thành phần trừu tượng, nó khai báo phương thức accept() và chấp nhận đối số là Visitor
+```java
+        public interface ComputerPart {
+            public void accept(ComputerPartVisitor computerPartVisitor);
+        }
+```
+  - Class **ConcreteElement** (Computer, Keyboard,...) cài đặt phương thức đã được khai báo trong Element dựa vào đối số visitor được cung cấp
+- Khác nhau: Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
 
 
 ## Tổng Kết: Mặc dù có sự khác biệt ở một số Patterns, các mẫu thiết kế được sử dụng và phát triển đều khá giống và tương đồng với 23 mẫu có sẵn của Gang Of Four!
