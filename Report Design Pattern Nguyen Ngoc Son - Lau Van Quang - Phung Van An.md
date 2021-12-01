@@ -356,3 +356,237 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 	<li>Một số yêu cầu chưa được giải quyết.</li>
 </ul>
 </ul>
+
+
+**Command**
+<ul>
+<li> SurfaceControl surfaceControl = Assertions.checkNotNull(MainActivity.surfaceControl);
+	if (surfaceView == null) {
+  	new SurfaceControl.Transaction()
+      	.reparent(surfaceControl, /* newParent= */ null)
+      	.setBufferSize(surfaceControl, /* w= */ 0, /* h= */ 0)
+      	.setVisibility(surfaceControl, /* visible= */ false)
+      	.apply();
+</li>
+<li>Giống nhau:</li>
+<ul>
+	<li>Biến một yêu cầu thành một đối tượng độc lập chứa tất cả thông tin về yêu cầu</li>
+	<li>Sự chuyển đổi này cho phép bạn chuyển các yêu cầu dưới dạng đối số của phương thức, trì hoãn hoặc xếp hàng đợi việc thực hiện một yêu cầu và hỗ trợ các hoạt động hoàn tác.</li>
+	<li>Các đối tượng GUI có thể truy cập trực tiếp vào các đối tượng logic nghiệp vụ.</li>
+	<li>Truy cập lớp logic nghiệp vụ thông qua một lệnh.</li>
+	<li>Các đối tượng GUI ủy quyền công việc cho các lệnh.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Tham số hóa các đối tượng bằng các phép toán</li>
+	<li>Xếp hàng đợi các hoạt động, lên lịch thực thi hoặc thực thi chúng từ xa.</li>
+	<li>Triển khai các hoạt động có thể đảo ngược</li>
+</ul>
+</ul>
+
+
+**Iterator**
+<ul>
+<li> trackSelectionParameters =
+          DefaultTrackSelector.Parameters.CREATOR.fromBundle(
+              savedInstanceState.getBundle(KEY_TRACK_SELECTION_PARAMETERS));
+  	startAutoPlay = savedInstanceState.getBoolean(KEY_AUTO_PLAY);
+  	startItemIndex = savedInstanceState.getInt(KEY_ITEM_INDEX);
+  	startPosition = savedInstanceState.getLong(KEY_POSITION);
+</li>
+<li>Giống nhau:</li>
+	<li>Duyệt qua các phần tử của một bộ sưu tập mà không để lộ biểu diễn cơ bản của nó (danh sách, ngăn xếp, cây, v.v.).</li>
+	<li>Trình lặp thực hiện các thuật toán duyệt khác nhau. Một số đối tượng trình lặp có thể duyệt cùng một bộ sưu tập cùng một lúc.
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Trình lặp đóng gói các chi tiết làm việc với cấu trúc dữ liệu phức tạp</li>
+	<li>Mã của các thuật toán lặp không tầm thường có xu hướng rất cồng kềnh</li>
+	<li>Mẫu cung cấp một vài giao diện chung cho cả bộ sưu tập và trình vòng lặp</li>
+</ul>
+</ul>
+
+
+**Mediator**
+<ul>
+<li> public void onNewIntent(Intent intent) {
+	super.onNewIntent(intent);
+	releasePlayer();
+	releaseAdsLoader();
+	clearStartPosition();
+	setIntent(intent);
+  }
+</li>
+<li>Giống nhau:</li>
+<ul>
+	<li>Giảm bớt sự phụ thuộc hỗn loạn giữa các đối tượng. Mẫu hạn chế giao tiếp trực tiếp giữa các đối tượng và buộc chúng chỉ cộng tác thông qua một đối tượng trung gian.</li>
+	<li>Các phần tử giao diện người dùng giao tiếp gián tiếp, thông qua đối tượng trung gian</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Khó thay đổi một số lớp</li>
+	<li>Không thể sử dụng lại một thành phần trong một chương trình khác vì nó quá phụ thuộc vào các thành phần khác.</li>
+</ul>
+</ul>
+
+
+**Memento**
+<ul>
+<li> public void onStart() {
+	super.onStart();
+	if (Util.SDK_INT > 23) {
+  	initializePlayer();
+  	if (playerView != null) {
+    	playerView.onResume();
+  	}
+	}
+  }
+</li>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cho phép lưu và khôi phục trạng thái trước đó của một đối tượng mà không tiết lộ chi tiết về quá trình triển khai của nó.</li>
+	<li>Người tạo có toàn quyền truy cập vào memento, trong khi người chăm sóc chỉ có thể truy cập siêu dữ liệu.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Có thể khôi phục trạng thái trước đó của đối tượng.</li>
+	<li>Không đối tượng nào khác có thể đọc ảnh chụp nhanh, làm cho dữ liệu trạng thái của đối tượng ban đầu được an toàn và bảo mật.</li>
+</ul>
+</ul>
+
+
+**Observer**
+<ul>
+<li> public void onDestroy() {
+	super.onDestroy();
+	releaseAdsLoader();
+  }</li>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cho phépxác định cơ chế đăng ký để thông báo cho nhiều đối tượng về bất kỳ sự kiện nào xảy ra với đối tượng mà họ đang quan sát.</li>
+	<li>Cơ chế đăng ký cho phép các đối tượng riêng lẻ đăng ký nhận thông báo sự kiện</li>
+	<li>Nhà xuất bản thông báo cho người đăng ký bằng cách gọi phương thức thông báo cụ thể trên các đối tượng của họ.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Một số đối tượng trong ứng dụng của bạn phải quan sát những đối tượng khác, nhưng chỉ trong thời gian giới hạn hoặc trong các trường hợp cụ thể.</li>
+</ul>
+</ul>
+
+
+**State**
+<ul>
+<li>public void onRequestPermissionsResult(
+  	int requestCode, String[] permissions, int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+	if (grantResults.length == 0) {
+  	// Empty results are triggered if a permission is requested while another request was already
+  	// pending and can be safely ignored in this case.
+  	return;
+	}
+	if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+  	initializePlayer();
+	} else {
+      showToast(R.string.storage_permission_denied);
+  	finish();
+	}
+  }
+ </li>
+<li>Giống nhau:</li>	
+<ul>
+	<li>Một đối tượng thay đổi hành vi của nó khi trạng thái bên trong của nó thay đổi. Nó xuất hiện như thể đối tượng đã thay đổi lớp của nó.</li>
+	<li>Tài liệu ủy quyền công việc cho một đối tượng trạng thái.</li>
+</ul>
+
+<li>Khác nhau:</li>	
+<ul>
+	<li>Số lượng trạng thái là rất lớn và mã của trạng thái cụ thể thường xuyên thay đổi.</li>
+	<li>State pattern cho phép bạn trích xuất các nhánh của các điều kiện này thành các phương thức của các lớp trạng thái tương ứng</li>
+	<li>State pattern cho phép bạn soạn cấu trúc phân cấp của các lớp trạng thái và giảm sự trùng lặp bằng cách trích xuất mã chung vào các lớp cơ sở trừu tượng.</li>
+</ul>
+</ul>
+
+
+**Strategy**
+<ul>
+<li>   public boolean dispatchKeyEvent(KeyEvent event) {
+	// See whether the player view wants to handle media or DPAD keys events.
+	return playerView.dispatchKeyEvent(event) || super.dispatchKeyEvent(event);
+  }
+</li>
+<li>Giống nhau:</li>
+<ul>
+	<li> Xác định một nhóm thuật toán, đặt mỗi thuật toán vào một lớp riêng biệt và làm cho các đối tượng của chúng có thể hoán đổi cho nhau.</li>
+	<li>Mỗi thuật toán định tuyến có thể được trích xuất thành lớp riêng của nó bằng một buildRoute phương pháp duy nhất </li>
+</ul>
+
+<li>Khác nhau:</li>	
+<ul>
+	<li>Gián tiếp thay đổi hành vi của đối tượng trong thời gian chạy bằng cách liên kết nó với các đối tượng con khác nhau có thể thực hiện các nhiệm vụ con cụ thể theo những cách khác nhau.</li>
+	<li>Trích xuất các hành vi khác nhau thành một hệ thống phân cấp lớp riêng biệt và kết hợp các lớp ban đầu thành một, do đó giảm mã trùng lặp</li>
+	<li>Tách biệt mã, dữ liệu nội bộ và các phần phụ thuộc của các thuật toán khác nhau khỏi phần còn lại của mã</li>
+	<li>Loại bỏ điều kiện như vậy bằng cách trích xuất tất cả các thuật toán thành các lớp riêng biệt, tất cả đều triển khai cùng một giao diện</li>
+</ul>
+</ul>
+
+
+**Template Method**
+<ul>
+<li> public void onClick(View view) {
+	if (view == selectTracksButton
+    	&& !isShowingTrackSelectionDialog
+    	&& TrackSelectionDialog.willHaveContent(trackSelector)) {
+  	isShowingTrackSelectionDialog = true;
+  	TrackSelectionDialog trackSelectionDialog =
+      	TrackSelectionDialog.createForTrackSelector(
+          	trackSelector,
+          	/* onDismissListener= */ dismissedDialog -> isShowingTrackSelectionDialog = false);
+      trackSelectionDialog.show(getSupportFragmentManager(), /* tag= */ null);
+	}
+  }
+</li>
+<li>Giống nhau:</li>
+<ul>
+	<li>Xác định khung của một thuật toán trong lớp cha nhưng cho phép các lớp con ghi đè các bước cụ thể của thuật toán mà không thay đổi cấu trúc của nó.</li>
+	<li>Chia nhỏ thuật toán thành các bước, cho phép các lớp con ghi đè các bước này nhưng không phải là phương thức thực.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Khách hàng chỉ mở rộng các bước cụ thể của một thuật toán, nhưng không mở rộng toàn bộ thuật toán hoặc cấu trúc của nó.</li>
+	<li>Mã khác nhau giữa các lớp con có thể vẫn còn trong các lớp con.</li>
+</ul>
+</ul>
+
+
+**Visitor**
+<ul>
+<li> protected boolean initializePlayer() {
+	if (player == null) {
+  	Intent intent = getIntent();
+ 
+  	mediaItems = createMediaItems(intent);
+  	if (mediaItems.isEmpty()) {
+    	return false;
+  	}
+</li>
+<li>Giống nhau:</li>
+<ul>
+	<li>Tách các thuật toán khỏi các đối tượng mà chúng hoạt động trên đó.</li>
+	<li>Mỗi phương thức có thể nhận các đối số thuộc các kiểu khác nhau</li>
+	<li>Cung cấp cho phương thức của khách truy cập quyền truy cập vào tất cả dữ liệu cần thiết có trong đối tượng.</li>
+	<li>Double Dispatch , giúp thực thi phương thức thích hợp trên một đối tượng mà không cần các điều kiện rườm rà.</li>
+</ul>
+
+<li>Khác nhau:</li>	
+<ul>
+	<li>Một đối tượng khách triển khai một số biến thể của cùng một thao tác, tương ứng với tất cả các lớp mục tiêu.</li>
+	<li>Trích xuất tất cả các hành vi khác vào một tập hợp các lớp khách truy cập.</li>
+	<li>Chấp nhận các đối tượng của các lớp có liên quan, để trống phần còn lại.</li>
+</ul>
+</ul>
