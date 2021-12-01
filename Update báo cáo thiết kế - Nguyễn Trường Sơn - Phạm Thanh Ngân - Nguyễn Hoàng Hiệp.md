@@ -370,15 +370,6 @@
 - Giống nhau: 
   - Trong cấu trúc của repo:
     - Class AbstractLogger đóng vai trò như một **Handler** là 1 class interface để xử lý các yêu cầu. Gán giá trị cho đối tượng successor
-    - Các **ConcreteHandler** (ConsoleLogger, ErrorLogger, FileLogger) xử lý yêu cầu. Có thể truy cập đối tượng successor (thuộc class Handler). Nếu đối tượng ConcreateHandler không thể xử lý được yêu cầu, nó sẽ gởi lời yêu cầu cho successor của nó.
-- Khác nhau: không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
-
-#### ***2. Command***
-- Bản chất: Command Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép chuyển yêu cầu thành đối tượng độc lập, có thể được sử dụng để tham số hóa các đối tượng với các yêu cầu khác nhau như log, queue (undo/redo), transtraction.
-
-- Giống nhau: 
-  - Repo bao gồm:
-    - Class **Command** là một interface hoặc abstract class, chứa một phương thức trừu tượng thực thi (execute) một hành động (operation)
 ```java
         public abstract class AbstractLogger {
 
@@ -407,7 +398,8 @@
           protected abstract void write(String message);
       }
 ```
-    - Class ControlPanel giúp điều khiển qua input và QuickCommand giúp thực hiện một lệnh có thể thực hiện nhiều hành động (multiple execute)
+ - Các **ConcreteHandler** (ConsoleLogger, ErrorLogger, FileLogger) xử lý yêu cầu. Có thể truy cập đối tượng successor (thuộc class Handler). Nếu đối tượng ConcreateHandler không thể xử lý được yêu cầu, nó sẽ gởi lời yêu cầu cho successor của nó.
+
 ```java
       public class ConsoleLogger extends AbstractLogger {
 
@@ -443,7 +435,20 @@
            }
        }
 ```
+
+- Khác nhau: không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+
+#### ***2. Command***
+- Bản chất: Command Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép chuyển yêu cầu thành đối tượng độc lập, có thể được sử dụng để tham số hóa các đối tượng với các yêu cầu khác nhau như log, queue (undo/redo), transtraction.
+
+- Giống nhau: 
+  - Repo bao gồm:
+    - Class **Command** là một interface hoặc abstract class, chứa một phương thức trừu tượng thực thi (execute) một hành động (operation)
+
+    - Class ControlPanel giúp điều khiển qua input và QuickCommand giúp thực hiện một lệnh có thể thực hiện nhiều hành động (multiple execute)
+
     - Các Object như Computer, Light, Door và các option thực hiện cho nó (On, Off)
+  
 ```java
       public class QuickCommand implements Command {
 
