@@ -7,7 +7,7 @@ Thành viên:
 
 **Link GitHub sử dụng: https://github.com/tylerlaberge/PyPattyrn**
 
-**Python**
+**Language: Python**
 
 # 1. Factory Method
 
@@ -273,6 +273,7 @@ assert id(dummy_class_one_instance_two) != id(dummy_class_two_instance_two)
 # 6. Pool Pattern
 
 **Giống nhau**
+
 - Sử dụng Object Pool Pattern cung cấp một kỹ thuật để tái sử dụng objects thay vì khởi tạo không kiểm soát.
 
 - Khi client cần sử dụng object, thay vì tạo ra một đối tượng mới thì client chỉ cần đơn giản yêu cầu Object pool lấy một đối tượng đã có sẵn trong object pool. Sau khi object được sử dụng nó sẽ không hủy mà sẽ được trả về pool cho client khác sử dụng.
@@ -584,7 +585,6 @@ class CallWrapper(DecoratorSimple):
 
 # 10. Flyweight Pattern
 
-
 **Giống nhau**
 
 - Nó cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.
@@ -592,6 +592,7 @@ class CallWrapper(DecoratorSimple):
 - Được thiết kế nhằm giảm bộ nhớ bằng cách chia sẽ các đối tượng.
 
 **Khác nhau**
+
 - Flyweight object là immutable, nghĩa là không thể thay đổi khi nó đã được khởi tạo.
 
 **Src Code**
