@@ -176,6 +176,11 @@ private static class NullCursor implements RowCursor {
 - Link: https://github.com/questdb/questdb/tree/ce5977cb08dc8d60e42896d3dcaf867907fb6d5c/core/src/main/java/io/questdb/log
 - Giống nhau : Về cơ bản là tương đồng so với mẫu chuẩn.
 
+<br />
+<br />
+
+#### Iterator
+
 - Iterator cho phép bạn duyệt qua các phần tử của một bộ sưu tập mà không để lộ biểu diễn cơ bản của nó (list, stack, tree, ...).
 
 ```
