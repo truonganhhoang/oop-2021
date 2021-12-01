@@ -43,16 +43,19 @@ Với file RegexpMultilineCheck.java, đối tượng Builder được sử dụ
 Với mẫu chuẩn, ta cần 1 Interface và một class có implements Interface đó. Còn trong trường hợp này, người ta sử dụng Builder như một lớp con final trong một lớp cha final.
 
 ### 3. Abstract Factory
+Mẫu thiết kế này cho phép ta định nghĩa các Interface hoặc các lớp trừu tượng, qua đó tạo các đối tượng có liên quan mà không cần phải sử dụng các lớp riêng biệt.
 
 ### 4. Singleton
+Singleton Patterns thuộc loại mẫu thiết kế khởi tạo, cho phép ta đảm bảo chỉ duy nhất một thể hiện (instance) được tạo ra , đồng thời cung cấp một phương thức để có thể truy xuất được thể hiện duy nhất đó mọi lúc mọi nơi trong chương trình. Đầu tiên, ta đặt các hàm khởi tạo, biến ở chế độ private final, để hạn chế truy cập từ bên ngoài. Sau đó, ta tạo một phương thức public static để trả về thể hiện của đối tượng đó.
 
 ### 5. Prototype
+Với mẫu thiết kế này, khi tạo một đối tượng, ta không cần sử dụng từ khóa new, mà chỉ việc sao chép từ một đối tượng mẫu có trước.
 
 ### 6. Adaptor
+Mấu thiết kế này cho phép ta di chuyển dữ liệu từ các đối tượng có kiểu khác nhau.
 
 ### 7. Bridge
-
-### 8. Composite
+Bridge Pattern được sử dụng để tách thành phần trừu tượng (abstraction) và thành phần thực thi (implementation) riêng biệt.
 
 ### 9. Decorator Pattern:
 Gán thêm trách nhiệm cho đối tượng (mở rộng chức năng) vào lúc chạy (dynamically). Tần suất sử dụng: TB - 3/5.
