@@ -225,3 +225,222 @@ public class Product {
 ````
 - **Khác nhau:**
     + Không có sự khác nhau vì sử dụng các thành phần cơ bản của mẫu thiết kế Builder.
+## I. Nhóm Structural
+### Adapter:
++ Là một mẫu thiết kế cấu trúc cho phép các đối tượng có giao diện không tương thích cộng tác. Đối tượng giúp kết nối các interface.
++ Ở đây có thể thấy rằng điện thoại di động dựa trên một giao diện cung cấp điện áp 5V, còn điện gia đình là 220V. Vì vậy cần phải có **Adapter** (bucker) để sạc điện thoại di động.
+- **Code:**
+````
+package com.example.jingbin.designpattern.adapter;
+
+import android.util.Log;
+
+public class V5PowerAdapter implements V5Power {
+
+    private int v220power;
+
+    public V5PowerAdapter(V220Power v220Power) {
+        v220power = v220Power.provideV220Power();
+    }
+
+    @Override
+    public int provideV5Power() {
+
+        Log.e("---", "适配器: 经过复杂的操作,将" + v220power + "v电压转为5v");
+        return 5;
+    }
+
+}
+````
+- **Giống nhau:**
+    + Gồm các thành phần cơ bản: Adaptee, Adapter, Target, Client.
+    + Cơ bản giống với mẫu thiết kế chuẩn
+- **Khác nhau:** 
+    + Không thấy sự khác nhau.
+### Bridge:
++ Được sử dụng để tách thành phần trừu tượng (abstraction) và thành phần thực thi (implementation) riêng biệt.
++ Gồm các thành phần cơ bản.
+- **Code:**
+````
+public class BridgeActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityBridgeBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_bridge);
+        setTitle("桥接模式");
+        binding.tvDefine.setText(EMTagHandler.fromHtml(AppConstant.BRIDGE_DEFINE));
+
+        binding.btRed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 画红圆
+                Circle circle = new Circle(10, 10, 100, new RedCircle());
+                circle.draw();
+            }
+        });
+
+        binding.btGreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 画绿圆
+                Circle circle = new Circle(20, 20, 100, new GreenCircle());
+                circle.draw();
+            }
+        });
+    }
+
+}
+````
+- **Giống nhau:**
+    + khá giống với mẫu Adapter Pattern ở chỗ là sẽ nhờ vào một lớp khác để thực hiện một số xử lý nào đó. Tuy nhiên, ý nghĩa và mục đích sử dụng của hai mẫu thiết kế này hoàn toàn khác nhau.
+- **Khác nhau:** 
+    + Không có sự khác biệt. 
+### Composite:
++ Tổ chức các đối tượng theo cấu trúc phân cấp dạng cây. Tất cả các đối tượng trong cấu trúc được thao tác theo một cách thuần nhất.
++ Trong mẫu này chỉ có 2 class CompositeActivity và Employee.Như vậy nó bị khuyết hai thành phần là Base Component và Leaf so với mẫu thiết kế Composite Pattern chuẩn.
+- **Code:**
+````
+public class CompositeActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityCompositeBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_composite);
+
+        setTitle("组合模式");
+        binding.tvDefine.setText(EMTagHandler.fromHtml(AppConstant.COMPOSITE_DEFINE));
+        final Employee ceo = new Employee("John", "CEO", 30000);
+
+        Employee headSales = new Employee("Robert", "Head sales", 20000);
+
+        Employee headMarketing = new Employee("Michel", "Head Marketing", 20000);
+
+        Employee clerk1 = new Employee("Laura", "Marketing", 10000);
+        Employee clerk2 = new Employee("Bob", "Marketing", 10000);
+
+        Employee salesExecutive1 = new Employee("Richard", "Sales", 10000);
+        Employee salesExecutive2 = new Employee("Rob", "Sales", 10000);
+
+        ceo.add(headSales);
+        ceo.add(headMarketing);
+
+        headSales.add(salesExecutive1);
+        headSales.add(salesExecutive2);
+
+        headMarketing.add(clerk1);
+        headMarketing.add(clerk2);
+
+        binding.btCeo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("---", ceo.toString());
+            }
+        });
+
+    }
+}
+````
+- **Giống nhau:**
+    + Giống với mẫu chuẩn.
+- **Khác nhau:** 
+    + Không có sự khác biệt.
+### Decorator:
++ Decorator Pattern được sử dụng để thay đổi một instance riêng lẻ của một class, bằng cách tạo một class decorator bao bọc class gốc. 
++ Nó khác với kế thừa là nó được thực hiện trong thời gian chạy và chỉ áp dụng cho một cá thể, trong khi kế thừa sẽ ảnh hưởng đến tất cả các trường hợp.
+- **Code:**
+````
+package com.example.jingbin.designpattern.decorator;
+
+public interface IEquip {
+
+    public int caculateAttack();
+
+    public String description();
+}
+````
+- **Giống nhau:**
+    +
+- **Khác nhau:** 
+    +
+### Facade:
++
++
+- **Code:**
+````
+
+````
+- **Giống nhau:**
+    + Cấu trúc trong mã nguồn đã chính xác so với cấu trúc ở trong mẫu chuẩn.
+- **Khác nhau:** 
+    + Không có sự khác nhau.
+### Flyweight:
++ Cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.
++ Mẫu thiết kế dưới khuyết phần UnsharedFlyweight so với mẫu thiết kế Flyweight Pattern chuẩn
+- **Code:**
+````
+public class ShapeFactory {
+
+    private static final HashMap<String, Shape> circleMap = new HashMap<String, Shape>();
+
+    public static Shape getShape(String color) {
+        Shape shape = circleMap.get(color);
+        if (shape == null) {
+            shape = new Circle(color);
+            circleMap.put(color, shape);
+            Log.e("getShape", "Creating circle of color : " + color);
+        }
+        return shape;
+    }
+
+}
+````
+````
+package com.example.jingbin.designpattern.flyweight;
+
+
+public interface Shape {
+    void draw();
+}
+````
+- **Giống nhau:**
+    + Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
+- **Khác nhau:** 
+    + Không có sự khác nhau.
+### Proxy:
++ - Là mẫu thiết kế mà ở đó tất cả các truy cập trực tiếp đến một đối tượng nào đó sẽ được chuyển hướng vào một đối tượng trung gian (Proxy Class). Mẫu Proxy (người đại diện) đại diện cho một đối tượng khác thực thi các phương thức, phương thức đó có thể được định nghĩa lại cho phù hợp với múc đích sử dụng.
++ Trong Proxy Pattern, một lớp đại diện cho chức năng của lớp khác.
+- **Code:**
+````
+package com.example.jingbin.designpattern.proxy;
+
+public interface Image {
+    void display();
+}
+````
+````
+import android.util.Log;
+
+public class RealImage implements Image {
+
+    private String fileName;
+
+    public RealImage(String fileName) {
+        this.fileName = fileName;
+        loadFromDisk(fileName);
+    }
+
+    private void loadFromDisk(String fileName) {
+        Log.e("RealImage", "loading " + fileName);
+    }
+
+    @Override
+    public void display() {
+        Log.e("RealImage", "Displaying " + fileName);
+    }
+}
+````
+- **Giống nhau:**
+    + Giống toàn bộ cấu trúc gốc.
+- **Khác nhau:** 
+    + Không có sự khác nhau
