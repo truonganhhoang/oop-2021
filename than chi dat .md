@@ -1,3 +1,9 @@
+# So sánh với mẫu chuẩn
+
+**Các mẫu được sử dụng**
+* Singleton Pattern.
+* MVC (Model View Controller).
+* Template Pattern.
 * Factory Method Pattern.
 
 **1. Autowired Singletons**
@@ -30,7 +36,9 @@
 ]
  ```
  * Mỗi phương thức *getBean* được coi là một *factory method* trả về một ***bean*** với các tiêu chí được cung cấp cho phương thức, ví dụ là tên, kiểu của ***bean***.
-* Các mẫu thiết kế dự án không sử dụng *
+
+
+**Các mẫu thiết kế dự án không sử dụng**
 * 5.Adapter Pattern (Người chuyển đổi) là một trong cấu trúc nhóm thuộc tính (Structural Pattern). Adapter Pattern cho phép các inteface (giao diện) không liên kết với nhau có thể làm việc giống nhau. Giúp kết nối các giao diện được gọi là Adapter. Hiện tại dự án không sử dụng.
 * 6.Bridge Pattern được sử dụng để tách biệt thành phần (trừu tượng) và thành phần thực thi (thực thi) riêng. Do đó, các thành phần này có thể thay đổi một cách độc lập mà không ảnh hưởng đến các thành phần khác. Thay vì liên kết với nhau bằng hệ thống thừa kế, hai thành phần này liên kết với nhau thông qua hệ thống “chứa trong” (thành phần đối tượng).
 Hiện tại dự án không sử dụng.
@@ -53,6 +61,7 @@ Ví dụ rất nhiều phần tử GUI hợp tác với sự trợ giúp của n
 * 22.Visitor Pattern là một mẫu thiết kế hành vi cho phép bạn tách các thuật toán khỏi các đối tượng mà chúng hoạt động trên đó.Mẫu khách truy cập gợi ý rằng bạn đặt hành vi mới vào một lớp riêng biệt được gọi là khách truy cập , thay vì cố gắng tích hợp nó vào các lớp hiện có. Đối tượng ban đầu phải thực hiện hành vi hiện được chuyển cho một trong các phương thức của khách truy cập như một đối số, cung cấp cho phương thức này quyền truy cập vào tất cả dữ liệu cần thiết có trong đối tượng.
 * 23.Prototype là một mẫu thiết kế sáng tạo cho phép bạn sao chép các đối tượng hiện có mà không làm cho mã của bạn phụ thuộc vào các lớp của chúng.Prototype Pattern là một Design Pattern được sử dụng chủ yếu để giảm chi phí khi tạo object. Thường là khi các ứng dụng quy mô lớn tạo, cập nhật hoặc truy xuất các đối tượng tốn nhiều tài nguyên.
 Điều này được thực hiện bằng cách sao chép object, nó được tạo và sử dụng lại bản sao của object trong các yêu cầu ở phía sau khi có, để tránh thực hiện một hoạt động tốn tài nguyên khác.
+
 **Khác nhau**
  * Về cơ bản các mẫu thiết kế này không có sự khác biệt so với mẫu thiết kế gốc.
  * Về cơ bản các mẫu thiết kế được sử dụng bởi dự án  này không có sự khác biệt so với mẫu thiết kế gốc. Tỉ lệ giống lên tới 95 %.
