@@ -35,4 +35,4 @@
 **Khác nhau**
  * Về cơ bản các mẫu thiết kế này không có sự khác biệt so với mẫu thiết kế gốc.
 
-**Repository:** [spring-boot](https://github.com/spring-projects/spring-petclinic)
+**Repository:** [spring-petclinic](https://github.com/spring-projects/spring-petclinic)
