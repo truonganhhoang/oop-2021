@@ -462,3 +462,16 @@ public class RealImage implements Image {
 - **Khác nhau:** 
     + Không có sự khác nhau.
     
+### Visitor:
+- Giống nhau:
+    - Interface đại diện cho các yếu tố: Các class implements từ Interface đó, Interface riêng cho khách truy cập.
+    - Interface đại diện cho các yếu tố:  Class dành cho khách truy cập, Class hiển thị.
+- Khác nhau:
+    - Không có gì khác biệt.
+```
+public interface ComputerPart {
+    public void accept(ComputerPartVisitor computerPartVisitor);
+}
+```
+
+    
