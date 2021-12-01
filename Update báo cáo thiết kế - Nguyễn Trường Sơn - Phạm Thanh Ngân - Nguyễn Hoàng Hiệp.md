@@ -379,7 +379,70 @@
 - Giống nhau: 
   - Repo bao gồm:
     - Class **Command** là một interface hoặc abstract class, chứa một phương thức trừu tượng thực thi (execute) một hành động (operation)
+```java
+        public abstract class AbstractLogger {
+
+          public static int INFO = 1;
+          public static int DEBUG = 2;
+          public static int ERROR = 3;
+
+          protected int level;
+
+          protected AbstractLogger nextLogger;
+
+          public void setNextLogger(AbstractLogger nextLogger) {
+        this.nextLogger = nextLogger;
+          }
+
+          public void logMessage(int level, String message) {
+        if (this.level <= level) {
+            write(message);
+        }
+
+        if (nextLogger != null) {
+            nextLogger.logMessage(level, message);
+        }
+          }
+
+          protected abstract void write(String message);
+      }
+```
     - Class ControlPanel giúp điều khiển qua input và QuickCommand giúp thực hiện một lệnh có thể thực hiện nhiều hành động (multiple execute)
+```java
+      public class ConsoleLogger extends AbstractLogger {
+
+           public ConsoleLogger(int level) {
+         this.level = level;
+           }
+
+           @Override
+           protected void write(String message) {
+         Log.e("---", "Standard Console::Logger  " + message);
+           }
+       }
+       public class FileLogger extends AbstractLogger {
+
+           public FileLogger(int level) {
+         this.level = level;
+           }
+
+           @Override
+           protected void write(String message) {
+         Log.e("---", "File::Logger  " + message);
+           }
+       }
+       public class ErrorLogger extends AbstractLogger {
+
+           public ErrorLogger(int level) {
+         this.level = level;
+           }
+
+           @Override
+           protected void write(String message) {
+         Log.e("---", "Error Console::Logger  " + message);
+           }
+       }
+```
     - Các Object như Computer, Light, Door và các option thực hiện cho nó (On, Off)
 ```java
       public class QuickCommand implements Command {
@@ -430,6 +493,7 @@
 - Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
 #### ***11. Visitor***
 - Bản chất: Visitor Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Visitor cho phép định nghĩa các thao tác (operations) trên một tập hợp các đối tượng (objects) không đồng nhất (về kiểu) mà không làm thay đổi định nghĩa về lớp (classes) của các đối tượng đó. Để đạt được điều này, trong mẫu thiết kế visitor ta định nghĩa các thao tác trên các lớp tách biệt gọi các lớp visitors, các lớp này cho phép tách rời các thao tác với các đối tượng mà nó tác động đến. Với mỗi thao tác được thêm vào, một lớp visitor tương ứng được tạo ra.
+- Giống nhau: 
 - Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
 
 
