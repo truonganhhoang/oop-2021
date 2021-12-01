@@ -3,6 +3,7 @@
 <li>Lầu Văn Quang</li>
 <li>Phùng Văn An</li>
 </ul>
+link repo : https://refactoring.guru/design-patterns/java
 link repo so sánh: https://github.com/google/ExoPlayer
 
 **Singleton**
