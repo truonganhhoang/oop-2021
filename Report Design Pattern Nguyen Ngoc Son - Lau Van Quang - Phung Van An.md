@@ -191,3 +191,168 @@ link repo so sánh: https://github.com/google/ExoPlayer
 	<li>Mất nhiều thời gian để thực hiện thay đổi</li>
 </ul>
 </ul>
+
+
+**Composite**
+<ul>
+<li> public void onPause() {
+	super.onPause();
+ 
+    Assertions.checkNotNull(playerControlView).setPlayer(null);
+  }
+ </li>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cho phép sắp xếp các đối tượng thành cấu trúc cây và sau đó làm việc với các cấu trúc này như thể chúng là các đối tượng riêng lẻ.</li>
+	<li>Mẫu tổng hợp cho phép chạy một cách đệ quy một hành vi trên tất cả các thành phần của cây đối tượng.</li>
+	<li>Các thành phần giao diện mô tả hoạt động mà là chung cho cả hai đơn giản và các yếu tố phức tạp của cây.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Khó cung cấp một giao diện chung cho các lớp có chức năng khác nhau quá nhiều</li>
+</ul>
+</ul>
+
+
+**Decorator**
+<ul>
+<li> String drmScheme = Assertions.checkNotNull(intent.getStringExtra(DRM_SCHEME_EXTRA));
+  	String drmLicenseUrl = Assertions.checkNotNull(intent.getStringExtra(DRM_LICENSE_URL_EXTRA));
+  	UUID drmSchemeUuid = Assertions.checkNotNull(Util.getDrmUuid(drmScheme));
+  	HttpDataSource.Factory licenseDataSourceFactory = new DefaultHttpDataSource.Factory();
+  	HttpMediaDrmCallback drmCallback =
+      	new HttpMediaDrmCallback(drmLicenseUrl, licenseDataSourceFactory);
+  	drmSessionManager =
+      	new DefaultDrmSessionManager.Builder()
+              .setUuidAndExoMediaDrmProvider(drmSchemeUuid, FrameworkMediaDrm.DEFAULT_PROVIDER)
+          	.build(drmCallback);
+</li>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cho phép đính kèm các hành vi mới vào các đối tượng bằng cách đặt các đối tượng này bên trong các đối tượng trình bao bọc đặc biệt có chứa các hành vi.</li>
+	<li>Các ứng dụng có thể định cấu hình các ngăn xếp phức tạp của trình trang trí thông báo</li>.
+	<li>Các phương pháp thông báo khác nhau trở thành người trang trí.</li>
+</ul>
+
+<li>-Khác nhau:</li>
+<ul>
+	<li>Khó mở rộng thêm một lớp</li>
+	<li>Cấu trúc lôgic nghiệp vụ</li>
+</ul>
+</ul>
+
+
+**Facade**
+<ul>
+<li>  
+ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
+	player.setMediaSource(mediaSource);
+	player.prepare();
+	player.play();
+    player.setRepeatMode(Player.REPEAT_MODE_ALL);
+</li>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cung cấp một giao diện đơn giản hóa cho một thư viện, một khuôn khổ hoặc bất kỳ tập hợp lớp phức tạp nào khác.</li>
+	<li>Các Facade cung cấp truy cập thuận tiện đối với một phần cụ thể của chức năng của hệ thống phụ.</li>
+	<li>Các lớp hệ thống con không nhận thức được sự tồn tại của mặt tiền. Chúng hoạt động trong hệ thống và làm việc trực tiếp với nhau.</li>
+</ul>
+
+<li>-Khác nhau:</li>
+<ul>
+	<li>Các hệ thống con trở nên phức tạp hơn theo thời gian.</li>
+</ul>
+</ul>
+
+
+**Flyweight**
+<ul>
+<li>surfaceControl =
+    	new SurfaceControl.Builder()
+        	.setName(SURFACE_CONTROL_NAME)
+        	.setBufferSize(/* width= */ 0, /* height= */ 0)
+        	.build();
+	videoSurface = new Surface(surfaceControl);
+	player.setVideoSurface(videoSurface);
+	MainActivity.player = player;
+  }
+ </li>
+<li>Giống nhau:</li>
+<ul>
+	<li>Cho phép lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.</li>
+	<li>Chứa một phần trạng thái của đối tượng ban đầu có thể được chia sẻ giữa nhiều đối tượng.</li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Một ứng dụng cần tạo ra một số lượng lớn các đối tượng tương tự.</li>
+	<li>Các đối tượng chứa các trạng thái trùng lặp có thể được trích xuất và chia sẻ giữa nhiều đối tượng</li>
+	<li>Mã trở nên phức tạp hơn nhiều</li>
+</ul>
+</ul>
+
+
+
+
+
+**Proxy**
+<ul>
+<li> private void setCurrentOutputView(@Nullable SurfaceView surfaceView) {
+	currentOutputView = surfaceView;
+	if (surfaceView != null && surfaceView.getHolder().getSurface() != null) {
+  	reparent(surfaceView);
+	}
+  }
+</li>
+<li>Giống nhau:</li>
+<ul>
+	<li>Một proxy kiểm soát quyền truy cập vào đối tượng ban đầu, cho phép bạn thực hiện điều gì đó trước hoặc sau khi yêu cầu được chuyển đến đối tượng ban đầu.</li>
+	<li>Các giao diện Service tuyên bố giao diện của Dịch Vụ. Proxy phải tuân theo giao diện này để có thể tự ngụy trang thành một đối tượng dịch vụ.</li>
+	<li>Proxy quản lý toàn bộ vòng đời của các đối tượng dịch vụ </li>
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Có thể trì hoãn việc khởi tạo đối tượng đến thời điểm thực sự cần thiết.</li>
+	<li>Proxy có thể chuyển yêu cầu đến đối tượng dịch vụ chỉ khi thông tin xác thực của khách hàng phù hợp với một số tiêu chí.</li>
+	<li>Proxy có thể sử dụng các tham số của yêu cầu làm khóa bộ nhớ cache</li>
+</ul>
+</ul>
+
+
+**Chain of Responsibility**
+<ul>
+<li> private void attachSurfaceListener(SurfaceView surfaceView) {
+	surfaceView
+    	.getHolder()
+    	.addCallback(
+        	new SurfaceHolder.Callback() {
+          	@Override
+          	public void surfaceCreated(SurfaceHolder surfaceHolder) {
+            	if (surfaceView == currentOutputView) {
+              	reparent(surfaceView);
+            	}
+          	}
+ 
+          	@Override
+	          public void surfaceChanged(
+              	SurfaceHolder surfaceHolder, int format, int width, int height) {}
+ 
+          	@Override
+          	public void surfaceDestroyed(SurfaceHolder surfaceHolder) {}
+        	});
+  }
+</li>
+<li>Giống nhau:</li>
+<ul>
+	<li>Chuyển các yêu cầu dọc theo một chuỗi các trình xử lý. Khi nhận được yêu cầu, mỗi trình xử lý sẽ quyết định xử lý yêu cầu hoặc chuyển nó cho trình xử lý tiếp theo trong chuỗi.</li>
+	<li>Những người xử lý được xếp từng hàng một, tạo thành một chuỗi.</li>
+	<li>Một chuỗi có thể được hình thành từ một nhánh của cây đối tượng.
+</ul>
+
+<li>Khác nhau:</li>
+<ul>
+	<li>Một số yêu cầu chưa được giải quyết.</li>
+</ul>
+</ul>
