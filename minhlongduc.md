@@ -404,6 +404,367 @@ public:
     }
 };
 ```
+### 2.3 Nhóm các mẫu thiết kế Behavioral:
+Nhóm pattern này liên quan đến thuật toán và sự phân công công việc giữa các nhóm đối tượng.
+
+#### 2.3.1 Chain of Responsibility:
+*Mô tả: Chain of Responsibility cho phép chuyển các yêu câu dọc theo chuỗi xử lý. Khi nhận được yêu cầu, mỗi trình xử lý sẽ quyết định xử lý yêu cầu hoặc chuyển cho trình xử lý khác.*
+*Pattern này hoạt động như một danh sách liên kết với việc đệ quy duyệt qua các phần tử, sử dụng khi chương trình cần xử lý nhiều loại yêu cầu khác nhau, nhưng chưa chưa xác định được loại yêu cầu và cách sắp xếp tuần tự của nó.*
+Code minh họa:
+```C++
+class Reqest
+{
+    string description;
+    RequestType reqType;
+public:
+    Reqest(const string & desc, RequestType type) : description(desc), reqType(type) {}
+    RequestType getReqType() const { return reqType; }
+    const string& getDescription() const { return description; }
+};
+
+class ChainHandler{
+    
+    ChainHandler *nextChain;
+    void sendReqestToNextHandler(const Reqest & req)
+    {
+        if (nextChain != nullptr)
+            nextChain->handle(req);
+    }
+protected:
+    virtual bool canHandleRequest(const Reqest & req) = 0;
+    virtual void processRequest(const Reqest & req) = 0;
+public:
+    ChainHandler() { nextChain = nullptr; }
+    void setNextChain(ChainHandler *next) { nextChain = next; }
+    
+   
+    void handle(const Reqest & req)
+    {
+        if (canHandleRequest(req))
+            processRequest(req);
+        else
+            sendReqestToNextHandler(req);
+    }
+};
+
+
+class Handler1 : public ChainHandler{
+protected:
+    bool canHandleRequest(const Reqest & req) override
+    {
+        return req.getReqType() == RequestType::REQ_HANDLER1;
+    }
+    void processRequest(const Reqest & req) override
+    {
+        cout << "Handler1 is handle reqest: " << req.getDescription() << endl;
+    }
+};
+```
+*Đường dẫn: https://github.com/liu-jianhao/Cpp-Design-Patterns/tree/master/Chain%20of%20Resposibility*
+
+#### 2.3.2 Command:
+*Mô tả: Command Pattern cho phép biến một yêu cầu thành một đối tượng độc lập và chứa đầy đủ thông tin về yêu cầu đó. Chuyển đổi này giúp truyền các yêu cầu dưới dạng tham số của phương thức, trì hoãn hoặc chờ đợi việc thực thi một yêu cầu hay hỗ trợ các hoạt động hoàn tác.*
+*Pattern này được sử dụng khi cần tham số hóa các đối tượng theo một hành động thực hiện hoặc khi cần tạo và thực thi các yêu cầu vào các thời điểm khác nhau.*
+Code minh họa:
+```C++
+class Command
+{
+public:
+    virtual void execute() = 0;
+};
+
+class ConcreteCommand1 : public Command
+{
+    string arg;
+public:
+    ConcreteCommand1(const string & a) : arg(a) {}
+    void execute() override
+    {
+        cout<< "#1 process..."<<arg<<endl;
+    }
+};
+
+class ConcreteCommand2 : public Command
+{
+    string arg;
+public:
+    ConcreteCommand2(const string & a) : arg(a) {}
+    void execute() override
+    {
+        cout<< "#2 process..."<<arg<<endl;
+    }
+};
+        
+        
+class MacroCommand : public Command
+{
+    vector<Command*> commands;
+public:
+    void addCommand(Command *c) { commands.push_back(c); }
+    void execute() override
+    {
+        for (auto &c : commands)
+        {
+            c->execute();
+        }
+    }
+};
+```
+*Đường dẫn: https://github.com/liu-jianhao/Cpp-Design-Patterns/tree/master/Command*
+
+#### 2.3.3 Iterator:
+*Mô tả: Mẫu này được sử dụng để truy cập vào các phần tử của 1 collection (array, map, set, tree...) một cách tuần tự mà không cần quan tâm tới cấu trúc của nó.
+Iterator được sử dụng để giảm thiểu các mã trung lập khi duyệt phần tử.*
+Code minh họa:
+```C++
+template<typename T>
+class Iterator
+{
+public:
+    virtual void first() = 0;
+    virtual void next() = 0;
+    virtual bool isDone() const = 0;
+    virtual T& current() = 0;
+};
+
+
+template<typename T>
+class MyCollection{
+    
+public:
+    
+    Iterator<T> GetIterator(){
+        //...
+    }
+    
+};
+
+template<typename T>
+class CollectionIterator : public Iterator<T>{
+    MyCollection<T> mc;
+public:
+    
+    CollectionIterator(const MyCollection<T> & c): mc(c){ }
+    
+    void first() override {
+        
+    }
+    void next() override {
+        
+    }
+    bool isDone() const override{
+        
+    }
+    T& current() override{
+        
+    }
+};
+```
+*Đường dẫn: https://github.com/liu-jianhao/Cpp-Design-Patterns/blob/master/Iterator/Iterator.cpp*
+
+#### 2.3.4 Mediator:
+*Mô tả: Mediator Patern (mẫu hình trung gian) được sử dụng để giảm sự phức tạp trong “giao tiếp” giữa các lớp và các đối tượng. Mô hình này cung cấp một lớp trung gian có nhiệm vụ xử lý thông tin liên lạc giữa các tầng lớp, hỗ trợ bảo trì mã code dễ dàng bằng cách khớp nối lỏng lẻo.*
+*Đường dẫn: https://github.com/liu-jianhao/Cpp-Design-Patterns/tree/master/Mediator*
+
+#### 2.3.5 Memento:
+*Mô tả: Memento là mẫu thiết kế có thể lưu lại trạng thái của một đối tượng để khôi phục lại (Undo) sau này mà không vi phạm nguyên tắc đóng gói. Dữ liệu trạng thái đã lưu trong đối tượng memento không thể truy cập bên ngoài đối tượng được lưu và khôi phục. Điều này bảo vệ tính toàn vẹn của dữ liệu trạng thái đã lưu.*
+Code minh họa:
+```C++
+class Memento
+{
+    string state;
+    //..
+public:
+    Memento(const string & s) : state(s) {}
+    string getState() const { return state; }
+    void setState(const string & s) { state = s; }
+};
+
+
+class Originator
+{
+    string state;
+    //....
+public:
+    Originator() {}
+    Memento createMomento() {
+        Memento m(state);
+        return m;
+    }
+    void setMomento(const Memento & m) {
+        state = m.getState();
+    }
+};
+```
+*Đường dẫn: https://github.com/liu-jianhao/Cpp-Design-Patterns/blob/master/Memento/memento.cpp*
+
+#### 2.3.6 Observer:
+*Mô tả: Mẫu Observer tạo mối liên hệ one-to-many giữa subject và các observer với nhau(chẳng hạn 1 subject sẽ có thuộc tính là một mảng bao gồm nhiều observer) nên khi trạng thái của subject thay đổi, tất cả các observer liên kết với subject này sẽ được thông báo và tự động cập nhật.*
+*Đường dẫn: https://github.com/liu-jianhao/Cpp-Design-Patterns/tree/master/Observer*
+
+#### 2.3.7 State:
+*Mô tả: Mẫu State cho phép một đối tượng thay đổi hành vi của nó khi trạng thái nội bộ của nó thay đổi. Đối tượng sẽ xuất hiện để thay đổi lớp của nó.*
+*Mẫu này được sử dụng khi hành vi của đối tượng phụ thuộc vào trạng thái của nó và nó phải có khả năng thay đổi hành vi của nó lúc run-time theo trạng thái mới.*
+Code minh họa:
+```C++
+type MobileAlertState interface {
+	alert()
+}
+
+type AlertStateContext struct {
+	currentState MobileAlertState
+}
+
+func NewAlertStateContext() *AlertStateContext {
+	return &AlertStateContext{currentState: &Vibration{}}
+}
+
+func (ctx *AlertStateContext) SetState(state MobileAlertState) {
+	ctx.currentState = state
+}
+
+func (ctx *AlertStateContext) Alert() {
+	ctx.currentState.alert()
+}
+
+type Vibration struct{}
+
+func (v *Vibration) alert() {
+	fmt.Println("vibrating....")
+}
+
+type Silence struct{}
+
+func (s *Silence) alert() {
+	fmt.Println("silent ....")
+}
+```
+*Đường dẫn: https://github.com/liu-jianhao/Cpp-Design-Patterns/tree/master/State*
+
+#### 2.3.8 Strategy:
+*Mô tả: Là mẫu thiết kế cho phép chọn thuật toán trong 1 nhóm các thuật toán liên quan đến nhau ngay tại lúc chương trình đang chạy để thực hiện một hoạt động nào đó.*
+Code minh họa:
+```C++
+class SalesOrder{
+    TaxBase tax;
+public:
+    double CalculateTax(){
+        //...
+        
+        if (tax == CN_Tax){
+            //CN***********
+        }
+        else if (tax == US_Tax){
+            //US***********
+        }
+        else if (tax == DE_Tax){
+            //DE***********
+        }
+		else if (tax == FR_Tax){  //¸ü¸Ä
+			//...
+		}
+
+        //....
+     }
+    
+};
+class TaxStrategy{
+public:
+    virtual double Calculate(const Context& context)=0;
+    virtual ~TaxStrategy(){}
+};
+
+
+class CNTax : public TaxStrategy{
+public:
+    virtual double Calculate(const Context& context){
+        //***********
+    }
+};
+
+class USTax : public TaxStrategy{
+public:
+    virtual double Calculate(const Context& context){
+        //***********
+    }
+};
+
+class DETax : public TaxStrategy{
+public:
+    virtual double Calculate(const Context& context){
+        //***********
+    }
+};
+```
+*Đường dẫn: https://github.com/liu-jianhao/Cpp-Design-Patterns/tree/master/Strategy-Pattern*
+
+#### 2.3.9 Template Method:
+*Mô tả: Mẫu Template Method cho phép lớp con định nghĩa lại cách thực hiện của một thuật toán, mà không phải thay đổi cấu trúc thuật toán”. Điều này có nghĩa là Template method giúp cho chúng ta tạo nên một bộ khung (template) cho một vấn đề đang cần giải quyết. Trong đó các đối tượng cụ thể sẽ có cùng các bước thực hiện, nhưng trong mỗi bước thực hiện đó có thể khác nhau.*
+Code minh họa:
+```C++
+class Library
+{
+
+public:
+	void Step1()
+	{
+		cout << "Step1" << endl;
+	}
+
+	void Step3()
+	{
+		cout << "Step3" << endl;
+	}
+
+	void Step5()
+	{
+		cout << "Step5" << endl;
+	}
+};
+```
+*Đường dẫn: https://github.com/liu-jianhao/Cpp-Design-Patterns/tree/master/Template%20Method*
+
+#### 2.3.10 Visitor:
+*Mô tả: Mẫu Visitor cho phép định nghĩa các thao tác (operations) trên một tập hợp các đối tượng (objects) không đồng nhất (về kiểu) mà không làm thay đổi định nghĩa về lớp (classes) của các đối tượng đó.*
+Code minh họa:
+```C++
+class Visitor;
+
+class Element
+{
+public:
+    virtual void accept(Visitor& visitor) = 0; //第一次多态辨析
+
+    virtual ~Element(){}
+};
+
+class ElementA : public Element
+{
+public:
+    void accept(Visitor &visitor) override {
+        visitor.visitElementA(*this);
+    }
+};
+
+class ElementB : public Element
+{
+public:
+    void accept(Visitor &visitor) override {
+        visitor.visitElementB(*this); //第二次多态辨析
+    }
+
+};
+
+class Visitor{
+public:
+    virtual void visitElementA(ElementA& element) = 0;
+    virtual void visitElementB(ElementB& element) = 0;
+    
+    virtual ~Visitor(){}
+};
+```
+*Đường dẫn: https://github.com/liu-jianhao/Cpp-Design-Patterns/tree/master/Visitor*
+
 
 ## 3. KẾT LUẬN:
 
