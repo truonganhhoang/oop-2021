@@ -885,3 +885,7 @@ func (v *People) VisitBurgerBar(p *BurgerBar) string {
 * Cho phép một hoặc nhiều hành vi được áp dụng cho một tập hợp các đối tượng tại thời điểm run-time, tách rời các hành vi khỏi cấu trúc đối tượng.
 
 
+# Kết luận: 
+* Trong dự án trên do nội dung là về design pattern nên mẫu thiết kế được sử dụng khá tương đồng với 23 mẫu thiết kế chuẩn.
+
+
