@@ -153,6 +153,82 @@ private static class NullCursor implements RowCursor {
 
 * Giống nhau : giống với mẫu chuẩn.
 * Khác nhau :
+
+#### Facade
+
+- Facade là một mẫu thiết kế cấu trúc cung cấp một giao diện đơn giản hóa cho một thư viện, một khuôn khổ hoặc bất kỳ tập hợp lớp phức tạp nào khác.
+- Ví dụ giao diện FilesFacade:
+```
+      public interface FilesFacade {
+          long MAP_FAILED = -1;
+      
+          long append(long fd, long buf, int len);
+      
+          boolean close(long fd);
+      
+          int copy(LPSZ from, LPSZ to);
+      
+          int errno();
+      
+          boolean exists(LPSZ path);
+          
+          ...
+      }
+```
+- Facade cung cấp truy cập thuận tiện đối với một phần cụ thể của chức năng của hệ thống phụ. Nó biết nơi định hướng yêu cầu của khách hàng và cách vận hành tất cả các bộ phận chuyển động.
+- Máy khách sử dụng mặt tiền thay vì gọi trực tiếp các đối tượng hệ thống con.
+
+* Giống nhau : giống với mẫu chuẩn.
+* Khác nhau :
+
+#### Flyweight
+
+- Flyweight là một mẫu thiết kế cấu trúc cho phép bạn lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.
+- Ví dụ lớp MigrationContext:
+```
+    class MigrationContext {
+          private final long tempMemory;
+          private final int tempMemoryLen;
+          private final MemoryARW tempVirtualMem;
+          private final MemoryMARW rwMemory;
+          private long metadataFd;
+      
+          public MemoryMARW createRwMemoryOf(FilesFacade ff, Path path) {
+              // re-use same rwMemory
+              // assumption that it is re-usable after the close() and then of()  methods called.
+              rwMemory.smallFile(ff, path, MemoryTag.NATIVE_DEFAULT);
+              return rwMemory;
+          }
+      
+          public CairoConfiguration getConfiguration() {
+              return engine.getConfiguration();
+          }
+      
+          public long getTempMemory(int size) {
+              if (size <= tempMemoryLen) {
+                  return tempMemory;
+              }
+              throw new UnsupportedOperationException("No temp memory of size "
+                      + size
+                      + " is allocate. Only "
+                      + tempMemoryLen
+                      + " is available");
+          }
+      
+          public MemoryARW getTempVirtualMem() {
+              return tempVirtualMem;
+          }
+    }
+```
+- Lớp Flyweight chứa một phần trạng thái của đối tượng ban đầu có thể được chia sẻ giữa nhiều đối tượng. Cùng một đối tượng flyweight có thể được sử dụng trong nhiều ngữ cảnh khác nhau.
+- Máy khách sử dụng mặt tiền thay vì gọi trực tiếp các đối tượng hệ thống con.
+- Thay vì lưu trữ cùng một dữ liệu trong nhiều đối tượng, nó chỉ được lưu giữ trong một vài đối tượng nhẹ và được liên kết với các đối tượng thích hợp hoạt động như các ngữ cảnh. Mã máy khách tạo các đối tượng cây mới bằng cách sử dụng nhà máy flyweight, gói gọn sự phức tạp của việc tìm kiếm đối tượng phù hợp và sử dụng lại nó nếu cần.
+
+* Giống nhau :
+  * Mẫu thiết kế trích xuất trạng thái nội tại lặp lại từ lớp chính và chuyển nó vào lớp flyweight MigrationContext
+* Khác nhau :
+
+
 ## III, Behavioral
 
 #### Chain of Responsibility
