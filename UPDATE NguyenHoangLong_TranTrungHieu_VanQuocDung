@@ -225,10 +225,12 @@ public class Product {
 ````
 - **Khác nhau:**
     + Không có sự khác nhau vì sử dụng các thành phần cơ bản của mẫu thiết kế Builder.
-## I. Nhóm Structural
+## II. Nhóm Structural
+
 ### Adapter:
 + Là một mẫu thiết kế cấu trúc cho phép các đối tượng có giao diện không tương thích cộng tác. Đối tượng giúp kết nối các interface.
 + Ở đây có thể thấy rằng điện thoại di động dựa trên một giao diện cung cấp điện áp 5V, còn điện gia đình là 220V. Vì vậy cần phải có **Adapter** (bucker) để sạc điện thoại di động.
+
 - **Code:**
 ````
 package com.example.jingbin.designpattern.adapter;
@@ -254,12 +256,15 @@ public class V5PowerAdapter implements V5Power {
 ````
 - **Giống nhau:**
     + Gồm các thành phần cơ bản: Adaptee, Adapter, Target, Client.
-    + Cơ bản giống với mẫu thiết kế chuẩn
+    + Cơ bản giống với mẫu thiết kế chuẩn.
+    
 - **Khác nhau:** 
     + Không thấy sự khác nhau.
+    
 ### Bridge:
 + Được sử dụng để tách thành phần trừu tượng (abstraction) và thành phần thực thi (implementation) riêng biệt.
 + Gồm các thành phần cơ bản.
+
 - **Code:**
 ````
 public class BridgeActivity extends AppCompatActivity {
@@ -294,11 +299,14 @@ public class BridgeActivity extends AppCompatActivity {
 ````
 - **Giống nhau:**
     + khá giống với mẫu Adapter Pattern ở chỗ là sẽ nhờ vào một lớp khác để thực hiện một số xử lý nào đó. Tuy nhiên, ý nghĩa và mục đích sử dụng của hai mẫu thiết kế này hoàn toàn khác nhau.
+    
 - **Khác nhau:** 
-    + Không có sự khác biệt. 
+    + Không có sự khác biệt.
+
 ### Composite:
 + Tổ chức các đối tượng theo cấu trúc phân cấp dạng cây. Tất cả các đối tượng trong cấu trúc được thao tác theo một cách thuần nhất.
 + Trong mẫu này chỉ có 2 class CompositeActivity và Employee.Như vậy nó bị khuyết hai thành phần là Base Component và Leaf so với mẫu thiết kế Composite Pattern chuẩn.
+
 - **Code:**
 ````
 public class CompositeActivity extends AppCompatActivity {
@@ -343,11 +351,14 @@ public class CompositeActivity extends AppCompatActivity {
 ````
 - **Giống nhau:**
     + Giống với mẫu chuẩn.
+    
 - **Khác nhau:** 
     + Không có sự khác biệt.
+    
 ### Decorator:
 + Decorator Pattern được sử dụng để thay đổi một instance riêng lẻ của một class, bằng cách tạo một class decorator bao bọc class gốc. 
 + Nó khác với kế thừa là nó được thực hiện trong thời gian chạy và chỉ áp dụng cho một cá thể, trong khi kế thừa sẽ ảnh hưởng đến tất cả các trường hợp.
+
 - **Code:**
 ````
 package com.example.jingbin.designpattern.decorator;
@@ -360,9 +371,10 @@ public interface IEquip {
 }
 ````
 - **Giống nhau:**
-    +
+    + Giống với mẫu chuẩn
 - **Khác nhau:** 
-    +
+    + Không có sự khác biệt.
+    
 ### Facade:
 +
 +
@@ -372,8 +384,10 @@ public interface IEquip {
 ````
 - **Giống nhau:**
     + Cấu trúc trong mã nguồn đã chính xác so với cấu trúc ở trong mẫu chuẩn.
+    
 - **Khác nhau:** 
     + Không có sự khác nhau.
+    
 ### Flyweight:
 + Cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.
 + Mẫu thiết kế dưới khuyết phần UnsharedFlyweight so với mẫu thiết kế Flyweight Pattern chuẩn
@@ -405,8 +419,10 @@ public interface Shape {
 ````
 - **Giống nhau:**
     + Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
+    
 - **Khác nhau:** 
     + Không có sự khác nhau.
+    
 ### Proxy:
 + - Là mẫu thiết kế mà ở đó tất cả các truy cập trực tiếp đến một đối tượng nào đó sẽ được chuyển hướng vào một đối tượng trung gian (Proxy Class). Mẫu Proxy (người đại diện) đại diện cho một đối tượng khác thực thi các phương thức, phương thức đó có thể được định nghĩa lại cho phù hợp với múc đích sử dụng.
 + Trong Proxy Pattern, một lớp đại diện cho chức năng của lớp khác.
@@ -442,5 +458,7 @@ public class RealImage implements Image {
 ````
 - **Giống nhau:**
     + Giống toàn bộ cấu trúc gốc.
+    
 - **Khác nhau:** 
-    + Không có sự khác nhau
+    + Không có sự khác nhau.
+    
