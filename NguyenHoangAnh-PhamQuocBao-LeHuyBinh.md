@@ -11,7 +11,7 @@
   <br />
 
   | Creational patterns | Structural patterns | Behavioral patterns |
-  | :-----------: | :-----------: | :-----------: |
+      | :-----------: | :-----------: | :-----------: |
   | ![img.png](https://images.viblo.asia/db99da2e-7eee-45b2-90ee-8e599f975a29.png) | ![img_1.png](https://images.viblo.asia/d32eddff-6ff8-4e3c-a2f2-9aa0185312a7.png) | ![img_2.png](https://images.viblo.asia/6653a5ac-b273-4002-9226-8470e4eb6867.png) |
   | Các mẫu này cung cấp các cơ chế tạo đối tượng khác nhau, giúp tăng tính linh hoạt và khả năng tái sử dụng mã hiện có.      | Những mẫu này giải thích cách tập hợp các đối tượng và lớp thành các cấu trúc lớn hơn trong khi vẫn giữ cho các cấu trúc này linh hoạt và hiệu quả.       | Các mẫu này liên quan đến các thuật toán và sự phân công trách nhiệm giữa các đối tượng. |
 
@@ -37,7 +37,7 @@
 ```
 
 * Giống nhau : giống với mẫu chuẩn.
-* Khác nhau : 
+* Khác nhau :
 
 #### Singleton
 
@@ -57,7 +57,7 @@ Phương thức khởi tạo của RecordValueSinkFactory nên được ẩn kh�
 ```
 
 * Giống nhau : giống với mẫu chuẩn.
-* Khác nhau : 
+* Khác nhau :
 
 #### Builder
 
@@ -67,14 +67,14 @@ Phương thức khởi tạo của RecordValueSinkFactory nên được ẩn kh�
   - Một số tham số có thể là tùy chọn nhưng trong Factory Pattern, chúng ta phải gửi tất cả tham số, với tham số tùy chọn nếu không nhập gì thì sẽ truyền là null.
   - Nếu một Object có quá nhiều thuộc tính thì việc tạo sẽ phức tạp.
 
-- Link: 
+- Link:
   - https://github.com/questdb/questdb/blob/master/core/src/main/java/io/questdb/DefaultServerConfiguration.java
-  - https://github.com/questdb/questdb/blob/ce5977cb08dc8d60e42896d3dcaf867907fb6d5c/core/src/main/java/io/questdb/ServerConfiguration.java#L36    
+  - https://github.com/questdb/questdb/blob/ce5977cb08dc8d60e42896d3dcaf867907fb6d5c/core/src/main/java/io/questdb/ServerConfiguration.java#L36
 
 * Giống nhau : giống với mẫu chuẩn.
-* Khác nhau : 
+* Khác nhau :
 
-## II, Structural 
+## II, Structural
 
 #### Adapter
 
@@ -85,7 +85,7 @@ Phương thức khởi tạo của RecordValueSinkFactory nên được ẩn kh�
         IndexFrame getNext();
     }
 ```
-- Lớp NullIndexFrameCursor 
+- Lớp NullIndexFrameCursor
 ```
     public class NullIndexFrameCursor implements IndexFrameCursor {
         public static final NullIndexFrameCursor INSTANCE = new NullIndexFrameCursor();
@@ -115,7 +115,7 @@ Phương thức khởi tạo của RecordValueSinkFactory nên được ẩn kh�
 ```
 => Các lớp này đều phát triển dựa trên giao diện IndexFrameCursor và có các method với hành vi khác nhau.
 * Giống nhau : giống với mẫu chuẩn.
-* Khác nhau : 
+* Khác nhau :
 
 #### Decorator
 
@@ -152,7 +152,83 @@ private static class NullCursor implements RowCursor {
 ```
 
 * Giống nhau : giống với mẫu chuẩn.
-* Khác nhau : 
+* Khác nhau :
+
+#### Facade
+
+- Facade là một mẫu thiết kế cấu trúc cung cấp một giao diện đơn giản hóa cho một thư viện, một khuôn khổ hoặc bất kỳ tập hợp lớp phức tạp nào khác.
+- Ví dụ giao diện FilesFacade:
+```
+      public interface FilesFacade {
+          long MAP_FAILED = -1;
+      
+          long append(long fd, long buf, int len);
+      
+          boolean close(long fd);
+      
+          int copy(LPSZ from, LPSZ to);
+      
+          int errno();
+      
+          boolean exists(LPSZ path);
+          
+          ...
+      }
+```
+- Facade cung cấp truy cập thuận tiện đối với một phần cụ thể của chức năng của hệ thống phụ. Nó biết nơi định hướng yêu cầu của khách hàng và cách vận hành tất cả các bộ phận chuyển động.
+- Máy khách sử dụng mặt tiền thay vì gọi trực tiếp các đối tượng hệ thống con.
+
+* Giống nhau : giống với mẫu chuẩn.
+* Khác nhau :
+
+#### Flyweight
+
+- Flyweight là một mẫu thiết kế cấu trúc cho phép bạn lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.
+- Ví dụ lớp MigrationContext:
+```
+    class MigrationContext {
+          private final long tempMemory;
+          private final int tempMemoryLen;
+          private final MemoryARW tempVirtualMem;
+          private final MemoryMARW rwMemory;
+          private long metadataFd;
+      
+          public MemoryMARW createRwMemoryOf(FilesFacade ff, Path path) {
+              // re-use same rwMemory
+              // assumption that it is re-usable after the close() and then of()  methods called.
+              rwMemory.smallFile(ff, path, MemoryTag.NATIVE_DEFAULT);
+              return rwMemory;
+          }
+      
+          public CairoConfiguration getConfiguration() {
+              return engine.getConfiguration();
+          }
+      
+          public long getTempMemory(int size) {
+              if (size <= tempMemoryLen) {
+                  return tempMemory;
+              }
+              throw new UnsupportedOperationException("No temp memory of size "
+                      + size
+                      + " is allocate. Only "
+                      + tempMemoryLen
+                      + " is available");
+          }
+      
+          public MemoryARW getTempVirtualMem() {
+              return tempVirtualMem;
+          }
+    }
+```
+- Lớp Flyweight chứa một phần trạng thái của đối tượng ban đầu có thể được chia sẻ giữa nhiều đối tượng. Cùng một đối tượng flyweight có thể được sử dụng trong nhiều ngữ cảnh khác nhau.
+- Máy khách sử dụng mặt tiền thay vì gọi trực tiếp các đối tượng hệ thống con.
+- Thay vì lưu trữ cùng một dữ liệu trong nhiều đối tượng, nó chỉ được lưu giữ trong một vài đối tượng nhẹ và được liên kết với các đối tượng thích hợp hoạt động như các ngữ cảnh. Mã máy khách tạo các đối tượng cây mới bằng cách sử dụng nhà máy flyweight, gói gọn sự phức tạp của việc tìm kiếm đối tượng phù hợp và sử dụng lại nó nếu cần.
+
+* Giống nhau :
+  * Mẫu thiết kế trích xuất trạng thái nội tại lặp lại từ lớp chính và chuyển nó vào lớp flyweight MigrationContext
+* Khác nhau :
+
+
 ## III, Behavioral
 
 #### Chain of Responsibility
@@ -175,3 +251,29 @@ private static class NullCursor implements RowCursor {
   - Không đảm bảo có đối tượng xử lý yêu cầu
 - Link: https://github.com/questdb/questdb/tree/ce5977cb08dc8d60e42896d3dcaf867907fb6d5c/core/src/main/java/io/questdb/log
 - Giống nhau : Về cơ bản là tương đồng so với mẫu chuẩn.
+
+<br />
+<br />
+
+#### Iterator
+
+- Iterator cho phép bạn duyệt qua các phần tử của một bộ sưu tập mà không để lộ biểu diễn cơ bản của nó (list, stack, tree, ...).
+
+```
+      public interface ImmutableIterator<T> extends Iterator<T>, Iterable<T> {
+          @Override
+          @NotNull
+          default Iterator<T> iterator() {
+              return this;
+          }
+      }
+
+```
+- Iterator interface khai báo các hoạt động cần thiết để vượt qua một bộ sưu tập: lấy phần tử tiếp theo, lấy vị trí hiện tại, khởi động lại lặp , ...
+- Ưu điểm của Iterator:
+  - Bạn có thể làm sạch mã máy khách và các bộ sưu tập bằng cách trích xuất các thuật toán truyền tải cồng kềnh thành các lớp riêng biệt.
+  - Bạn có thể triển khai các loại bộ sưu tập và trình vòng lặp mới và chuyển chúng vào mã hiện có mà không vi phạm bất kỳ điều gì.
+  - Bạn có thể lặp song song trên cùng một bộ sưu tập vì mỗi đối tượng trình lặp chứa trạng thái lặp riêng của nó.
+  - Vì lý do tương tự, bạn có thể trì hoãn một lần lặp lại và tiếp tục nó khi cần.
+* Giống nhau : giống với mẫu chuẩn.
+* Khác nhau :
