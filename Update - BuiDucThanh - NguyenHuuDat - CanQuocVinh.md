@@ -46,7 +46,7 @@ Với mẫu chuẩn, ta cần 1 Interface và một class có implements Interfa
 Mẫu thiết kế này cho phép ta định nghĩa các Interface hoặc các lớp trừu tượng, qua đó tạo các đối tượng có liên quan mà không cần phải sử dụng các lớp riêng biệt.
 
 ### 4. Singleton
-Singleton Patterns thuộc loại mẫu thiết kế khởi tạo, cho phép ta đảm bảo chỉ duy nhất một thể hiện (instance) được tạo ra , đồng thời cung cấp một phương thức để có thể truy xuất được thể hiện duy nhất đó mọi lúc mọi nơi trong chương trình. Đầu tiên, ta đặt các hàm khởi tạo, biến ở chế độ private final, để hạn chế truy cập từ bên ngoài. Sau đó, ta tạo một phương thức public static để trả về thể hiện của đối tượng đó.
+Singleton Patterns thuộc loại Creational Patterns, cho phép ta đảm bảo chỉ duy nhất một thể hiện (instance) được tạo ra , đồng thời cung cấp một phương thức để có thể truy xuất được thể hiện duy nhất đó mọi lúc mọi nơi trong chương trình. Đầu tiên, ta đặt các hàm khởi tạo, biến ở chế độ private final, để hạn chế truy cập từ bên ngoài. Sau đó, ta tạo một phương thức public static để trả về thể hiện của đối tượng đó.
 
 ### 5. Prototype
 Với mẫu thiết kế này, khi tạo một đối tượng, ta không cần sử dụng từ khóa new, mà chỉ việc sao chép từ một đối tượng mẫu có trước.
