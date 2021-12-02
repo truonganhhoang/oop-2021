@@ -3,13 +3,10 @@
 
 ## Singleton
 link github: https://github.com/iluwatar/java-design-patterns/tree/master/singleton
-
 **So sánh**
 
 ** Giống nhau **:
-
 - Có kết cấu giống với mẫu chuẩn . Ví dụ như Singleton là các class IvoryTower, EnumIvoryTower, InitializingOnDemandHolderIdiom, ThreadSafeDoubleCheckLocking,
-
 ThreadSafeLazyLoadedIvoryTower.
 
 - Đảm bảo chỉ có duy nhất một instance trong một class, và class đó sẽ cung cấp phương thức toàn cục để truy cập đến thực thể đó.
@@ -25,12 +22,11 @@ ThreadSafeLazyLoadedIvoryTower.
 - Vi phạm nguyên tắc Single Responsibility Principle, một pattern giải quyết cùng lúc 2 vấn đề.
 
 ** Khác nhau **:
-
 - Không có sự khác biệt với mẫu chuẩn,đây là mẫu thiết kế gần như giống với mẫu chuẩn về mọi mặt.
 
 
 ## Strategy
-https://github.com/MichalFab/Strategy-design-pattern
+link github: https://github.com/MichalFab/Strategy-design-pattern
 **Giống nhau**:
 - Xác định một nhóm thuật toán, đặt mỗi thuật toán vào một lớp riêng biệt và làm cho các đối tượng của chúng có thể hoán đổi cho nhau.
 
@@ -45,7 +41,7 @@ https://github.com/MichalFab/Strategy-design-pattern
 - Loại bỏ điều kiện như vậy bằng cách trích xuất tất cả các thuật toán thành các lớp riêng biệt, tất cả đều triển khai cùng một giao diện
 
 ## Template Method
-https://github.com/iluwatar/java-design-patterns/tree/master/template-method
+link github: https://github.com/iluwatar/java-design-patterns/tree/master/template-method
 **Giống nhau**:
 - Xác định khung của một thuật toán trong lớp cha nhưng cho phép các lớp con ghi đè các bước cụ thể của thuật toán mà không thay đổi cấu trúc của nó.
 
@@ -57,7 +53,7 @@ https://github.com/iluwatar/java-design-patterns/tree/master/template-method
 - Mã khác nhau giữa các lớp con có thể vẫn còn trong các lớp con.
 
 ## Visitor
-https://github.com/iluwatar/java-design-patterns/tree/master/visitor
+link github: https://github.com/iluwatar/java-design-patterns/tree/master/visitor
 **Giống nhau**:
 - Tách các thuật toán khỏi các đối tượng mà chúng hoạt động trên đó.
 
@@ -76,7 +72,7 @@ https://github.com/iluwatar/java-design-patterns/tree/master/visitor
 - Chấp nhận các đối tượng của các lớp có liên quan, để trống phần còn lại.
 
 ##Factory Method:
-https://github.com/iluwatar/java-design-patterns/tree/master/factory-method
+link github: https://github.com/iluwatar/java-design-patterns/tree/master/factory-method
 **Giống nhau**:
 - Cung cấp một giao diện để tạo các đối tượng trong lớp cha, nhưng cho phép các lớp con thay đổi loại đối tượng sẽ được tạo.
 
@@ -94,7 +90,7 @@ https://github.com/iluwatar/java-design-patterns/tree/master/factory-method
 - Các phương thức tạo trong lớp cơ sở và các lớp con.
 
 ##Abstract Factory:
-https://github.com/iluwatar/java-design-patterns/tree/master/abstract-factory
+link github: https://github.com/iluwatar/java-design-patterns/tree/master/abstract-factory
 **Giống nhau**:
 - Có thể tạo ra các họ các đối tượng liên quan mà không cần chỉ định các lớp cụ thể của chúng.
 
@@ -108,7 +104,7 @@ https://github.com/iluwatar/java-design-patterns/tree/master/abstract-factory
 - Rất nhiều giao diện và lớp mới được giới thiệu cùng với mẫu.
 
 ##Builder:
-https://github.com/iluwatar/java-design-patterns/tree/master/builder
+link github: https://github.com/iluwatar/java-design-patterns/tree/master/builder
 **Giống nhau**:
 - Các đối tượng phức tạp được xây dựng theo từng bước.
 
@@ -122,7 +118,7 @@ https://github.com/iluwatar/java-design-patterns/tree/master/builder
 -Độ phức tạp tổng thể của mã tăng lên vì mẫu yêu cầu tạo nhiều lớp mới.
 
 ##Prototype:
-https://github.com/Design-pattrns/Prototype-Pattern
+link github: https://github.com/Design-pattrns/Prototype-Pattern
 **Giống nhau** :
 - Cho phép sao chép các đối tượng hiện có mà không làm cho mã của ban đầu phụ thuộc vào các lớp của chúng.
 
@@ -132,7 +128,7 @@ https://github.com/Design-pattrns/Prototype-Pattern
 - Mẫu Prototype cung cấp cho mã máy khách một giao diện chung để làm việc với tất cả các đối tượng hỗ trợ nhân bản. Giao diện này làm cho mã máy khách độc lập với các lớp cụ thể của các đối tượng mà nó sao chép.
 
 ##Adapter:
-https://github.com/Design-pattrns/Adapter-Pattern
+link github: https://github.com/Design-pattrns/Adapter-Pattern
 **Giống nhau**:
 - Cho phép các đối tượng có giao diện không tương thích cộng tác.
 
@@ -146,7 +142,7 @@ https://github.com/Design-pattrns/Adapter-Pattern
 - Độ phức tạp tổng thể của mã tăng lên.
 
 ##Composite:
-https://github.com/topics/composite-pattern
+link github: https://github.com/topics/composite-pattern
 **Giống nhau**:
 - Cho phép sắp xếp các đối tượng thành cấu trúc cây và sau đó làm việc với các cấu trúc này như thể chúng là các đối tượng riêng lẻ.
 
@@ -158,7 +154,7 @@ https://github.com/topics/composite-pattern
 - Khó cung cấp một giao diện chung cho các lớp có chức năng khác nhau quá nhiều
 
 ##Decorator:
-https://github.com/iluwatar/java-design-patterns/tree/master/decorator
+link github: https://github.com/iluwatar/java-design-patterns/tree/master/decorator
 **Giống nhau**:
 - Cho phép đính kèm các hành vi mới vào các đối tượng bằng cách đặt các đối tượng này bên trong các đối tượng trình bao bọc đặc biệt có chứa các hành vi.
 
@@ -172,7 +168,7 @@ https://github.com/iluwatar/java-design-patterns/tree/master/decorator
 - Cấu trúc lôgic nghiệp vụ
 
 ##Facade
-https://github.com/iluwatar/java-design-patterns/tree/master/facade
+link github: https://github.com/iluwatar/java-design-patterns/tree/master/facade
 **Giống nhau**:
 - Cung cấp một giao diện đơn giản hóa cho một thư viện, một khuôn khổ hoặc bất kỳ tập hợp lớp phức tạp nào khác.
 
@@ -184,7 +180,7 @@ https://github.com/iluwatar/java-design-patterns/tree/master/facade
 - Các hệ thống con trở nên phức tạp hơn theo thời gian.
 
 ##Bridge
-https://github.com/MoienTajik/Bridge-Pattern-Sample
+link github: https://github.com/MoienTajik/Bridge-Pattern-Sample
 **Giống nhau**:
 - Chia một lớp lớn hoặc một tập hợp các lớp có liên quan chặt chẽ thành hai phân cấp riêng biệt — trừu tượng và thực thi — có thể được phát triển độc lập với nhau.
 
@@ -199,7 +195,7 @@ https://github.com/MoienTajik/Bridge-Pattern-Sample
 
 
 ##Flyweight
-https://github.com/iluwatar/java-design-patterns/tree/master/flyweight
+link github: https://github.com/iluwatar/java-design-patterns/tree/master/flyweight
 **Giống nhau**:
 - Cho phép lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.
 
@@ -213,7 +209,7 @@ https://github.com/iluwatar/java-design-patterns/tree/master/flyweight
 - Mã trở nên phức tạp hơn nhiều
 
 ##Proxy
-https://github.com/daggerok/proxy-pattern-example
+link github: https://github.com/daggerok/proxy-pattern-example
 **Giống nhau**:
 - Một proxy kiểm soát quyền truy cập vào đối tượng ban đầu, cho phép bạn thực hiện điều gì đó trước hoặc sau khi yêu cầu được chuyển đến đối tượng ban đầu.
 
@@ -229,7 +225,7 @@ https://github.com/daggerok/proxy-pattern-example
 - Proxy có thể sử dụng các tham số của yêu cầu làm khóa bộ nhớ cache
 
 ##Chain of Responsibility
-https://github.com/BrijeshSaxena/design-pattern-chain-of-responsibility
+link github: https://github.com/BrijeshSaxena/design-pattern-chain-of-responsibility
 **Giống nhau**:
 - Chuyển các yêu cầu dọc theo một chuỗi các trình xử lý. Khi nhận được yêu cầu, mỗi trình xử lý sẽ quyết định xử lý yêu cầu hoặc chuyển nó cho trình xử lý tiếp theo trong chuỗi.
 
@@ -241,7 +237,7 @@ https://github.com/BrijeshSaxena/design-pattern-chain-of-responsibility
 - Một số yêu cầu chưa được giải quyết.
 
 ##Command
-https://github.com/toniesteves/design-pattern-command
+link github: https://github.com/toniesteves/design-pattern-command
 **Giống nhau**:
 - Biến một yêu cầu thành một đối tượng độc lập chứa tất cả thông tin về yêu cầu
 
@@ -261,7 +257,7 @@ https://github.com/toniesteves/design-pattern-command
 - Triển khai các hoạt động có thể đảo ngược
 
 ##Iterator
-https://github.com/BrijeshSaxena/design-pattern-iterator
+link github: https://github.com/BrijeshSaxena/design-pattern-iterator
 **Giống nhau**:
 - Duyệt qua các phần tử của một bộ sưu tập mà không để lộ biểu diễn cơ bản của nó (danh sách, ngăn xếp, cây, v.v.).
 
@@ -275,7 +271,7 @@ https://github.com/BrijeshSaxena/design-pattern-iterator
 - Mẫu cung cấp một vài giao diện chung cho cả bộ sưu tập và trình vòng lặp
 
 ##Mediator
-https://github.com/BrijeshSaxena/design-pattern-mediator
+link github: https://github.com/BrijeshSaxena/design-pattern-mediator
 **Giống nhau**:
 - Giảm bớt sự phụ thuộc hỗn loạn giữa các đối tượng. Mẫu hạn chế giao tiếp trực tiếp giữa các đối tượng và buộc chúng chỉ cộng tác thông qua một đối tượng trung gian.
 
@@ -288,7 +284,7 @@ https://github.com/BrijeshSaxena/design-pattern-mediator
 
 
 ##Observer
-https://github.com/design-pattern-list/observer-pattern
+link github: https://github.com/design-pattern-list/observer-pattern
 **Giống nhau**:
 - Cho phépxác định cơ chế đăng ký để thông báo cho nhiều đối tượng về bất kỳ sự kiện nào xảy ra với đối tượng mà họ đang quan sát.
 
@@ -300,7 +296,7 @@ https://github.com/design-pattern-list/observer-pattern
 - Một số đối tượng trong ứng dụng của bạn phải quan sát những đối tượng khác, nhưng chỉ trong thời gian giới hạn hoặc trong các trường hợp cụ thể.
 
 ##State
-https://github.com/sebastianbergmann/state
+link github: https://github.com/sebastianbergmann/state
 **Giống nhau**:
 - Một đối tượng thay đổi hành vi của nó khi trạng thái bên trong của nó thay đổi. Nó xuất hiện như thể đối tượng đã thay đổi lớp của nó.
 
@@ -314,7 +310,7 @@ https://github.com/sebastianbergmann/state
 - State pattern cho phép bạn soạn cấu trúc phân cấp của các lớp trạng thái và giảm sự trùng lặp bằng cách trích xuất mã chung vào các lớp cơ sở trừu tượng.
 
 ##Memento
-https://github.com/bjarneo/memento-pattern-example
+link github: https://github.com/bjarneo/memento-pattern-example
 **Giống nhau**:
 - Cho phép lưu và khôi phục trạng thái trước đó của một đối tượng mà không tiết lộ chi tiết về quá trình triển khai của nó.
 
