@@ -31,8 +31,8 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 
 **Factory Method**
-<ul>
-<li> private View buildSampleListView() {
+```
+	 private View buildSampleListView() {
 	View dialogList = getLayoutInflater().inflate(R.layout.sample_list, null);
 	ListView sampleList = dialogList.findViewById(R.id.sample_list);
 	sampleList.setAdapter(new SampleListAdapter(this));
@@ -43,7 +43,9 @@ link repo so sánh: https://github.com/google/ExoPlayer
     	});
 	return dialogList;
   }
-</li>
+```
+	
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Cung cấp một giao diện để tạo các đối tượng trong lớp cha, nhưng cho phép các lớp con thay đổi loại đối tượng sẽ được tạo.</li>
@@ -62,13 +64,15 @@ link repo so sánh: https://github.com/google/ExoPlayer
 
 
 **Abstract Factory**
-<ul>
-<li>public View getView(int position, @Nullable View convertView, ViewGroup parent) {
+```
+	public View getView(int position, @Nullable View convertView, ViewGroup parent) {
   	View view = super.getView(position, convertView, parent);
   	((TextView) view).setText(Util.castNonNull(getItem(position)).mediaMetadata.title);
   	return view;
 	}
- </li>
+ ```
+	
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Có thể tạo ra các họ các đối tượng liên quan mà không cần chỉ định các lớp cụ thể của chúng.</li>
@@ -84,18 +88,17 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 </ul>
 
-
-
 **Builder**
-<ul>
-<li>private void updateCurrentItemIndex() {
+```
+	private void updateCurrentItemIndex() {
 	int playbackState = currentPlayer.getPlaybackState();
 	maybeSetCurrentItemAndNotify(
     	playbackState != Player.STATE_IDLE && playbackState != Player.STATE_ENDED
         	? currentPlayer.getCurrentMediaItemIndex()
         	: C.INDEX_UNSET);
   }
- </li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Các đối tượng phức tạp được xây dựng theo từng bước.</li>
@@ -112,15 +115,16 @@ link repo so sánh: https://github.com/google/ExoPlayer
 
 
 **Prototype**
-<ul>
-<li> private void maybeSetCurrentItemAndNotify(int currentItemIndex) {
+```
+	 private void maybeSetCurrentItemAndNotify(int currentItemIndex) {
 	if (this.currentItemIndex != currentItemIndex) {
   	int oldIndex = this.currentItemIndex;
   	this.currentItemIndex = currentItemIndex;
   	listener.onQueuePositionChanged(oldIndex, currentItemIndex);
 	}
   }
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Cho phép sao chép các đối tượng hiện có mà không làm cho mã của ban đầu phụ thuộc vào các lớp của chúng.</li>
@@ -135,8 +139,8 @@ link repo so sánh: https://github.com/google/ExoPlayer
 
 
 **Adapter**
-<ul>
-<li> SurfaceView surfaceView = new SurfaceView(this);
+```
+	 SurfaceView surfaceView = new SurfaceView(this);
     	view = surfaceView;
     	attachSurfaceListener(surfaceView);
     	surfaceView.setOnClickListener(
@@ -147,7 +151,8 @@ link repo so sánh: https://github.com/google/ExoPlayer
     	if (nonFullScreenView == null) {
       	nonFullScreenView = surfaceView;
     	}
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Cho phép các đối tượng có giao diện không tương thích cộng tác.</li>
@@ -162,10 +167,9 @@ link repo so sánh: https://github.com/google/ExoPlayer
 </ul>
 </ul>
 
-
 **Bridge**
-<ul>
-<li> public void onResume() {
+```
+	 public void onResume() {
 	super.onResume();
  
 	if (isOwner && player == null) {
@@ -178,7 +182,8 @@ link repo so sánh: https://github.com/google/ExoPlayer
 	playerControlView.setPlayer(player);
 	playerControlView.show();
   }
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li> Chia một lớp lớn hoặc một tập hợp các lớp có liên quan chặt chẽ thành hai phân cấp riêng biệt — trừu tượng và thực thi — có thể được phát triển độc lập với nhau.</li>
@@ -195,13 +200,14 @@ link repo so sánh: https://github.com/google/ExoPlayer
 
 
 **Composite**
-<ul>
-<li> public void onPause() {
+```
+	 public void onPause() {
 	super.onPause();
  
     Assertions.checkNotNull(playerControlView).setPlayer(null);
   }
- </li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Cho phép sắp xếp các đối tượng thành cấu trúc cây và sau đó làm việc với các cấu trúc này như thể chúng là các đối tượng riêng lẻ.</li>
@@ -217,8 +223,8 @@ link repo so sánh: https://github.com/google/ExoPlayer
 
 
 **Decorator**
-<ul>
-<li> String drmScheme = Assertions.checkNotNull(intent.getStringExtra(DRM_SCHEME_EXTRA));
+```
+	 String drmScheme = Assertions.checkNotNull(intent.getStringExtra(DRM_SCHEME_EXTRA));
   	String drmLicenseUrl = Assertions.checkNotNull(intent.getStringExtra(DRM_LICENSE_URL_EXTRA));
   	UUID drmSchemeUuid = Assertions.checkNotNull(Util.getDrmUuid(drmScheme));
   	HttpDataSource.Factory licenseDataSourceFactory = new DefaultHttpDataSource.Factory();
@@ -228,7 +234,8 @@ link repo so sánh: https://github.com/google/ExoPlayer
       	new DefaultDrmSessionManager.Builder()
               .setUuidAndExoMediaDrmProvider(drmSchemeUuid, FrameworkMediaDrm.DEFAULT_PROVIDER)
           	.build(drmCallback);
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Cho phép đính kèm các hành vi mới vào các đối tượng bằng cách đặt các đối tượng này bên trong các đối tượng trình bao bọc đặc biệt có chứa các hành vi.</li>
@@ -245,14 +252,15 @@ link repo so sánh: https://github.com/google/ExoPlayer
 
 
 **Facade**
-<ul>
-<li>  
+```
+	  
 ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 	player.setMediaSource(mediaSource);
 	player.prepare();
 	player.play();
     player.setRepeatMode(Player.REPEAT_MODE_ALL);
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Cung cấp một giao diện đơn giản hóa cho một thư viện, một khuôn khổ hoặc bất kỳ tập hợp lớp phức tạp nào khác.</li>
@@ -268,8 +276,8 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 
 
 **Flyweight**
-<ul>
-<li>surfaceControl =
+```
+	surfaceControl =
     	new SurfaceControl.Builder()
         	.setName(SURFACE_CONTROL_NAME)
         	.setBufferSize(/* width= */ 0, /* height= */ 0)
@@ -278,7 +286,8 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 	player.setVideoSurface(videoSurface);
 	MainActivity.player = player;
   }
- </li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Cho phép lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.</li>
@@ -298,14 +307,15 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 
 
 **Proxy**
-<ul>
-<li> private void setCurrentOutputView(@Nullable SurfaceView surfaceView) {
+```
+	private void setCurrentOutputView(@Nullable SurfaceView surfaceView) {
 	currentOutputView = surfaceView;
 	if (surfaceView != null && surfaceView.getHolder().getSurface() != null) {
   	reparent(surfaceView);
 	}
   }
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Một proxy kiểm soát quyền truy cập vào đối tượng ban đầu, cho phép bạn thực hiện điều gì đó trước hoặc sau khi yêu cầu được chuyển đến đối tượng ban đầu.</li>
@@ -323,8 +333,8 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 
 
 **Chain of Responsibility**
-<ul>
-<li> private void attachSurfaceListener(SurfaceView surfaceView) {
+```
+	 private void attachSurfaceListener(SurfaceView surfaceView) {
 	surfaceView
     	.getHolder()
     	.addCallback(
@@ -344,7 +354,8 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
           	public void surfaceDestroyed(SurfaceHolder surfaceHolder) {}
         	});
   }
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Chuyển các yêu cầu dọc theo một chuỗi các trình xử lý. Khi nhận được yêu cầu, mỗi trình xử lý sẽ quyết định xử lý yêu cầu hoặc chuyển nó cho trình xử lý tiếp theo trong chuỗi.</li>
@@ -360,15 +371,16 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 
 
 **Command**
-<ul>
-<li> SurfaceControl surfaceControl = Assertions.checkNotNull(MainActivity.surfaceControl);
+```
+	 SurfaceControl surfaceControl = Assertions.checkNotNull(MainActivity.surfaceControl);
 	if (surfaceView == null) {
   	new SurfaceControl.Transaction()
       	.reparent(surfaceControl, /* newParent= */ null)
       	.setBufferSize(surfaceControl, /* w= */ 0, /* h= */ 0)
       	.setVisibility(surfaceControl, /* visible= */ false)
       	.apply();
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Biến một yêu cầu thành một đối tượng độc lập chứa tất cả thông tin về yêu cầu</li>
@@ -388,14 +400,15 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 
 
 **Iterator**
-<ul>
-<li> trackSelectionParameters =
+```
+	trackSelectionParameters =
           DefaultTrackSelector.Parameters.CREATOR.fromBundle(
               savedInstanceState.getBundle(KEY_TRACK_SELECTION_PARAMETERS));
   	startAutoPlay = savedInstanceState.getBoolean(KEY_AUTO_PLAY);
   	startItemIndex = savedInstanceState.getInt(KEY_ITEM_INDEX);
   	startPosition = savedInstanceState.getLong(KEY_POSITION);
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 	<li>Duyệt qua các phần tử của một bộ sưu tập mà không để lộ biểu diễn cơ bản của nó (danh sách, ngăn xếp, cây, v.v.).</li>
 	<li>Trình lặp thực hiện các thuật toán duyệt khác nhau. Một số đối tượng trình lặp có thể duyệt cùng một bộ sưu tập cùng một lúc.
@@ -411,15 +424,16 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 
 
 **Mediator**
-<ul>
-<li> public void onNewIntent(Intent intent) {
+```
+	 public void onNewIntent(Intent intent) {
 	super.onNewIntent(intent);
 	releasePlayer();
 	releaseAdsLoader();
 	clearStartPosition();
 	setIntent(intent);
   }
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Giảm bớt sự phụ thuộc hỗn loạn giữa các đối tượng. Mẫu hạn chế giao tiếp trực tiếp giữa các đối tượng và buộc chúng chỉ cộng tác thông qua một đối tượng trung gian.</li>
@@ -433,10 +447,9 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 </ul>
 </ul>
 
-
 **Memento**
-<ul>
-<li> public void onStart() {
+```
+	public void onStart() {
 	super.onStart();
 	if (Util.SDK_INT > 23) {
   	initializePlayer();
@@ -445,7 +458,8 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
   	}
 	}
   }
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Cho phép lưu và khôi phục trạng thái trước đó của một đối tượng mà không tiết lộ chi tiết về quá trình triển khai của nó.</li>
@@ -459,13 +473,14 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 </ul>
 </ul>
 
-
 **Observer**
-<ul>
-<li> public void onDestroy() {
+```
+	 public void onDestroy() {
 	super.onDestroy();
 	releaseAdsLoader();
-  }</li>
+  }
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Cho phépxác định cơ chế đăng ký để thông báo cho nhiều đối tượng về bất kỳ sự kiện nào xảy ra với đối tượng mà họ đang quan sát.</li>
@@ -481,8 +496,8 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 
 
 **State**
-<ul>
-<li>public void onRequestPermissionsResult(
+```
+	public void onRequestPermissionsResult(
   	int requestCode, String[] permissions, int[] grantResults) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 	if (grantResults.length == 0) {
@@ -497,7 +512,8 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
   	finish();
 	}
   }
- </li>
+```
+<ul>
 <li>Giống nhau:</li>	
 <ul>
 	<li>Một đối tượng thay đổi hành vi của nó khi trạng thái bên trong của nó thay đổi. Nó xuất hiện như thể đối tượng đã thay đổi lớp của nó.</li>
@@ -514,12 +530,13 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 
 
 **Strategy**
-<ul>
-<li>   public boolean dispatchKeyEvent(KeyEvent event) {
+```
+	   public boolean dispatchKeyEvent(KeyEvent event) {
 	// See whether the player view wants to handle media or DPAD keys events.
 	return playerView.dispatchKeyEvent(event) || super.dispatchKeyEvent(event);
   }
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li> Xác định một nhóm thuật toán, đặt mỗi thuật toán vào một lớp riêng biệt và làm cho các đối tượng của chúng có thể hoán đổi cho nhau.</li>
@@ -537,8 +554,8 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 
 
 **Template Method**
-<ul>
-<li> public void onClick(View view) {
+```
+	 public void onClick(View view) {
 	if (view == selectTracksButton
     	&& !isShowingTrackSelectionDialog
     	&& TrackSelectionDialog.willHaveContent(trackSelector)) {
@@ -550,7 +567,8 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
       trackSelectionDialog.show(getSupportFragmentManager(), /* tag= */ null);
 	}
   }
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Xác định khung của một thuật toán trong lớp cha nhưng cho phép các lớp con ghi đè các bước cụ thể của thuật toán mà không thay đổi cấu trúc của nó.</li>
@@ -564,10 +582,9 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 </ul>
 </ul>
 
-
 **Visitor**
-<ul>
-<li> protected boolean initializePlayer() {
+```
+	 protected boolean initializePlayer() {
 	if (player == null) {
   	Intent intent = getIntent();
  
@@ -575,7 +592,8 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
   	if (mediaItems.isEmpty()) {
     	return false;
   	}
-</li>
+```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 	<li>Tách các thuật toán khỏi các đối tượng mà chúng hoạt động trên đó.</li>
