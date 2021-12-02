@@ -541,6 +541,8 @@ public interface ComputerPart {
         }
     }
     ````
-## **4. Kết luận**
+    
+## KẾT LUẬN
+
 Project sử dụng 12 trên tổng số 23 mẫu thiết kế tiêu chuẩn.
 Nhìn chung, 12 mẫu thiết kế dùng trong project trên không có sự khác biệt so với 12 mẫu thiết kế tiêu chuẩn. 
