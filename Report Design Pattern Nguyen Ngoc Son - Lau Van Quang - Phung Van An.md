@@ -6,7 +6,7 @@
 <li>Phùng Văn An</li>
 </ul>
 
-link repo so sánh: https://github.com/google/ExoPlayer
+<ul>link repo so sánh: https://github.com/google/ExoPlayer</ul>
 
 **Singleton**
 ```
