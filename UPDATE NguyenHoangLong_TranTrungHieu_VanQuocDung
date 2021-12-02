@@ -466,6 +466,8 @@ public class RealImage implements Image {
     
 - **Khác nhau:** 
     + Không có sự khác nhau.
+
+## III. Nhóm Behavioral
     
 ### Visitor:
 - Giống nhau:
