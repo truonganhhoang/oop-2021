@@ -475,10 +475,45 @@ public class RealImage implements Image {
     - Interface đại diện cho các yếu tố:  Class dành cho khách truy cập, Class hiển thị.
 - Khác nhau:
     - Không có gì khác biệt.
-```
+````
 public interface ComputerPart {
     public void accept(ComputerPartVisitor computerPartVisitor);
 }
-```
+````
 
-    
+### Template method:
+- Giống nhau:
+    + Là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). 
+    + Pattern này nói rằng “Định nghĩa một bộ khung của một thuật toán trong một chức năng, chuyển giao việc thực hiện nó cho các lớp con.
+    + Đóng gói các phần của thuật toán để các lớp con có thể tự móc (hook) vào một tính toán bất cứ lúc nào chúng muốn.
+- Khác nhau:
+    + Không có sự khác biệt.
+- Code:
+````
+    @Override
+    public  void  onClick ( View  v ) {
+        switch (v.getId()) {
+            Case  R . the above mentioned id . bt_template_method_text : // View all personnel work
+                ITWorker itWorker = new ITWorker("景彬");
+                itWorker.workOneDay();
+                HRWorker hrWorker =  new  HRWorker ( " Sister Lili " );
+                hrWorker.workOneDay();
+                QAWorker qaWorker = new QAWorker("张元元");
+                qaWorker.workOneDay();
+                QAWorker qaWorker1 = new QAWorker("徐晨星");
+                qaWorker1.workOneDay();
+                CTOWorker ctoWorker = new CTOWorker("远哥");
+                ctoWorker.workOneDay();
+                OtherWorker otherWorker =  new  OtherWorker ( " Who is you " );
+                otherWorker.workOneDay();
+                break;
+            Case  R . the above mentioned id . bt_template_method_text2 : // Viewer ape's time to leave
+                ITWorker itWorker2 = new ITWorker("景彬");
+                itWorker2.workOneDay();
+                break;
+            default:
+                break;
+        }
+    }
+}
+````
