@@ -6,7 +6,9 @@
 <li>Phùng Văn An</li>
 </ul>
 
+
 <ul>
+	<li>link repo: https://refactoring.guru/design-patterns/java</li>
 	<li>link repo so sánh: https://github.com/google/ExoPlayer</li>
 </ul>
 
