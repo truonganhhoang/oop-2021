@@ -1,4 +1,4 @@
-<ul>Đây là 23 mẫu thiết kế mở sử dụng trong dự án github 1000 sao được các thành viên trong nhóm so sánh với 23 mẫu thiết kế chuẩn:</ul>
+**Đây là 23 mẫu thiết kế mở sử dụng trong dự án github 1000 sao được các thành viên trong nhóm so sánh với 23 mẫu thiết kế chuẩn dưới đây:**
 
 **Nhóm gồm các thành viên:**
 <ul>
@@ -618,5 +618,5 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 </ul>
 
 <ul>
-	Kết luận: Nhìn chung các mẫu thiết kế giống nhau không có sự khác biệt nhiều.
+**	Kết luận: Nhìn chung các mẫu thiết kế giống nhau không có sự khác biệt nhiều.**
 </ul>
