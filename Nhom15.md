@@ -1,4 +1,9 @@
- - https://github.com/bazelbuild/bazel.git (Link repo)
+Báo cáo design pattern nhóm 15:
+ - Nguyễn Thị Kiều Trang
+ - Trần Văn Hùng
+ - Nguyễn Quang Vịnh
+
+ Đề bài: Tìm hiểu các design pattern được sửa dụng trong một repo có trên 1000 sao trên github. So sánh cái mẫu thiết kế được dùng trong repo với cái mẫu thiết kế chuẩn, tìm ra những điểm giống vào khác nhau trong đó. Sau khi tìm hiểu chúng em đã quyết địch chọn repo: https://github.com/bazelbuild/bazel.git cho bài báo cáo này. Các mẫu design pattern được chia thành 3 nhóm sau đâu:
 
 I. Creational Patterns
 1.Abstract Factory
