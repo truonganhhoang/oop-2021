@@ -8,8 +8,8 @@
 
 
 <ul>
-	<li>link repo: https://refactoring.guru/design-patterns/java</li>
-	<li>link repo so sánh: https://github.com/google/ExoPlayer</li>
+	<li>link mẫu: https://refactoring.guru/design-patterns/java</li>
+	<li>link so sánh: https://github.com/google/ExoPlayer</li>
 </ul>
 
 **Singleton**
