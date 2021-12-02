@@ -1,4 +1,4 @@
-<ul>Đây là 23 mẫu thiết kế mở sử dụng trong dự án github 1000 sao so sánh với 23 mẫu thiết kế chuẩn</ul>
+<ul>Đây là 23 mẫu thiết kế mở sử dụng trong dự án github 1000 sao được các thành viên trong nhóm so sánh với 23 mẫu thiết kế chuẩn</ul>
 
 **Nhóm gồm các thành viên:**
 <ul>
