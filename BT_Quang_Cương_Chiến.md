@@ -37,26 +37,16 @@ Không đối tượng nào khác có thể đọc ảnh chụp nhanh, làm cho 
 
 **Builder**
 
-_Giống nhau:_
 + Mẫu thiết kế Builder: Là một mẫu thiết kế thuộc "nhóm khởi tạo" (Creational Pattern). Mẫu thiết kế này cho phép lập trình viên tạo ra những đối tượng phức tạp nhưng chỉ cần thông qua các câu lệnh đơn giản để tác động nên các thuộc tính của nó. 
 + Một số tham số có thể là tùy chọn nhưng trong Factory Pattern, chúng ta phải gửi tất cả tham số, với tham số tùy chọn nếu không nhập gì thì sẽ truyền là null
 + Tách construction một đối tượng phức tạp khỏi biểu diễn của nó để các construction giống nhau có thể tạo ra các biểu diễn khác nhau
 + Gồm các thành phần: Product(class Building), Builder(class HomeBuilder), Director(class HomeDirector), ConcreteBuilder(class FlatBuilder)
 + Nếu một Object có quá nhiều thuộc tính thì việc tạo sẽ phức tạp.
 
-_Khác nhau:_
-+ Về cơ bản, cách tiếp cận của youlookwhat không có khác biệt đối với cách kinh điển của GOF.
+_Trong file Student.java link repo có các thành phần cấu trúc Product,Builder, Director, ConcretBuilder_
 
-code : 
 // Product 
-public class Student {
-    private String id;
-    private String firstName;
-    private String lastName;
-    private String dayOfBirth;
-    private String currentClass;
-    private String phone;
-
+...
     public Student(String id, String firstName, String lastName, String dayOfBirth, String currentClass, String phone) {
         this.id = id;
         this.firstName = firstName;
@@ -65,7 +55,6 @@ public class Student {
         this.currentClass = currentClass;
         this.phone = phone;
     }
-}
 // Builder 
 public interface StudentBuilder {
 
@@ -134,6 +123,14 @@ public class StudentConcreteBuilder implements StudentBuilder {
         return new Student(id, firstName, lastName, dayOfBirth, currentClass, phone);
     }
 }
+
+_Giống nhau:_
++ giống với mẫu chuẩn.
+
+_Khác nhau:_
++ Về cơ bản, cách tiếp cận của youlookwhat không có khác biệt đối với cách kinh điển của GOF.
+
+
 
 // Check is installed
 boolean isInstalled = optionService
