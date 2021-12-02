@@ -23,7 +23,7 @@
     
 - **Code:**
 
-````java
+```java
 public class SingletonActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -46,7 +46,7 @@ public class SingletonActivity extends AppCompatActivity implements View.OnClick
         }
     }
 }
-````
+```
 
 ### Abstract Factory:
 - Sử dụng mẫu thiết kế Abstract Factory: là một trong những Pattern thuộc nhóm Creational Design Pattern. Abstract Factory cho phép một lớp trả về một nhà máy của các lớp, được sử dụng khi hệ thống cần phải độc lập với cách đối tượng của nó được tạo ra hoặc khi hệ thống cần được cấu hình với một trong nhiều họ đối tượng.
