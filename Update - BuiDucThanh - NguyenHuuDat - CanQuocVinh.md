@@ -65,14 +65,15 @@ Lợi ích:
     - Đóng gói tập nhiều hàm API được thiết kế không tốt bằng một hàm API đơn có thiết kế tốt hơn.
 
 ### 10. Facade Pattern
-    Cung cấp một interface thuần nhất cho một tập hợp các interface trong một “hệ thống con” (subsystem). Nó định nghĩa 1 interface cao hơn các interface có sẵn để làm cho hệ thống con dễ sử dụng hơn. Tần suất sử dụng: Cao - 5/5.
+Cung cấp một interface thuần nhất cho một tập hợp các interface trong một “hệ thống con” (subsystem). Nó định nghĩa 1 interface cao hơn các interface có sẵn để làm cho hệ
+thống con dễ sử dụng hơn. Tần suất sử dụng: Cao - 5/5.
 Lợi ích: 
     - Giúp cho hệ thống của bạn trở nên đơn giản hơn trong việc sử dụng và trong việc hiểu nó, vì một mẫu Facade có các phương thức tiện lợi cho các tác vụ chung.
     - Giảm sự phụ thuộc của các mã code bên ngoài với hiện thực bên trong của thư viện, vì hầu hết các code đều dùng Facade, vì thế cho phép sự linh động trong phát triển các hệ thống.
     - Đóng gói tập nhiều hàm API được thiết kế không tốt bằng một hàm API đơn có thiết kế tốt hơn.
     
-    * Trong src/main/java/com/puppycrawl/tools/checkstyle, class Checker.java có nhiệm vụ kiểm tra 1 tập file đóng gói 1 tập đối tượng thành phần, interface phục vụ kiểm tra riêng lẻ.
-    => Giống hoàn toàn thiết kế mẫu.
+Trong src/main/java/com/puppycrawl/tools/checkstyle, class Checker.java có nhiệm vụ kiểm tra 1 tập file đóng gói 1 tập đối tượng thành phần, interface phục vụ kiểm tra riêng lẻ.
+=> Giống hoàn toàn thiết kế mẫu.
 ### 11. Flyweight Pattern
 Sử dụng việc chia sẻ để thao tác hiệu quả trên một số lượng lớn đối tượng “cở nhỏ” (chẳng hạn paragraph, dòng, cột, ký tự…). Tần suất sử dụng: Thấp - 1/5.
 Lợi ích: 
