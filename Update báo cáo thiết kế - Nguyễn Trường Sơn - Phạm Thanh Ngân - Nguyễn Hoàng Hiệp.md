@@ -469,21 +469,120 @@
 
 #### ***3. Interpreter***
 - Bản chất: Interpreter Pattern giúp người lập trình có thể “xây dựng” những đối tượng “động” bằng cách đọc mô tả về đối tượng rồi sau đó “xây dựng” đối tượng đúng theo mô tả đó.
-- Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+- Giống nhau
+  - Repo bao gồm:
+    - Class interface **Expression** định nghĩa phương thức interpreter chung cho tất cả các node trong cấu trúc cây phân tích ngữ pháp   
+```java
+      public interface Expression {
+        public boolean interpreter(String content);
+      }
+```
+    - Class **NonTerminalExpression** (TerminalExpression, OrExpression, AndExpression) có chức năng cài đặt các phương thức của Expression và dùng các class có kiểu Expression để phân tích, mô tả đối tượng
+    
+```java
+       public class OrExpression implements Expression {
+
+          private Expression expression1;
+          private Expression expression2;
+
+          public OrExpression(Expression expression1, Expression expression2) {
+            this.expression1 = expression1;
+            this.expression2 = expression2;
+          }
+
+          @Override
+          public boolean interpreter(String content) {
+            return expression1.interpreter(content) || expression2.interpreter(content);
+          }
+      }
+```
+- Khác nhau:
+  - Repo chỉ sử dụng **NonTerminalExpression** (biểu thức không đầu cuối) chứ không dùng **TerminalExpression** (biểu thức đầu cuối)
+  - Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
 #### ***4. Iterator***
 - Bản chất: Iterator Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó được sử dụng để “Cung cấp một cách thức truy cập tuần tự tới các phần tử của một đối tượng tổng hợp, mà không cần phải tạo dựng riêng các phương pháp truy cập cho đối tượng tổng hợp này”.
-- Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
+- Giống nhau:
+  - Trong repo gồm:
+  - **Iterator**: là một interface hay abstract class, định nghĩa các phương thức để truy cập và duyệt qua các phần tử
+```java
+    public interface Iterator {
+
+      public boolean hasNext();
+
+      public Object next();
+    }
+```
+    - **ConcreteIterator**: cài đặt các phương thức của Iterator, giữ index khi duyệt qua các phần tử.
+
+```java
+      public class NameRepository implements Container {
+
+          private String names[] = {"John", "jingbin", "youlookwhat", "lookthis"};
+
+          @Override
+          public Iterator getIterator() {
+              return new NameIterator();
+          }
+
+          private class NameIterator implements Iterator {
+
+              int index;
+
+              @Override
+              public boolean hasNext() {
+                  if (index < names.length) {
+                      return true;
+                  }
+                  return false;
+              }
+
+              @Override
+              public Object next() {
+                  if (hasNext()) {
+                      return names[index++];
+                  }
+                  return null;
+              }
+          }
+      }
+```
+    
+- Khác nhau:
+   - Tác giả repo đã không sử dụng các thành phần **Aggregate** và **ConcreteAggregate**
+ 
 #### ***5. Mediator***
 - Bản chất: Mediator Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Mediator có nghĩa là người trung gian. Pattern này nói rằng “Định nghĩa một đối tượng gói gọn cách một tập hợp các đối tượng tương tác. Mediator thúc đẩy sự khớp nối lỏng lẻo (loose coupling) bằng cách ngăn không cho các đối tượng đề cập đến nhau một cách rõ ràng và nó cho phép bạn thay đổi sự tương tác của họ một cách độc lập”.
+- Giống nhau:
+  - Trong repo gồm:
+    - Colleague : là một abstract class, giữ tham chiếu đến Mediator object.
+    - ConcreteColleague : cài đặt các phương thức của Colleague. Giao tiếp thông qua Mediator khi cần giao tiếp với Colleague khác.
+    - Mediator : là một interface, định nghĩa các phương thức để giao tiếp với các Colleague object.
+    - ConcreteMediator : cài đặt các phương thức của Mediator, biết và quản lý các Colleague object.
 - Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
 #### ***6. Memento***
 - Bản chất: Memento là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Memento là mẫu thiết kế có thể lưu lại trạng thái của một đối tượng để khôi phục lại sau này mà không vi phạm nguyên tắc đóng gói.
+- Giống nhau:
+  - Trong repo gồm:
+    - Originator : đại diện cho đối tượng mà chúng ta muốn lưu. Nó sử dụng memento để lưu và khôi phục trạng thái bên trong của nó.
+    - Caretaker : Nó không bao giờ thực hiện các thao tác trên nội dung của memento và thậm chí nó không kiểm tra nội dung. Nó giữ đối tượng memento và chịu trách nhiệm bảo vệ an toàn cho các đối tượng. Để khôi phục trạng thái trước đó, nó trả về đối tượng memento cho Originator.
+    - Memento : đại diện cho một đối tượng để lưu trữ trạng thái của Originator. Nó bảo vệ chống lại sự truy cập của các đối tượng khác ngoài Originator.
 - Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
 #### ***7. Observer***
 - Bản chất: Observer Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó định nghĩa mối phụ thuộc một – nhiều giữa các đối tượng để khi mà một đối tượng có sự thay đổi trạng thái, tất các thành phần phụ thuộc của nó sẽ được thông báo và cập nhật một cách tự động.
+- Giống nhau:
+  - Trong repo gồm:
+    - Subject : chứa danh sách các observer,  cung cấp phương thức để có thể thêm và loại bỏ observer.
+    - Observer : định nghĩa một phương thức update() cho các đối tượng sẽ được subject thông báo đến khi có sự thay đổi trạng thái.
+    - ConcreteSubject : cài đặt các phương thức của Subject, lưu trữ trạng thái danh sách các ConcreateObserver, gửi thông báo đến các observer của nó khi có sự thay đổi trạng thái.
+    - ConcreteObserver : cài đặt các phương thức của Observer, lưu trữ trạng thái của subject, thực thi việc cập nhật để giữ cho trạng thái đồng nhất với subject gửi thông báo đến.
 - Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
 #### ***8. State***
 - Bản chất: State Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép một đối tượng thay đổi hành vi của nó khi trạng thái nội bộ của nó thay đổi. Đối tượng sẽ xuất hiện để thay đổi lớp của nó.
+- Giống nhau:
+  - Trong repo gồm:
+    - Context : được sử dụng bởi Client. Client không truy cập trực tiếp đến State của đối tượng. Lớp Context này chứa thông tin của ConcreteState object, cho hành vi nào tương ứng với trạng thái nào hiện đang được thực hiện.
+    - State : là một interface hoặc abstract class xác định các đặc tính cơ bản của tất cả các đối tượng ConcreteState. Chúng sẽ được sử dụng bởi đối tượng Context để truy cập chức năng có thể thay đổi.
+    - ConcreteState : cài đặt các phương thức của State. Mỗi ConcreteState có thể thực hiện logic và hành vi của riêng nó tùy thuộc vào Context.
 - Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
 #### ***9. Strategy***
 - Bản chất: Strategy Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Nó cho phép định nghĩa tập hợp các thuật toán, đóng gói từng thuật toán lại, và dễ dàng thay đổi linh hoạt các thuật toán bên trong object. Strategy cho phép thuật toán biến đổi độc lập khi người dùng sử dụng chúng.
@@ -514,8 +613,67 @@
 - Bản chất: Template Method Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Pattern này nói rằng “Định nghĩa một bộ khung của một thuật toán trong một chức năng, chuyển giao việc thực hiện nó cho các lớp con. Mẫu Template Method cho phép lớp con định nghĩa lại cách thực hiện của một thuật toán, mà không phải thay đổi cấu trúc thuật toán“.
 - Giống nhau
   - Repo bao gồm:
-    - Class **Abstract Class** tên Worker có chức năng định nghĩa các phương thức trừu tượng cho từng bước có thể được điều chỉnh bởi các lớp con, cài đặt một phương thức duy nhất điều khiển thuật toán và gọi các bước riêng lẻ đã được cài đặt ở các lớp con. 
-    - Class **ConcreteClass** (CTOWorker.java, HRWorker.java, ITWorker.java, OtherWorker.java, QAWorker.java) là các thuật toán cụ thể, cài đặt các phương thức của AbstractClass. Các thuật toán này ghi đè lên các phương thức trừu tượng để cung cấp các triển khai thực sự.
+   - Class **Abstract Class** tên Worker có chức năng định nghĩa các phương thức trừu tượng cho từng bước có thể được điều chỉnh bởi các lớp con, cài đặt một phương thức duy nhất điều khiển thuật toán và gọi các bước riêng lẻ đã được cài đặt ở các lớp con. 
+```java 
+      public abstract class Worker {
+
+          protected String name;
+
+          public Worker(String name) {
+              this.name = name;
+          }
+
+          /**
+           * 具体方法
+           */
+          public final void workOneDay() {
+              Log.e("workOneDay", "-----------------work start----------------");
+
+              enterCompany();
+              computerOn();
+              work();
+              computerOff();
+              exitCompany();
+
+              Log.e("workOneDay", "-----------------work end----------------");
+          }
+
+          /**
+           * 工作  抽象方法
+           */
+          public abstract void work();
+
+          /**
+           * 钩子方法
+           */
+          public boolean isNeedPrintDate() {
+              return false;
+          }
+
+          private void exitCompany() {
+              if (isNeedPrintDate()) {
+                  Log.e("exitCompany", "---" + new Date().toLocaleString() + "--->");
+              }
+              Log.e("exitCompany", name + "---离开公司");
+          }
+
+      //    -----------------------------------
+
+          private void computerOn() {
+              Log.e("computerOn", "---打开电脑");
+          }
+
+          private void computerOff() {
+              Log.e("computerOff", "---关闭电脑");
+          }
+
+          private void enterCompany() {
+              Log.e("enterCompany", "---进入公司");
+          }
+      }
+
+```
+   - Class **ConcreteClass** (CTOWorker.java, HRWorker.java, ITWorker.java, OtherWorker.java, QAWorker.java) là các thuật toán cụ thể, cài đặt các phương thức của AbstractClass. Các thuật toán này ghi đè lên các phương thức trừu tượng để cung cấp các triển khai thực sự.
 - Không có quá nhiều sự khác biệt rõ rệt, cơ bản Pattern tuân thủ theo GOF
 #### ***11. Visitor***
 - Bản chất: Visitor Pattern là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). Visitor cho phép định nghĩa các thao tác (operations) trên một tập hợp các đối tượng (objects) không đồng nhất (về kiểu) mà không làm thay đổi định nghĩa về lớp (classes) của các đối tượng đó. Để đạt được điều này, trong mẫu thiết kế visitor ta định nghĩa các thao tác trên các lớp tách biệt gọi các lớp visitors, các lớp này cho phép tách rời các thao tác với các đối tượng mà nó tác động đến. Với mỗi thao tác được thêm vào, một lớp visitor tương ứng được tạo ra.
