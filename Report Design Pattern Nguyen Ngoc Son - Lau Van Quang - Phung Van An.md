@@ -9,6 +9,7 @@
 
 **Link**
 <ul>
+	<li>Sau khi tìm hiểu các repo trên github nhóm đã đã lựa chọn được repo sau gồm 23 mẫu thiết kế</li>
 	<li>link mẫu: https://refactoring.guru/design-patterns/java</li>
 	<li>link so sánh: https://github.com/google/ExoPlayer</li>
 </ul>
