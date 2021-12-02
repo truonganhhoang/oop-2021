@@ -137,7 +137,8 @@ _Khác nhau:_
 Singeton pattern thuộc loại Creational Design Pattern. Single Pattern là một design pattern mà đảm bảo rằng một class chỉ có duy nhất một instance và cung cấp một cáchs toàn cầu để truy cấp tới instance đó.
 
 _trong file Initialized.java được sử dụng như sau:_
-//
+...
+
 public class EagerInitializedSingleton {
 
    private static final EagerInitializedSingleton instance = new EagerInitializedSingleton();
@@ -150,6 +151,7 @@ public class EagerInitializedSingleton {
    }
 }
 
+...
 _Giống nhau:_
 Giống mới mẫu thiết kế mẫu
 
