@@ -1,4 +1,6 @@
-# So sánh với mẫu chuẩn
+# DESIGN PATTERN
+
+**So sánh các mẫu có trong repo với mẫu thiết kế chuẩn**
 
 Thành viên: 
 - Phùng Đức Thản 
@@ -644,3 +646,4 @@ class FlyweightMeta(type):
         return instance
 
 ````
+**Kết luận:** Đây là repo dựa trên mẫu chuẩn, sát với mẫu chuẩn 95%.
