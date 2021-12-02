@@ -72,6 +72,7 @@ public interface StudentBuilder {
 
     Student build();
 }
+=> 
 // ConcreteBuilder
 public class StudentConcreteBuilder implements StudentBuilder {
 
@@ -130,6 +131,24 @@ _Giống nhau:_
 _Khác nhau:_
 + Về cơ bản, cách tiếp cận của youlookwhat không có khác biệt đối với cách kinh điển của GOF.
 
+**Singleton**
+
+Singeton pattern thuộc loại Creational Design Pattern. Single Pattern là một design pattern mà đảm bảo rằng một class chỉ có duy nhất một instance và cung cấp một cáchs toàn cầu để truy cấp tới instance đó.
+
+_trong file Initialized.java được sử dụng như sau:
+private static final EagerInitializedSingleton instance = new EagerInitializedSingleton();
+
+   //private constructor to avoid client applications to use constructor
+   private EagerInitializedSingleton(){}
+
+   public static EagerInitializedSingleton getInstance(){
+       return instance;
+   }
+
+_Giống nhau:_
+Giống mới mẫu thiết kế mẫu
+
+_Khác nhau:_
 
 
 // Check is installed
