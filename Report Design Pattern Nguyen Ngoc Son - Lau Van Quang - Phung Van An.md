@@ -1,5 +1,6 @@
+<ul>Nhóm gồm các thành viên:</ul>
 <ul>
-<li>Nhóm gồm các thành viên:</li>
+
 <li>Nguyễn Ngọc Sơn</li>
 <li>Lầu Văn Quang</li>
 <li>Phùng Văn An</li>
