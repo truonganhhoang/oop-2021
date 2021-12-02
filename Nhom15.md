@@ -13,22 +13,28 @@ II. Structural Patterns
       - Muốn sử dụng một class nhưng interface của nó không tương thích với phần còn lại của chương trình
       - Muốn tạo một lớp có thể tái sử dụng và thể kết hợp với nhiều interface khác.
       - Cần sử dụng lại một số subclass đã có sẵn nhưng không thể điều chỉnh interface của chúng.
+      
 7. Bridge: tần suất sử dụng: 
+
 8. Composite: tần suất sử dụng: 4/5
    Sử dụng khi:
       - Muốn biểu diễn phân cấp một phần/toàn bộ của đối tượng
       - Muốn client bỏ qua sự khác biệt giữa bố cục của các đối tượng và từng thành phần riêng lẻ
+      
 9. Decorator: tần suất sử dụng: 
+
 10. Facade: tần suất sử dụng: 1/5
    Sử dụng Facade khi:
       - Muốn cung cấp một interface đơn giản cho một hệ thống con phức tạp. Các hệ thống con thường trở nên phức tạp hơn khi chúng phát triển. Hầu hết các mẫu, khi được áp           dụng, sẽ tạo ra nhiều class hơn và nhỏ hơn. Điều này làm cho hệ thống con có thể tái sử dụng nhiều hơn và dễ tùy chỉnh hơn, nhưng nó cũng trở nên khó sử dụng hơn đối với         các client không cần tùy chỉnh nó
       - Muốn phân lớp các hệ thống con.
+      
 11. Flyweight: tần suất sử dụng: 4/5
    Sử dụng khi:
       - Muốn build một ứng dụng mà sử dụng một lượng lớn object
       - tốn không gian lưu trữ vì số lượng lớn các object
       - Nhiều nhóm các object có thể được thay thế bằng tương đối ít object được chia sẻ sau khi trạng thái bên ngoài bị loại bỏ.
       - Ứng dụng không phụ thuộc vào nhận dạng object. Vì các flyweight object có thể được chia sẻ, các bài kiểm tra nhận dạng sẽ trả về true cho các đối tượng khác biệt về mặt         khái niệm.
+      
 12. Proxy: tần suất sử dụng: 
 
 III. Behavioral Patterns
