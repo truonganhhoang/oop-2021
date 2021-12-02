@@ -321,3 +321,4 @@ link github: https://github.com/bjarneo/memento-pattern-example
 
 - Không đối tượng nào khác có thể đọc ảnh chụp nhanh, làm cho dữ liệu trạng thái của đối tượng ban đầu được an toàn và bảo mật.
 
+*Kết luận*: Các mẫu thiết kế gần như giống chuẩn về mọi mặt.
