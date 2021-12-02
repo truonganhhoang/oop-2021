@@ -6,7 +6,7 @@
 2. Trần Trung Hiếu - 19020077
 3. Văn Quốc Dũng - 19020530
 
-## Repo: https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern
+## Sau khi lựa chọn  https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern
 
 ## I. Nhóm Creational
 
@@ -23,7 +23,7 @@
     
 - **Code:**
 
-````
+````java
 public class SingletonActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -61,7 +61,7 @@ public class SingletonActivity extends AppCompatActivity implements View.OnClick
     
 - **Code:** 
 
-````
+````java
 public abstract class RoujiaMo {
 
     protected String name;
@@ -86,7 +86,7 @@ public abstract class RoujiaMo {
     
 - **Code:**
 
-````
+````java
      public abstract class Shape implements Cloneable {
         @Override
         public Object clone() {
@@ -101,7 +101,7 @@ public abstract class RoujiaMo {
     }
 ````
 
-````
+````java
     public class PrototypeActivity extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -134,7 +134,7 @@ public abstract class RoujiaMo {
     + Một interface để tạo đối tượng: public abstract RouJiaMo sellRoujiaMo(String type).
     + Lớp được khởi tạo sẽ được xác định bởi các lớp con, như ta có thể thấy đối tượng bánh roujiamo được tạo từ các lớp con trong code sau:
     
-````
+````java
     public abstract RoujiaMo sellRoujiaMo(String type);
 
         public RoujiaMo sellRoujiaMo(String type) {
@@ -154,10 +154,11 @@ public abstract class RoujiaMo {
 - Builder được sử dụng khi làm việc với một lớp mà có chứa rất nhiều các thuộc tính và cần phải tạo ra nhiều hàm khởi tạo với số lượng các thuộc tính tăng dần.
 
 - **Giống nhau:**
-    - Bao gồm 4 thành phần chính: 
-````
+    - Bao gồm 4 thành phần chính:
+    
 + Builder.java: là thành phần định nghĩa một lớp trừu tượng (abstract class) để tạo ra một hoặc nhiều phần của đối tượng Product.
 
+````java
 public abstract class Builder {
 
     public abstract void setPart(String name, String type);
@@ -165,10 +166,10 @@ public abstract class Builder {
     public abstract Product getProduct();
 }
 ````
-````
 + ConcreteBuilder.java: là thành phần triển khai, cụ thể hóa các lớp trừu tượng cho để tạo ra các thành phần và tập hợp các thành phần đó với nhau.
 Thành phần này sẽ xác định và nắm giữ các thể hiện mà nó tạo ra. Đồng thời nó cũng cung cấp phương thức để trả các các thể hiện mà nó đã tạo ra trước đó.
 
+````java
 public class ConcreteBuilder extends Builder {
 
     private Product product = new Product();
@@ -185,9 +186,9 @@ public class ConcreteBuilder extends Builder {
     }
 }
 ````
-````
 + Director.java: thành phần này sẽ khởi tạo đối tượng Builder.
 
+````java
 public class Director {
 
     private Builder builder = new ConcreteBuilder();
@@ -203,9 +204,10 @@ public class Director {
     }
 }
 ````
-````
+
 + Product.java: thành phần này sẽ đại diện cho đối tượng phức tạp phải tạo ra.
 
+````
 public class Product {
 
     private String name;
