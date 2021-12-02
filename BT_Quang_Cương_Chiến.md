@@ -187,6 +187,12 @@ _Khác nhau:_
       }
 ```
 
+_Giống nhau:_
+Giống với mẫu thiết kế chuẩn
+
+_Khác nhau:_
+Không có quá nhiều sự khác biệt
+
 ```
 // Check is installed
 boolean isInstalled = optionService
