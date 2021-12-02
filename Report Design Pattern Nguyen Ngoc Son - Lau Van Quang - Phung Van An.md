@@ -8,13 +8,14 @@ link repo so sánh: https://github.com/google/ExoPlayer
 
 **Singleton**
 <ul>
-<li>public boolean onCreateOptionsMenu(Menu menu) {
+```
+	public boolean onCreateOptionsMenu(Menu menu) {
 	super.onCreateOptionsMenu(menu);
 	getMenuInflater().inflate(R.menu.menu, menu);
     CastButtonFactory.setUpMediaRouteButton(this, menu, R.id.media_route_menu_item);
 	return true;
   }
-</li>
+```
 <li>Giống nhau:</li>
 <ul>
 <li>Một lớp chỉ có một thể hiện, đồng thời cung cấp một điểm truy cập toàn cục cho thể hiện này.</li>
