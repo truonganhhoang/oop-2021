@@ -617,6 +617,5 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 </ul>
 </ul>
 
-<ul>
-**	Kết luận: Nhìn chung các mẫu thiết kế giống nhau không có sự khác biệt nhiều.**
-</ul>
+
+**Kết luận: Nhìn chung các mẫu thiết kế giống nhau không có sự khác biệt nhiều.**
