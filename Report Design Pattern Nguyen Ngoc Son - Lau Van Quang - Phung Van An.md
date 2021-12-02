@@ -7,7 +7,6 @@
 link repo so sánh: https://github.com/google/ExoPlayer
 
 **Singleton**
-<ul>
 ```
 	public boolean onCreateOptionsMenu(Menu menu) {
 	super.onCreateOptionsMenu(menu);
@@ -16,6 +15,7 @@ link repo so sánh: https://github.com/google/ExoPlayer
 	return true;
   }
 ```
+<ul>
 <li>Giống nhau:</li>
 <ul>
 <li>Một lớp chỉ có một thể hiện, đồng thời cung cấp một điểm truy cập toàn cục cho thể hiện này.</li>
