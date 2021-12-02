@@ -616,3 +616,7 @@ ExoPlayer player = new ExoPlayer.Builder(getApplicationContext()).build();
 	<li>Chấp nhận các đối tượng của các lớp có liên quan, để trống phần còn lại.</li>
 </ul>
 </ul>
+
+<ul>
+	Kết luận: Nhìn chung các mẫu thiết kế giống nhau không có sự khác biệt nhiều.
+</ul>
