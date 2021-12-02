@@ -137,7 +137,7 @@ _Khác nhau:_
 Singeton pattern thuộc loại Creational Design Pattern. Single Pattern là một design pattern mà đảm bảo rằng một class chỉ có duy nhất một instance và cung cấp một cáchs toàn cầu để truy cấp tới instance đó.
 
 _trong file Initialized.java được sử dụng như sau:_
-...
+```
 
 public class EagerInitializedSingleton {
 
@@ -150,14 +150,44 @@ public class EagerInitializedSingleton {
        return instance;
    }
 }
-
-...
+```
 _Giống nhau:_
 Giống mới mẫu thiết kế mẫu
 
 _Khác nhau:_
 
 
+**Adapter**
+- Adapter pattern là một Structural pattern. Adapter pattern là mẫu thiết kế đối tượng được tạo ra để xây dựng xây dựng và xử lí các dao diện khác nhau nhưng lại có hành vi giống nhau( Các lớp có hành vi tương tự nhưng phương thức khác nhau ).
+
+- Trong file FrameCursor.java chúng ta có thế thấy mẫu thiết kế này
+ 
+```
+    public class NullIndexFrameCursor implements IndexFrameCursor {
+        public static final NullIndexFrameCursor INSTANCE = new NullIndexFrameCursor();
+        @Override
+        public IndexFrame getNext() {
+            return IndexFrame.NULL_INSTANCE;
+        }
+    }
+```
+```
+    private class Cursor implements RowCursor, IndexFrameCursor {
+        protected long valueCount;
+        protected long minValue;
+        protected long next;
+        private long valueBlockOffset;
+        private final BitmapIndexUtils.ValueBlockSeeker SEEKER = this::seekValue;
+        @Override
+        public IndexFrame getNext() {
+            // See BitmapIndexFwdReader if it needs implementing
+            throw new UnsupportedOperationException();
+        }
+        ...
+      }
+```
+
+```
 // Check is installed
 boolean isInstalled = optionService
     .getByPropertyOrDefault(PrimaryProperties.IS_INSTALLED, Boolean.class, false);
@@ -192,3 +222,4 @@ eventPublisher.publishEvent(
 );
 
 return BaseResponse.ok("安装完成！");
+```
