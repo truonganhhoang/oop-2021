@@ -23,30 +23,48 @@
     
 - **Code:**
 
-```java
-public class SingletonActivity extends AppCompatActivity implements View.OnClickListener {
+    ```java
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.bt_ehan:
-                SingletonEHan instance = SingletonEHan.getInstance();
-                break;
-            case R.id.bt_lanhan:
-                SingletonLanHan singletonLanHanFour = SingletonLanHan.getSingletonLanHanFour();
-                break;
-            case R.id.bt_inclass:
-                SingletonIn singletonIn = SingletonIn.getSingletonIn();
-                break;
-            case R.id.bt_enum:
-                SingletonEnum.instance.whateverMethod();
-                break;
-            default:
-                break;
+    public class SingletonActivity extends AppCompatActivity implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.bt_ehan:
+                    SingletonEHan instance = SingletonEHan.getInstance();
+                    break;
+                case R.id.bt_lanhan:
+                    SingletonLanHan singletonLanHanFour = SingletonLanHan.getSingletonLanHanFour();
+                    break;
+                case R.id.bt_inclass:
+                    SingletonIn singletonIn = SingletonIn.getSingletonIn();
+                    break;
+                case R.id.bt_enum:
+                    SingletonEnum.instance.whateverMethod();
+                    break;
+                default:
+                    break;
+            }
         }
     }
-}
-```
+
+    ```
+
+    ```java
+    public class SingletonIn {
+    
+        private SingletonIn() {
+        }
+    
+        private static class SingletonInHodler {
+            private static SingletonIn singletonIn = new SingletonIn();
+        }
+    
+        public static SingletonIn getSingletonIn() {
+            return SingletonInHodler.singletonIn;
+        }
+    }
+    ```
 
 ### Abstract Factory:
 - Sử dụng mẫu thiết kế Abstract Factory: là một trong những Pattern thuộc nhóm Creational Design Pattern. Abstract Factory cho phép một lớp trả về một nhà máy của các lớp, được sử dụng khi hệ thống cần phải độc lập với cách đối tượng của nó được tạo ra hoặc khi hệ thống cần được cấu hình với một trong nhiều họ đối tượng.
