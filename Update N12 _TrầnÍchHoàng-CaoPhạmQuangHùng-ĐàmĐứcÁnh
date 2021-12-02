@@ -1,0 +1,327 @@
+
+## Báo cáo về Design Pattern
+
+## Singleton
+link github: https://github.com/iluwatar/java-design-patterns/tree/master/singleton
+
+**So sánh**
+
+** Giống nhau **:
+
+- Có kết cấu giống với mẫu chuẩn . Ví dụ như Singleton là các class IvoryTower, EnumIvoryTower, InitializingOnDemandHolderIdiom, ThreadSafeDoubleCheckLocking,
+
+ThreadSafeLazyLoadedIvoryTower.
+
+- Đảm bảo chỉ có duy nhất một instance trong một class, và class đó sẽ cung cấp phương thức toàn cục để truy cập đến thực thể đó.
+
+- Truy cập instance ở bất cứ đâu và bất cứ khi nào.
+
+- Ẩn constructor của class.
+
+- Các lớp tự chịu trách nhiệm kiểm soát sự khởi tạo của nó .
+
+- Cung cấp việc truy cập vào Object global.
+
+- Vi phạm nguyên tắc Single Responsibility Principle, một pattern giải quyết cùng lúc 2 vấn đề.
+
+** Khác nhau **:
+
+- Không có sự khác biệt với mẫu chuẩn,đây là mẫu thiết kế gần như giống với mẫu chuẩn về mọi mặt.
+
+
+## Strategy
+https://github.com/MichalFab/Strategy-design-pattern
+**Giống nhau**:
+- Xác định một nhóm thuật toán, đặt mỗi thuật toán vào một lớp riêng biệt và làm cho các đối tượng của chúng có thể hoán đổi cho nhau.
+
+- Mỗi thuật toán định tuyến có thể được trích xuất thành lớp riêng của nó bằng một buildRoute phương pháp duy nhất
+**Khác nhau**:
+- Gián tiếp thay đổi hành vi của đối tượng trong thời gian chạy bằng cách liên kết nó với các đối tượng con khác nhau có thể thực hiện các nhiệm vụ con cụ thể theo những cách khác nhau.
+
+- Trích xuất các hành vi khác nhau thành một hệ thống phân cấp lớp riêng biệt và kết hợp các lớp ban đầu thành một, do đó giảm mã trùng lặp
+
+- Tách biệt mã, dữ liệu nội bộ và các phần phụ thuộc của các thuật toán khác nhau khỏi phần còn lại của mã
+
+- Loại bỏ điều kiện như vậy bằng cách trích xuất tất cả các thuật toán thành các lớp riêng biệt, tất cả đều triển khai cùng một giao diện
+
+## Template Method
+https://github.com/iluwatar/java-design-patterns/tree/master/template-method
+**Giống nhau**:
+- Xác định khung của một thuật toán trong lớp cha nhưng cho phép các lớp con ghi đè các bước cụ thể của thuật toán mà không thay đổi cấu trúc của nó.
+
+- Chia nhỏ thuật toán thành các bước, cho phép các lớp con ghi đè các bước này nhưng không phải là phương thức thực.
+
+**Khác nhau**:
+- Khách hàng chỉ mở rộng các bước cụ thể của một thuật toán, nhưng không mở rộng toàn bộ thuật toán hoặc cấu trúc của nó.
+
+- Mã khác nhau giữa các lớp con có thể vẫn còn trong các lớp con.
+
+## Visitor
+https://github.com/iluwatar/java-design-patterns/tree/master/visitor
+**Giống nhau**:
+- Tách các thuật toán khỏi các đối tượng mà chúng hoạt động trên đó.
+
+- Mỗi phương thức có thể nhận các đối số thuộc các kiểu khác nhau
+
+- Cung cấp cho phương thức của khách truy cập quyền truy cập vào tất cả dữ liệu cần thiết có trong đối tượng.
+
+- Double Dispatch , giúp thực thi phương thức thích hợp trên một đối tượng mà không cần các điều kiện rườm rà.
+
+
+**Khác nhau**:
+- Một đối tượng khách triển khai một số biến thể của cùng một thao tác, tương ứng với tất cả các lớp mục tiêu.
+
+- Trích xuất tất cả các hành vi khác vào một tập hợp các lớp khách truy cập.
+
+- Chấp nhận các đối tượng của các lớp có liên quan, để trống phần còn lại.
+
+##Factory Method:
+https://github.com/iluwatar/java-design-patterns/tree/master/factory-method
+**Giống nhau**:
+- Cung cấp một giao diện để tạo các đối tượng trong lớp cha, nhưng cho phép các lớp con thay đổi loại đối tượng sẽ được tạo.
+
+- Các lớp con có thể thay đổi lớp của các đối tượng được trả về bởi phương thức gốc.
+
+- Tất cả các sản phẩm phải theo cùng một giao diện.
+
+- Tất cả các lớp sản phẩm đều triển khai một giao diện chung, bạn có thể chuyển các đối tượng của chúng sang mã máy khách mà không cần phá vỡ nó.
+
+**Khác nhau**:
+- Các lớp giao diện người dùng cụ thể.
+
+- Sự phụ thuộc của các đối tượng mà mã của bạn sẽ hoạt động.
+
+- Các phương thức tạo trong lớp cơ sở và các lớp con.
+
+##Abstract Factory:
+https://github.com/iluwatar/java-design-patterns/tree/master/abstract-factory
+**Giống nhau**:
+- Có thể tạo ra các họ các đối tượng liên quan mà không cần chỉ định các lớp cụ thể của chúng.
+
+- Khai báo rõ ràng các giao diện cho từng sản phẩm riêng biệt của họ sản phẩm
+
+- Các triển khai khác nhau của các sản phẩm trừu tượng, được nhóm theo các biến thể.
+
+- Các Abstract Factory giao diện tuyên bố một tập hợp các phương pháp để tạo ra mỗi sản phẩm trừu tượng.
+
+**Khác nhau**:
+- Rất nhiều giao diện và lớp mới được giới thiệu cùng với mẫu.
+
+##Builder:
+https://github.com/iluwatar/java-design-patterns/tree/master/builder
+**Giống nhau**:
+- Các đối tượng phức tạp được xây dựng theo từng bước.
+
+- Concrete Builders cung cấp các cách triển khai khác nhau của các bước xây dựng
+
+- Director biết các bước xây dựng cần thực hiện để có được một sản phẩm hoạt động.
+
+- Các builders khác nhau thực hiện cùng một nhiệm vụ theo nhiều cách khác nhau.
+
+**Khác nhau** :
+-Độ phức tạp tổng thể của mã tăng lên vì mẫu yêu cầu tạo nhiều lớp mới.
+
+##Prototype:
+https://github.com/Design-pattrns/Prototype-Pattern
+**Giống nhau** :
+- Cho phép sao chép các đối tượng hiện có mà không làm cho mã của ban đầu phụ thuộc vào các lớp của chúng.
+
+- Prototypes được tạo sẵn có thể là một giải pháp thay thế cho subclassing.
+
+**Khác nhau**:
+- Mẫu Prototype cung cấp cho mã máy khách một giao diện chung để làm việc với tất cả các đối tượng hỗ trợ nhân bản. Giao diện này làm cho mã máy khách độc lập với các lớp cụ thể của các đối tượng mà nó sao chép.
+
+##Adapter:
+https://github.com/Design-pattrns/Adapter-Pattern
+**Giống nhau**:
+- Cho phép các đối tượng có giao diện không tương thích cộng tác.
+
+- Có thể gọi các phương thức của adapter một cách an toàn.
+
+- Một lớp chứa logic nghiệp vụ hiện có của chương trình.
+
+**Khác nhau**:
+- Khi muốn sử dụng lại một số lớp con hiện có thiếu một số chức năng phổ biến không thể thêm vào lớp cha.
+
+- Độ phức tạp tổng thể của mã tăng lên.
+
+##Composite:
+https://github.com/topics/composite-pattern
+**Giống nhau**:
+- Cho phép sắp xếp các đối tượng thành cấu trúc cây và sau đó làm việc với các cấu trúc này như thể chúng là các đối tượng riêng lẻ.
+
+- Mẫu tổng hợp cho phép chạy một cách đệ quy một hành vi trên tất cả các thành phần của cây đối tượng.
+
+- Các thành phần giao diện mô tả hoạt động mà là chung cho cả hai đơn giản và các yếu tố phức tạp của cây.
+
+**Khác nhau**:
+- Khó cung cấp một giao diện chung cho các lớp có chức năng khác nhau quá nhiều
+
+##Decorator:
+https://github.com/iluwatar/java-design-patterns/tree/master/decorator
+**Giống nhau**:
+- Cho phép đính kèm các hành vi mới vào các đối tượng bằng cách đặt các đối tượng này bên trong các đối tượng trình bao bọc đặc biệt có chứa các hành vi.
+
+- Các ứng dụng có thể định cấu hình các ngăn xếp phức tạp của trình trang trí thông báo
+
+- Các phương pháp thông báo khác nhau trở thành người trang trí.
+
+**Khác nhau**:
+- Khó mở rộng thêm một lớp
+
+- Cấu trúc lôgic nghiệp vụ
+
+##Facade
+https://github.com/iluwatar/java-design-patterns/tree/master/facade
+**Giống nhau**:
+- Cung cấp một giao diện đơn giản hóa cho một thư viện, một khuôn khổ hoặc bất kỳ tập hợp lớp phức tạp nào khác.
+
+- Các Facade cung cấp truy cập thuận tiện đối với một phần cụ thể của chức năng của hệ thống phụ.
+
+- Các lớp hệ thống con không nhận thức được sự tồn tại của mặt tiền. Chúng hoạt động trong hệ thống và làm việc trực tiếp với nhau.
+
+**Khác nhau**:
+- Các hệ thống con trở nên phức tạp hơn theo thời gian.
+
+##Bridge
+https://github.com/MoienTajik/Bridge-Pattern-Sample
+**Giống nhau**:
+- Chia một lớp lớn hoặc một tập hợp các lớp có liên quan chặt chẽ thành hai phân cấp riêng biệt — trừu tượng và thực thi — có thể được phát triển độc lập với nhau.
+
+- Thực hiện thay đổi đối với các mô-đun nhỏ hơn, được xác định rõ ràng dễ dàng hơn nhiều.
+
+- Triển khai Concrete chứa mã dành riêng cho nền tảng
+
+- Cung cấp các biến thể của logic điều khiển
+
+**Khác nhau**:
+- Mất nhiều thời gian để thực hiện thay đổi
+
+
+##Flyweight
+https://github.com/iluwatar/java-design-patterns/tree/master/flyweight
+**Giống nhau**:
+- Cho phép lắp nhiều đối tượng hơn vào dung lượng RAM có sẵn bằng cách chia sẻ các phần trạng thái chung giữa nhiều đối tượng thay vì giữ tất cả dữ liệu trong mỗi đối tượng.
+
+- Chứa một phần trạng thái của đối tượng ban đầu có thể được chia sẻ giữa nhiều đối tượng.
+
+**Khác nhau**:
+- Một ứng dụng cần tạo ra một số lượng lớn các đối tượng tương tự.
+
+- Các đối tượng chứa các trạng thái trùng lặp có thể được trích xuất và chia sẻ giữa nhiều đối tượng
+
+- Mã trở nên phức tạp hơn nhiều
+
+##Proxy
+https://github.com/daggerok/proxy-pattern-example
+**Giống nhau**:
+- Một proxy kiểm soát quyền truy cập vào đối tượng ban đầu, cho phép bạn thực hiện điều gì đó trước hoặc sau khi yêu cầu được chuyển đến đối tượng ban đầu.
+
+- Các giao diện Service tuyên bố giao diện của Dịch Vụ. Proxy phải tuân theo giao diện này để có thể tự ngụy trang thành một đối tượng dịch vụ.
+
+- Proxy quản lý toàn bộ vòng đời của các đối tượng dịch vụ
+
+**Khác nhau**:
+- Có thể trì hoãn việc khởi tạo đối tượng đến thời điểm thực sự cần thiết.
+
+- Proxy có thể chuyển yêu cầu đến đối tượng dịch vụ chỉ khi thông tin xác thực của khách hàng phù hợp với một số tiêu chí.
+
+- Proxy có thể sử dụng các tham số của yêu cầu làm khóa bộ nhớ cache
+
+##Chain of Responsibility
+https://github.com/BrijeshSaxena/design-pattern-chain-of-responsibility
+**Giống nhau**:
+- Chuyển các yêu cầu dọc theo một chuỗi các trình xử lý. Khi nhận được yêu cầu, mỗi trình xử lý sẽ quyết định xử lý yêu cầu hoặc chuyển nó cho trình xử lý tiếp theo trong chuỗi.
+
+- Những người xử lý được xếp từng hàng một, tạo thành một chuỗi.
+
+- Một chuỗi có thể được hình thành từ một nhánh của cây đối tượng.
+
+**Khác nhau**:
+- Một số yêu cầu chưa được giải quyết.
+
+##Command
+https://github.com/toniesteves/design-pattern-command
+**Giống nhau**:
+- Biến một yêu cầu thành một đối tượng độc lập chứa tất cả thông tin về yêu cầu
+
+- Sự chuyển đổi này cho phép bạn chuyển các yêu cầu dưới dạng đối số của phương thức, trì hoãn hoặc xếp hàng đợi việc thực hiện một yêu cầu và hỗ trợ các hoạt động hoàn tác.
+
+- Các đối tượng GUI có thể truy cập trực tiếp vào các đối tượng logic nghiệp vụ.
+
+- Truy cập lớp logic nghiệp vụ thông qua một lệnh.
+
+- Các đối tượng GUI ủy quyền công việc cho các lệnh.
+
+**Khác nhau**:
+- Tham số hóa các đối tượng bằng các phép toán
+
+- Xếp hàng đợi các hoạt động, lên lịch thực thi hoặc thực thi chúng từ xa.
+
+- Triển khai các hoạt động có thể đảo ngược
+
+##Iterator
+https://github.com/BrijeshSaxena/design-pattern-iterator
+**Giống nhau**:
+- Duyệt qua các phần tử của một bộ sưu tập mà không để lộ biểu diễn cơ bản của nó (danh sách, ngăn xếp, cây, v.v.).
+
+- Trình lặp thực hiện các thuật toán duyệt khác nhau. Một số đối tượng trình lặp có thể duyệt cùng một bộ sưu tập cùng một lúc.
+
+**Khác nhau**:
+- Trình lặp đóng gói các chi tiết làm việc với cấu trúc dữ liệu phức tạp
+
+- Mã của các thuật toán lặp không tầm thường có xu hướng rất cồng kềnh
+
+- Mẫu cung cấp một vài giao diện chung cho cả bộ sưu tập và trình vòng lặp
+
+##Mediator
+https://github.com/BrijeshSaxena/design-pattern-mediator
+**Giống nhau**:
+- Giảm bớt sự phụ thuộc hỗn loạn giữa các đối tượng. Mẫu hạn chế giao tiếp trực tiếp giữa các đối tượng và buộc chúng chỉ cộng tác thông qua một đối tượng trung gian.
+
+- Các phần tử giao diện người dùng giao tiếp gián tiếp, thông qua đối tượng trung gian
+
+**Khác nhau**:
+- Khó thay đổi một số lớp
+
+- Không thể sử dụng lại một thành phần trong một chương trình khác vì nó quá phụ thuộc vào các thành phần khác.
+
+
+##Observer
+https://github.com/design-pattern-list/observer-pattern
+**Giống nhau**:
+- Cho phépxác định cơ chế đăng ký để thông báo cho nhiều đối tượng về bất kỳ sự kiện nào xảy ra với đối tượng mà họ đang quan sát.
+
+- Cơ chế đăng ký cho phép các đối tượng riêng lẻ đăng ký nhận thông báo sự kiện
+
+- Nhà xuất bản thông báo cho người đăng ký bằng cách gọi phương thức thông báo cụ thể trên các đối tượng của họ.
+
+**Khác nhau**:
+- Một số đối tượng trong ứng dụng của bạn phải quan sát những đối tượng khác, nhưng chỉ trong thời gian giới hạn hoặc trong các trường hợp cụ thể.
+
+##State
+https://github.com/sebastianbergmann/state
+**Giống nhau**:
+- Một đối tượng thay đổi hành vi của nó khi trạng thái bên trong của nó thay đổi. Nó xuất hiện như thể đối tượng đã thay đổi lớp của nó.
+
+- Tài liệu ủy quyền công việc cho một đối tượng trạng thái.
+
+**Khác nhau**:
+- Số lượng trạng thái là rất lớn và mã của trạng thái cụ thể thường xuyên thay đổi.
+
+- State pattern cho phép bạn trích xuất các nhánh của các điều kiện này thành các phương thức của các lớp trạng thái tương ứng
+
+- State pattern cho phép bạn soạn cấu trúc phân cấp của các lớp trạng thái và giảm sự trùng lặp bằng cách trích xuất mã chung vào các lớp cơ sở trừu tượng.
+
+##Memento
+https://github.com/bjarneo/memento-pattern-example
+**Giống nhau**:
+- Cho phép lưu và khôi phục trạng thái trước đó của một đối tượng mà không tiết lộ chi tiết về quá trình triển khai của nó.
+
+- Người tạo có toàn quyền truy cập vào memento, trong khi người chăm sóc chỉ có thể truy cập siêu dữ liệu.
+
+**Khác nhau**:
+- Có thể khôi phục trạng thái trước đó của đối tượng.
+
+- Không đối tượng nào khác có thể đọc ảnh chụp nhanh, làm cho dữ liệu trạng thái của đối tượng ban đầu được an toàn và bảo mật.
+
