@@ -1,16 +1,21 @@
-# Nhóm gồm 3 thành viên:
+# Báo cáo về 23 mẫu thiết kế và so sánh với mẫu thiết kế chuẩn.
+## A. Mở đầu.
+## 1. Tóm tắt
+Báo cáo sử dụng một dự án trên Github, từ đó tìm hiểu và so sánh với mẫu thiết kế chuẩn. Báo cáo gồm ba phần Creational Pattern, Behavioral Patterns, Structural Patterns.
+## 2. Nhóm gồm ba thành viên:
 - Lê Trần Lâm Bình - 19020226
 - Nguyễn Duy Đường - 19020266
 - Hoàng Văn Đô - 19020251
 
->## Link
->* Link Repo: https://github.com/abishekaditya/DesignPatterns
->* Link mẫu chuẩn: https://refactoring.guru/design-patterns/java
+>## Link dự án mà nhóm sử dụng
+>* Link dự án: https://github.com/abishekaditya/DesignPatterns
+>* Link mẫu thiết kế chuẩn: https://refactoring.guru/design-patterns/java
+# B. Các mẫu thiết kế.
 # 1. Creational Patterns
 ## 1.1 Abstract Factory
 - Là một mẫu thiết kế sáng tạo cho phép bạn tạo ra các họ các đối tượng liên quan mà không cần chỉ định các lớp cụ thể của chúng.
 - Code: [Abstract Factory](https://github.com/abishekaditya/DesignPatterns/tree/master/FactoryPattern/Abstract%20Factory)
-- Ở đây, cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng, 2 class được khai báo theo mẫu chuẩn.
+- Ở đây, cung cấp một giao diện (interface) cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng, 2 lớp được khai báo theo mẫu chuẩn.
 ```csharp
 internal class ChicagoIngredientsFactory : IIngredientsFactory
 internal class NyIngredientsFactory : IIngredientsFactory
@@ -54,7 +59,7 @@ public interface IBuilder
 ## 1.4 Prototype Pattern
 - Prototype là một mẫu thiết kế sáng tạo cho phép bạn sao chép các đối tượng hiện có mà không làm cho mã của bạn phụ thuộc vào các lớp của chúng.
 - Code: [Prototype Pattern](https://github.com/abishekaditya/DesignPatterns/tree/master/PrototypePattern)
-- Khởi tạo `interface IFigure : ICloneable` dùng làm đối tượng mẫu để quy định các loại đối tượng của lớp Circle và Rectangle, hai lớp đó kế thừa lớp IFigure. Tất cả các lớp sau tuân theo cùng một interface, cung cấp một phương thức clone().
+- Khởi tạo `interface IFigure : ICloneable` dùng làm đối tượng mẫu để quy định các loại đối tượng của lớp Circle và Rectangle, hai lớp đó kế thừa lớp IFigure. Tất cả các lớp sau tuân theo cùng một giao diện (interface), cung cấp một phương thức clone().
 ```csharp
 interface IFigure : ICloneable
     {}
@@ -138,7 +143,7 @@ public class MultiplicationHandler : BaseHandler {
 ## 2.2 Command
 - Command biến một yêu cầu thành một đối tượng độc lập chứa tất cả thông tin về yêu cầu. Sự chuyển đổi này cho phép bạn chuyển các yêu cầu dưới dạng đối số của phương thức, trì hoãn hoặc xếp hàng đợi việc thực hiện một yêu cầu và hỗ trợ các hoạt động hoàn tác.
 - Code: [Command](https://github.com/abishekaditya/DesignPatterns/tree/master/CommandPattern)
-- The base command class xác định giao diện chung cho các concrete commands.
+- Các lớp lệnh cơ sở xác định giao diện chung cho các lệnh cụ thể.
 ```csharp
 internal interface ICommand
     {
@@ -146,7 +151,7 @@ internal interface ICommand
         void Undo();
     }
 ```
-- The concrete commands:
+- Các lệnh cụ thể:
 ```csharp
 internal class GarageDoorCloseCommand : ICommand
     {
@@ -167,7 +172,7 @@ v.v.....
 
 ## 2.3 **Iterator** 
 - Là một mẫu thiết kế hành vi cho phép duyệt tuần tự thông qua một cấu trúc dữ liệu phức tạp mà không để lộ các chi tiết bên trong của nó. Ý tưởng chính của mẫu Iterator là trích xuất hành vi truyền tải của một tập hợp thành một đối tượng riêng biệt được gọi là trình vòng lặp.
-- Ví dụ như trình vòng lặp hồ sơ mạng xã hội,  mẫu Iterator được sử dụng để duyệt qua các hồ sơ có trong một bộ sưu tập mạng xã hội từ xa mà không để lộ bất kỳ chi tiết giao tiếp nào với phía client.
+- Ví dụ như trình vòng lặp hồ sơ mạng xã hội, mẫu Iterator được sử dụng để duyệt qua các hồ sơ có trong một bộ sưu tập mạng xã hội từ xa mà không để lộ bất kỳ chi tiết giao tiếp nào với phía client.
 - VD trong project [Iterator](https://github.com/abishekaditya/DesignPatterns/blob/master/IteratorPattern/Client.cs)
  ```csharp
  public class Client
@@ -222,18 +227,18 @@ v.v.....
  ## 2.5 **Memento**
 - Cho phép tạo ảnh chụp nhanh trạng thái của một đối tượng và khôi phục nó trong tương lai.
 - Không làm ảnh hưởng đến cấu trúc bên trong của đối tượng mà nó làm việc cùng, cũng như dữ liệu được lưu giữ bên trong ảnh chụp nhanh.
-- Trong project không sử dụng mẫu này.
+- Trong dự án không sử dụng mẫu này.
     
  ## 2.6 **Observer**
 - Cho phép một số đối tượng thông báo cho các đối tượng khác về những thay đổi trong trạng thái của chúng.
 - Cung cấp một cách để đăng ký và hủy đăng ký cho bất kỳ đối tượng nào triển khai giao diện người đăng ký.
-- VD trong project [Observer](https://github.com/abishekaditya/DesignPatterns/blob/master/ObserverPattern/WeatherSupplier.cs)
-- so sánh: cơ bản thì giống nhau, chỉ khác ở cách xử lý sự kiện
+- Ví dụ trong dự án [Observer](https://github.com/abishekaditya/DesignPatterns/blob/master/ObserverPattern/WeatherSupplier.cs)
+- So sánh: cơ bản thì giống nhau, chỉ khác ở cách xử lý sự kiện
     
 ## 2.7 **State**
 - Là một mẫu thiết kế hành vi cho phép một đối tượng thay đổi hành vi khi trạng thái bên trong của nó thay đổi.
 - State pattern gợi ý nên tạo các lớp mới cho tất cả các trạng thái có thể có của một đối tượng và trích xuất tất cả các hành vi dành riêng cho trạng thái vào các lớp này.
-- VD trong project [State](https://github.com/abishekaditya/DesignPatterns/blob/master/StatePattern/GumballMachine.cs)
+- Ví dụ trong dự án [State](https://github.com/abishekaditya/DesignPatterns/blob/master/StatePattern/GumballMachine.cs)
 ```csharp
 public void InsertQuarter()
         {
@@ -264,7 +269,7 @@ public void InsertQuarter()
 ## 2.8 **Strategy**
 - Là một mẫu thiết kế biến một tập hợp các hành vi thành các đối tượng và làm cho chúng có thể hoán đổi cho nhau bên trong đối tượng ngữ cảnh ban đầu.
 - Strategy pattern gợi ý rằng nên chọn một lớp thực hiện điều gì đó cụ thể theo nhiều cách khác nhau và trích xuất tất cả các thuật toán này thành các lớp riêng biệt.
-- VD trong project [Strategy](https://github.com/abishekaditya/DesignPatterns/blob/master/StrategyPattern/QuackSqueak.cs)
+- Ví dụ trong dự án [Strategy](https://github.com/abishekaditya/DesignPatterns/blob/master/StrategyPattern/QuackSqueak.cs)
 ```csharp
 class QuackSqueak : IQuackBehaviour
      {
@@ -279,12 +284,12 @@ class QuackSqueak : IQuackBehaviour
 ## 2.9 **Template Method**
 - Là một mẫu thiết kế cho phép bạn xác định khung của một thuật toán trong một lớp cơ sở và để các lớp con ghi đè các bước mà không thay đổi cấu trúc của thuật toán tổng thể.
 - Template Method khá phổ biến trong các khung công tác Java. Các nhà phát triển thường sử dụng nó để cung cấp cho người dùng khung một phương tiện đơn giản để mở rộng chức năng tiêu chuẩn bằng cách sử dụng tính năng kế thừa.
-- VD trong project [Template Method](https://github.com/abishekaditya/DesignPatterns/blob/master/TemplatePattern/Comparable/Person.cs)
+- Ví dụ trong dự án [Template Method](https://github.com/abishekaditya/DesignPatterns/blob/master/TemplatePattern/Comparable/Person.cs)
 - So sánh: giống với cách sử dụng trong lý thuyết do thuật toán trong lớp Person không làm thay đổi cấu trúc của thuật toán tổng thể mà chỉ đối chiếu đối tượng đầu vào với đối tượng Person.
 ## 2.10 **Visitor**
 - Là một mẫu thiết kế hành vi cho phép thêm các hành vi mới vào hệ thống phân cấp lớp hiện có mà không thay đổi bất kỳ mã hiện có nào.
 - Visitor pattern không phải là một mẫu quá phổ biến vì tính phức tạp và khả năng áp dụng hẹp của nó.
-- VD trong project [Visitor](https://github.com/abishekaditya/DesignPatterns/blob/master/VisitorPattern/LivingRoomVisitor.cs)
+- Ví dụ trong dự án [Visitor](https://github.com/abishekaditya/DesignPatterns/blob/master/VisitorPattern/LivingRoomVisitor.cs)
 ```csharp
 public class LivingRoomVisitor : IUnitVisitor
     {
@@ -313,7 +318,7 @@ public class LivingRoomVisitor : IUnitVisitor
  
 Được sử dụng trong [AdaptePattern.](https://github.com/abishekaditya/DesignPatterns/tree/master/AdapterPattern)
 
-Các client interface:
+Các giao diện người dùng:
 IDuck.cs:
 ```csharp
 	public interface IDuck
@@ -520,7 +525,7 @@ class Espresso : Beverage
 
 IBeverage  OolingMilkTea FoamMilkTea CoconutMilkTea BubbleMilkTea 
 
-**Flyweight Factory** tương ứng là class *BubbleTeaShop* đại diện cho một cửa hàng đồ uống quản lý các loại đồ uống - Enumerate(), các hóa đơn - TakeOrders():
+**Flyweight Factory** tương ứng là lớp *BubbleTeaShop* đại diện cho một cửa hàng đồ uống quản lý các loại đồ uống - Enumerate(), các hóa đơn - TakeOrders():
 ```csharp
     private void TakeOrders()
         {
@@ -591,4 +596,5 @@ Kết luận: Tương đồng với mẫu thiết ké nhưng chưa thể hiện 
 ```
 Kết luận: hoàn toàn tương đồng với mẫu thiết kế, không có sự khác biệt.
 
-# Kết Luận chung: **Tất cả các mẫu thiết kế trên đều giống, không có nhiều thay đổi so với 23 mẫu thiết kế chuẩn.**
+# Kết Luận chung: 
+**Sau quá trình tìm hiểu và so sánh về 23 mẫu thiết kế trên ta thấy tất cả các mẫu thiết kế trên đều giống, không có nhiều thay đổi so với 23 mẫu thiết kế chuẩn.**
