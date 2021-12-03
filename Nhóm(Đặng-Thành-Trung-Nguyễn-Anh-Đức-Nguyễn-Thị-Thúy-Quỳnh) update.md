@@ -1000,7 +1000,7 @@ Dưới đây là định nghĩa các lớp này:
 
 * Mẫu thiết kế *Strategy* trong package [formations](https://github.com/Anuken/Mindustry/tree/master/core/src/mindustry/ai/formations) với các lớp và giao diện sau:
 
-	+ Interface [SlotAssignmentStrategy](https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/ai/formations/SlotAssignmentStrategy.java) đóng vai trò Strategy của mẫu thiết kế với nhiệm vụ định nghĩa các hành vi có thể có của một Strategy
+	+ Interface [SlotAssignmentStrategy](https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/ai/formations/SlotAssignmentStrategy.java) đóng vai trò Strategy của mẫu thiết kế với nhiệm vụ định nghĩa các hành vi có thể có của một Strategy. Giao diện này xác định cách mỗi FormationMember được chỉ định cho một vị trí trong Formation.
 
 	```java
 	public interface SlotAssignmentStrategy{
@@ -1016,7 +1016,7 @@ Dưới đây là định nghĩa các lớp này:
 
 	}
 	```
-	+ Các ConcreteStategy trong mẫu này là  lớp: [BoundedSlotAssignmentStrategy](https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/ai/formations/BoundedSlotAssignmentStrategy.java), [DistanceAssignmentStrategy](https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/ai/formations/DistanceAssignmentStrategy.java), [FreeSlotAssignmentStrategy](https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/ai/formations/FreeSlotAssignmentStrategy.java), [SoftRoleSlotAssignmentStrategy](https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/ai/formations/SoftRoleSlotAssignmentStrategy.java).
+	+ Các ConcreteStategy trong mẫu này là  lớp: [BoundedSlotAssignmentStrategy](https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/ai/formations/BoundedSlotAssignmentStrategy.java), [DistanceAssignmentStrategy](https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/ai/formations/DistanceAssignmentStrategy.java) là một triển khai trừu tượng của SlotAssignmentStrategy hỗ trợ các role. Nói chung, có vai cứng (hard roles) và vai mềm (soft roles). Vai cứng không thể bị phá vỡ nhưng vai mềm có thể. Lớp trừu tượng này cung cấp cách triển khai phương thức calculateNumberOfSlots (Seq) allowNumberOfSlots chung chung (và tốn kém) hơn so với cách triển khai đơn giản trong FreeSlotAssignmentStrategy. Nó quét danh sách assignments để tìm số vị trí đã lấp đầy, là số vị trí cao nhất trong các assignments. [FreeSlotAssignmentStrategy](https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/ai/formations/FreeSlotAssignmentStrategy.java) là cách triển khai SlotAssignmentStrategy đơn giản nhất. Nó chỉ đơn giản là đi qua từng assignment trong danh sách và gán số vị trí tuần tự. Số lượng khe chỉ là độ dài của danh sách. Vì mỗi thành viên có thể chiếm bất kỳ vị trí nào nên việc triển khai này không hỗ trợ các role. [DistanceAssignmentStrategy](https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/ai/formations/DistanceAssignmentStrategy.java).
 
 	```java
 	public abstract class BoundedSlotAssignmentStrategy implements SlotAssignmentStrategy{
@@ -1064,6 +1064,7 @@ Dưới đây là định nghĩa các lớp này:
 
 	}
 	```
+	+ BoundedSlotAssignmentStrategy lại có một ConcreteStrategy là [SoftRoleSlotAssignmentStrategy](https://github.com/Anuken/Mindustry/blob/master/core/src/mindustry/ai/formations/SoftRoleSlotAssignmentStrategy.java) là một triển khai cụ thể của BoundedSlotAssignmentStrategy hỗ trợ các vai trò mềm, tức là các vai trò có thể bị phá vỡ. Thay vì một thành viên có danh sách các vai trò mà nó có thể hoàn thành, nó có một tập hợp các giá trị thể hiện mức độ khó khăn của nó khi hoàn thành mọi vai trò. Giá trị được gọi là chi phí vị trí. Để thành viên không thể lấp đầy một vị trí, chi phí vị trí của nó phải là vô hạn (bạn thậm chí có thể đặt ngưỡng để bỏ qua tất cả các vị trí có chi phí quá cao; điều này sẽ giảm thời gian tính toán khi một số chi phí vượt quá). Để làm cho một vị trí lý tưởng cho một thành viên, chi phí vị trí của nó phải bằng không. Chúng tôi có thể có các mức phân công không phù hợp khác nhau cho một thành viên. Chi phí xèng không nhất thiết phải chỉ phụ thuộc vào thành viên và các vai trò xèng. Chúng có thể được khái quát hóa để bao gồm bất kỳ khó khăn nào mà thành viên có thể gặp phải khi chiếm vị trí. Ví dụ, nếu một đội hình được dàn trải, một thành viên có thể chọn một vị trí gần hơn so với một vị trí xa hơn. Khoảng cách có thể được sử dụng trực tiếp như một chi phí vị trí.
 
 	```java
 	public class SoftRoleSlotAssignmentStrategy extends BoundedSlotAssignmentStrategy{
