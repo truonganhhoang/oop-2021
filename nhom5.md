@@ -217,10 +217,17 @@ public class ElfKingdomFactory implements KingdomFactory {
 ```
   
   Singleton pattern (thuộc Creational) đảm bảo chỉ duy nhất môt new instance được tạo ra cho 1 lớp và nó sẽ cung cấp cho bạn một method để truy cập đến đối tượng duy nhất đó. Dù cho việc thực hiện cài đặt Singleton bằng cách nào đi nữa cũng đều dựa vào nguyên tắc dưới đây.
--  private constructor để hạn chế khởi tạo đối tượng từ bên ngoài
-- đặt private static variable cho đối tượng được khởi tạo, đảm bảo biến chỉ được khởi tạo trong chính lớp này.
-- có một method public để return instance đã được khởi tạo ở trên.
+- Private constructor để hạn chế khởi tạo đối tượng từ bên ngoài.
+- Đặt private static variable cho đối tượng được khởi tạo, đảm bảo biến chỉ được khởi tạo trong chính lớp này.
+- Có một method public để return instance đã được khởi tạo ở trên.
 
+**Giống nhau**:
+- Đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó.
+- Các đối tượng mới không thể được sử dụng bời các chương trình khác.
+  
+**Khác nhau**:
+- Singleton mang kiẻu Inner Class.
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
 
 
 
@@ -367,6 +374,15 @@ public class Hammer implements Weapon {
   }
 }
 ```
+
+**Giống nhau**: 
+- Tách rời ngữ nghĩa của một vấn đề khỏi việc cài đặt, mục đích để cả hai bộ phận (ngữ nghĩa và cài đặt) có thể thay đổi độc lập nhau.
+- Được sử dụng để tách thành phần trừu tượng (Abstraction) và thành phần thực thi (Implementation) riêng biệt.
+
+
+**Khác biệt**:
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
 
 - ## [Flyweight](https://github.com/iluwatar/java-design-patterns/tree/master/flyweight)
 
