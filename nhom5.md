@@ -499,6 +499,14 @@ public class Word extends LetterComposite {
 
 Composite pattern (thuộc Structural) cho phép tương tác với tất cả các đối tượng tương tự nhau giống như là các đối tượng đơn hoặc collections. Ví dụ: Đối tượng File sẽ là 1 đối tượng đơn nếu bên trong nó không có file nào khác, nhưng đối tượng file (folder) sẽ được đối xử giống như 1 collections nếu bên trong nó lại có những File khác.
 
+**Giống nhau**: 
+- Tất cả các đối tượng trong cấu trúc được thao tác theo một cách thuần nhất như nhau.
+- Tạo quan hệ thứ bậc bao gộp giữa các đối tượng.
+
+
+**Khác biệt**:
+- Hầu như không có sự khác nhau vì mẫu thiết kế này được xây dựng dựa trên mẫu thiết kế chuẩn.
+
 
 - # Behavioral pattern
 
