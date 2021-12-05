@@ -20,7 +20,7 @@
     - Behavioral
 - Trong bài thu hoạch này nhóm xin trình bày 2 nhóm là **Creational** và **Stuctural**.
 # Nhóm thứ nhất Creational
-- Trong nhóm thứ nhất này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là factory method và abstract factory.
+ - Trong nhóm thứ nhất này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là factory method và abstract factory.
  - Giải thích được định nghĩa, lấy ví dụ thực tế, rõ ràng dễ hiểu.
  - Đưa ra được khi nào nên sử dụng trong thực tế.
  - **Tác giả đã giải thích được sự khác nhau giữa factory method và factory abstract.**
@@ -115,11 +115,10 @@ $expert->getDescription(); // Output: I can only fit iron doors
 Có thể thấy với mỗi loại cửa khác nhau sẽ gọi đến những gì liên quan đến nó hay là phải quan tâm đến những lớp con của của nó ví dụ như hàm **makeDoor()**  hay là hàm **MakeFittingExpert()**. 
 
 # Nhóm thứ hai Structural
-    Trong nhóm thứ hai này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là adapter pattern và decorator pattern.
+- Trong nhóm thứ hai này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là adapter pattern và decorator pattern.
 - Giải thích được định nghĩa, lấy ví dụ thực tế, rõ ràng dễ hiểu.
-- Đưa ra được khi nào nên sử dụng trong thực tế.
-- **Tác giả đã giải thích được sự khác nhau giữa adapter pattern và decorator pattern.**
-### 1. adapter pattern: là một mẫu thiết kế phần mềm cho phép giao diện của một lớp hiện có được sử dụng như một giao diện khác. Nó thường được sử dụng để làm cho các lớp hiện có hoạt động với những lớp khác mà không cần sửa đổi mã nguồn của chúng.
+### 1. adapter pattern:
+    Là một mẫu thiết kế phần mềm cho phép giao diện của một lớp hiện có được sử dụng như một giao diện khác. Nó thường được sử dụng để làm cho các lớp hiện có hoạt động với những lớp khác mà không cần sửa đổi mã nguồn của chúng.
 ```php
 interface Lion
 {
@@ -185,9 +184,10 @@ $hunter->hunt($wildDogAdapter);
 ```
 Có thể thấy từ đoạn code mẫu trên Adapter pattern cho phép bạn bọc một đối tượng không tương thích khác trong bộ điều hợp để làm cho nó tương thích với một lớp khác trong trường hợp này là lớp WildDog.
 
-### 2. decorator pattern: là một mẫu thiết kế cho phép thêm hành vi vào một đối tượng riêng lẻ, tĩnh hoặc động, mà không ảnh hưởng đến hành vi của các đối tượng khác từ cùng một lớp.
+### 2. Decorator pattern:
+    Là một mẫu thiết kế cho phép thêm hành vi vào một đối tượng riêng lẻ, tĩnh hoặc động, mà không ảnh hưởng đến hành vi của các đối tượng khác từ cùng một lớp.
 - Trong mẫu thiết kế này tác giả đã lấy ví dụ về cà phê và những miêu tả thêm về chúng.
-
+- Dưới đây là đoạn code được lấy trong repo.
 đầu tiên tạo ra interface Coffee và lớp SimpleCoffee
 ```php
 interface Coffee
