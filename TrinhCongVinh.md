@@ -116,7 +116,7 @@ Có thể thấy với mỗi loại cửa khác nhau sẽ gọi đến những g
 - Giải thích được định nghĩa, lấy ví dụ thực tế, rõ ràng dễ hiểu.
 - Đưa ra được khi nào nên sử dụng trong thực tế.
 - **Tác giả đã giải thích được sự khác nhau giữa adapter pattern và decorator pattern.**
-- ### 1. adapter pattern: là một mẫu thiết kế phần mềm cho phép giao diện của một lớp hiện có được sử dụng như một giao diện khác. Nó thường được sử dụng để làm cho các lớp hiện có hoạt động với những lớp khác mà không cần sửa đổi mã nguồn của chúng.
+### 1. adapter pattern: là một mẫu thiết kế phần mềm cho phép giao diện của một lớp hiện có được sử dụng như một giao diện khác. Nó thường được sử dụng để làm cho các lớp hiện có hoạt động với những lớp khác mà không cần sửa đổi mã nguồn của chúng.
 ```php
 interface Lion
 {
@@ -180,10 +180,10 @@ $wildDogAdapter = new WildDogAdapter($wildDog);
 $hunter = new Hunter();
 $hunter->hunt($wildDogAdapter);
 ```
-Có thể thấy từ đoạn code trên, Adapter pattern cho phép bạn bọc một đối tượng không tương thích khác trong bộ điều hợp để làm cho nó tương thích với một lớp khác trong trường hợp này là lớp WildDog
+Có thể thấy từ đoạn code mẫu trên Adapter pattern cho phép bạn bọc một đối tượng không tương thích khác trong bộ điều hợp để làm cho nó tương thích với một lớp khác trong trường hợp này là lớp WildDog.
 
 ### 2. decorator pattern: là một mẫu thiết kế cho phép thêm hành vi vào một đối tượng riêng lẻ, tĩnh hoặc động, mà không ảnh hưởng đến hành vi của các đối tượng khác từ cùng một lớp.
-- Nói một cách dễ hiểu trong repo này tác giả đã lấy ví dụ về cà phê và những miêu tả thêm về chúng.
+- Trong mẫu thiết kế này tác giả đã lấy ví dụ về cà phê và những miêu tả thêm về chúng.
 
 đầu tiên tạo ra interface Coffee và lớp SimpleCoffee
 ```php
