@@ -1,5 +1,5 @@
-# Link: https://github.com/kamranahmedse/design-patterns-for-humans.git
-
+## Link repo so sánh: https://github.com/kamranahmedse/design-patterns-for-humans.git
+## Link repo gốc: https://refactoring.guru/design-patterns
 # Thành Viên Nhóm
 - Trịnh Công Vinh
 - Trương Văn Độ
@@ -13,9 +13,9 @@
 >  - **If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.**
 
 - 23 mẫu thiết kế được chia thành 3 nhóm chính là:
-- Creational
-- Structural
-- Behavioral
+    - Creational
+    - Structural
+    - Behavioral
 
 # Nhóm thứ nhất Creational
 ## Trong nhóm thứ nhất này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là factory method và abstract factory.
