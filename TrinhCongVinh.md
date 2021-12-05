@@ -117,7 +117,7 @@ Có thể thấy với mỗi loại cửa khác nhau sẽ gọi đến những g
 # Nhóm thứ hai Structural
 - Trong nhóm thứ hai này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là adapter pattern và decorator pattern.
 - Giải thích được định nghĩa, lấy ví dụ thực tế, rõ ràng dễ hiểu.
-### 1. adapter pattern:
+### 1. Adapter pattern:
     Là một mẫu thiết kế phần mềm cho phép giao diện của một lớp hiện có được sử dụng như một giao diện khác. Nó thường được sử dụng để làm cho các lớp hiện có hoạt động với những lớp khác mà không cần sửa đổi mã nguồn của chúng.
 ```php
 interface Lion
