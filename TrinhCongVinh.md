@@ -1,7 +1,6 @@
-#Link: https://github.com/kamranahmedse/design-patterns-for-humans.git
+# Link: https://github.com/kamranahmedse/design-patterns-for-humans.git
 
-# Nhóm
-
+# Thành Viên Nhóm
 - Trịnh Công Vinh
 - Trương Văn Độ
 - Mai Hoàng Anh
@@ -110,21 +109,6 @@ $door->getDescription();  // Output: I am an iron door
 $expert->getDescription(); // Output: I can only fit iron doors
 ```
 Có thể thấy với mỗi loại cửa khác nhau sẽ gọi đến những gì liên quan đến nó hay là phải quan tâm đến những lớp con của của nó ví dụ như hàm **makeDoor()**  hay là hàm **MakeFittingExpert()**. 
-
-
-# Summary
-**Giống nhau:**
-
-- Các mẫu thiết kế giống vơi mẫu chuẩn sử dụng ngôn ngữ PHP
-
-- Mỗi design pattern có đầy đủ các class, cấu trúc, code dễ đọc dễ hiểu.
-
-- Giải thích rõ ràng dễ hiểu, Code tường minh dễ hiểu.
-
-**Khác nhau:**
-
-- Không có sự khác nhau, đây là một mẫu thiết kế gần như giống hệt so với mẫu chuẩn về mọi mặt.
-
 
 # Nhóm thứ hai Structural
 ## Trong nhóm thứ hai này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là adapter pattern và decorator pattern.
@@ -306,12 +290,8 @@ Có thể thấy **someCoffee** có thể có thêm nhiều decorators cho phép
 
 # Summary
 **Giống nhau:**
-
-- Các mẫu thiết kế giống vơi mẫu chuẩn sử dụng ngôn ngữ PHP
-
-- Mỗi design pattern có đầy đủ các class, cấu trúc, code dễ đọc dễ hiểu.
-
-- Giải thích rõ ràng dễ hiểu, Code tường minh dễ hiểu.
+- Các mẫu thiết kế có cấu trúc khá giống trong repo gốc.
+- Các ví dụ được đưa ra tường minh và dễ hiểu.
 
 **Khác nhau:**
 
