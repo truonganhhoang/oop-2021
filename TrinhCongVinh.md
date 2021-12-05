@@ -19,10 +19,10 @@
     - Behavioral
 
 # Nhóm thứ nhất Creational
-## Trong nhóm thứ nhất này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là factory method và abstract factory.
-- Giải thích được định nghĩa, lấy ví dụ thực tế, rõ ràng dễ hiểu.
-- Đưa ra được khi nào nên sử dụng trong thực tế.
-- **Tác giả đã giải thích được sự khác nhau giữa factory method và factory abstract.**
+- Trong nhóm thứ nhất này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là factory method và abstract factory.
+ - Giải thích được định nghĩa, lấy ví dụ thực tế, rõ ràng dễ hiểu.
+ - Đưa ra được khi nào nên sử dụng trong thực tế.
+ - **Tác giả đã giải thích được sự khác nhau giữa factory method và factory abstract.**
 ### 1. factory method: được dùng để tạo ra một object nhưng mà lớp con sẽ quyết định coi lớp cha nào sẽ được khởi tạo
 ```php
 interface Interviewer
