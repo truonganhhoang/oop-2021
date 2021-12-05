@@ -48,7 +48,7 @@ class CommunityExecutive implements Interviewer
     }
 }
 ```
-tạo thêm một abstract class HiringManager
+Tạo thêm một abstract class HiringManager
 ```php
 abstract class HiringManager
 {
@@ -62,7 +62,7 @@ abstract class HiringManager
     }
 }
 ```
-thêm một class con
+Thêm một class con
 ```php
 class DevelopmentManager extends HiringManager
 {
@@ -80,7 +80,7 @@ class MarketingManager extends HiringManager
     }
 }
 ```
-trong hàm main:
+Trong hàm main:
 ```php
 $devManager = new DevelopmentManager();
 $devManager->takeInterview(); // Output: Asking about design patterns
@@ -139,7 +139,7 @@ class AsianLion implements Lion
     }
 }
 ```
-tạo thêm một class Hunter
+Tạo thêm một class Hunter
 ```php
 class Hunter
 {
@@ -149,7 +149,7 @@ class Hunter
     }
 }
 ```
-thêm một class con
+Thêm một class con
 ```php
 class WildDog
 {
@@ -188,7 +188,7 @@ Có thể thấy từ đoạn code mẫu trên Adapter pattern cho phép bạn b
     Là một mẫu thiết kế cho phép thêm hành vi vào một đối tượng riêng lẻ, tĩnh hoặc động, mà không ảnh hưởng đến hành vi của các đối tượng khác từ cùng một lớp.
 - Trong mẫu thiết kế này tác giả đã lấy ví dụ về cà phê và những miêu tả thêm về chúng.
 - Dưới đây là đoạn code được lấy trong repo.
-đầu tiên tạo ra interface Coffee và lớp SimpleCoffee
+    - Đầu tiên tạo ra interface Coffee và lớp SimpleCoffee
 ```php
 interface Coffee
 {
