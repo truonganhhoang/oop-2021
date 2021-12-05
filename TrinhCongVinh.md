@@ -6,6 +6,7 @@
 - Trương Văn Độ
 - Mai Hoàng Anh
 
+## Lời mở đầu
 - Repo này không phải là một dự án thực tế nhưng lại là một repo hay để hiểu thêm về các mẫu thiết kế trong lập trình hướng đối tượng. Điểm mạnh của repo này là có giải thích rõ ràng, có code minh họa và có đưa ví dụ liên quan đến thực tế để người đọc nắm rõ hơn thay vì một cách hàn lâm làm cho những người mới bắt đầu tìm hiểu về các mẫu lập trình bị khó hiểu và không biết tại sao lại phải sử dụng các mẫu thiết kế đó.
 - repo này đã chỉ ra một cách rõ ràng về những hiểu lầm mà những người mới bát đầu tìm hiểu thường bị mắc phải, được trích nguyên văn sau đây:
 >  - **Design patterns are not a silver bullet to all your problems.**
@@ -17,7 +18,7 @@
     - Creational
     - Structural
     - Behavioral
-
+- Trong bài thu hoạch này nhóm xin trình bày 2 nhóm là **Creational** và **Stuctural**.
 # Nhóm thứ nhất Creational
 - Trong nhóm thứ nhất này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là factory method và abstract factory.
  - Giải thích được định nghĩa, lấy ví dụ thực tế, rõ ràng dễ hiểu.
