@@ -1,5 +1,5 @@
-### Link repo so sánh: https://github.com/kamranahmedse/design-patterns-for-humans.git
-### Link repo gốc: https://refactoring.guru/design-patterns
+### [Link repo so sánh](https://github.com/kamranahmedse/design-patterns-for-humans.git)
+### [Link repo gốc](https://refactoring.guru/design-patterns)
 # Bài thu hoạch OOP.
 ## Thành Viên Nhóm:
 - Trịnh Công Vinh
@@ -88,7 +88,7 @@ $marketingManager->takeInterview(); // Output: Asking about community building.
 ```
 Có thể thấy từ đoạn code trên, dựa vào lớp con mà lớp cha sẽ sử dụng cái nào và sẽ có output khác nhau. Ví dụ dựa vào lớp con, cụ thể nếu là tuyển một **DevelopmentManager()** thì dựa trên đoạn code trên thì lớp cha sẽ lấy một interviewer là **Developer** chứ không phải là **CommunityExecutive**.
 
-### 2. factory abstract: định nghĩa một interface hoặc lớp trừu tượng (abstract) để tạo ra các họ hàng của các đối tượng liên quan (hoặc phụ thuộc) mà không cần chỉ rõ các lớp con cụ thể của chúng.
+### 2. factory abstract: Được định nghĩa một interface hoặc lớp trừu tượng (abstract) để tạo ra các họ hàng của các đối tượng liên quan (hoặc phụ thuộc) mà không cần chỉ rõ các lớp con cụ thể của chúng.
 - Nói một cách dễ hiểu trong repo này tác giả đã lấy ví dụ về cửa gỗ và thợ làm cửa gỗ, hay cửa nhôm thì sẽ đi với thợ sửa cửa nhôm.
 - Hai class Door và DoorFittingExpert sau khi được khởi tạo thì sẽ được gọi thông qua các con của interface class DoorFactory và được sử dụng trong hàm main cụ thể như sau.
 ```php
