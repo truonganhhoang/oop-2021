@@ -8,7 +8,7 @@
 
 ## Lời mở đầu
 - Repo này không phải là một dự án thực tế nhưng lại là một repo hay để hiểu thêm về các mẫu thiết kế trong lập trình hướng đối tượng. Điểm mạnh của repo này là có giải thích rõ ràng, có code minh họa và có đưa ví dụ liên quan đến thực tế để người đọc nắm rõ hơn thay vì một cách hàn lâm làm cho những người mới bắt đầu tìm hiểu về các mẫu lập trình bị khó hiểu và không biết tại sao lại phải sử dụng các mẫu thiết kế đó.
-- repo này đã chỉ ra một cách rõ ràng về những hiểu lầm mà những người mới bát đầu tìm hiểu thường bị mắc phải, được trích nguyên văn sau đây:
+- Repo này đã chỉ ra một cách rõ ràng về những hiểu lầm mà những người mới bát đầu tìm hiểu thường bị mắc phải, được trích nguyên văn sau đây:
 >  - **Design patterns are not a silver bullet to all your problems.**
 >  - **Do not try to force them; bad things are supposed to happen, if done so.**
 >  - **Keep in mind that design patterns are solutions to problems, not solutions finding problems; so don't overthink.**
@@ -174,7 +174,7 @@ class WildDogAdapter implements Lion
     }
 }
 ```
-khi đó chúng ta có thể gọi WilDog thông qua WildDogAdapter:
+Khi đó chúng ta có thể gọi WilDog thông qua WildDogAdapter:
 ```php
 $wildDog = new WildDog();
 $wildDogAdapter = new WildDogAdapter($wildDog);
@@ -210,7 +210,7 @@ class SimpleCoffee implements Coffee
 }
 ```
 
-tạo thêm decorators cho lớp Coffee
+Tạo thêm decorators cho lớp Coffee
 ```php
 class MilkCoffee implements Coffee
 {
