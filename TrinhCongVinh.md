@@ -1,6 +1,7 @@
-## Link repo so sánh: https://github.com/kamranahmedse/design-patterns-for-humans.git
-## Link repo gốc: https://refactoring.guru/design-patterns
-# Thành Viên Nhóm
+### Link repo so sánh: https://github.com/kamranahmedse/design-patterns-for-humans.git
+### Link repo gốc: https://refactoring.guru/design-patterns
+# Bài thu hoạch OOP.
+## Thành Viên Nhóm:
 - Trịnh Công Vinh
 - Trương Văn Độ
 - Mai Hoàng Anh
