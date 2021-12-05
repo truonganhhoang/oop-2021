@@ -24,7 +24,8 @@
  - Giải thích được định nghĩa, lấy ví dụ thực tế, rõ ràng dễ hiểu.
  - Đưa ra được khi nào nên sử dụng trong thực tế.
  - **Tác giả đã giải thích được sự khác nhau giữa factory method và factory abstract.**
-### 1. factory method: được dùng để tạo ra một object nhưng mà lớp con sẽ quyết định coi lớp cha nào sẽ được khởi tạo
+### 1. Factory method:
+    Được dùng để tạo ra một object nhưng mà lớp con sẽ quyết định coi lớp cha nào sẽ được khởi tạo
 ```php
 interface Interviewer
 {
@@ -89,7 +90,8 @@ $marketingManager->takeInterview(); // Output: Asking about community building.
 ```
 Có thể thấy từ đoạn code trên, dựa vào lớp con mà lớp cha sẽ sử dụng cái nào và sẽ có output khác nhau. Ví dụ dựa vào lớp con, cụ thể nếu là tuyển một **DevelopmentManager()** thì dựa trên đoạn code trên thì lớp cha sẽ lấy một interviewer là **Developer** chứ không phải là **CommunityExecutive**.
 
-### 2. factory abstract: Được định nghĩa một interface hoặc lớp trừu tượng (abstract) để tạo ra các họ hàng của các đối tượng liên quan (hoặc phụ thuộc) mà không cần chỉ rõ các lớp con cụ thể của chúng.
+### 2. Factory abstract: 
+    Được định nghĩa một interface hoặc lớp trừu tượng (abstract) để tạo ra các họ hàng của các đối tượng liên quan (hoặc phụ thuộc) mà không cần chỉ rõ các lớp con cụ thể của chúng.
 - Nói một cách dễ hiểu trong repo này tác giả đã lấy ví dụ về cửa gỗ và thợ làm cửa gỗ, hay cửa nhôm thì sẽ đi với thợ sửa cửa nhôm.
 - Hai class Door và DoorFittingExpert sau khi được khởi tạo thì sẽ được gọi thông qua các con của interface class DoorFactory và được sử dụng trong hàm main cụ thể như sau.
 ```php
@@ -113,7 +115,7 @@ $expert->getDescription(); // Output: I can only fit iron doors
 Có thể thấy với mỗi loại cửa khác nhau sẽ gọi đến những gì liên quan đến nó hay là phải quan tâm đến những lớp con của của nó ví dụ như hàm **makeDoor()**  hay là hàm **MakeFittingExpert()**. 
 
 # Nhóm thứ hai Structural
-## Trong nhóm thứ hai này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là adapter pattern và decorator pattern.
+    Trong nhóm thứ hai này chúng ta sẽ xét đến 2 mẫu thiết kế được sử dụng khá phổ biến là adapter pattern và decorator pattern.
 - Giải thích được định nghĩa, lấy ví dụ thực tế, rõ ràng dễ hiểu.
 - Đưa ra được khi nào nên sử dụng trong thực tế.
 - **Tác giả đã giải thích được sự khác nhau giữa adapter pattern và decorator pattern.**
