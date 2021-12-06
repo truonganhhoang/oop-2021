@@ -1,5 +1,5 @@
 # oop-2021
-## Môn học Lập trình hướng đối tượng với Java
+## Môn học Lập trình hướng đối tượng với Java so sánh các mẫu thiết kế tìm được trong các repo với các mẫu thiết kế mẫu chuẩn.
 ** Thành viên nhóm: **
 * - 20021389 Nguyễn Khánh Thọ Lộc.*
 * - 20021436 Vũ Viết Thành.*
