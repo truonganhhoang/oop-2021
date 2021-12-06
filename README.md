@@ -78,8 +78,9 @@ public class MammalsFactory extends AnimalFactory{
 •	Factory Method:
 o	Định nghĩa Interface để sinh ra đối tượng nhưng để cho lớp con quyết định lớp nào được dùng để sinh ra đối tượng Factory method cho phép một lớp chuyển quá trình khởi tạo đối tượng cho lớp con.
 vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/factory
-package factory.method;
 ```java
+package factory.method;
+
 public class AnimalFactory {
 
 	public Animal create(String animal){
@@ -128,7 +129,7 @@ public class ProductFactory {
 ```
 •	Adapter:
 o	Do vấn đề tương thích, thay đổi interface của một lớp thành một interface khác phù hợp với yêu cầu người sử dụng lớp.
-vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/adapter
+ vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/adapter
 package adapter.inter;
 ```java
 public class FormatAdapter implements MediaPlayer{
@@ -149,7 +150,7 @@ public class FormatAdapter implements MediaPlayer{
 ```
 •	Bridge:
 o	Tách rời ngữ nghĩa của một vấn đề khỏi việc cài đặt, mục đích để cả hai bộ phận (ngữ nghĩa và cài đặt) có thể thay đổi độc lập nhau.
-vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/bridge
+ vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/bridge
 ```java
 package bridge;
 
