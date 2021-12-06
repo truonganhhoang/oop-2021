@@ -469,7 +469,7 @@ public class QueueLoader {
 ```
 `So sánh: Mẫu thiết kế trong Repo em tìm kiếm giống với mẫu thiết kế chuẩn. Đều sử dụng trong mối quan hệ 1-n giữa các object với nhau, trong đó một đối tượng thay đổi và muốn thông báo cho tất cả các object liên quan biết về sự thay đổi đó .`
 
-**3, Interpreter pattern trong Factorial:**
+**3, Interpreter pattern:**
 - Interpreter Pattern được sử dụng bất cứ lúc nào chúng ta cần đánh giá, chuyển đổi bất kì loại ngữ pháp hay ngôn ngữ nào.
 - Một ví dụ điển hình cho pattern này là google translate, nó sẽ nhận đầu vào và hiển thị cho chúng ta kết quả bằng ngôn ngữ khác.
 - Một ví dụ khác đó là trình biên dịch Java. Trình biên dịch sẽ thông dịch mã Java và chuyển nó thành bytecode. Sau đó, JVM sử dụng để thực hiện các hoạt động trên thiết bị.
