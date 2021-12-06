@@ -12,10 +12,10 @@
 - Đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó.
 
 - Khi nào sử dụng mẫu thiết kế Singleton: 
- + Đối với các resources khá đắt để tạo (như các đối tượng kết nối cơ sở dữ liệu).
- + Đó là một good practice để giữ tất cả các logger như Singletons làm tăng hiệu suất.
- + Các classes cung cấp quyền truy cập vào cài đặt cấu hình cho ứng dụng.
- + Các classes có chứa reesource được truy cập trong chế độ chia sẻ. 
+   Đối với các resources khá đắt để tạo (như các đối tượng kết nối cơ sở dữ liệu).
+   Đó là một good practice để giữ tất cả các logger như Singletons làm tăng hiệu suất.
+   Các classes cung cấp quyền truy cập vào cài đặt cấu hình cho ứng dụng.
+   Các classes có chứa reesource được truy cập trong chế độ chia sẻ. 
 
 - Trong bài Singleton được sử dụng trong HibernateUtil.java
 ```java
