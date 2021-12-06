@@ -57,7 +57,7 @@ public class Database {
 - Cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng.
 
  vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/factory/abstr
-package factory.abstr;
+
 ```java
 public class MammalsFactory extends AnimalFactory{
 
@@ -308,7 +308,7 @@ public class MyList implements Iterable<String>{
 }
  ```
 
-###State: 
+### State: 
 - Cho phép một đối tượng thay đổi hành vi khi trạng thái bên trong của nó thay đổi, ta có cảm giác như class của đối tượng bị thay đổi.
 
  vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/state
