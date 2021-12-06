@@ -726,6 +726,7 @@ public class Vertex<T> implements Comparable<Vertex<T>> {
 - Adapter Pattern có chức năng điều chỉnh interface (giao diện) này sang interface khác. Nó hoạt động như một cầu nối giữa hai interface không liên quan, tương tự như scanner hoạt động như một cầu nối giữa paper và computer.
 Điều này giúp các class có các interface khác nhau có thể giao tiếp với nhau thông qua một interface trung gian.
 - Link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/structural/adapter/TranslatorAdapter.java
+```java
 package com.gpcoder.patterns.structural.adapter;
 
 public class TranslatorAdapter implements VietnameseTarget {
@@ -750,10 +751,11 @@ public class TranslatorAdapter implements VietnameseTarget {
 		return "こんにちは";
 	}
 }
-	
+```	
 2. Bridge pattern:
 - Bridge Pattern là một trong những Design Pattern thuộc nhóm Structural Pattern được sử dụng để tách biệt các class abstract (lớp trừu tượng) khỏi các implementations (khởi tạo) và đóng vai trò là cầu nối của chúng.
 - Link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/structural/bridge/TPBank.java
+```java
 package com.gpcoder.patterns.structural.bridge;
 
 public class TPBank extends Bank {
@@ -768,11 +770,12 @@ public class TPBank extends Bank {
 		account.openAccount();
 	}
 }
-	
+```	
 3. Composite pattern:
 - Composite Pattern được sử dụng khi chúng ta cần xử lý một nhóm các object tương tự như cách xử lý một object.
 Điều này thường được thực hiện bới class “owns” của object và cung cấp một tập hợp các phương thức để xử lý chúng như thể xử lý một object.
 - Link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/structural/composite/FolderComposite.java
+```java
 package com.gpcoder.patterns.structural.composite;
 
 import java.util.ArrayList;
@@ -802,12 +805,13 @@ public class FolderComposite implements FileComponent {
 		return total;
 	}
 }
-	
+```	
 4. Decorator pattern:
 - Decorator Pattern được sử dụng để thay đổi một instance riêng lẻ của một class, bằng cách tạo một class decorator bao bọc class gốc.
 Bằng cách này, việc thay đổi hoặc thêm chức năng của object decorator sẽ không ảnh hưởng đến cấu trúc hoặc chức năng của object ban đầu.
 Nó khác với kế thừa là nó được thực hiện trong thời gian chạy và chỉ áp dụng cho một cá thể, trong khi kế thừa sẽ ảnh hưởng đến tất cả các trường hợp.
 - Link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/structural/decorator/TeamMember.java
+```java
 package com.gpcoder.patterns.structural.decorator;
 
 public class TeamMember extends EmployeeDecorator {
@@ -831,10 +835,11 @@ public class TeamMember extends EmployeeDecorator {
 		coordinateWithOthers();
 	}
 }
-	
+```	
 5. Facade pattern:
 - Facade Pattern cung cấp một interface đơn giản và cao cấp nhất cho phía client (máy khách) và cho phép nó truy cập vào hệ thống mà không cần biết bên trong có logic hệ thống nào hay nó hoạt động như thế nào.
 - Link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/structural/facade/ShopFacade.java
+```java
 package com.gpcoder.patterns.structural.facade;
 
 public class ShopFacade {
@@ -876,13 +881,14 @@ public class ShopFacade {
 		System.out.println("Done\n");
 	}
 }
-	
+```	
 6. Flyweight pattern:
 - Flyweight Pattern được sử dụng để giảm sự căng thẳng cho JVM và bộ nhớ của nó. Điều này rất quan trọng đối với các thiết bị không có nhiều bộ nhớ, cũng như tối ưu hóa ứng dụng.
 Khi một ứng dụng nhất định cần tạo nhiều instance của cùng một class. Khi đó một nhóm chung được tạo để các ứng dụng tương tự có thể được sử dụng lại, thay vì phải tạo lại.
 Việc triển khai nổi tiếng nhất của Pattern này là String Pool trong Java. Các chuỗi được sử dụng thường xuyên hơn bất kỳ đối tượng nào khác trong ngôn ngữ và do đó, chúng tiêu thụ một phần lớn tài nguyên.
 Bằng cách tạo một nhóm các chuỗi chung và gán nhiều biến tham chiếu cho các biến có cùng nội dung. Và chỉ tạo chuỗi mới khi không tìm thấy kết quả phù hợp sẽ ảnh hưởng rất lớn đến hiệu suất của Java.
 - Link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/structural/flyweight/GameApp.java
+```java
 package com.gpcoder.patterns.structural.flyweight;
 
 import java.time.Duration;
@@ -918,7 +924,7 @@ public class GameApp {
 		}
 	}
 }
-								
+```								
 7. Proxy pattern:
 - Proxy Pattern được sử dụng khi chúng ta muốn giới hạn khả năng và chức năng của một class, bằng cách sử dụng một class khác giới hạn nó.
 Bằng cách sử dụng class Proxy này, client sẽ sử dụng một interface đã xác định để truy cập vào class gốc. Điều này đảm bảo rằng client không thể làm thay đổi bất cứ điều gì với class ban đầu. Vì tất cả các yêu cầu của client đều được chuyển qua class Proxy để thực hiện.
