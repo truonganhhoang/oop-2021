@@ -32,7 +32,7 @@ Repo nhóm đã tìm được và phân tích: https://github.com/OmarElgabry/De
 - Đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó.
 
  vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/singleton
- package singleton.classic;
+ 
 ```java
 public class Database {
 
