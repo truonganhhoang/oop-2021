@@ -1,23 +1,23 @@
 # oop-2021
-Môn học Lập trình hướng đối tượng với Java
-Thành viên nhóm:
-* 20021389 Nguyễn Khánh Thọ Lộc.
-* 20021436 Vũ Viết Thành.
-* 20020182 Đào Trung Kiên.
+## Môn học Lập trình hướng đối tượng với Java
+## Thành viên nhóm:
+## * 20021389 Nguyễn Khánh Thọ Lộc.
+## * 20021436 Vũ Viết Thành.
+## * 20020182 Đào Trung Kiên.
 
-***Creational design pattern:
-link: https://github.com/ajanata/PretendYoureXyzzy/tree/master/src/main/java/net/socialgamer/cah
+### Creational design pattern:
+*link: https://github.com/ajanata/PretendYoureXyzzy/tree/master/src/main/java/net/socialgamer/cah *
 
-1, Singleton Pattern:
+**1, Singleton Pattern:**
 - Đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó.
 
-Khi nào sử dụng mẫu thiết kế Singleton
-Đối với các resources khá đắt để tạo (như các đối tượng kết nối cơ sở dữ liệu).
-Đó là một good practice để giữ tất cả các logger như Singletons làm tăng hiệu suất.
-Các classes cung cấp quyền truy cập vào cài đặt cấu hình cho ứng dụng.
-Các classes có chứa reesource được truy cập trong chế độ chia sẻ. 
+- Khi nào sử dụng mẫu thiết kế Singleton: 
+ + Đối với các resources khá đắt để tạo (như các đối tượng kết nối cơ sở dữ liệu).
+ + Đó là một good practice để giữ tất cả các logger như Singletons làm tăng hiệu suất.
+ + Các classes cung cấp quyền truy cập vào cài đặt cấu hình cho ứng dụng.
+ + Các classes có chứa reesource được truy cập trong chế độ chia sẻ. 
 
-Trong bài Singleton được sử dụng trong HibernateUtil.java
+- Trong bài Singleton được sử dụng trong HibernateUtil.java
 public class HibernateUtil {
   public static final HibernateUtil instance = new HibernateUtil();
   /**
@@ -30,16 +30,16 @@ public class HibernateUtil {
   }
 }
 
-- So sánh: mẫu thiết kế trong Repo em tìm kiếm giống với mẫu gốc theo link. Cả 2 đều đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó (https://stackjava.com/design-pattern/singleton-pattern.html).
+`- So sánh: mẫu thiết kế trong Repo em tìm kiếm giống với mẫu gốc theo link. Cả 2 đều đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó (https://stackjava.com/design-pattern/singleton-pattern.html).`
 
-2, Factory Method Design Pattern:
+**2, Factory Method Design Pattern:**
 - Định nghĩa Interface để sinh ra đối tượng nhưng để cho lớp con quyết định lớp nào được dùng để sinh ra đối tượng Factory method cho phép một lớp chuyển quá trình khởi tạo đối tượng cho lớp con.
 - Khi nào sử dụng mẫu thiết kế Factory Method:
-Khi việc implementation một interface hoặc một abstract class dự kiến sẽ thay đổi thường xuyên.
-Khi implementation hiện tại không thể dễ dàng thích ứng với thay đổi mới.
-Khi quá trình khởi tạo tương đối đơn giản và hàm tạo chỉ yêu cầu một số tham số.  
+ + Khi việc implementation một interface hoặc một abstract class dự kiến sẽ thay đổi thường xuyên.
+ + Khi implementation hiện tại không thể dễ dàng thích ứng với thay đổi mới.
+ + Khi quá trình khởi tạo tương đối đơn giản và hàm tạo chỉ yêu cầu một số tham số.  
 
-ví dụ : trong CacheControlFilter.java 
+- ví dụ : trong CacheControlFilter.java 
 public class CacheControlFilter implements Filter {
   @Override
   public void doFilter(final ServletRequest request, final ServletResponse response,
@@ -60,9 +60,8 @@ public class CacheControlFilter implements Filter {
     // TODO pass
   }
 }
-
 Hoặc:
-ublic abstract class SafeTimerTask implements Runnable {
+Public abstract class SafeTimerTask implements Runnable {
 
   private static final Logger logger = Logger.getLogger(SafeTimerTask.class);
 
@@ -96,14 +95,17 @@ public class UserPingTask extends SafeTimerTask {
     globalTimer.purge();
   }
 }
-- So sánh: 
-mẫu thiết kế này định nghĩa 1 inteface để tạo các objects, nhưng để các class con quyết định loại class nào được tạo ra.
-giống với mẫu gốc nhưng ít các objects hơn.(https://stackjava.com/design-pattern/factory-pattern.html)
+`- So sánh: mẫu thiết kế này định nghĩa 1 inteface để tạo các objects, nhưng để các class con quyết định loại class nào được tạo ra.
+giống với mẫu gốc nhưng ít các objects hơn.(https://stackjava.com/design-pattern/factory-pattern.html)`
 
 
-3, Builder Design Pattern trong Constant.java:
+**3, Builder Design Pattern trong Constant.java:**
 - Tách rời việc xây dựng (construction) một đối tượng phức tạp khỏi biểu diễn của nó sao cho cùng một tiến trình xây dựng có thể tạo được các biểu diễn khác nhau.
-
+- Khi nào sử dụng mẫu thiết kế Builder:
+ + Khi xử lý liên quan đến việc tạo một đối tượng là vô cùng phức tạp, với rất nhiều tham số bắt buộc và tùy chọn
+ + Khi sự gia tăng số lượng tham số của hàm tạo dẫn đến một danh sách lớn các hàm tạo
+ + Khi client muốn các biểu diễn khác nhau cho đối tượng được xây dựng
+- Trong bài:
 public class Player {
   private final User user;
 
@@ -190,17 +192,13 @@ public class Player {
   }
 }
 
-Khi nào sử dụng mẫu thiết kế Builder:
-Khi xử lý liên quan đến việc tạo một đối tượng là vô cùng phức tạp, với rất nhiều tham số bắt buộc và tùy chọn
-Khi sự gia tăng số lượng tham số của hàm tạo dẫn đến một danh sách lớn các hàm tạo
-Khi client muốn các biểu diễn khác nhau cho đối tượng được xây dựng
-- So sánh: mẫu thiết kế trong Repo gióng với mẫu code theo link đều có cấu trúc khá giống nhau cũng có cả overide phương thức(https://stackjava.com/design-pattern/builder-pattern.html)
+`- So sánh: mẫu thiết kế trong Repo gióng với mẫu code theo link đều có cấu trúc khá giống nhau cũng có cả overide phương thức(https://stackjava.com/design-pattern/builder-pattern.html)`
 
 
-4, Abstract Factory Design Pattern dùng trong Constants.java:
-Cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng
+**4, Abstract Factory Design Pattern:**
+- Cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng
 
-ví dụ: trong code theo Repo
+- Ví dụ: trong code theo Repo
 public class QueuedMessage implements Comparable<QueuedMessage> {
 
   private final MessageType messageType;
@@ -266,7 +264,7 @@ public class QueuedMessage implements Comparable<QueuedMessage> {
     }
   }
 }
-- So sánh: rất giống với mấu thiết kế trong code mẫu theo link (https://www.baeldung.com/java-abstract-factory-pattern) , cùng có 1 interface mà để tạo các họ các đối tượng liên quan hoặc phụ thuộc mà không chỉ định các lớp cụ thể của chúng.
+`- So sánh: rất giống với mấu thiết kế trong code mẫu theo link (https://www.baeldung.com/java-abstract-factory-pattern) , cùng có 1 interface mà để tạo các họ các đối tượng liên quan hoặc phụ thuộc mà không chỉ định các lớp cụ thể của chúng.`
 	
   	public interface AbstractFactory<T> {
     		T create(String animalType) ;
@@ -288,7 +286,7 @@ public class QueuedMessage implements Comparable<QueuedMessage> {
 
 	}
 	
-5, Prototype Pattern:
+**5, Prototype Pattern:**
 - Qui định loại của các đối tượng cần tạo bằng cách dùng một đối tượng mẫu, tạo mới nhờ vào sao chép đối tượng mẫu này.
 link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/creational/prototype/computer/Computer.java
 
@@ -394,7 +392,7 @@ public class User {
   }
 }
 
-***Behavioral Design Patterns:
+### Behavioral Design Patterns:
 link:https://github.com/sherxon/AlgoDS.git
 
 1, Command Pattern trong Interval.java. 
