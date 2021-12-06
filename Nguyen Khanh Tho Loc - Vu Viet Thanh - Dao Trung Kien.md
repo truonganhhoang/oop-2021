@@ -402,91 +402,96 @@ public class User {
 }
 ```
 ### Behavioral Design Patterns:
-link:https://github.com/sherxon/AlgoDS.git
+Repo em chọn để so sánh: https://github.com/naman14/Timber
 
-1, Command Pattern trong Interval.java. 
-Command Pattern được tạo ra để lưu trữ các câu lệnh và trạng thái của object. Nó cho phép tất cả những yêu cầu gửi đến object đó dưới dạng một object Command.
-Khi nó tìm được cách giải quyết thích hợp, nó sẽ chuyển đến Command, nơi mà nó sẽ được thực thi.
+**1, Command Pattern:** 
+- Command Pattern được tạo ra để lưu trữ các câu lệnh và trạng thái của object.
+- Nó cho phép tất cả những yêu cầu gửi đến object đó dưới dạng một object Command.
+- Khi nó tìm được cách giải quyết thích hợp, nó sẽ chuyển đến Command, nơi mà nó sẽ được thực thi.
 
-public class Interval {
-    public int start;
-    public int end;
+Command Pattern được sử dụng trong PermissionCallback.java
+```java
+public interface PermissionCallback {
+    void permissionGranted();
 
-    public Interval() {
-        start = 0;
-        end = 0;
-    }
-
-    public Interval(int s, int e) {
-        start = s;
-        end = e;
-    }
-
-    @Override
-    public String toString() {
-        return "Interval{" +
-                "start=" + start +
-                ", end=" + end +
-                '}';
-    }
+    void permissionRefused();
 }
+```
+`So sánh: Mẫu thiết kế trong Repo em tìm kiếm gần giống với mẫu thiết kế chuẩn. Khác nhau ở trong interface có hai method thay vì 1 như trong mẫu .`
 
-2, Observer Pattern trong ValidateCard.java. 
-Observer Pattern được sử dụng để theo dõi trạng thái của một object nhất định. Thường là trong một nhóm hoặc một mối quan hệ một - nhiều.
-Trong những trường hợp như vậy, hầu hết thời gian và trạng thái thay đổi của một object sẽ ảnh hưởng đến trạng thái của phần còn lại. Vì vậy, phải có một hệ thống ghi nhận lại những thay đổi, và thông báo cho các object khác.
-Mặc dù Java cung cấp cả một class và interface có lưu ý đến pattern này. Nhưng nó không phổ biến vì nó không được thực hiện một cách lý tưởng.
+**2, Observer Pattern:**
+- Observer Pattern được sử dụng để theo dõi trạng thái của một object nhất định.
+- Thường là trong một nhóm hoặc một mối quan hệ một - nhiều.
+- Trong những trường hợp như vậy, hầu hết thời gian và trạng thái thay đổi của một object sẽ ảnh hưởng đến trạng thái của phần còn lại. Vì vậy, phải có một hệ thống ghi nhận lại những thay đổi, và thông báo cho các object khác.
+- Mặc dù Java cung cấp cả một class và interface có lưu ý đến pattern này, hưng nó không phổ biến vì nó không được thực hiện một cách lý tưởng.
 
-public class ValidateCard {
+Observer Pattern được sử dụng trong QueueLoader.java
+```java
+public class QueueLoader {
+    private static NowPlayingCursor mCursor;
 
-    static List<Map<String, Object>> validateCards(String[] bannedPrefixes, String[] cardsToValidate) {
+    public static List<Song> getQueueSongs(Context context) {
 
-        return Arrays.stream(cardsToValidate).
-                map(e -> ToMap(e, bannedPrefixes)).collect(Collectors.toList());
+        final ArrayList<Song> mSongList = new ArrayList<>();
+        mCursor = new NowPlayingCursor(context);
 
-    }
+        if (mCursor != null && mCursor.moveToFirst()) {
+            do {
 
-    private static Map<String, Object> ToMap(String e, String[] bannedPrefixes) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("card", e);
-        map.put("isValid", isValid(e));
-        map.put("isAllowed", isAllowed(e, bannedPrefixes));
-        return map;
-    }
+                final long id = mCursor.getLong(0);
 
-    private static boolean isAllowed(String e, String[] bannedPrefixes) {
-        for (String bannedPrefix : bannedPrefixes) {
-            if (e.startsWith(bannedPrefix))
-                return false;
+                final String songName = mCursor.getString(1);
+
+                final String artist = mCursor.getString(2);
+
+                final long albumId = mCursor.getLong(3);
+
+                final String album = mCursor.getString(4);
+
+                final int duration = mCursor.getInt(5);
+
+                final long artistid = mCursor.getInt(7);
+
+                final int tracknumber = mCursor.getInt(6);
+
+                final Song song = new Song(id, albumId, artistid, songName, artist, album, duration, tracknumber);
+
+                mSongList.add(song);
+            } while (mCursor.moveToNext());
         }
-        return true;
-    }
-
-    private static boolean isValid(String e) {
-        int sum = 0;
-        for (int i = 0; i < e.length() - 1; i++) {
-            sum += (e.charAt(i) - '0') * 2;
+        if (mCursor != null) {
+            mCursor.close();
+            mCursor = null;
         }
-
-        return sum % 10 == e.charAt(e.length() - 1) - '0';
+        return mSongList;
     }
 }
+```
+`So sánh: Mẫu thiết kế trong Repo em tìm kiếm giống với mẫu thiết kế chuẩn. Đều sử dụng trong mối quan hệ 1-n giữa các object với nhau, trong đó một đối tượng thay đổi và muốn thông báo cho tất cả các object liên quan biết về sự thay đổi đó .`
+**3, Interpreter pattern trong Factorial:**
+- Interpreter Pattern được sử dụng bất cứ lúc nào chúng ta cần đánh giá, chuyển đổi bất kì loại ngữ pháp hay ngôn ngữ nào.
+- Một ví dụ điển hình cho pattern này là google translate, nó sẽ nhận đầu vào và hiển thị cho chúng ta kết quả bằng ngôn ngữ khác.
+- Một ví dụ khác đó là trình biên dịch Java. Trình biên dịch sẽ thông dịch mã Java và chuyển nó thành bytecode. Sau đó, JVM sử dụng để thực hiện các hoạt động trên thiết bị.
 
-3, Interpreter pattern trong Factorial.java
-Interpreter Pattern được sử dụng bất cứ lúc nào chúng ta cần đánh giá, chuyển đổi bất kì loại ngữ pháp hay ngôn ngữ nào.
-Một ví dụ điển hình cho pattern này là google translate, nó sẽ nhận đầu vào và hiển thị cho chúng ta kết quả bằng ngôn ngữ khác.
-Một ví dụ khác đó là trình biên dịch Java. Trình biên dịch sẽ thông dịch mã Java và chuyển nó thành bytecode. Sau đó, JVM sử dụng để thực hiện các hoạt động trên thiết bị.
-public class Factorial {
-    private static long factorial(int num) {
-        if (num <= 1)        // 1! = 1, hence return 1 when the num becomes 1.
-            return 1;
-        return num * factorial(num - 1); // num! = num * (num - 1)!
+Interpreter pattern được sử dụng trong ArtistSortOrder.java và 
+```java
+public interface ArtistSortOrder {
+        /* Artist sort order A-Z */
+        String ARTIST_A_Z = MediaStore.Audio.Artists.DEFAULT_SORT_ORDER;
+
+        /* Artist sort order Z-A */
+        String ARTIST_Z_A = ARTIST_A_Z + " DESC";
+
+        /* Artist sort order number of songs */
+        String ARTIST_NUMBER_OF_SONGS = MediaStore.Audio.Artists.NUMBER_OF_TRACKS
+                + " DESC";
+
+        /* Artist sort order number of albums */
+        String ARTIST_NUMBER_OF_ALBUMS = MediaStore.Audio.Artists.NUMBER_OF_ALBUMS
+                + " DESC";
     }
-
-    public static void main(String[] args) {
-        System.out.println(factorial(10));
-    }
-}
-
+```
+`So sánh: Mẫu thiết kế trong Repo em tìm kiếm gần giống với mẫu thiết kế chuẩn. Khác nhau trong interpreter engine có nhiều biểu thức khác nhau để diễn giải các lệnh hơn so với mẫu .`
 4, Template Method Pattern trong CycleDetection.java
 Template Method còn được gọi là Template Pattern được sử dụng để xác định một class abstract (trừu tượng), cung cấp các cách để chạy chạy phương thức của nó. Các class con kế thừa các phương thức này cũng phải tuân theo các định nghĩa bên trong nó.
 Trong một số trường hợp, class abstract có thể đã bao gồm một phương thức đã được triển khai trước đó. Và dĩ nhiên nó sẽ được chia sẽ đến tất cả các lớp con.
@@ -726,7 +731,6 @@ public class Vertex<T> implements Comparable<Vertex<T>> {
 - Adapter Pattern có chức năng điều chỉnh interface (giao diện) này sang interface khác. Nó hoạt động như một cầu nối giữa hai interface không liên quan, tương tự như scanner hoạt động như một cầu nối giữa paper và computer.
 Điều này giúp các class có các interface khác nhau có thể giao tiếp với nhau thông qua một interface trung gian.
 - Link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/structural/adapter/TranslatorAdapter.java
-```java
 package com.gpcoder.patterns.structural.adapter;
 
 public class TranslatorAdapter implements VietnameseTarget {
@@ -751,11 +755,10 @@ public class TranslatorAdapter implements VietnameseTarget {
 		return "こんにちは";
 	}
 }
-```	
+	
 2. Bridge pattern:
 - Bridge Pattern là một trong những Design Pattern thuộc nhóm Structural Pattern được sử dụng để tách biệt các class abstract (lớp trừu tượng) khỏi các implementations (khởi tạo) và đóng vai trò là cầu nối của chúng.
 - Link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/structural/bridge/TPBank.java
-```java
 package com.gpcoder.patterns.structural.bridge;
 
 public class TPBank extends Bank {
@@ -770,12 +773,11 @@ public class TPBank extends Bank {
 		account.openAccount();
 	}
 }
-```	
+	
 3. Composite pattern:
 - Composite Pattern được sử dụng khi chúng ta cần xử lý một nhóm các object tương tự như cách xử lý một object.
 Điều này thường được thực hiện bới class “owns” của object và cung cấp một tập hợp các phương thức để xử lý chúng như thể xử lý một object.
 - Link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/structural/composite/FolderComposite.java
-```java
 package com.gpcoder.patterns.structural.composite;
 
 import java.util.ArrayList;
@@ -805,13 +807,12 @@ public class FolderComposite implements FileComponent {
 		return total;
 	}
 }
-```	
+	
 4. Decorator pattern:
 - Decorator Pattern được sử dụng để thay đổi một instance riêng lẻ của một class, bằng cách tạo một class decorator bao bọc class gốc.
 Bằng cách này, việc thay đổi hoặc thêm chức năng của object decorator sẽ không ảnh hưởng đến cấu trúc hoặc chức năng của object ban đầu.
 Nó khác với kế thừa là nó được thực hiện trong thời gian chạy và chỉ áp dụng cho một cá thể, trong khi kế thừa sẽ ảnh hưởng đến tất cả các trường hợp.
 - Link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/structural/decorator/TeamMember.java
-```java
 package com.gpcoder.patterns.structural.decorator;
 
 public class TeamMember extends EmployeeDecorator {
@@ -835,11 +836,10 @@ public class TeamMember extends EmployeeDecorator {
 		coordinateWithOthers();
 	}
 }
-```	
+	
 5. Facade pattern:
 - Facade Pattern cung cấp một interface đơn giản và cao cấp nhất cho phía client (máy khách) và cho phép nó truy cập vào hệ thống mà không cần biết bên trong có logic hệ thống nào hay nó hoạt động như thế nào.
 - Link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/structural/facade/ShopFacade.java
-```java
 package com.gpcoder.patterns.structural.facade;
 
 public class ShopFacade {
@@ -881,14 +881,13 @@ public class ShopFacade {
 		System.out.println("Done\n");
 	}
 }
-```	
+	
 6. Flyweight pattern:
 - Flyweight Pattern được sử dụng để giảm sự căng thẳng cho JVM và bộ nhớ của nó. Điều này rất quan trọng đối với các thiết bị không có nhiều bộ nhớ, cũng như tối ưu hóa ứng dụng.
 Khi một ứng dụng nhất định cần tạo nhiều instance của cùng một class. Khi đó một nhóm chung được tạo để các ứng dụng tương tự có thể được sử dụng lại, thay vì phải tạo lại.
 Việc triển khai nổi tiếng nhất của Pattern này là String Pool trong Java. Các chuỗi được sử dụng thường xuyên hơn bất kỳ đối tượng nào khác trong ngôn ngữ và do đó, chúng tiêu thụ một phần lớn tài nguyên.
 Bằng cách tạo một nhóm các chuỗi chung và gán nhiều biến tham chiếu cho các biến có cùng nội dung. Và chỉ tạo chuỗi mới khi không tìm thấy kết quả phù hợp sẽ ảnh hưởng rất lớn đến hiệu suất của Java.
 - Link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/structural/flyweight/GameApp.java
-```java
 package com.gpcoder.patterns.structural.flyweight;
 
 import java.time.Duration;
@@ -924,7 +923,7 @@ public class GameApp {
 		}
 	}
 }
-```								
+								
 7. Proxy pattern:
 - Proxy Pattern được sử dụng khi chúng ta muốn giới hạn khả năng và chức năng của một class, bằng cách sử dụng một class khác giới hạn nó.
 Bằng cách sử dụng class Proxy này, client sẽ sử dụng một interface đã xác định để truy cập vào class gốc. Điều này đảm bảo rằng client không thể làm thay đổi bất cứ điều gì với class ban đầu. Vì tất cả các yêu cầu của client đều được chuyển qua class Proxy để thực hiện.
