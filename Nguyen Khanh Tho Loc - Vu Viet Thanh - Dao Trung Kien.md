@@ -18,6 +18,7 @@
  + Các classes có chứa reesource được truy cập trong chế độ chia sẻ. 
 
 - Trong bài Singleton được sử dụng trong HibernateUtil.java
+```java
 public class HibernateUtil {
   public static final HibernateUtil instance = new HibernateUtil();
   /**
@@ -29,7 +30,7 @@ public class HibernateUtil {
     sessionFactory = new Configuration().configure().buildSessionFactory();
   }
 }
-
+```
 `- So sánh: mẫu thiết kế trong Repo em tìm kiếm giống với mẫu gốc theo link. Cả 2 đều đảm bảo 1 class chỉ có 1 instance và cung cấp 1 điểm truy xuất toàn cục đến nó (https://stackjava.com/design-pattern/singleton-pattern.html).`
 
 **2, Factory Method Design Pattern:**
@@ -39,7 +40,8 @@ public class HibernateUtil {
  + Khi implementation hiện tại không thể dễ dàng thích ứng với thay đổi mới.
  + Khi quá trình khởi tạo tương đối đơn giản và hàm tạo chỉ yêu cầu một số tham số.  
 
-- ví dụ : trong CacheControlFilter.java 
+- ví dụ : trong CacheControlFilter.java
+```java
 public class CacheControlFilter implements Filter {
   @Override
   public void doFilter(final ServletRequest request, final ServletResponse response,
@@ -60,7 +62,9 @@ public class CacheControlFilter implements Filter {
     // TODO pass
   }
 }
+```
 Hoặc:
+```java
 Public abstract class SafeTimerTask implements Runnable {
 
   private static final Logger logger = Logger.getLogger(SafeTimerTask.class);
@@ -95,6 +99,7 @@ public class UserPingTask extends SafeTimerTask {
     globalTimer.purge();
   }
 }
+```
 `- So sánh: mẫu thiết kế này định nghĩa 1 inteface để tạo các objects, nhưng để các class con quyết định loại class nào được tạo ra.
 giống với mẫu gốc nhưng ít các objects hơn.(https://stackjava.com/design-pattern/factory-pattern.html)`
 
@@ -106,6 +111,7 @@ giống với mẫu gốc nhưng ít các objects hơn.(https://stackjava.com/de
  + Khi sự gia tăng số lượng tham số của hàm tạo dẫn đến một danh sách lớn các hàm tạo
  + Khi client muốn các biểu diễn khác nhau cho đối tượng được xây dựng
 - Trong bài:
+```java
 public class Player {
   private final User user;
 
@@ -191,7 +197,7 @@ public class Player {
     return String.format("%s (%dp, %ds)", user.toString(), score, skipCount);
   }
 }
-
+```
 `- So sánh: mẫu thiết kế trong Repo gióng với mẫu code theo link đều có cấu trúc khá giống nhau cũng có cả overide phương thức(https://stackjava.com/design-pattern/builder-pattern.html)`
 
 
@@ -199,7 +205,8 @@ public class Player {
 - Cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng
 
 - Ví dụ: trong code theo Repo
-public class QueuedMessage implements Comparable<QueuedMessage> {
+```java
+Public class QueuedMessage implements Comparable<QueuedMessage> {
 
   private final MessageType messageType;
   private final Map<ReturnableData, Object> data;
@@ -264,8 +271,9 @@ public class QueuedMessage implements Comparable<QueuedMessage> {
     }
   }
 }
+```
 `- So sánh: rất giống với mấu thiết kế trong code mẫu theo link (https://www.baeldung.com/java-abstract-factory-pattern) , cùng có 1 interface mà để tạo các họ các đối tượng liên quan hoặc phụ thuộc mà không chỉ định các lớp cụ thể của chúng.`
-	
+```java	
   	public interface AbstractFactory<T> {
     		T create(String animalType) ;
 	}
@@ -285,11 +293,11 @@ public class QueuedMessage implements Comparable<QueuedMessage> {
     		}
 
 	}
-	
+```
 **5, Prototype Pattern:**
 - Qui định loại của các đối tượng cần tạo bằng cách dùng một đối tượng mẫu, tạo mới nhờ vào sao chép đối tượng mẫu này.
 link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/creational/prototype/computer/Computer.java
-
+```java
 package com.gpcoder.patterns.creational.prototype.computer;
 
 public class Computer implements Cloneable {
@@ -328,8 +336,9 @@ public class Computer implements Cloneable {
 		this.others = others;
 	}
 }
+```
 So sánh: có cấu trúc hoàn toàn giống với code mẫu theo link (https://stackjava.com/design-pattern/prototype-pattern.html)
-
+```java
 public class User {
   private String firstName;
   private String lastName;
@@ -391,7 +400,7 @@ public class User {
         + email + ", address=" + address + "]";
   }
 }
-
+```
 ### Behavioral Design Patterns:
 link:https://github.com/sherxon/AlgoDS.git
 
