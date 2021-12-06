@@ -760,23 +760,77 @@ public class Nammu {
 **9, State Pattern:**
 - State Pattern được sử dụng khi một object cụ thể cần thay đổi hành động, dựa trên trạng thái của nó. Điều này được thực hiện bằng cách cung cấp cho mỗi object này một hoặc nhiều object state.
 - Dựa trên các object state này, chúng ta hoàn toàn có thể thay đổi các hành động của các object liên quan.
+	
+State Pattern được sử dụng trong interface ArtistInfoListener.java
+```java
+public interface ArtistInfoListener {
 
+    void artistInfoSucess(LastfmArtist artist);
 
+    void artistInfoFailed();
+
+}
+```
+`So sánh: Mẫu thiết kế trong Repo em tìm kiếm giống với mẫu thiết kế chuẩn.`
 	
 **10, Strategy Pattern:**
 - Strategy Pattern được sử dụng trong các tình huống các thuật toán hoặc hành vi của class là các các hành vi động (có thể thay đổi). Điều này có nghĩa là cả hành vi và thuật toán đều có thể thay đổi trong thời gian chạy, dựa vào đầu vào của client.
 - Tương tự như State Pattern, Strategy Pattern sử dụng nhiều object xác định, tùy thuộc vào các mục tiêu khác nhau.
-	
+		
+Strategy Pattern được sử dụng trong AlbumInfoListener.java
+```java
+public interface AlbumInfoListener {
 
+    void albumInfoSuccess(LastfmAlbum album);
 
+    void albumInfoFailed();
+
+}
+```
+`So sánh: Mẫu thiết kế trong Repo em tìm kiếm gần giống với mẫu thiết kế chuẩn. Trong mẫu thiết kế mỗi hành vi thuật toán trong từng class khác nhau còn trong repo có hành vi thuật toán vừa giống vừa khác nhau.`
 	
 **11, Visitor Pattern:**
 - Visitor Pattern được sử dụng để chuyển logic hoạt động từ từng phần riêng lẻ của một group sang một class mới. Class mới này thực hiện các thao tác bằng cách sử dụng dữ liệu từ mỗi phần tử riêng lẻ đó.
 - Điều này được thực hiện bằng cách làm cho các phần tử chấp nhận một "Visitor". Visitor này sẽ thực hiện các thay đổi trong một class riêng biệt, mà không thay đổi các cấu trúc của lớp đã truy cập. Điều này giúp các bạn dễ dàng thêm chức năng mới mà không cần thay đổi các lớp đã truy cập.
-	
+		
+Visitor Pattern được sử dụng trong CastOptionsProvider.java
+```java
+public class CastOptionsProvider implements OptionsProvider {
 
+    @Override
+    public CastOptions getCastOptions(Context appContext) {
 
-***Structural patterns:
+        List<String> buttonActions = new ArrayList<>();
+        buttonActions.add(MediaIntentReceiver.ACTION_TOGGLE_PLAYBACK);
+        buttonActions.add(MediaIntentReceiver.ACTION_STOP_CASTING);
+        int[] compatButtonActionsIndicies = new int[]{ 0, 1 };
+
+        NotificationOptions notificationOptions = new NotificationOptions.Builder()
+                .setActions(buttonActions, compatButtonActionsIndicies)
+                .setTargetActivityClassName(ExpandedControlsActivity.class.getName())
+                .build();
+
+        CastMediaOptions mediaOptions = new CastMediaOptions.Builder()
+                .setNotificationOptions(notificationOptions)
+                .setExpandedControllerActivityClassName(ExpandedControlsActivity.class.getName())
+                .build();
+
+        CastOptions castOptions = new CastOptions.Builder()
+            .setReceiverApplicationId(appContext.getString(R.string.cast_app_id))
+                .setCastMediaOptions(mediaOptions)
+                .build();
+
+        return castOptions;
+    }
+    @Override
+    public List<SessionProvider> getAdditionalSessionProviders(Context context) {
+        return null;
+    }
+}
+```
+`So sánh: Mẫu thiết kế trong Repo em tìm kiếm giống với mẫu thiết kế chuẩn. Các logic hoạt động từ từng phần riêng lẻ đều được chuyển sang một class mới.`
+
+### Structural patterns:
 
 1. Adapter pattern:
 - Adapter Pattern có chức năng điều chỉnh interface (giao diện) này sang interface khác. Nó hoạt động như một cầu nối giữa hai interface không liên quan, tương tự như scanner hoạt động như một cầu nối giữa paper và computer.
