@@ -468,12 +468,13 @@ public class QueueLoader {
 }
 ```
 `So sánh: Mẫu thiết kế trong Repo em tìm kiếm giống với mẫu thiết kế chuẩn. Đều sử dụng trong mối quan hệ 1-n giữa các object với nhau, trong đó một đối tượng thay đổi và muốn thông báo cho tất cả các object liên quan biết về sự thay đổi đó .`
+
 **3, Interpreter pattern trong Factorial:**
 - Interpreter Pattern được sử dụng bất cứ lúc nào chúng ta cần đánh giá, chuyển đổi bất kì loại ngữ pháp hay ngôn ngữ nào.
 - Một ví dụ điển hình cho pattern này là google translate, nó sẽ nhận đầu vào và hiển thị cho chúng ta kết quả bằng ngôn ngữ khác.
 - Một ví dụ khác đó là trình biên dịch Java. Trình biên dịch sẽ thông dịch mã Java và chuyển nó thành bytecode. Sau đó, JVM sử dụng để thực hiện các hoạt động trên thiết bị.
 
-Interpreter pattern được sử dụng trong ArtistSortOrder.java và 
+Interpreter pattern được sử dụng trong ArtistSortOrder.java
 ```java
 public interface ArtistSortOrder {
         /* Artist sort order A-Z */
@@ -492,238 +493,288 @@ public interface ArtistSortOrder {
     }
 ```
 `So sánh: Mẫu thiết kế trong Repo em tìm kiếm gần giống với mẫu thiết kế chuẩn. Khác nhau trong interpreter engine có nhiều biểu thức khác nhau để diễn giải các lệnh hơn so với mẫu .`
-4, Template Method Pattern trong CycleDetection.java
-Template Method còn được gọi là Template Pattern được sử dụng để xác định một class abstract (trừu tượng), cung cấp các cách để chạy chạy phương thức của nó. Các class con kế thừa các phương thức này cũng phải tuân theo các định nghĩa bên trong nó.
-Trong một số trường hợp, class abstract có thể đã bao gồm một phương thức đã được triển khai trước đó. Và dĩ nhiên nó sẽ được chia sẽ đến tất cả các lớp con.
 
-public abstract class CycleDetection {
-    protected Graph graph;
-    protected Set<Integer> visited;
-    protected Set<Integer> exited;
+**4, Template Method Pattern:**
+- Template Method còn được gọi là Template Pattern được sử dụng để xác định một class abstract (trừu tượng), cung cấp các cách để chạy chạy phương thức của nó. Các class con kế thừa các phương thức này cũng phải tuân theo các định nghĩa bên trong nó.
+- Trong một số trường hợp, class abstract có thể đã bao gồm một phương thức đã được triển khai trước đó. Và dĩ nhiên nó sẽ được chia sẽ đến tất cả các lớp con.
 
-    public CycleDetection(Graph graph) {
-        this.graph = graph;
-        visited = new HashSet<>();
-        exited = new HashSet<>();
-    }
+Template Method Pattern được sử dụng trong BaseWidget.java
+```java
+public abstract class BaseWidget {
 
-    public boolean hasCycle() {
+    protected static final int REQUEST_NEXT = 1;
+    protected static final int REQUEST_PREV = 2;
+    protected static final int REQUEST_PLAYPAUSE = 3;
 
-        for (Integer vertex : graph.getVertices()) {
-            if (!visited.contains(vertex) && !dfs(vertex))
-                return false;
+    private void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds,Bundle extras){
+        ComponentName serviceName = new ComponentName(context, MusicService.class);
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), getLayoutRes());
+        try {
+            onViewsUpdate(context, remoteViews, serviceName, extras);
+            appWidgetManager.updateAppWidget(appWidgetIds, remoteViews);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return true;
+    }
+    abstract void onViewsUpdate(Context context, RemoteViews remoteViews, ComponentName serviceName, Bundle extras);
+
+    abstract @LayoutRes int getLayoutRes();
+}
+```
+`So sánh: Mẫu thiết kế trong Repo em tìm kiếm giống với mẫu thiết kế chuẩn. Các class con kế thừa các phương thức abstract đều tuân theo các định nghĩa bên trong nó.`
+
+**5, Chain of Responsibility Pattern:**
+- Chain of Resppinsibility Pattern được sử dụng rất nhiều trong lập trình. Nó thực hiện công việc định nghĩa ra một chuỗi các object, chúng ta sẽ gọi lần lượt từng object để xử lý yêu cầu. Vì vậy, mỗi bộ xử lý trong chuỗi có các logic xử lý riêng.
+- Một điều quan trọng nữa là nó rất tiện dụng để tách sender ra khỏi receiver.
+
+Chain of Responsibility Pattern được sử dụng trong MainFragment.java
+```java
+public class MainFragment extends Fragment {
+
+    private PreferencesUtility mPreferences;
+    private ViewPager viewPager;
+
+    @Override
+    public void onCreate(final Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mPreferences = PreferencesUtility.getInstance(getActivity());
     }
 
-    private boolean dfs(Integer start) {
-        visited.add(start);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(
+                R.layout.fragment_main, container, false);
 
-        for (Integer neighbor : graph.getNeighbors(start)) {
+        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
-            if (visited.contains(neighbor) && !exited.contains(neighbor))
-                return true;
+        final ActionBar ab = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+        ab.setDisplayHomeAsUpEnabled(true);
 
-            if (!visited.contains(neighbor) && dfs(neighbor))
-                return true;
+
+        viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
+        if (viewPager != null) {
+            setupViewPager(viewPager);
+            viewPager.setOffscreenPageLimit(2);
         }
-        exited.add(start);
-        return false;
-    }
-}
 
-5, Chain of Responsibility Pattern trong IsConnected.
-Chain of Resppinsibility Pattern được sử dụng rất nhiều trong lập trình. Nó thực hiện công việc định nghĩa ra một chuỗi các object, chúng ta sẽ gọi lần lượt từng object để xử lý yêu cầu. Vì vậy, mỗi bộ xử lý trong chuỗi có các logic xử lý riêng.
-Một điều quan trọng nữa là nó rất tiện dụng để tách sender ra khỏi receiver.
+        TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
-public class IsConnected extends DFS{
-    Graph graph;
+        return rootView;
 
-    public IsConnected(Graph graph) {
-        super(graph);
-        this.graph=graph;
     }
 
-    public boolean isConnected(){
-        search(1); // any random vertex
-
-        Set<Integer> graphVertices=graph.getVertices();
-
-        if(graphVertices.size()!=visited.size())return false;
-
-        for (Integer integer : graph.getVertices()) {
-            if(!visited.contains(integer)) return false;
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("dark_theme", false)) {
+            ATE.apply(this, "dark_theme");
+        } else {
+            ATE.apply(this, "light_theme");
         }
-        return true;
-    }
-}
-	
-6, Iterator Pattern trong Graph.java
-Iterator Pattern được sử dụng rất nhiều trong Java, và được xem như là mẫu cốt lõi của Java's Collection Framework.
-Pattern này có thể truy cập vào tất cả các phần tử của một collection object một cách tuần tự.
-	
-public interface Graph {
-     boolean addVertex(Integer t);
-
-     Double addEdge(Integer from, Integer to);
-
-     boolean addEdge(Integer from, Integer to, Double weight);
-
-     boolean removeVertex(Integer t);
-
-     boolean removeEdge(Integer from, Integer to);
-
-     Set<Integer> getVertices();
-
-     Set<Integer> getNeighbors(Integer ver);
-     int size();
-}
-	
-7, Mediator Pattern trong Vertex.
-Mediator Pattern tương tự như Adapter Pattern nhưng đó được sử dụng trong mục đích khác. Mediator Pattern hoạt động như một cầu nối.
-Trong các ứng dụng quy mô lớn, Mediator Pattern sẽ cung cấp một class trung gian để xử lý thông tin giữa các class.
-	
-    public Number getWeight() {
-        return weight;
+        viewPager.setCurrentItem(mPreferences.getStartPageIndex());
     }
 
-    public void setWeight(Number weight) {
-        this.weight = weight;
+    private void setupViewPager(ViewPager viewPager) {
+        Adapter adapter = new Adapter(getChildFragmentManager());
+        adapter.addFragment(new SongsFragment(), this.getString(R.string.songs));
+        adapter.addFragment(new AlbumFragment(), this.getString(R.string.albums));
+        adapter.addFragment(new ArtistFragment(), this.getString(R.string.artists));
+        viewPager.setAdapter(adapter);
     }
 
-    public void addNeighbor(Vertex<T> vertex){
-        this.neighbors.add(vertex);
-    }
-
-    public T getValue() {
-        return value;
-    }
-
-    public void setValue(T value) {
-        this.value = value;
-    }
-
-    public void setParent(Vertex parent) {
-        this.parent = parent;
-    }
-
-    public boolean isVisited() {
-        return visited;
-    }
-8, Memento Pattern trong RecursiveCircus.java
-Memento Pattern liên quan đến các trạng thái trước đó của object. Điều này có nghĩa là nó được sử dụng khi chúng ta muốn lưu một số trạng thái của một object.
-Khi chúng ta sử dụng pattern này để lưu lại các trạng thái đó, thì chúng ta có thể hoàn toàn khôi phục lại nó sau này.
-
-public class RecursiveCircus {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        List<String> list = new ArrayList<>();
-        while (scanner.hasNextLine()) {
-            try {
-                String s = scanner.nextLine();
-                if (s.equals("1"))
-                    break;
-                list.add(s);
-            } catch (Exception e) {
-                break;
-            }
-        }
-        System.out.println(solve2(list));
-    }
-}
-
-9, State Pattern trong PeekingIterajava
-State Pattern được sử dụng khi một object cụ thể cần thay đổi hành động, dựa trên trạng thái của nó. Điều này được thực hiện bằng cách cung cấp cho mỗi object này một hoặc nhiều object state.
-Dựa trên các object state này, chúng ta hoàn toàn có thể thay đổi các hành động của các object liên quan.
-
-public class PeekingIterator implements Iterator<Integer> {
-
-    Iterator<Integer> iterator;
-    LinkedList<Integer> list;
-    public PeekingIterator(Iterator<Integer> iterator) {
-        // initialize any member here.
-        this.iterator=iterator;
-        list=new LinkedList<>();
-        while (iterator.hasNext()){
-            list.add(iterator.next());
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mPreferences.lastOpenedIsStartPagePreference()) {
+            mPreferences.setStartPageIndex(viewPager.getCurrentItem());
         }
     }
 
-    public Integer peek() {
-       return list.getFirst();
+    @Override
+    public void onResume() {
+        super.onResume();
+        String ateKey = Helpers.getATEKey(getActivity());
+        ATEUtils.setStatusBarColor(getActivity(), ateKey, Config.primaryColor(getActivity(), ateKey));
+
     }
 
-    @Override
-    public boolean hasNext() {
-        return list.iterator().hasNext();
+}
+```
+`So sánh: Mẫu thiết kế trong Repo em tìm kiếm giống với mẫu thiết kế chuẩn. Sau khi định nghĩa ra một chuỗi các object, trong chương trình sẽ gọi lần lượt từng object để xử lý yêu cầu.`
+	
+**6, Iterator Pattern:**
+- Iterator Pattern được sử dụng rất nhiều trong Java, và được xem như là mẫu cốt lõi của Java's Collection Framework.
+- Pattern này có thể truy cập vào tất cả các phần tử của một collection object một cách tuần tự.
+	
+Iterator Pattern được sử dụng trong Menu.java
+```java
+public class Menu {
+    private List<Item> menuItems = new ArrayList<>();
+ 
+    public void addItem(Item item) {
+        menuItems.add(item);
     }
-
-    @Override
-    public Integer next() {
-        return list.removeFirst();
+ 
+    public ItemIterator<Item> iterator() {
+        return new MenuItemIterator();
+    }
+ 
+    class MenuItemIterator implements ItemIterator<Item> {
+        private int currentIndex = 0;
+ 
+        @Override
+        public boolean hasNext() {
+            return currentIndex < menuItems.size();
+        }
+ 
+        @Override
+        public Item next() {
+            return menuItems.get(currentIndex++);
+        }
     }
 }
-	
-10, Strategy Pattern trong Edge.java
-Strategy Pattern được sử dụng trong các tình huống các thuật toán hoặc hành vi của class là các các hành vi động (có thể thay đổi). Điều này có nghĩa là cả hành vi và thuật toán đều có thể thay đổi trong thời gian chạy, dựa vào đầu vào của client.
-Tương tự như State Pattern, Strategy Pattern sử dụng nhiều object xác định, tùy thuộc vào các mục tiêu khác nhau.
-	
-public class Edge implements Comparable<Edge> {
-    private Double weight;
-    private Integer from;
-    private Integer to;
+```
+`So sánh: Mẫu thiết kế trong Repo em tìm kiếm giống với mẫu thiết kế chuẩn.`
 
-    public Edge(Double weight) {
-        this.weight = weight;
+**7, Mediator Pattern:**
+- Mediator Pattern tương tự như Adapter Pattern nhưng đó được sử dụng trong mục đích khác. Mediator Pattern hoạt động như một cầu nối.
+- Trong các ứng dụng quy mô lớn, Mediator Pattern sẽ cung cấp một class trung gian để xử lý thông tin giữa các class.
+	
+ Mediator Pattern được sử dụng trong RestServiceFactory.java
+```java
+public class RestServiceFactory {
+    private static final String TAG_OK_HTTP = "OkHttp";
+    private static final long CACHE_SIZE = 1024 * 1024;
+
+    public static <T> T createStatic(final Context context, String baseUrl, Class<T> clazz) {
+        final OkHttpClient okHttpClient = new OkHttpClient();
+
+        okHttpClient.setCache(new Cache(context.getApplicationContext().getCacheDir(),
+                CACHE_SIZE));
+        okHttpClient.setConnectTimeout(40, TimeUnit.SECONDS);
+
+        RequestInterceptor interceptor = new RequestInterceptor() {
+            PreferencesUtility prefs = PreferencesUtility.getInstance(context);
+
+        RestAdapter.Builder builder = new RestAdapter.Builder()
+                .setEndpoint(baseUrl)
+                .setRequestInterceptor(interceptor)
+                .setClient(new OkClient(okHttpClient));
+
+        return builder
+                .build()
+                .create(clazz);
+
     }
 
-    public Edge(Integer from, Integer to, Double weight) {
-        this.weight = weight;
-        this.from = from;
-        this.to = to;
-    }
+    public static <T> T create(final Context context, String baseUrl, Class<T> clazz) {
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        RestAdapter.Builder builder = new RestAdapter.Builder()
+                .setEndpoint(baseUrl);
 
-        Edge edge = (Edge) o;
+        return builder
+                .build()
+                .create(clazz);
 
-        if (weight != null ? !weight.equals(edge.weight) : edge.weight != null) return false;
-        if (from != null ? !from.equals(edge.from) : edge.from != null) return false;
-        return !(to != null ? !to.equals(edge.to) : edge.to != null);
     }
 }
-	
-11, Visitor Pattern trong Vertex.java
-Visitor Pattern được sử dụng để chuyển logic hoạt động từ từng phần riêng lẻ của một group sang một class mới. Class mới này thực hiện các thao tác bằng cách sử dụng dữ liệu từ mỗi phần tử riêng lẻ đó.
-Điều này được thực hiện bằng cách làm cho các phần tử chấp nhận một "Visitor". Visitor này sẽ thực hiện các thay đổi trong một class riêng biệt, mà không thay đổi các cấu trúc của lớp đã truy cập. Điều này giúp các bạn dễ dàng thêm chức năng mới mà không cần thay đổi các lớp đã truy cập.
-	
-public class Vertex<T> implements Comparable<Vertex<T>> {
-   
-    @Override
-    public String toString() {
-        return "Vertex{" +
-                "value=" + value + '}';
+```
+`So sánh: Mẫu thiết kế trong Repo em tìm kiếm giống với mẫu thiết kế chuẩn. Đều có class trung gian hoạt động như cầu nối xử lý các class khác.`
+
+**8, Memento Pattern:**
+- Memento Pattern liên quan đến các trạng thái trước đó của object. Điều này có nghĩa là nó được sử dụng khi chúng ta muốn lưu một số trạng thái của một object.
+- Khi chúng ta sử dụng pattern này để lưu lại các trạng thái đó, thì chúng ta có thể hoàn toàn khôi phục lại nó sau này.
+
+Memento Pattern được sử dụng trong Nammu.java
+```java
+public class Nammu {
+    private static final String TAG = Nammu.class.getSimpleName();
+    private static final String KEY_PREV_PERMISSIONS = "previous_permissions";
+    private static final String KEY_IGNORED_PERMISSIONS = "ignored_permissions";
+    private static Context context;
+    private static SharedPreferences sharedPreferences;
+    private static ArrayList<PermissionRequest> permissionRequests = new ArrayList<PermissionRequest>();
+
+    public static void init(Context context) {
+        sharedPreferences = context.getSharedPreferences("pl.tajchert.runtimepermissionhelper", Context.MODE_PRIVATE);
+        Nammu.context = context;
+    }
+    
+    public static void refreshMonitoredList() {
+        ArrayList<String> permissions = getGrantedPermissions();
+        Set<String> set = new HashSet<String>();
+        for (String perm : permissions) {
+            set.add(perm);
+        }
+        sharedPreferences.edit().putStringSet(KEY_PREV_PERMISSIONS, set).apply();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Vertex<?> vertex = (Vertex<?>) o;
-
-        return value.equals(vertex.value);
-
+    /**
+     * Get list of previous Permissions, from last refreshMonitoredList() call and they may be outdated,
+     * use getGrantedPermissions() to get current
+     */
+    public static ArrayList<String> getPreviousPermissions() {
+        ArrayList<String> prevPermissions = new ArrayList<String>();
+        prevPermissions.addAll(sharedPreferences.getStringSet(KEY_PREV_PERMISSIONS, new HashSet<String>()));
+        return prevPermissions;
     }
 
-    @Override
-    public int hashCode() {
-        return value.hashCode();
+    public static ArrayList<String> getIgnoredPermissions() {
+        ArrayList<String> ignoredPermissions = new ArrayList<String>();
+        ignoredPermissions.addAll(sharedPreferences.getStringSet(KEY_IGNORED_PERMISSIONS, new HashSet<String>()));
+        return ignoredPermissions;
     }
+
+    /**
+     * Lets see if we already ignore this permission
+     */
+    public static boolean isIgnoredPermission(String permission) {
+        if (permission == null) {
+            return false;
+        }
+        return getIgnoredPermissions().contains(permission);
+    }
+
+    /**
+     * Use to ignore to particular Permission - even if user will deny or add it we won't receive a callback.
+     *
+     * @param permission Permission to ignore
+     */
+    public static void ignorePermission(String permission) {
+        if (!isIgnoredPermission(permission)) {
+            ArrayList<String> ignoredPermissions = getIgnoredPermissions();
+            ignoredPermissions.add(permission);
+            Set<String> set = new HashSet<String>();
+            set.addAll(ignoredPermissions);
+            sharedPreferences.edit().putStringSet(KEY_IGNORED_PERMISSIONS, set).apply();
+        }
+    }
+
 }
+```
+`So sánh: Mẫu thiết kế trong Repo em tìm kiếm khá giống với mẫu thiết kế chuẩn. Khác nhau ở trong mẫu chuẩn thì chỉ lưu một số trạng thái của 1 object còn trong repo thì lưu nhiều trạng thái của nhiều object.`
+
+**9, State Pattern:**
+- State Pattern được sử dụng khi một object cụ thể cần thay đổi hành động, dựa trên trạng thái của nó. Điều này được thực hiện bằng cách cung cấp cho mỗi object này một hoặc nhiều object state.
+- Dựa trên các object state này, chúng ta hoàn toàn có thể thay đổi các hành động của các object liên quan.
+
+
+	
+**10, Strategy Pattern:**
+- Strategy Pattern được sử dụng trong các tình huống các thuật toán hoặc hành vi của class là các các hành vi động (có thể thay đổi). Điều này có nghĩa là cả hành vi và thuật toán đều có thể thay đổi trong thời gian chạy, dựa vào đầu vào của client.
+- Tương tự như State Pattern, Strategy Pattern sử dụng nhiều object xác định, tùy thuộc vào các mục tiêu khác nhau.
+	
+
+
+	
+**11, Visitor Pattern:**
+- Visitor Pattern được sử dụng để chuyển logic hoạt động từ từng phần riêng lẻ của một group sang một class mới. Class mới này thực hiện các thao tác bằng cách sử dụng dữ liệu từ mỗi phần tử riêng lẻ đó.
+- Điều này được thực hiện bằng cách làm cho các phần tử chấp nhận một "Visitor". Visitor này sẽ thực hiện các thay đổi trong một class riêng biệt, mà không thay đổi các cấu trúc của lớp đã truy cập. Điều này giúp các bạn dễ dàng thêm chức năng mới mà không cần thay đổi các lớp đã truy cập.
+	
+
 
 ***Structural patterns:
 
