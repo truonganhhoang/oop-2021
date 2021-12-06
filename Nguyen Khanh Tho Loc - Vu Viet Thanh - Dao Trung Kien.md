@@ -201,31 +201,92 @@ Khi client muốn các biểu diễn khác nhau cho đối tượng được xâ
 Cung cấp một interface cho việc tạo lập các đối tượng (có liên hệ với nhau) mà không cần qui định lớp khi hay xác định lớp cụ thể (concrete) tạo mỗi đối tượng
 
 ví dụ: trong code theo Repo
-@Override
-    public String toString() {
-      return event;
-    }
-@Override
-    public String toString() {
-      return code;
-    }
-@Override
-    public String getString() {
-      return message;
-    }
-- So sánh: rất giống với mấu thiết kế trong code mẫu theo link (https://stackjava.com/design-pattern/abstract-factory-pattern.html)
-  @Override
-  public String getRAM() {
-    return this.ram;
+public class QueuedMessage implements Comparable<QueuedMessage> {
+
+  private final MessageType messageType;
+  private final Map<ReturnableData, Object> data;
+
+  /**
+   * Create a new queued message.
+   * 
+   * @param messageType
+   *          Type of message to be queued. The type influences the priority in returning messages
+   *          to the client.
+   * @param data
+   *          The data of the message to be queued.
+   */
+  public QueuedMessage(final MessageType messageType, final Map<ReturnableData, Object> data) {
+    this.messageType = messageType;
+    this.data = data;
   }
-  @Override
-  public String getHDD() {
-    return this.hdd;
+
+  /**
+   * @return The type of the message.
+   */
+  public MessageType getMessageType() {
+    return messageType;
   }
-  @Override
-  public String getCPU() {
-    return this.cpu;
+
+  /**
+   * @return The data in the message.
+   */
+  public Map<ReturnableData, Object> getData() {
+    return data;
   }
+
+  /**
+   * This is not guaranteed to be consistent with .equals() since we do not care about the data for
+   * ordering.
+   */
+  @Override
+  public int compareTo(final QueuedMessage qm) {
+    return this.messageType.getWeight() - qm.messageType.getWeight();
+  }
+
+  @Override
+  public String toString() {
+    return messageType.toString() + "_" + data.toString();
+  }
+
+  /**
+   * Types of messages that can be queued. The numerical value is the priority that this message
+   * should be delivered (lower = more important) compared to other queued messages.
+   */
+  public enum MessageType {
+    KICKED(1), PLAYER_EVENT(3), GAME_EVENT(3), GAME_PLAYER_EVENT(4), CHAT(5);
+
+    private final int weight;
+
+    MessageType(final int weight) {
+      this.weight = weight;
+    }
+
+    public int getWeight() {
+      return weight;
+    }
+  }
+}
+- So sánh: rất giống với mấu thiết kế trong code mẫu theo link (https://www.baeldung.com/java-abstract-factory-pattern) , cùng có 1 interface mà để tạo các họ các đối tượng liên quan hoặc phụ thuộc mà không chỉ định các lớp cụ thể của chúng.
+	
+  	public interface AbstractFactory<T> {
+    		T create(String animalType) ;
+	}
+	
+	
+	public class AnimalFactory implements AbstractFactory<Animal> {
+
+   	@Override
+    	public Animal create(String animalType) {
+        	if ("Dog".equalsIgnoreCase(animalType)) {
+            		return new Dog();
+        	} else if ("Duck".equalsIgnoreCase(animalType)) {
+            		return new Duck();
+        	}
+
+        		return null;
+    		}
+
+	}
 	
 5, Prototype Pattern:
 - Qui định loại của các đối tượng cần tạo bằng cách dùng một đối tượng mẫu, tạo mới nhờ vào sao chép đối tượng mẫu này.
