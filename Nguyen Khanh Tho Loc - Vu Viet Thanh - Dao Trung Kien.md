@@ -923,6 +923,7 @@ public class GameApp {
 - Proxy Pattern được sử dụng khi chúng ta muốn giới hạn khả năng và chức năng của một class, bằng cách sử dụng một class khác giới hạn nó.
 Bằng cách sử dụng class Proxy này, client sẽ sử dụng một interface đã xác định để truy cập vào class gốc. Điều này đảm bảo rằng client không thể làm thay đổi bất cứ điều gì với class ban đầu. Vì tất cả các yêu cầu của client đều được chuyển qua class Proxy để thực hiện.
 - Link ví dụ: https://github.com/gpcodervn/Design-Pattern-Tutorial/blob/master/DesignPatternTutorial/src/com/gpcoder/patterns/structural/proxy/protection/UserServiceProxy.java
+```java
 package com.gpcoder.patterns.structural.proxy.protection;
 
 public class UserServiceProxy implements UserService {
@@ -949,7 +950,8 @@ public class UserServiceProxy implements UserService {
 		}
 	}
 
-	`private boolean isAdmin() {
+	private boolean isAdmin() {
 		return "admin".equalsIgnoreCase(this.role);
 	}
-}`
+}
+```
