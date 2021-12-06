@@ -949,7 +949,7 @@ public class UserServiceProxy implements UserService {
 		}
 	}
 
-	private boolean isAdmin() {
+	`private boolean isAdmin() {
 		return "admin".equalsIgnoreCase(this.role);
 	}
-}
+}`
