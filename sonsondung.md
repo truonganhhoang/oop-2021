@@ -77,7 +77,6 @@ public class MammalsFactory extends AnimalFactory{
 
  vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/factory
 ```java
-package factory.method;
 public class AnimalFactory {
 	public Animal create(String animal){
 		
@@ -181,7 +180,53 @@ public class Main {
  vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/bridge
 
 ```java
-package bridge;
+public abstract class AbstractShape {
+
+	protected Color color;
+	
+	public AbstractShape(Color _color){
+		color = _color;
+	}
+	
+	public void setColor(Color _color){
+		color = _color;
+	}
+	
+	public abstract void applyColor();
+}
+public class Rectangle extends AbstractShape{
+
+	public Rectangle(Color _op) {
+		super(_op);
+	}
+
+	@Override
+	public void applyColor() {
+		System.out.print("Rectangle is now colored with ");
+		this.color.apply();
+	}
+
+}
+public class Circle extends AbstractShape{
+
+	public Circle(Color _op) {
+		super(_op);
+	}
+
+	@Override
+	public void applyColor() {
+		System.out.print("Circle is now colored with ");
+		this.color.apply();
+	}
+}
+public class Red implements Color{
+
+	@Override
+	public void apply() {
+		System.out.println("Red");
+	}
+
+}
 public class Main {
 	public static void main(String[] args) {
 		
@@ -202,7 +247,6 @@ Tạo quan hệ thứ bậc bao gộp giữa các đối tượng. Client có th
  vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/composite
 
 ```java
-package composite;
 public class Main {
 	public static void main(String[] args) {
 		
