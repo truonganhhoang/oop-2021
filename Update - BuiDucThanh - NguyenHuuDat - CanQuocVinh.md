@@ -1,7 +1,7 @@
-# Design Pattern - UET - Nhom3 - INT2204 3 - N2
+# Design Pattern - UET - Nhóm 3 - INT2204 3 - N2
 
 ## A. File Github sử dụng
-Trong báo cáo này, chúng tôi sẽ sử dụng https://github.com/checkstyle/checkstyle . Đây là một công cụ dùng để kiểm tra về format code Java của lập trình viên, cho phép họ viết code tuân theo một quy chuẩn thống nhất. Mặc định, tool sẽ kiểm tra theo quy chuẩn lập trình Java của Google, nhưng nó có thể được điều chỉnh bởi lập trình viên với nhiều mục đích khác nhau.
+Trong báo cáo này, chúng tôi sẽ sử dụng https://github.com/checkstyle/checkstyle . Đây là một công cụ dùng để kiểm tra về format code Java của lập trình viên, cho phép họ viết code tuân theo một quy chuẩn thống nhất. Mặc định, tool sẽ kiểm tra theo quy chuẩn lập trình Java của Google, nhưng nó có thể được điều chỉnh bởi lập trình viên với nhiều mục đích khác nhau. 
 
 ## B. Design Pattern
 Trong quá trình viết phần mềm này, nhà phát triển đã ứng dụng một số mẫu thiết kế thông dụng, giúp quá trình lập trình trở nên dễ dàng hơn. Sau đây là một số Design Patterns đã được sử dụng:
@@ -42,52 +42,68 @@ Với file RegexpMultilineCheck.java, đối tượng Builder được sử dụ
 #### c. So sánh với mẫu chuẩn
 Với mẫu chuẩn, ta cần 1 Interface và một class có implements Interface đó. Còn trong trường hợp này, người ta sử dụng Builder như một lớp con final trong một lớp cha final.
 
+### 3. Abstract Factory
+Mẫu thiết kế này cho phép ta định nghĩa các Interface hoặc các lớp trừu tượng, qua đó tạo các đối tượng có liên quan mà không cần phải sử dụng các lớp riêng biệt.
+
+### 4. Singleton
+Singleton Patterns thuộc loại Creational Patterns, cho phép ta đảm bảo chỉ duy nhất một thể hiện (instance) được tạo ra , đồng thời cung cấp một phương thức để có thể truy xuất được thể hiện duy nhất đó mọi lúc mọi nơi trong chương trình. Đầu tiên, ta đặt các hàm khởi tạo, biến ở chế độ private final, để hạn chế truy cập từ bên ngoài. Sau đó, ta tạo một phương thức public static để trả về thể hiện của đối tượng đó.
+
+### 5. Prototype
+Với mẫu thiết kế này, khi tạo một đối tượng, ta không cần sử dụng từ khóa new, mà chỉ việc sao chép từ một đối tượng mẫu có trước.
+
+### 6. Adaptor
+Mấu thiết kế này cho phép ta di chuyển dữ liệu từ các đối tượng có kiểu khác nhau.
+
+### 7. Bridge
+Bridge Pattern được sử dụng để tách thành phần trừu tượng (abstraction) và thành phần thực thi (implementation) riêng biệt.
+
 ### 9. Decorator Pattern:
 Gán thêm trách nhiệm cho đối tượng (mở rộng chức năng) vào lúc chạy (dynamically). Tần suất sử dụng: TB - 3/5.
 Lợi ích:
-    - Giúp cho hệ thống của bạn trở nên đơn giản hơn trong việc sử dụng và trong việc hiểu nó, vì một mẫu Facade có các phương thức tiện lợi cho các tác vụ chung.
-    - Giảm sự phụ thuộc của các mã code bên ngoài với hiện thực bên trong của thư viện, vì hầu hết các code đều dùng Facade, vì thế cho phép sự linh động trong phát triển các hệ thống.
-    - Đóng gói tập nhiều hàm API được thiết kế không tốt bằng một hàm API đơn có thiết kế tốt hơn.
+* Giúp cho hệ thống của bạn trở nên đơn giản hơn trong việc sử dụng và trong việc hiểu nó, vì một mẫu Facade có các phương thức tiện lợi cho các tác vụ chung.
+* Giảm sự phụ thuộc của các mã code bên ngoài với hiện thực bên trong của thư viện, vì hầu hết các code đều dùng Facade, vì thế cho phép sự linh động trong phát triển các hệ thống.
+* Đóng gói tập nhiều hàm API được thiết kế không tốt bằng một hàm API đơn có thiết kế tốt hơn.
 
 ### 10. Facade Pattern
-    Cung cấp một interface thuần nhất cho một tập hợp các interface trong một “hệ thống con” (subsystem). Nó định nghĩa 1 interface cao hơn các interface có sẵn để làm cho hệ thống con dễ sử dụng hơn. Tần suất sử dụng: Cao - 5/5.
+Cung cấp một interface thuần nhất cho một tập hợp các interface trong một “hệ thống con” (subsystem). Nó định nghĩa 1 interface cao hơn các interface có sẵn để làm cho hệ
+thống con dễ sử dụng hơn. Tần suất sử dụng: Cao - 5/5.
 Lợi ích: 
-    - Giúp cho hệ thống của bạn trở nên đơn giản hơn trong việc sử dụng và trong việc hiểu nó, vì một mẫu Facade có các phương thức tiện lợi cho các tác vụ chung.
-    - Giảm sự phụ thuộc của các mã code bên ngoài với hiện thực bên trong của thư viện, vì hầu hết các code đều dùng Facade, vì thế cho phép sự linh động trong phát triển các hệ thống.
-    - Đóng gói tập nhiều hàm API được thiết kế không tốt bằng một hàm API đơn có thiết kế tốt hơn.
+* Giúp cho hệ thống của bạn trở nên đơn giản hơn trong việc sử dụng và trong việc hiểu nó, vì một mẫu Facade có các phương thức tiện lợi cho các tác vụ chung.
+* Giảm sự phụ thuộc của các mã code bên ngoài với hiện thực bên trong của thư viện, vì hầu hết các code đều dùng Facade, vì thế cho phép sự linh động trong phát triển các hệ thống.
+* Đóng gói tập nhiều hàm API được thiết kế không tốt bằng một hàm API đơn có thiết kế tốt hơn.
     
-    * Trong src/main/java/com/puppycrawl/tools/checkstyle, class Checker.java có nhiệm vụ kiểm tra 1 tập file đóng gói 1 tập đối tượng thành phần, interface phục vụ kiểm tra riêng lẻ.
-    => Giống hoàn toàn thiết kế mẫu.
+Trong src/main/java/com/puppycrawl/tools/checkstyle, class Checker.java có nhiệm vụ kiểm tra 1 tập file đóng gói 1 tập đối tượng thành phần, interface phục vụ kiểm tra riêng lẻ.
+=> Giống hoàn toàn thiết kế mẫu.
 ### 11. Flyweight Pattern
 Sử dụng việc chia sẻ để thao tác hiệu quả trên một số lượng lớn đối tượng “cở nhỏ” (chẳng hạn paragraph, dòng, cột, ký tự…). Tần suất sử dụng: Thấp - 1/5.
 Lợi ích: 
-    - Giảm số lượng đối tượng được tạo ra bằng cách chia sẻ đối tượng. Vì vậy, tiết kiệm bộ nhớ và các thiết bị lưu trữ cần thiết.
-    - Cải thiện khả năng cache dữ liệu vì thời gian đáp ứng nhanh.
-    - Tăng hiệu năng.
+* Giảm số lượng đối tượng được tạo ra bằng cách chia sẻ đối tượng. Vì vậy, tiết kiệm bộ nhớ và các thiết bị lưu trữ cần thiết.
+* Cải thiện khả năng cache dữ liệu vì thời gian đáp ứng nhanh.
+* Tăng hiệu năng.
     
 ### 12. Proxy Pattern
 Cung cấp đối tượng đại diện cho một đối tượng khác để hỗ trợ hoặc kiểm soát quá trình truy xuất đối tượng đó. Đối tượng thay thế gọi là proxy. Tần suất sử dụng: Cao TB - 4/5.
 Lợi ích: 
-    - Cải thiện performance thông qua lazy loading, chỉ tải các tài nguyên khi chúng được yêu cầu.
-    - Nó cung cấp sự bảo vệ cho đối tượng thực từ thế giới bên ngoài.
-    - Giảm chi phí khi có nhiều truy cập vào đối tượng có chi phí khởi tạo ban đầu lớn.
-    - Dễ nâng cấp, bảo trì.
+* Cải thiện performance thông qua lazy loading, chỉ tải các tài nguyên khi chúng được yêu cầu.
+* Nó cung cấp sự bảo vệ cho đối tượng thực từ thế giới bên ngoài.
+* Giảm chi phí khi có nhiều truy cập vào đối tượng có chi phí khởi tạo ban đầu lớn.
+* Dễ nâng cấp, bảo trì.
 
 ### 13. Chain of Responsibility Pattern
 Khắc phục việc ghép cặp giữa bộ gởi và bộ nhận thông điệp. Các đối tượng nhận thông điệp được kết nối thành một chuỗi và thông điệp được chuyển dọc theo chuỗi nầy đến khi gặp được đối tượng xử lý nó. Tránh việc gắn kết cứng giữa phần tử gởi request với phần tử nhận và xử lý request bằng cách cho phép hơn 1 đối tượng có có cơ hội xử lý request. Liên kết các đối tượng nhận request thành 1 dây chuyền rồi gửi request xuyên qua từng đối tượng xử lý đến khi gặp đối tượng xử lý cụ thể. Tần suất sử dụng: TB thấp - 2/5.
 Lợi ích: 
-    - Giảm kết nối (loose coupling): Thay vì một đối tượng có khả năng xử lý yêu cầu chứa tham chiếu đến tất cả các đối tượng khác, nó chỉ cần một tham chiếu đến đối tượng tiếp theo. Tránh sự liên kết trực tiếp giữa đối tượng gửi yêu cầu (sender) và các đối tượng nhận yêu cầu (receivers).
-    - Tăng tính linh hoạt : đảm bảo Open/Closed Principle.
-    - Phân chia trách nhiệm cho các đối tượng: đảm bảo Single Responsibility Principle.
-    - Có khả năng thay đổi dây chuyền (chain) trong thời gian chạy.
-    - Không đảm bảo có đối tượng xử lý yêu cầu.
+* Giảm kết nối (loose coupling): Thay vì một đối tượng có khả năng xử lý yêu cầu chứa tham chiếu đến tất cả các đối tượng khác, nó chỉ cần một tham chiếu đến đối tượng tiếp theo. Tránh sự liên kết trực tiếp giữa đối tượng gửi yêu cầu (sender) và các đối tượng nhận yêu cầu (receivers).
+* Tăng tính linh hoạt : đảm bảo Open/Closed Principle.
+* Phân chia trách nhiệm cho các đối tượng: đảm bảo Single Responsibility Principle.
+* Có khả năng thay đổi dây chuyền (chain) trong thời gian chạy.
+* Không đảm bảo có đối tượng xử lý yêu cầu.
 
 ### 14. Command Pattern:
-Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc thành một đối tượng. Các yêu cầu sẽ được lưu trữ và gởi đi như các đối tượng.Đóng gói request vào trong một Object, nhờ đó có thể nthông số hoá chương trình nhận request và thực hiện các thao tác trên request: sắp xếp, log, undo… Tần suất sử dụng: Cao TB - 4/5.
+Mỗi yêu cầu (thực hiện một thao tác nào đó) được bao bọc thành một đối tượng. Các yêu cầu sẽ được lưu trữ và gởi đi như các đối tượng.Đóng gói request vào trong một Object, nhờ đó có thể thông số hoá chương trình nhận request và thực hiện các thao tác trên request: sắp xếp, log, undo… Tần suất sử dụng: Cao TB - 4/5.
 Lợi ích:
-    - Dễ dàng thêm các Command mới trong hệ thống mà không cần thay đổi trong các lớp hiện có. Đảm bảo Open/Closed Principle.
-    - Tách đối tượng gọi operation từ đối tượng thực sự thực hiện operation. Giảm kết nối giữa Invoker và Receiver.
-    - Cho phép tham số hóa các yêu cầu khác nhau bằng một hành động để thực hiện.
+* Dễ dàng thêm các Command mới trong hệ thống mà không cần thay đổi trong các lớp hiện có. Đảm bảo Open/Closed Principle.
+* Tách đối tượng gọi operation từ đối tượng thực sự thực hiện operation. Giảm kết nối giữa Invoker và Receiver.
+* Cho phép tham số hóa các yêu cầu khác nhau bằng một hành động để thực hiện.
 Cho phép lưu các yêu cầu trong hàng đợi.
 Đóng gói một yêu cầu trong một đối tượng. Dễ dàng chuyển dữ liệu dưới dạng đối tượng giữa các thành phần hệ thống.
 
@@ -97,22 +113,22 @@ Cho phép lưu các yêu cầu trong hàng đợi.
 ### 15. Interpreter Pattern:
 Hỗ trợ việc định nghĩa biểu diễn văn phạm và bộ thông dịch cho một ngôn ngữ. Tần suất sử dụng: Thấp - 1/5.
 Lợi ích:
-    - Đảm bảo nguyên tắc Single responsibility principle (SRP) : chúng ta có thể tách phần cài đặt các phương thức của tập hợp và phần duyệt qua các phần tử (iterator) theo từng class riêng lẻ.
-    - Đảm bảo nguyên tắc Open/Closed Principle (OCP) : chúng ta có thể implement các loại collection mới và iterator mới, sau đó chuyển chúng vào code hiện có mà không vi phạm bất cứ nguyên tắc gì.
-    - Chúng ta có thể truy cập song song trên cùng một tập hợp vì mỗi đối tượng iterator có chứa trạng thái riêng của nó.
+* Đảm bảo nguyên tắc Single responsibility principle (SRP) : chúng ta có thể tách phần cài đặt các phương thức của tập hợp và phần duyệt qua các phần tử (iterator) theo từng class riêng lẻ.
+* Đảm bảo nguyên tắc Open/Closed Principle (OCP) : chúng ta có thể implement các loại collection mới và iterator mới, sau đó chuyển chúng vào code hiện có mà không vi phạm bất cứ nguyên tắc gì.
+* Chúng ta có thể truy cập song song trên cùng một tập hợp vì mỗi đối tượng iterator có chứa trạng thái riêng của nó.
 
 ### 16. Iterator Pattern:
 Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử. Tần suất sử dụng: Cao - 5/5.
 Lợi ích: 
-    - Đảm bảo nguyên tắc Single responsibility principle (SRP) : chúng ta có thể tách phần cài đặt các phương thức của tập hợp và phần duyệt qua các phần tử (iterator) theo từng class riêng lẻ.
-    - Đảm bảo nguyên tắc Open/Closed Principle (OCP) : chúng ta có thể implement các loại collection mới và iterator mới, sau đó chuyển chúng vào code hiện có mà không vi phạm bất cứ nguyên tắc gì.
-    - Chúng ta có thể truy cập song song trên cùng một tập hợp vì mỗi đối tượng iterator có chứa trạng thái riêng của nó.
+* Đảm bảo nguyên tắc Single responsibility principle (SRP) : chúng ta có thể tách phần cài đặt các phương thức của tập hợp và phần duyệt qua các phần tử (iterator) theo từng class riêng lẻ.
+* Đảm bảo nguyên tắc Open/Closed Principle (OCP) : chúng ta có thể implement các loại collection mới và iterator mới, sau đó chuyển chúng vào code hiện có mà không vi phạm bất cứ nguyên tắc gì.
+* Chúng ta có thể truy cập song song trên cùng một tập hợp vì mỗi đối tượng iterator có chứa trạng thái riêng của nó.
     
 
 ### 17. Mediator Pattern
 Đây là một trong nhưng mẫu không được sử dụng phổ biến hiện nay trong lập trình hướng đối tượng. Về cơ bản, với mẫu này, một đối tượng để bao bọc việc giao tiếp giữa một số đối tượng với nhau. Sau đây ta xét ví dụ trong dự án trên:
 
-Trong file checkstyle/src/main/java/com/puppycrawl/tools/checkstyle , có AbstractCheck.java là lớp trừu tượng và AnnotationLocationCheck.java, AnnotationOnSameLineCheck.java, AnnotationUseStyleCheck.java là các lớp con kế thứa lớp AbstractCheck.java và thông qua lớp mẹ để giao tiếp với nhau.
+Trong file checkstyle/src/main/java/com/puppycrawl/tools/checkstyle, có AbstractCheck.java là lớp trừu tượng và AnnotationLocationCheck.java, AnnotationOnSameLineCheck.java, AnnotationUseStyleCheck.java là các lớp con kế thứa lớp AbstractCheck.java và thông qua lớp mẹ để giao tiếp với nhau.
 
 Xét từng lớp cụ thể:
 
