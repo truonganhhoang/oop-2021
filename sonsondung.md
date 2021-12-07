@@ -139,6 +139,10 @@ public class ProductFactory {
  vd: https://github.com/OmarElgabry/DesignPatterns/tree/master/src/adapter
 
 ```java
+public interface MediaPlayer {
+
+	public void play();
+}
 public class FormatAdapter implements MediaPlayer{
 	private MediaPackage media;
 	
@@ -152,6 +156,23 @@ public class FormatAdapter implements MediaPlayer{
 		media.playFile();
 	}
 	
+}
+public class Main {
+
+	public static void main(String[] args) {
+		
+		// play mp3 file
+		MediaPlayer player = new Mp3();
+		player.play();
+		
+		// since mp4, vlc are incompatible,
+		// so we need to add new media package,
+		// and FormatAdapter will adapt the new media package 
+		// so that incompatible formats can work as well.
+		player = new FormatAdapter(new Mp4());
+		player.play();
+	}
+
 }
 ```
 ### Bridge:
