@@ -1,9 +1,9 @@
 # oop-2021
 ## Môn học Lập trình hướng đối tượng với Java so sánh các mẫu thiết kế tìm được trong các repo với các mẫu thiết kế mẫu chuẩn.
-** Thành viên nhóm: **
-* - 20021389 Nguyễn Khánh Thọ Lộc.*
-* - 20021436 Vũ Viết Thành.*
-* - 20020182 Đào Trung Kiên.*
+**Thành viên nhóm:**
+* - 20021389 Nguyễn Khánh Thọ Lộc.
+* - 20021436 Vũ Viết Thành.
+* - 20020182 Đào Trung Kiên.
 
 ### Creational design pattern:
 *link: https://github.com/ajanata/PretendYoureXyzzy/tree/master/src/main/java/net/socialgamer/cah *
