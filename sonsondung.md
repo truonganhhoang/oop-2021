@@ -90,6 +90,20 @@ public class AnimalFactory {
 		return null;
 	}
 }
+public class Main {
+
+	public static void main(String[] args) {
+		
+		AnimalFactory factory = new AnimalFactory();
+		
+		Animal cat = factory.create("Cat");
+		cat.voice();
+
+		Animal dog = factory.create("Dog");
+		dog.voice();
+	}
+
+}
 ```
 ### Prototype:
 - Qui định loại của các đối tượng cần tạo bằng cách dùng một đối tượng mẫu, tạo mới nhờ vào sao chép đối tượng mẫu này.
