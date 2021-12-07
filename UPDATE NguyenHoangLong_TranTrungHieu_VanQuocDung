@@ -1,0 +1,548 @@
+# **BÁO CÁO SO SÁNH MẪU THIẾT KẾ**
+
+## **Lớp: INT2204_3**
+## **Thành viên:**
+1. Nguyễn Hoàng Long - 18020805
+2. Trần Trung Hiếu - 19020077
+3. Văn Quốc Dũng - 19020530
+
+## Sau khi lựa chọn trong các repo về mẫu thiết kế, nhóm chúng mình đã lựa chọn repo về một ứng dụng bán đồ ăn sau:
+https://github.com/youlookwhat/DesignPattern/tree/master/app/src/main/java/com/example/jingbin/designpattern
+
+## **PHÂN TÍCH**
+
+## I. Nhóm Creational
+
+### Singleton:
+- Sử dụng Singleton pattern: là mẫu thiết kế sáng tạo cho phép đảm bảo chỉ duy nhất một thể hiện (instance) được tạo ra và nó sẽ cung cấp một method để có  thể truy xuất được thể hiện duy nhất đó mọi lúc mọi nơi trong chương trình.
+- Mỗi class bao gồm 1 class Singleton và 1 class SingletonClient để kiểm tra tính unique của Singleton class.
+
+- **Giống nhau:** 
+    + Kế thừa lại AppCompatActivity thông qua lớp SingletonActivity.
+    + Implement Singleton Pattern bằng cách Bill Pugh Singleto.
+    
+- **Khác nhau:** 
+    + không có sự khác nhau.
+    
+- **Code:**
+
+    ```java
+
+        public class SingletonActivity extends AppCompatActivity implements View.OnClickListener {
+
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.bt_ehan:
+                        SingletonEHan instance = SingletonEHan.getInstance();
+                        break;
+                    case R.id.bt_lanhan:
+                        SingletonLanHan singletonLanHanFour = SingletonLanHan.getSingletonLanHanFour();
+                        break;
+                    case R.id.bt_inclass:
+                        SingletonIn singletonIn = SingletonIn.getSingletonIn();
+                        break;
+                    case R.id.bt_enum:
+                        SingletonEnum.instance.whateverMethod();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+    ```
+
+    ```java
+        public class SingletonIn {
+
+            private SingletonIn() {
+            }
+
+            private static class SingletonInHodler {
+                private static SingletonIn singletonIn = new SingletonIn();
+            }
+
+            public static SingletonIn getSingletonIn() {
+                return SingletonInHodler.singletonIn;
+            }
+        }
+    ```
+
+### Abstract Factory:
+- Sử dụng mẫu thiết kế Abstract Factory: là một trong những Pattern thuộc nhóm Creational Design Pattern. Abstract Factory cho phép một lớp trả về một nhà máy của các lớp, được sử dụng khi hệ thống cần phải độc lập với cách đối tượng của nó được tạo ra hoặc khi hệ thống cần được cấu hình với một trong nhiều họ đối tượng.
+- Gồm các thành phần cơ bản: Sub classes, Factory class, Abstract Factory class...
+
+- **Giống nhau:** 
+    + Factory class là AnimalFactory và InsectFactory có trách nhiệm khởi tạo các sub classes.
+    + Abstract Factory class là CreatureFactory.
+    
+- **Khác nhau:** 
+    + Không có Super class để các Sub class kế thừa (ví dụ khai báo 1 class có tên Creatures trong đó có method Activity()).
+    
+- **Code:** 
+
+    ````java
+        public abstract class RoujiaMo {
+
+            protected String name;
+
+            public void prepare() {
+                Log.e();
+            }
+        }
+    ````
+
+### Prototype:
+- Sử dụng mẫu thiết kế Prototype pattern: là một trong những Creational pattern, có nhiệm vụ khởi tạo một đối tượng bằng cách clone một đối tượng đã tồn tại thay vì khởi tạo với từ khoá new.
+- Prototype Pattern được dùng khi việc tạo một object tốn nhiều chi phí và thời gian trong khi bạn đã có một object tương tự tồn tại.
+
+- **Giống nhau:** 
+    + Abstract class Shape implement Cloneable.
+    + Một class kế thừa lại lớp có sẵn là AppCompatActivity.
+    + 3 lớp Circle, Rectangle, Square kế thừa lại lớp Shape.
+    
+- **Khác nhau:** 
+    + Không có sự khác nhau.
+    
+- **Code:**
+
+    ````java
+         public abstract class Shape implements Cloneable {
+            @Override
+            public Object clone() {
+                Object object = null;
+                try {
+                    object = super.clone();
+                } catch (CloneNotSupportedException e) {
+                    Log.e("--", e.getMessage());
+                }
+                return object;
+            }
+        }
+    ````
+
+    ````java
+        public class PrototypeActivity extends AppCompatActivity {
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                ActivityPrototypeBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_prototype);
+                setTitle("原型模式");
+                binding.tvDefine.setText(EMTagHandler.fromHtml(AppConstant.PROTOTYPE_DEFINE));
+                binding.btRectangle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Shape shapeCache = ShapeCache.getShape("2");
+                        Log.e("Prototype", "Shape: " + shapeCache.type);
+                    }
+                });
+                binding.btSquare.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Shape shapeCache = ShapeCache.getShape("3");
+                        Log.e("Prototype", "Shape: " + shapeCache.type);
+                    }
+                });
+            }
+          }
+    ````
+
+### Factory pattern:
+- Sử dụng mẫu thiết kế Factory Method/Factory Pattern: xác định một interface hoặc lớp trừu tượng (abstract) để tạo một đối tượng nhưng để cho các lớp con quyết định lớp nào sẽ khởi tạo. Nói cách khác, các lớp con chịu trách nhiệm tạo ra thể hiện của lớp.
+- Client chỉ tương tác với Interface hoặc lớp abstract, nó sẽ làm việc với lớp implements interface đó hoặc extends từ lớp abstract.
+- **Giống nhau:** 
+    + Một interface để tạo đối tượng: public abstract RouJiaMo sellRoujiaMo(String type).
+    + Lớp được khởi tạo sẽ được xác định bởi các lớp con, như ta có thể thấy đối tượng bánh roujiamo được tạo từ các lớp con trong code sau:
+    
+    ````java
+        public abstract RoujiaMo sellRoujiaMo(String type);
+
+            public RoujiaMo sellRoujiaMo(String type) {
+
+                RoujiaMo roujiaMo = creatRoujiaMo(type);
+                roujiaMo.prepare();
+                roujiaMo.fire();
+                roujiaMo.pack();
+                return roujiaMo;
+            }
+    ````
+- **Khác nhau:** 
+    + Không có sự khác nhau.
+
+### Builder:
+- Sử dụng mẫu thiết kế Builder: là một mẫu thiết kế thuộc "Nhóm khởi tạo" cho phép bạn xây dựng các đối tượng phức tạp theo từng bước. Mẫu cho phép bạn tạo ra các kiểu và biểu diễn khác nhau của một đối tượng bằng cách sử dụng cùng một hàm khởi tạo (construction).
+- Builder được sử dụng khi làm việc với một lớp mà có chứa rất nhiều các thuộc tính và cần phải tạo ra nhiều hàm khởi tạo với số lượng các thuộc tính tăng dần.
+
+- **Giống nhau:**
+    - Bao gồm 4 thành phần chính:
+    
++ Builder.java: là thành phần định nghĩa một lớp trừu tượng (abstract class) để tạo ra một hoặc nhiều phần của đối tượng Product.
+
+    ````java
+        public abstract class Builder {
+
+            public abstract void setPart(String name, String type);
+
+            public abstract Product getProduct();
+        }
+    ````
++ ConcreteBuilder.java: là thành phần triển khai, cụ thể hóa các lớp trừu tượng cho để tạo ra các thành phần và tập hợp các thành phần đó với nhau.
+Thành phần này sẽ xác định và nắm giữ các thể hiện mà nó tạo ra. Đồng thời nó cũng cung cấp phương thức để trả các các thể hiện mà nó đã tạo ra trước đó.
+
+    ````java
+        public class ConcreteBuilder extends Builder {
+
+            private Product product = new Product();
+
+            @Override
+            public void setPart(String name, String type) {
+                product.setName(name);
+                product.setType(type);
+            }
+
+            @Override
+            public Product getProduct() {
+                return product;
+            }
+        }
+    ````
++ Director.java: thành phần này sẽ khởi tạo đối tượng Builder.
+
+    ````java
+        public class Director {
+
+            private Builder builder = new ConcreteBuilder();
+
+            public Product getAProduct() {
+                builder . setPart( " Audi cars " , " Q5 " );
+                return builder.getProduct();
+            }
+
+            public Product getBProduct() {
+                builder . setPart( " BMW Car " , " X7 " );
+                return builder.getProduct();
+            }
+        }
+    ````
+
++ Product.java: thành phần này sẽ đại diện cho đối tượng phức tạp phải tạo ra.
+
+    ````
+        public class Product {
+
+            private String name;
+            private String type;
+
+            public void showProduct() {
+                Log.e("---", "Name：" + name);
+                Log.e("---", "Type：" + type);
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public void setType(String type) {
+                this.type = type;
+            }
+        }
+    ````
+- **Khác nhau:**
+    - Không có sự khác nhau vì sử dụng các thành phần cơ bản của mẫu thiết kế Builder.
+    
+## II. Nhóm Structural
+
+### Adapter:
++ Là một mẫu thiết kế cấu trúc cho phép các đối tượng có giao diện không tương thích cộng tác. Đối tượng giúp kết nối các interface.
++ Ở đây có thể thấy rằng điện thoại di động dựa trên một giao diện cung cấp điện áp 5V, còn điện gia đình là 220V. Vì vậy cần phải có **Adapter** (bucker) để sạc điện thoại di động.
+
+- **Code:**
+    ````
+        package com.example.jingbin.designpattern.adapter;
+
+        import android.util.Log;
+
+        public class V5PowerAdapter implements V5Power {
+
+            private int v220power;
+
+            public V5PowerAdapter(V220Power v220Power) {
+                v220power = v220Power.provideV220Power();
+            }
+
+            @Override
+            public int provideV5Power() {
+
+                Log.e("---", "适配器: 经过复杂的操作,将" + v220power + "v电压转为5v");
+                return 5;
+            }
+
+        }
+    ````
+- **Giống nhau:**
+    + Gồm các thành phần cơ bản: Adaptee, Adapter, Target, Client.
+    + Cơ bản giống với mẫu thiết kế chuẩn.
+    
+- **Khác nhau:** 
+    + Không thấy sự khác nhau.
+    
+### Bridge:
++ Được sử dụng để tách thành phần trừu tượng (abstraction) và thành phần thực thi (implementation) riêng biệt.
++ Gồm các thành phần cơ bản.
+
+- **Code:**
+    ````
+        public class BridgeActivity extends AppCompatActivity {
+
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                ActivityBridgeBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_bridge);
+                setTitle("桥接模式");
+                binding.tvDefine.setText(EMTagHandler.fromHtml(AppConstant.BRIDGE_DEFINE));
+
+                binding.btRed.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 画红圆
+                        Circle circle = new Circle(10, 10, 100, new RedCircle());
+                        circle.draw();
+                    }
+                });
+
+                binding.btGreen.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 画绿圆
+                        Circle circle = new Circle(20, 20, 100, new GreenCircle());
+                        circle.draw();
+                    }
+                });
+            }
+
+        }
+    ````
+- **Giống nhau:**
+    + khá giống với mẫu Adapter Pattern ở chỗ là sẽ nhờ vào một lớp khác để thực hiện một số xử lý nào đó. Tuy nhiên, ý nghĩa và mục đích sử dụng của hai mẫu thiết kế này hoàn toàn khác nhau.
+    
+- **Khác nhau:** 
+    + Không có sự khác biệt.
+
+### Composite:
+    + Tổ chức các đối tượng theo cấu trúc phân cấp dạng cây. Tất cả các đối tượng trong cấu trúc được thao tác theo một cách thuần nhất.
+    + Trong mẫu này chỉ có 2 class CompositeActivity và Employee.Như vậy nó bị khuyết hai thành phần là Base Component và Leaf so với mẫu thiết kế Composite Pattern chuẩn.
+
+- **Code:**
+    ````
+        public class CompositeActivity extends AppCompatActivity {
+
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                ActivityCompositeBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_composite);
+
+                setTitle("组合模式");
+                binding.tvDefine.setText(EMTagHandler.fromHtml(AppConstant.COMPOSITE_DEFINE));
+                final Employee ceo = new Employee("John", "CEO", 30000);
+
+                Employee headSales = new Employee("Robert", "Head sales", 20000);
+
+                Employee headMarketing = new Employee("Michel", "Head Marketing", 20000);
+
+                Employee clerk1 = new Employee("Laura", "Marketing", 10000);
+                Employee clerk2 = new Employee("Bob", "Marketing", 10000);
+
+                Employee salesExecutive1 = new Employee("Richard", "Sales", 10000);
+                Employee salesExecutive2 = new Employee("Rob", "Sales", 10000);
+
+                ceo.add(headSales);
+                ceo.add(headMarketing);
+
+                headSales.add(salesExecutive1);
+                headSales.add(salesExecutive2);
+
+                headMarketing.add(clerk1);
+                headMarketing.add(clerk2);
+
+                binding.btCeo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.e("---", ceo.toString());
+                    }
+                });
+
+            }
+        }
+    ````
+    
+- **Giống nhau:**
+    + Giống với mẫu chuẩn.
+    
+- **Khác nhau:** 
+    + Không có sự khác biệt.
+    
+### Decorator:
++ Decorator Pattern được sử dụng để thay đổi một instance riêng lẻ của một class, bằng cách tạo một class decorator bao bọc class gốc. 
++ Nó khác với kế thừa là nó được thực hiện trong thời gian chạy và chỉ áp dụng cho một cá thể, trong khi kế thừa sẽ ảnh hưởng đến tất cả các trường hợp.
+
+- **Code:**
+    ````
+        package com.example.jingbin.designpattern.decorator;
+
+        public interface IEquip {
+
+            public int caculateAttack();
+
+            public String description();
+        }
+    ````
+- **Giống nhau:**
+    + Giống với mẫu chuẩn
+- **Khác nhau:** 
+    + Không có sự khác biệt.
+    
+### Facade:
++
++
+- **Code:**
+````
+
+````
+- **Giống nhau:**
+    + Cấu trúc trong mã nguồn đã chính xác so với cấu trúc ở trong mẫu chuẩn.
+    
+- **Khác nhau:** 
+    + Không có sự khác nhau.
+    
+### Flyweight:
+    + Cho phép tái sử dụng đối tượng tương tự đã tồn tại bằng cách lưu trữ chúng hoặc tạo đối tượng mới khi không tìm thấy đối tượng phù hợp.
+    + Mẫu thiết kế dưới khuyết phần UnsharedFlyweight so với mẫu thiết kế Flyweight Pattern chuẩn.
+    
+- **Code:**
+    ````
+        public class ShapeFactory {
+
+            private static final HashMap<String, Shape> circleMap = new HashMap<String, Shape>();
+
+            public static Shape getShape(String color) {
+                Shape shape = circleMap.get(color);
+                if (shape == null) {
+                    shape = new Circle(color);
+                    circleMap.put(color, shape);
+                    Log.e("getShape", "Creating circle of color : " + color);
+                }
+                return shape;
+            }
+
+        }
+    ````
+    ````
+        package com.example.jingbin.designpattern.flyweight;
+
+
+        public interface Shape {
+            void draw();
+        }
+    ````
+- **Giống nhau:**
+    + Về cơ bản, khuôn dạng cũng khá giống với mẫu tiêu chuẩn. Khi lớp trừu tượng thay đổi lớp con cũng thay đổi theo.
+    
+- **Khác nhau:** 
+    + Không có sự khác nhau.
+    
+### Proxy:
++ - Là mẫu thiết kế mà ở đó tất cả các truy cập trực tiếp đến một đối tượng nào đó sẽ được chuyển hướng vào một đối tượng trung gian (Proxy Class). Mẫu Proxy (người đại diện) đại diện cho một đối tượng khác thực thi các phương thức, phương thức đó có thể được định nghĩa lại cho phù hợp với múc đích sử dụng.
++ Trong Proxy Pattern, một lớp đại diện cho chức năng của lớp khác.
+
+- **Code:**
+    ````
+        package com.example.jingbin.designpattern.proxy;
+
+        public interface Image {
+            void display();
+        }
+    ````
+    ````
+        import android.util.Log;
+
+        public class RealImage implements Image {
+
+            private String fileName;
+
+            public RealImage(String fileName) {
+                this.fileName = fileName;
+                loadFromDisk(fileName);
+            }
+
+            private void loadFromDisk(String fileName) {
+                Log.e("RealImage", "loading " + fileName);
+            }
+
+            @Override
+            public void display() {
+                Log.e("RealImage", "Displaying " + fileName);
+            }
+        }
+    ````
+- **Giống nhau:**
+    + Giống toàn bộ cấu trúc gốc.
+    
+- **Khác nhau:** 
+    + Không có sự khác nhau.
+
+## III. Nhóm Behavioral
+    
+### Visitor:
+- Giống nhau:
+    - Interface đại diện cho các yếu tố: Các class implements từ Interface đó, Interface riêng cho khách truy cập.
+    - Interface đại diện cho các yếu tố:  Class dành cho khách truy cập, Class hiển thị.
+- Khác nhau:
+    - Không có gì khác biệt.
+````
+public interface ComputerPart {
+    public void accept(ComputerPartVisitor computerPartVisitor);
+}
+````
+
+### Template method:
+- Giống nhau:
+    + Là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern). 
+    + Pattern này nói rằng “Định nghĩa một bộ khung của một thuật toán trong một chức năng, chuyển giao việc thực hiện nó cho các lớp con.
+    + Đóng gói các phần của thuật toán để các lớp con có thể tự móc (hook) vào một tính toán bất cứ lúc nào chúng muốn.
+- Khác nhau:
+    + Không có sự khác biệt.
+- Code:
+    ````
+        @Override
+        public  void  onClick ( View  v ) {
+            switch (v.getId()) {
+                Case  R . the above mentioned id . bt_template_method_text : // View all personnel work
+                    ITWorker itWorker = new ITWorker("景彬");
+                    itWorker.workOneDay();
+                    HRWorker hrWorker =  new  HRWorker ( " Sister Lili " );
+                    hrWorker.workOneDay();
+                    QAWorker qaWorker = new QAWorker("张元元");
+                    qaWorker.workOneDay();
+                    QAWorker qaWorker1 = new QAWorker("徐晨星");
+                    qaWorker1.workOneDay();
+                    CTOWorker ctoWorker = new CTOWorker("远哥");
+                    ctoWorker.workOneDay();
+                    OtherWorker otherWorker =  new  OtherWorker ( " Who is you " );
+                    otherWorker.workOneDay();
+                    break;
+                Case  R . the above mentioned id . bt_template_method_text2 : // Viewer ape's time to leave
+                    ITWorker itWorker2 = new ITWorker("景彬");
+                    itWorker2.workOneDay();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    ````
+    
+## KẾT LUẬN
+
+Project sử dụng 14 trên tổng số 23 mẫu thiết kế tiêu chuẩn.
+Nhìn chung, 14 mẫu thiết kế dùng trong project trên không có sự khác biệt so với 14 mẫu thiết kế tiêu chuẩn. 
